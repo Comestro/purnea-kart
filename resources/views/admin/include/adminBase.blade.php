@@ -264,23 +264,13 @@
             <!-- App Javascript (Require in all Page) -->
             <script src="{{asset('assets_admin/js/app.js')}}"></script>
 
-            <!-- Vector Map Js -->
-            <script src="{{asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js')}}"></script>
-            <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world-merc.js')}}"></script>
-            <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world.js')}}"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-            <!-- Dashboard Js -->
-            <script src="{{asset('assets_admin/js/pages/dashboard.js')}}"></script>
-            <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-
-            
-
-
-
-
-
-
-    
+        <!-- Vector Map Js -->
+        <script src="{{asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js')}}')}}"></script>
+        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world-merc.js')}}')}}"></script>
+        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world.js')}}')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Dashboard Js -->
+        <script src="{{asset('assets_admin/js/pages/dashboard.js')}}')}}"></script>
 
     </body>
 
