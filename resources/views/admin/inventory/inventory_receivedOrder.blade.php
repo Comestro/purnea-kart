@@ -1,8 +1,8 @@
+
 @extends('admin.include.adminBase')
-@section('title', 'Category List ||')
+@section('title', 'Received Orders ||')
 
 @section('content')
-
           <!-- Activity Timeline -->
           <div>
                <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="theme-activity-offcanvas" style="max-width: 450px; width: 100%;">
@@ -74,24 +74,24 @@
                                    </div>
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
-                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-7.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-7.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                              <div class="ms-2">
                                                   <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Alex Smith Attached Photos
                                                   </h5>
                                                   <div class="row g-2 mt-2">
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin/images/small/img-6.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin/images/small/img-3.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="assets/images/small/img-3.jpg" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin/images/small/img-4.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="assets/images/small/img-4.jpg" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                   </div>
@@ -101,7 +101,7 @@
                                    </div>
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
-                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-6.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-6.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                              <div class="ms-2">
                                                   <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new team member
                                                   </h5>
@@ -240,7 +240,8 @@
           <!-- ========== Topbar End ========== -->
 
           <!-- ========== App Menu Start ========== -->
-        @include('admin.include.sidebar')
+          @include('admin.include.sidebar')
+
           <!-- ========== App Menu End ========== -->
 
           <!-- ==================================================== -->
@@ -254,60 +255,86 @@
                     <div class="row">
                          <div class="col-md-6 col-xl-3">
                               <div class="card">
-                                   <div class="card-body text-center">
-                                        <div class="rounded bg-secondary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                             <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-xl">
+                                   <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                             <div>
+                                                  <h4 class="card-title mb-2">Pending Review</h4>
+                                                  <p class="text-muted fw-medium fs-22 mb-0">210</p>
+                                             </div>
+                                             <div>
+                                                  <div class="avatar-md bg-primary bg-opacity-10 rounded">
+                                                       <iconify-icon icon="solar:clipboard-remove-broken" class="fs-32 text-primary avatar-title"></iconify-icon>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <h4 class="mt-3 mb-0">Fashion Categories</h4>
                                    </div>
                               </div>
                          </div>
                          <div class="col-md-6 col-xl-3">
                               <div class="card">
-                                   <div class="card-body text-center">
-                                        <div class="rounded bg-primary-subtle d-flex align-items-center justify-content-center mx-auto">
-                                             <img src="{{asset('assets_admin/images/product/p-6.png')}}" alt="" class="avatar-xl">
+                                   <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                             <div>
+                                                  <h4 class="card-title mb-2">Pending Payment</h4>
+                                                  <p class="text-muted fw-medium fs-22 mb-0">608</p>
+                                             </div>
+                                             <div>
+                                                  <div class="avatar-md bg-primary bg-opacity-10 rounded">
+                                                       <iconify-icon icon="solar:clock-circle-broken" class="fs-32 text-primary avatar-title"></iconify-icon>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <h4 class="mt-3 mb-0">Electronics Headphone</h4>
                                    </div>
                               </div>
                          </div>
 
                          <div class="col-md-6 col-xl-3">
                               <div class="card">
-                                   <div class="card-body text-center">
-                                        <div class="rounded bg-warning-subtle d-flex align-items-center justify-content-center mx-auto">
-                                             <img src="{{asset('assets_admin/images/product/p-7.png')}}" alt="" class="avatar-xl">
+                                   <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                             <div>
+                                                  <h4 class="card-title mb-2">Delivered</h4>
+                                                  <p class="text-muted fw-medium fs-22 mb-0">200</p>
+                                             </div>
+                                             <div>
+                                                  <div class="avatar-md bg-primary bg-opacity-10 rounded">
+                                                       <iconify-icon icon="solar:clipboard-check-broken" class="fs-32 text-primary avatar-title"></iconify-icon>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <h4 class="mt-3 mb-0">Foot Wares</h4>
                                    </div>
                               </div>
                          </div>
 
                          <div class="col-md-6 col-xl-3">
                               <div class="card">
-                                   <div class="card-body text-center">
-                                        <div class="rounded bg-info-subtle d-flex align-items-center justify-content-center mx-auto">
-                                             <img src="{{asset('assets_admin/images/product/p-9.png')}}" alt="" class="avatar-xl">
+                                   <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                             <div>
+                                                  <h4 class="card-title mb-2">In Progress</h4>
+                                                  <p class="text-muted fw-medium fs-22 mb-0">656</p>
+                                             </div>
+                                             <div>
+                                                  <div class="avatar-md bg-primary bg-opacity-10 rounded">
+                                                       <iconify-icon icon="solar:inbox-line-broken" class="fs-32 text-primary avatar-title"></iconify-icon>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <h4 class="mt-3 mb-0">Eye Ware & Sunglass</h4>
                                    </div>
                               </div>
                          </div>
+
                     </div>
 
                     <div class="row">
                          <div class="col-xl-12">
                               <div class="card">
-                                   <div class="card-header d-flex justify-content-between align-items-center gap-1">
-                                        <h4 class="card-title flex-grow-1">All Categories List</h4>
-
-                                        <a href="product-add.html" class="btn btn-sm btn-primary">
-                                             Add Product
-                                        </a>
-
+                                   <div class="d-flex card-header justify-content-between align-items-center">
+                                        <div>
+                                             <h4 class="card-title">All Received Order</h4>
+                                        </div>
                                         <div class="dropdown">
-                                             <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                             <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light rounded" data-bs-toggle="dropdown" aria-expanded="false">
                                                   This Month
                                              </a>
                                              <div class="dropdown-menu dropdown-menu-end">
@@ -320,267 +347,155 @@
                                              </div>
                                         </div>
                                    </div>
+
                                    <div>
                                         <div class="table-responsive">
                                              <table class="table align-middle mb-0 table-hover table-centered">
                                                   <thead class="bg-light-subtle">
                                                        <tr>
-                                                            <th style="width: 20px;">
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                                      <label class="form-check-label" for="customCheck1"></label>
-                                                                 </div>
-                                                            </th>
-                                                            <th>Categories</th>
-                                                            <th>Starting Price</th>
-                                                            <th>Create by</th>
-                                                            <th>ID</th>
-                                                            <th>Product Stock</th>
+                                                            <th>Order ID</th>
+                                                            <th>Customer</th>
+                                                            <th>Items</th>
+                                                            <th>Amount</th>
+                                                            <th>Payment Status</th>
+                                                            <th>Received Status</th>
                                                             <th>Action</th>
                                                        </tr>
                                                   </thead>
                                                   <tbody>
                                                        <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2"></label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <p class="text-dark fw-medium fs-15 mb-0">Fashion Men , Women & Kid's</p>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$80 to $400</td>
-                                                            <td>Seller</td>
-                                                            <td>FS16276</td>
-                                                            <td>46233</td>
+                                                            <td>#583488/80</td>
+                                                            <td>Michael A. Miner</td>
+                                                            <td>03</td>
+                                                            <td>$289.00</td>
+                                                            <td><span class="badge bg-secondary text-white py-1 px-2">Paid</span></td>
+                                                            <td><span class="badge bg-success-subtle text-success py-1 px-2">Delivered</span></td>
                                                             <td>
                                                                  <div class="d-flex gap-2">
                                                                       <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                       <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                  </div>
                                                             </td>
                                                        </tr>
 
                                                        <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-2.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Women Hand Bag</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$120 to $500</td>
-                                                            <td>Admin</td>
-                                                            <td>HB73029</td>
-                                                            <td>2739</td>
+                                                            <td>#456754/80 </td>
+                                                            <td>Theresa T. Brose</td>
+                                                            <td>05</td>
+                                                            <td>$213.00</td>
+                                                            <td><span class="badge bg-warning text-white py-1 px-2">COD</span></td>
+                                                            <td><span class="badge bg-danger-subtle text-danger py-1 px-2">Failed</span></td>
                                                             <td>
                                                                  <div class="d-flex gap-2">
                                                                       <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                 </div>
-                                                            </td>
-                                                       </tr>
-
-
-                                                       <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-4.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Cap and Hat</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$50 to $200</td>
-                                                            <td>Admin</td>
-                                                            <td>CH492-9</td>
-                                                            <td>1829</td>
-                                                            <td>
-                                                                 <div class="d-flex gap-2">
-                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                       <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                  </div>
                                                             </td>
                                                        </tr>
 
                                                        <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-6.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Electronics Headphone</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$100 to $700</td>
-                                                            <td>Seller</td>
-                                                            <td>EC23818</td>
-                                                            <td>1902</td>
+                                                            <td>#578246/80</td>
+                                                            <td> Cecile D. Gordon</td>
+                                                            <td>03 </td>
+                                                            <td>$735.00</td>
+                                                            <td><span class="badge bg-secondary text-white py-1 px-2">Paid</span></td>
+                                                            <td><span class="badge bg-success-subtle text-success py-1 px-2">Delivered</span></td>
                                                             <td>
                                                                  <div class="d-flex gap-2">
                                                                       <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                 </div>
-                                                            </td>
-                                                       </tr>
-
-
-                                                       <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-7.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Foot Wares</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$70 to $400</td>
-                                                            <td>Seller</td>
-                                                            <td>FW11009</td>
-                                                            <td>2733</td>
-                                                            <td>
-                                                                 <div class="d-flex gap-2">
-                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                 </div>
-                                                            </td>
-                                                       </tr>
-
-                                                       <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-8.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Wallet Categories</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$120 to $300</td>
-                                                            <td>Admin</td>
-                                                            <td>WL38299</td>
-                                                            <td>890</td>
-                                                            <td>
-                                                                 <div class="d-flex gap-2">
-                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                       <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                  </div>
                                                             </td>
                                                        </tr>
                                                        <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-11.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Electronics Watch</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$60 to $400</td>
-                                                            <td>Seller</td>
-                                                            <td>SM37817</td>
-                                                            <td>250</td>
+                                                            <td>#348930/80</td>
+                                                            <td>William Moreno</td>
+                                                            <td>02</td>
+                                                            <td>$324.00</td>
+                                                            <td><span class="badge bg-warning text-white py-1 px-2">COD</span></td>
+                                                            <td><span class="badge bg-warning-subtle text-warning py-1 px-2">Pending</span></td>
                                                             <td>
                                                                  <div class="d-flex gap-2">
                                                                       <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                       <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                  </div>
                                                             </td>
                                                        </tr>
                                                        <tr>
-                                                            <td>
-                                                                 <div class="form-check">
-                                                                      <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                      <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                 <div class="d-flex align-items-center gap-2">
-                                                                      <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                           <img src="{{asset('assets_admin/images/product/p-9.png')}}" alt="" class="avatar-md">
-                                                                      </div>
-                                                                      <div>
-                                                                           <p class="text-dark fw-medium fs-15 mb-0">Eye Ware & Sunglass</p>
-                                                                      </div>
-                                                                 </div>
-
-                                                            </td>
-                                                            <td>$70 to $500</td>
-                                                            <td>Admin</td>
-                                                            <td>EG37878</td>
-                                                            <td>1900</td>
+                                                            <td>#391367/80</td>
+                                                            <td>Sarah M. Brooks</td>
+                                                            <td>07 </td>
+                                                            <td>$153.00</td>
+                                                            <td><span class="badge bg-warning text-white py-1 px-2">COD</span></td>
+                                                            <td><span class="badge bg-success-subtle text-success py-1 px-2">Delivered</span></td>
                                                             <td>
                                                                  <div class="d-flex gap-2">
                                                                       <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                                      <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                 </div>
+                                                            </td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>#930447/80</td>
+                                                            <td>Joe K. Hall</td>
+                                                            <td>02</td>
+                                                            <td>$424.00</td>
+                                                            <td><span class="badge bg-secondary text-white py-1 px-2">Paid</span></td>
+                                                            <td><span class="badge bg-danger-subtle text-danger py-1 px-2">Failed</span></td>
+                                                            <td>
+                                                                 <div class="d-flex gap-2">
+                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                 </div>
+                                                            </td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td> #462397/80</td>
+                                                            <td>Ralph Hueber</td>
+                                                            <td>01</td>
+                                                            <td>$521.00</td>
+                                                            <td><span class="badge bg-secondary text-white py-1 px-2">Paid</span></td>
+                                                            <td><span class="badge bg-warning-subtle text-warning py-1 px-2">Pending</span></td>
+                                                            <td>
+                                                                 <div class="d-flex gap-2">
+                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                 </div>
+                                                            </td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>#472356/80</td>
+                                                            <td>Sarah Drescher</td>
+                                                            <td>04</td>
+                                                            <td>$313.00</td>
+                                                            <td><span class="badge bg-warning text-white py-1 px-2">COD</span></td>
+                                                            <td><span class="badge bg-success-subtle text-success py-1 px-2">Delivered</span></td>
+                                                            <td>
+                                                                 <div class="d-flex gap-2">
+                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                 </div>
+                                                            </td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>#448226/80</td>
+                                                            <td>Leonie Meister</td>
+                                                            <td>06 </td>
+                                                            <td>$219.00</td>
+                                                            <td><span class="badge bg-warning text-white py-1 px-2">COD</span></td>
+                                                            <td><span class="badge bg-danger-subtle text-danger py-1 px-2">Failed</span></td>
+                                                            <td>
+                                                                 <div class="d-flex gap-2">
+                                                                      <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                                      <a href="#!" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                       <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                                  </div>
                                                             </td>
@@ -603,28 +518,19 @@
                                    </div>
                               </div>
                          </div>
+
                     </div>
+
 
                </div>
                <!-- End Container Fluid -->
 
                <!-- ========== Footer Start ========== -->
-               <footer class="footer">
-                   <div class="container-fluid">
-                       <div class="row">
-                           <div class="col-12 text-center">
-                               <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
-                                   href="" class="fw-bold footer-text" target="_blank">Techzaa</a>
-                           </div>
-                       </div>
-                   </div>
-               </footer>
+               @include('admin.include.footer')
+
                <!-- ========== Footer End ========== -->
 
           </div>
-          <!-- ==================================================== -->
-          <!-- End Page Content -->
-          <!-- ==================================================== -->
+         
 
-
-@endsection
+ @endsection

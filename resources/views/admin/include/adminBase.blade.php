@@ -4,7 +4,8 @@
     <head>
         <!-- Title Meta -->
         <meta charset="utf-8" />
-        <title>Dashboard | Larkon - Responsive Admin </title>
+        
+        <title>@yield('title') Admin panel || {{env('APP_NAME')}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A fully responsive premium admin dashboard template" />
         <meta name="author" content="Techzaa" />
@@ -46,7 +47,7 @@
 
                             <!-- Menu Toggle Button -->
                             <div class="topbar-item">
-                                <h4 class="fw-bold topbar-button pe-none text-uppercase mb-0">Welcome!</h4>
+                                <h4 class="fw-bold topbar-button pe-none text-uppercase mb-0">{{env('APP_NAME')}}!</h4>
                             </div>
                         </div>
 
@@ -250,7 +251,7 @@
                 </div>
             </header>
 
-    @include('admin.include.sidebar')
+    
 
 
             @section('content')
@@ -265,12 +266,12 @@
             <script src="{{asset('assets_admin/js/app.js')}}"></script>
 
         <!-- Vector Map Js -->
-        <script src="{{asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js')}}')}}"></script>
-        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world-merc.js')}}')}}"></script>
-        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world.js')}}')}}"></script>
+        <script src="{{asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js')}}"></script>
+        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world-merc.js')}}"></script>
+        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Dashboard Js -->
-        <script src="{{asset('assets_admin/js/pages/dashboard.js')}}')}}"></script>
+        <script src="{{asset('assets_admin/js/pages/dashboard.js')}}"></script>
 
     </body>
 

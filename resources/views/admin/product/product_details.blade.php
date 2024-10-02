@@ -1,7 +1,7 @@
-
-
    
 @extends('admin.include.adminBase')
+@section('title', 'Product Details ||')
+
 @section('content')
 
         <!-- Activity Timeline -->
@@ -75,24 +75,24 @@
                                  </div>
                                  <div class="position-relative ps-4">
                                       <div class="mb-4">
-                                           <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-7.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                           <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-7.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                            <div class="ms-2">
                                                 <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Alex Smith Attached Photos
                                                 </h5>
                                                 <div class="row g-2 mt-2">
                                                      <div class="col-lg-4">
                                                           <a href="#!">
-                                                               <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rounded">
+                                                               <img src="{{asset('assets_admin/images/small/img-6.jpg')}}" alt="" class="img-fluid rounded">
                                                           </a>
                                                      </div>
                                                      <div class="col-lg-4">
                                                           <a href="#!">
-                                                               <img src="assets/images/small/img-3.jpg" alt="" class="img-fluid rounded">
+                                                               <img src="{{asset('assets_admin/images/small/img-3.jpg')}}" alt="" class="img-fluid rounded">
                                                           </a>
                                                      </div>
                                                      <div class="col-lg-4">
                                                           <a href="#!">
-                                                               <img src="assets/images/small/img-4.jpg" alt="" class="img-fluid rounded">
+                                                               <img src="{{asset('assets_admin/images/small/img-4.jpg')}}" alt="" class="img-fluid rounded">
                                                           </a>
                                                      </div>
                                                 </div>
@@ -102,7 +102,7 @@
                                  </div>
                                  <div class="position-relative ps-4">
                                       <div class="mb-4">
-                                           <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-6.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                           <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-6.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                            <div class="ms-2">
                                                 <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new team member
                                                 </h5>
@@ -260,16 +260,16 @@
                                     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                          <div class="carousel-inner" role="listbox">
                                               <div class="carousel-item active">
-                                                   <img src="assets/images/product/p-1.png" alt="" class="img-fluid bg-light rounded">
+                                                   <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="img-fluid bg-light rounded">
                                               </div>
                                               <div class="carousel-item">
-                                                   <img src="assets/images/product/p-10.png" alt="" class="img-fluid bg-light rounded">
+                                                   <img src="{{asset('assets_admin/images/product/p-10.png')}}" alt="" class="img-fluid bg-light rounded">
                                               </div>
                                               <div class="carousel-item">
-                                                   <img src="assets/images/product/p-13.png" alt="" class="img-fluid bg-light rounded">
+                                                   <img src="{{asset('assets_admin/images/product/p-13.png')}}" alt="" class="img-fluid bg-light rounded">
                                               </div>
                                               <div class="carousel-item">
-                                                   <img src="assets/images/product/p-14.png" alt="" class="img-fluid bg-light rounded">
+                                                   <img src="{{asset('assets_admin/images/product/p-14.png')}}" alt="" class="img-fluid bg-light rounded">
                                               </div>
                                               <!-- <a class="carousel-control-prev rounded" href="#carouselExampleFade" role="button" data-bs-slide="prev">
                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -282,16 +282,16 @@
                                          </div>
                                          <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100">
                                               <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1" class="w-auto h-auto rounded bg-light active">
-                                                   <img src="assets/images/product/p-1.png" class="d-block avatar-xl" alt="swiper-indicator-img">
+                                                   <img src="{{asset('assets_admin/images/product/p-1.png')}}" class="d-block avatar-xl" alt="swiper-indicator-img">
                                               </button>
                                               <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2" class="w-auto h-auto rounded bg-light">
-                                                   <img src="assets/images/product/p-10.png" class="d-block avatar-xl" alt="swiper-indicator-img">
+                                                   <img src="{{asset('assets_admin/images/product/p-10.png')}}" class="d-block avatar-xl" alt="swiper-indicator-img">
                                               </button>
                                               <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3" class="w-auto h-auto rounded bg-light">
-                                                   <img src="assets/images/product/p-13.png" class="d-block avatar-xl" alt="swiper-indicator-img">
+                                                   <img src="{{asset('assets_admin/images/product/p-13.png')}}" class="d-block avatar-xl" alt="swiper-indicator-img">
                                               </button>
                                               <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 3" class="w-auto h-auto rounded bg-light">
-                                                   <img src="assets/images/product/p-14.png" class="d-block avatar-xl" alt="swiper-indicator-img">
+                                                   <img src="{{asset('assets_admin/images/product/p-14.png')}}" class="d-block avatar-xl" alt="swiper-indicator-img">
                                               </button>
                                          </div>
                                     </div>
@@ -510,7 +510,7 @@
                                </div>
                                <div class="card-body">
                                     <div class="d-flex align-items-center gap-2">
-                                         <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-md rounded-circle">
+                                         <img src="{{asset('assets_admin/images/users/avatar-6.jpg')}}" alt="" class="avatar-md rounded-circle">
                                          <div>
                                               <h5 class="mb-0">Henny K. Mark</h5>
                                          </div>
@@ -546,7 +546,7 @@
                                     <hr class="my-3">
 
                                     <div class="d-flex align-items-center gap-2">
-                                         <img src="assets/images/users/avatar-4.jpg" alt="" class="avatar-md rounded-circle">
+                                         <img src="{{asset('assets_admin/images/users/avatar-4.jpg')}}" alt="" class="avatar-md rounded-circle">
                                          <div>
                                               <h5 class="mb-0">Jorge Herry</h5>
                                          </div>

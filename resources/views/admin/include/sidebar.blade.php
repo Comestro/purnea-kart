@@ -2,7 +2,7 @@
     <!-- Sidebar Logo -->
     <div class="logo-box">
         <a href="index.html" class="logo-dark">
-            <img src="{{asset('assets_admin/images/logo-sm.png')}}" class="logo-sm" alt="logo sm">
+            <img src="{{asset('assets_admin/images/logo-sm.png')}}" class="logo-sm"  alt="logo sm">
             <img src="{{asset('assets_admin/images/logo-dark.png')}}" class="logo-lg" alt="logo dark">
         </a>
 
@@ -95,10 +95,10 @@
                     <ul class="nav sub-navbar-nav">
 
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="inventory-warehouse.html">Warehouse</a>
+                            <a class="sub-nav-link" href="{{url('admin/inventory/inventory_warehouse')}}">Warehouse</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
+                            <a class="sub-nav-link" href="{{url('admin/inventory/inventory_receivedOrder')}}">Received Orders</a>
                         </li>
                     </ul>
                 </div>
@@ -116,16 +116,16 @@
                     <ul class="nav sub-navbar-nav">
 
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="orders-list.html">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-detail.html">Details</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-detail')}}">Details</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-cart.html">Cart</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-cart')}}">Cart</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-checkout.html">Check Out</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-checkout')}}">Check Out</a>
                         </li>
                     </ul>
                 </div>

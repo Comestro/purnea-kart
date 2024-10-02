@@ -1,4 +1,6 @@
 @extends('admin.include.adminBase')
+@section('title', 'Product List ||')
+
 @section('content')
 
 
@@ -73,24 +75,24 @@
                              </div>
                              <div class="position-relative ps-4">
                                   <div class="mb-4">
-                                       <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-7.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                       <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-7.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                        <div class="ms-2">
                                             <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Alex Smith Attached Photos
                                             </h5>
                                             <div class="row g-2 mt-2">
                                                  <div class="col-lg-4">
                                                       <a href="#!">
-                                                           <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rounded">
+                                                           <img src="{{asset('assets_admin/images/small/img-6.jpg')}}" alt="" class="img-fluid rounded">
                                                       </a>
                                                  </div>
                                                  <div class="col-lg-4">
                                                       <a href="#!">
-                                                           <img src="assets/images/small/img-3.jpg" alt="" class="img-fluid rounded">
+                                                           <img src="{{asset('assets_admin/images/small/img-3.jpg')}}" alt="" class="img-fluid rounded">
                                                       </a>
                                                  </div>
                                                  <div class="col-lg-4">
                                                       <a href="#!">
-                                                           <img src="assets/images/small/img-4.jpg" alt="" class="img-fluid rounded">
+                                                           <img src="{{asset('assets_admin/images/small/img-4.jpg')}}" alt="" class="img-fluid rounded">
                                                       </a>
                                                  </div>
                                             </div>
@@ -100,7 +102,7 @@
                              </div>
                              <div class="position-relative ps-4">
                                   <div class="mb-4">
-                                       <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-6.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                       <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-6.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                        <div class="ms-2">
                                             <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new team member
                                             </h5>
@@ -197,7 +199,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-1.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Black T-shirt</a>
@@ -232,7 +234,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-2.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-2.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Olive Green Leather Bag</a>
@@ -266,7 +268,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-3.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-3.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Women Golden Dress</a>
@@ -301,7 +303,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-4.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-4.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Gray Cap For Men</a>
@@ -337,7 +339,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-5.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-5.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Dark Green Cargo Pent</a>
@@ -373,7 +375,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-6.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-6.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Orange Multi Color Headphone</a>
@@ -409,7 +411,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-7.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-7.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Kid's Yellow Shoes</a>
@@ -444,7 +446,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-8.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-8.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Men Dark Brown Wallet</a>
@@ -479,7 +481,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-9.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-9.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Sky Blue Sunglass</a>
@@ -514,7 +516,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-10.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-10.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Kid's Yellow T-shirt</a>
@@ -549,7 +551,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-11.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-11.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">White Rubber Band Smart Watch </a>
@@ -584,7 +586,7 @@
                                                       <td>
                                                            <div class="d-flex align-items-center gap-2">
                                                                 <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                                     <img src="assets/images/product/p-12.png" alt="" class="avatar-md">
+                                                                     <img src="{{asset('assets_admin/images/product/p-12.png')}}" alt="" class="avatar-md">
                                                                 </div>
                                                                 <div>
                                                                      <a href="#!" class="text-dark fw-medium fs-15">Men Brown Leather Shoes </a>
@@ -635,16 +637,8 @@
          <!-- End Container Fluid -->
 
          <!-- ========== Footer Start ========== -->
-         <footer class="footer">
-             <div class="container-fluid">
-                 <div class="row">
-                     <div class="col-12 text-center">
-                         <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
-                             href="" class="fw-bold footer-text" target="_blank">Techzaa</a>
-                     </div>
-                 </div>
-             </div>
-         </footer>
+         @include('admin.include.footer')
+
          <!-- ========== Footer End ========== -->
 
     </div>
