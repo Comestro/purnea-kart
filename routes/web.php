@@ -14,3 +14,10 @@ Route::view('profile', 'profile')
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/admin',function(){
+    return view('admin.index');
+});
+Route::get('/admin/product_list',function(){
+    return view('admin.product_list');
+});

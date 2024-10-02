@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('store_description');  
             $table->string("vendor_slug")->unique();
             $table->string('store_image')->nullable();  
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
