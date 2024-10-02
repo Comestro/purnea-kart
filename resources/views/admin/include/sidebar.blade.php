@@ -77,7 +77,7 @@
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="category-add.html">Create</a>
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-add')}}">Create</a>
                         </li>
                     </ul>
                 </div>
