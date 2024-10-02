@@ -2,7 +2,7 @@
     <!-- Sidebar Logo -->
     <div class="logo-box">
         <a href="index.html" class="logo-dark">
-            <img src="{{asset('assets_admin/images/logo-sm.png')}}" class="logo-sm" alt="logo sm">
+            <img src="{{asset('assets_admin/images/logo-sm.png')}}" class="logo-sm"  alt="logo sm">
             <img src="{{asset('assets_admin/images/logo-dark.png')}}" class="logo-lg" alt="logo dark">
         </a>
 
@@ -23,7 +23,7 @@
             <li class="menu-title">General</li>
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{url('admin/')}}">
                     <span class="nav-icon">
                         <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                     </span>
@@ -42,19 +42,19 @@
                 <div class="collapse" id="sidebarProducts">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/product_list/')}}">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/products/product_list/')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="product-grid.html">Grid</a>
+                            <a class="sub-nav-link" href="{{url('admin/products/product_list/')}}">Grid</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="product-details.html">Details</a>
+                            <a class="sub-nav-link" href="{{url('admin/products/product_details/')}}">Details</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="product-edit.html">Edit</a>
+                            <a class="sub-nav-link" href="{{url('admin/products/product_edit/')}}">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="product-add.html">Create</a>
+                            <a class="sub-nav-link" href="{{url('admin/products/product_create/')}}">Create</a>
                         </li>
                     </ul>
                 </div>
@@ -71,13 +71,36 @@
                 <div class="collapse" id="sidebarCategory">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-edit')}}">Edit</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-add')}}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-arrow" href="#sidebarBrand" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarBrand">
+                    <span class="nav-icon">
+                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                    </span>
+                    <span class="nav-text"> Brand </span>
+                </a>
+                <div class="collapse" id="sidebarBrand">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-list.html">List</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/categories/category-add')}}">Create</a>
+                            <a class="sub-nav-link" href="{{url('admin/brands/brand-add')}}">Create</a>
                         </li>
                     </ul>
                 </div>
@@ -95,10 +118,10 @@
                     <ul class="nav sub-navbar-nav">
 
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="inventory-warehouse.html">Warehouse</a>
+                            <a class="sub-nav-link" href="{{url('admin/inventory/inventory_warehouse')}}">Warehouse</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
+                            <a class="sub-nav-link" href="{{url('admin/inventory/inventory_receivedOrder')}}">Received Orders</a>
                         </li>
                     </ul>
                 </div>
@@ -116,16 +139,16 @@
                     <ul class="nav sub-navbar-nav">
 
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="orders-list.html">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-detail.html">Details</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-detail')}}">Details</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-cart.html">Cart</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-cart')}}">Cart</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="order-checkout.html">Check Out</a>
+                            <a class="sub-nav-link" href="{{url('admin/orders/order-checkout')}}">Check Out</a>
                         </li>
                     </ul>
                 </div>
