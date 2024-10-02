@@ -1,6 +1,5 @@
-
 @extends('admin.include.adminBase')
-@section('title', 'Create Category ||')
+@section('title', 'Category Edit ||')
 
 @section('content')
 
@@ -76,24 +75,24 @@
                                    </div>
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
-                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin//images/users/avatar-7.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-7.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                              <div class="ms-2">
                                                   <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Alex Smith Attached Photos
                                                   </h5>
                                                   <div class="row g-2 mt-2">
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin//images/small/img-6.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="{{asset('assets_admin/images/small/img-6.jpg')}}" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin//images/small/img-3.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="{{asset('assets_admin/images/small/img-3.jpg')}}" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                        <div class="col-lg-4">
                                                             <a href="#!">
-                                                                 <img src="{{asset('assets_admin//images/small/img-4.jpg')}}" alt="" class="img-fluid rounded">
+                                                                 <img src="{{asset('assets_admin/images/small/img-4.jpg')}}" alt="" class="img-fluid rounded">
                                                             </a>
                                                        </div>
                                                   </div>
@@ -103,7 +102,7 @@
                                    </div>
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
-                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin//images/users/avatar-6.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{asset('assets_admin/images/users/avatar-6.jpg')}}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                              <div class="ms-2">
                                                   <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new team member
                                                   </h5>
@@ -242,7 +241,7 @@
           <!-- ========== Topbar End ========== -->
 
           <!-- ========== App Menu Start ========== -->
-       @include('admin.include.sidebar')
+          @include('admin.include.sidebar')
           <!-- ========== App Menu End ========== -->
 
           <!-- ==================================================== -->
@@ -258,7 +257,7 @@
                               <div class="card">
                                    <div class="card-body">
                                         <div class="bg-light text-center rounded bg-light">
-                                             <img src="{{asset('assets_admin//images/product/p-1.png')}}" alt="" class="avatar-xxl">
+                                             <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-xxl">
                                         </div>
                                         <div class="mt-3">
                                              <h4>Fashion Men , Women & Kid's</h4>
@@ -312,9 +311,101 @@
                                         </form>
                                    </div>
                               </div>
-                           
-                             <livewire:admin.category.insert-categoryform/>
-                            
+
+                              <div class="card">
+                                   <div class="card-header">
+                                        <h4 class="card-title">General Information</h4>
+                                   </div>
+                                   <div class="card-body">
+                                        <div class="row">
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <div class="mb-3">
+                                                            <label for="category-title" class="form-label">Category Title</label>
+                                                            <input type="text" id="category-title" class="form-control" placeholder="Enter Title" value="Fashion Men , Women & Kid's">
+                                                       </div>
+                                                  </form>
+                                             </div>
+
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <label for="crater" class="form-label">Created By</label>
+                                                       <select class="form-control" id="crater" data-choices data-choices-groups data-placeholder="Select Crater">
+                                                            <option value="">Select Crater</option>
+                                                            <option value="Seller" selected>Seller</option>
+                                                            <option value="Admin">Admin</option>
+                                                            <option value="Other">Other</option>
+                                                       </select>
+                                                  </form>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <div class="mb-3">
+                                                            <label for="product-stock" class="form-label">Stock</label>
+                                                            <input type="number" id="product-stock" class="form-control" placeholder="Quantity" value="46233">
+                                                       </div>
+
+                                                  </form>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <div class="mb-3">
+                                                            <label for="product-id" class="form-label">Tag ID</label>
+                                                            <input type="text" id="product-id" class="form-control" placeholder="#******" value="FS16276">
+                                                       </div>
+
+                                                  </form>
+                                             </div>
+                                             <div class="col-lg-12">
+                                                  <div class="mb-0">
+                                                       <label for="description" class="form-label">Description</label>
+                                                       <textarea class="form-control bg-light-subtle" id="description" rows="7" placeholder="Type description">Aurora Fashion has once again captivated fashion enthusiasts with its latest collection, seamlessly blending elegance with comfort in a range of exquisite designs.</textarea>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="card">
+                                   <div class="card-header">
+                                        <h4 class="card-title">Meta Options</h4>
+                                   </div>
+                                   <div class="card-body">
+                                        <div class="row">
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <div class="mb-3">
+                                                            <label for="meta-title" class="form-label">Meta Title</label>
+                                                            <input type="text" id="meta-title" class="form-control" placeholder="Enter Title" value="Fashion Brand">
+                                                       </div>
+                                                  </form>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <form>
+                                                       <div class="mb-3">
+                                                            <label for="meta-tag" class="form-label">Meta Tag Keyword</label>
+                                                            <input type="text" id="meta-tag" class="form-control" placeholder="Enter word" value="fashion">
+                                                       </div>
+                                                  </form>
+                                             </div>
+                                             <div class="col-lg-12">
+                                                  <div class="mb-0">
+                                                       <label for="description" class="form-label">Description</label>
+                                                       <textarea class="form-control bg-light-subtle" id="description" rows="4" placeholder="Type description"></textarea>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="p-3 bg-light mb-3 rounded">
+                                   <div class="row justify-content-end g-2">
+                                        <div class="col-lg-2">
+                                             <a href="#!" class="btn btn-outline-secondary w-100">Save Change</a>
+                                        </div>
+                                        <div class="col-lg-2">
+                                             <a href="#!" class="btn btn-primary w-100">Cancel</a>
+                                        </div>
+                                   </div>
+                              </div>
                          </div>
                     </div>
 
@@ -322,8 +413,15 @@
                <!-- End Container Fluid -->
 
                <!-- ========== Footer Start ========== -->
-                  @include('admin.include.footer')
-
+               <footer class="footer">
+                    <div class="container-fluid">
+                         <div class="row">
+                              <div class="col-12 text-center">
+                                   <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a href="" class="fw-bold footer-text" target="_blank">Techzaa</a>
+                              </div>
+                         </div>
+                    </div>
+               </footer>
                <!-- ========== Footer End ========== -->
 
           </div>
