@@ -55,9 +55,12 @@ class InsertCategoryform extends Component
             'image' => $imageName,
         ]);
 
+        
+
         // Redirect with success or error message
         if ($category) {
             session()->flash('message', 'Category added successfully.');
+           return redirect()->route('manage_category');
          
         } else {
             session()->flash('message', 'Unable to add category.');
