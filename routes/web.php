@@ -25,3 +25,9 @@ Route::get('/admin/product_list',function(){
 Route::get('admin/categories/category-add',function(){
     return view('admin.categories.category_add');
 });
+
+
+
+Route::get('admin/brands/brand-add',function(){
+    return view('admin.brands.brand_add');
+});
