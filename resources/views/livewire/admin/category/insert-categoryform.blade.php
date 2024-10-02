@@ -8,7 +8,7 @@
                 <!-- File Upload -->
                 <div class="dropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
                     <div class="fallback">
-                        <input name="file" wire:model="image" type="file"  />
+                        <input name="file" wire:model="image" type="file" />
                         @error('image')
                         <p class="text-red-500 text-xs">{{$message}}</p>
                         @enderror
@@ -41,6 +41,9 @@
                                 <option value="{{$category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
+                            @error('parent_category_id')
+                            <p class="text-red-500 text-xs">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -56,6 +59,9 @@
                         <div class="mb-3">
                             <label for="product-stock" class="form-label">category slug</label>
                             <input type="text" id="product-stock" wire:model="cat_slug" class="form-control" readonly>
+                            @error('cat_slug')
+                            <p class="text-red-500 text-xs">{{$message}}</p>
+                            @enderror
                         </div>
 
                     </div>
@@ -64,6 +70,9 @@
                     <div class="mb-0">
                         <label for="description" class="form-label">Category Description</label>
                         <textarea class="form-control bg-light-subtle" wire:model.live="cat_description" id="description" rows="7" placeholder="Type description"></textarea>
+                        @error('cat_description')
+                        <p class="text-red-500 text-xs">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
             </div>
