@@ -5,12 +5,11 @@ namespace App\Livewire\Admin\Brand;
 use App\Models\Brand;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Str;
+use Illuminate\Support\Str;
 
 class InsertBrand extends Component
 {
     use WithFileUploads;
-
     public $brand_name;
     public $brand_description;
     public $logo;
@@ -26,7 +25,7 @@ class InsertBrand extends Component
         ];
     }
 
-    public function updateTitle($value)
+    public function updatedBrandname($value)
     {
         $this->brand_slug = Str::slug($value);
     }
