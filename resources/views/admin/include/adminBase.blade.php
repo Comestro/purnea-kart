@@ -24,6 +24,7 @@
 
     <!-- Theme Config js (Require in all Page) -->
     <script src="{{asset('assets_admin/js/config.js')}}"></script>
+    @livewireStyles
 </head>
 
 <body>
@@ -271,6 +272,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Dashboard Js -->
         <script src="{{asset('assets_admin/js/pages/dashboard.js')}}')}}"></script>
+        @livewireScripts
 
 </body>
 
