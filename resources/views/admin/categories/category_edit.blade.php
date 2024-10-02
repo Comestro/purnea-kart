@@ -1,4 +1,3 @@
-
 @extends('admin.include.adminBase')
 @section('content')
 
@@ -240,7 +239,7 @@
           <!-- ========== Topbar End ========== -->
 
           <!-- ========== App Menu Start ========== -->
-       @include('admin.include.sidebar')
+          @include('admin.include.sidebar')
           <!-- ========== App Menu End ========== -->
 
           <!-- ==================================================== -->
@@ -310,6 +309,7 @@
                                         </form>
                                    </div>
                               </div>
+
                               <div class="card">
                                    <div class="card-header">
                                         <h4 class="card-title">General Information</h4>
@@ -320,7 +320,7 @@
                                                   <form>
                                                        <div class="mb-3">
                                                             <label for="category-title" class="form-label">Category Title</label>
-                                                            <input type="text" id="category-title" class="form-control" placeholder="Enter Title">
+                                                            <input type="text" id="category-title" class="form-control" placeholder="Enter Title" value="Fashion Men , Women & Kid's">
                                                        </div>
                                                   </form>
                                              </div>
@@ -330,7 +330,7 @@
                                                        <label for="crater" class="form-label">Created By</label>
                                                        <select class="form-control" id="crater" data-choices data-choices-groups data-placeholder="Select Crater">
                                                             <option value="">Select Crater</option>
-                                                            <option value="Seller">Seller</option>
+                                                            <option value="Seller" selected>Seller</option>
                                                             <option value="Admin">Admin</option>
                                                             <option value="Other">Other</option>
                                                        </select>
@@ -340,7 +340,7 @@
                                                   <form>
                                                        <div class="mb-3">
                                                             <label for="product-stock" class="form-label">Stock</label>
-                                                            <input type="number" id="product-stock" class="form-control" placeholder="Quantity">
+                                                            <input type="number" id="product-stock" class="form-control" placeholder="Quantity" value="46233">
                                                        </div>
 
                                                   </form>
@@ -349,7 +349,7 @@
                                                   <form>
                                                        <div class="mb-3">
                                                             <label for="product-id" class="form-label">Tag ID</label>
-                                                            <input type="number" id="product-id" class="form-control" placeholder="#******">
+                                                            <input type="text" id="product-id" class="form-control" placeholder="#******" value="FS16276">
                                                        </div>
 
                                                   </form>
@@ -357,7 +357,7 @@
                                              <div class="col-lg-12">
                                                   <div class="mb-0">
                                                        <label for="description" class="form-label">Description</label>
-                                                       <textarea class="form-control bg-light-subtle" id="description" rows="7" placeholder="Type description"></textarea>
+                                                       <textarea class="form-control bg-light-subtle" id="description" rows="7" placeholder="Type description">Aurora Fashion has once again captivated fashion enthusiasts with its latest collection, seamlessly blending elegance with comfort in a range of exquisite designs.</textarea>
                                                   </div>
                                              </div>
                                         </div>
@@ -373,7 +373,7 @@
                                                   <form>
                                                        <div class="mb-3">
                                                             <label for="meta-title" class="form-label">Meta Title</label>
-                                                            <input type="text" id="meta-title" class="form-control" placeholder="Enter Title">
+                                                            <input type="text" id="meta-title" class="form-control" placeholder="Enter Title" value="Fashion Brand">
                                                        </div>
                                                   </form>
                                              </div>
@@ -381,7 +381,7 @@
                                                   <form>
                                                        <div class="mb-3">
                                                             <label for="meta-tag" class="form-label">Meta Tag Keyword</label>
-                                                            <input type="text" id="meta-tag" class="form-control" placeholder="Enter word">
+                                                            <input type="text" id="meta-tag" class="form-control" placeholder="Enter word" value="fashion">
                                                        </div>
                                                   </form>
                                              </div>
