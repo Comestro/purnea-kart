@@ -42,7 +42,7 @@ class InsertCategoryform extends Component
 
         if ($this->image) {
             $imageName = "C" . time() . '.' . $this->image->getClientOriginalExtension();
-            $this->image->storePublicly('public/image/category', $imageName,'public/image/category');
+            $this->image->storeAs('public/image/category', $imageName,'public');
         } else {
             $imageName = null;
         }
@@ -59,10 +59,10 @@ class InsertCategoryform extends Component
 
         // Redirect with success or error message
         if ($category) {
-            session()->flash('success', 'Category added successfully.');
+            session()->flash('message', 'Category added successfully.');
          
         } else {
-            session()->flash('error', 'Unable to add category.');
+            session()->flash('message', 'Unable to add category.');
         }
     }
 

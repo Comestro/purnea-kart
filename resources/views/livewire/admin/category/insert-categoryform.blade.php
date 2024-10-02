@@ -3,7 +3,7 @@
         <div class="card-header">
             <h4 class="card-title">Add Thumbnail Photo</h4>
         </div>
-        <form wire:submit.prevent="store">
+        <form wire:submit="store">
             <div class="card-body">
                 <!-- File Upload -->
                 <div class="dropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
@@ -79,7 +79,7 @@
         </div>
 
         @if (session()->has('message'))
-        <div class="mt-4 p-2 bg-green-500 text-white rounded-md">
+        <div class="text-black">
             {{ session('message') }}
         </div>
         @endif
