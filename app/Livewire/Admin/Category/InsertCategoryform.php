@@ -12,7 +12,7 @@ class InsertCategoryform extends Component
 {
     use WithFileUploads;
     public $parent_category_id;
-    public $cat_title  ;
+    public $cat_title;
     public $image;
     public $cat_description;
     public $cat_slug;
@@ -49,7 +49,7 @@ class InsertCategoryform extends Component
         // // Insert the category into the database
         $category = Category::create([
             'parent_category_id' =>$this->parent_category_id,
-            'name' => $this->cat_title,
+            'cat_title' => $this->cat_title,
             'cat_description' => $this->cat_description,
             'cat_slug' => $this->cat_slug,
             'image' => $imageName,

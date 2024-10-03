@@ -20,23 +20,8 @@ Route::get('/admin',function(){
     return view('admin.index');
 });
 
-//product
-Route::get('/admin/product/product_list',function(){
-    return view('admin.product.product_list');
-});
-Route::get('/admin/products/product_create',function(){
-    return view('admin.product.product_create');
-});
-
 Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
-});
-
-Route::get('/admin/product/product_edit',function(){
-    return view('admin.product.product_edit');
-});
-Route::get('/admin/product/product_details',function(){
-    return view('admin.product.product_details');
 });
 
 //categories
@@ -49,9 +34,11 @@ Route::get('admin/categories/category-add',function(){
 Route::get('admin/brands/brand-add',function(){
     return view('admin.brands.brand_add');
 });
+
 Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
 })->name('manage_category');
+
 Route::get('admin/categories/category-edit',function(){
     return view('admin.categories.category_edit');
 });

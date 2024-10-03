@@ -19,7 +19,7 @@
     <div class=" mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold mb-6">Create New Product</h1>
 
-        <form action="{{route('products.store')}}" method="post" class="bg-light p-4 rounded" enctype="multipart/form-data">
+        <form action="{{route('product.store')}}" method="post" class="bg-light p-4 rounded" enctype="multipart/form-data">
     @csrf
     <div class="row g-3">
         <!-- Product Name -->
@@ -58,14 +58,14 @@
             @enderror
         </div>
 
-        <!-- Product Image -->
+        {{-- <!-- Product Image -->
         <div class="col-md-6 mb-3">
             <label for="image" class="form-label">Product Image</label>
             <input type="file" id="image" name="featured_image" class="form-control">
             @error('featured_image')
                 <p class="text-danger small">{{$message}}</p>
             @enderror
-        </div>
+        </div> --}}
 
         <!-- Product Description -->
         <div class="col-md-12 mb-3">
@@ -99,8 +99,11 @@
             <label for="category_id" class="form-label">Category</label>
             <select id="category_id" name="category_id" class="form-control">
                 <option value="">Select Category</option>
+                @foreach ($categories as $cat)
+                    <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
+                @endforeach
             </select>
-            @error('category_id')
+            @error('category_id')   
                 <p class="text-danger small">{{$message}}</p>
             @enderror
         </div>
@@ -110,6 +113,9 @@
             <label for="brand_id" class="form-label">Product Brand</label>
             <select id="brand_id" name="brand_id" class="form-control">
                 <option value="">Select Brand</option>
+                @foreach ($brands as $brand)
+                    <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                @endforeach
             </select>
             @error('brand_id')
                 <p class="text-danger small">{{$message}}</p>

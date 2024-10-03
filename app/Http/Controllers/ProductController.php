@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::all(); 
-        return view('admin.product.product_list');
+        //
+        return view("admin.product.product_list",["products" => Product::all()]);
     }
 
     /**
@@ -21,7 +23,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $data['categories'] = Category::all();
+        $data['brands'] = Brand::all();
+        return view("admin.product.product_create", $data);
     }
 
     /**
@@ -38,18 +42,12 @@ class ProductController extends Controller
             'discount_price' => 'nullable|numeric',
             'quantity' => 'required|integer',
             'sku' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png',
-            'vender_id' => 'required|integer',
             'category_id' => 'required|integer',
             'brand_id' => 'required|integer',
-            "status"=>"nullable",
         ]);
 
         //dd($req);
-        //$filename = $request->image->getClientOriginalName();
-        //$request->image->move(public_path("images/"),$filename);
-        //$data['image'] = $filename;
-
+      
         $pro = new Product(); 
         $pro->name = $req->name;
         $pro->slug = $req->slug;
@@ -58,11 +56,9 @@ class ProductController extends Controller
         $pro->discount_price = $req->discount_price;
         $pro->quantity = $req->quantity;
         $pro->sku = $req->sku;
-        $pro->image = $req->image;
-        $pro->vender_id = $req->vender_id;
         $pro->category_id = $req->category_id;
         $pro->brand_id = $req->brand_id;
-        dd($pro);
+        
         $pro->save();
 
       return redirect()->route("home")->with("msg","Data inserted successfully");
@@ -75,7 +71,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($pro_id);
-        return view("show",["product"=>$product]);
+        return view("admin.product.product_details",["product"=>$product]);
     }
 
     /**
@@ -84,6 +80,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //$data = Student::find($std_id);
+        return view("admin.product.product_edit",['product' => $product]);
         
     }
 
