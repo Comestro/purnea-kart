@@ -94,7 +94,7 @@ class ProductController extends Controller
     public function destroy(Product $pro_id)
     {
         //
-        $data = Producet::find($pro_id);
+        $data = Product::find($pro_id);
         $data->delete();
 
         return redirect()->route("")->with("error","Data  deleted successfully");
