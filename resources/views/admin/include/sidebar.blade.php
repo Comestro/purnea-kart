@@ -8,7 +8,7 @@
 
         <a href="index.html" class="logo-light">
             <img src="{{asset('assets_admin/images/logo-sm.png')}}" class="logo-sm" alt="logo sm">
-            <img src="{{asset('assets_admin/images/logo-light.png')}}" class="logo-lg" alt="logo light">
+            <img src="{{asset('assets_admin/images/logo-light.png')}}" class="logo-lg" style="width: 40%; height:40%;" alt="logo light">
         </a>
     </div>
 
