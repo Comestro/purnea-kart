@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::view('/', 'welcome');
+use App\Http\Controllers\ProductController;
+Route::view('/', 'welcome')->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -20,16 +20,19 @@ Route::get('/admin',function(){
 });
 
 //product
-Route::get('/admin/products/product_list',function(){
+Route::get('/admin/product/product_list',function(){
     return view('admin.product.product_list');
 });
 Route::get('/admin/products/product_create',function(){
     return view('admin.product.product_create');
 });
-Route::get('/admin/products/product_edit',function(){
+
+Route::resource('products',ProductController::class);
+
+Route::get('/admin/product/product_edit',function(){
     return view('admin.product.product_edit');
 });
-Route::get('/admin/products/product_details',function(){
+Route::get('/admin/product/product_details',function(){
     return view('admin.product.product_details');
 });
 
