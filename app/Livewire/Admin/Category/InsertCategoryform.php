@@ -40,12 +40,10 @@ class InsertCategoryform extends Component
         // Validate inputs based on the rules set in the class
         $validatedData = $this->validate();
 
-        if ($this->image) {
-            $imageName = "C" . time() . '.' . $this->image->getClientOriginalExtension();
+       
+            $imageName = $this->image ? "C" . time() . '.' . $this->image->getClientOriginalExtension() : null;
             $this->image->storeAs('public/image/category', $imageName,'public');
-        } else {
-            $imageName = null;
-        }
+      
 
 
         // // Insert the category into the database
@@ -57,9 +55,12 @@ class InsertCategoryform extends Component
             'image' => $imageName,
         ]);
 
+        
+
         // Redirect with success or error message
         if ($category) {
             session()->flash('message', 'Category added successfully.');
+           return redirect()->route('manage_category');
          
         } else {
             session()->flash('message', 'Unable to add category.');

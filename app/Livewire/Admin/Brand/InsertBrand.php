@@ -33,8 +33,8 @@ class InsertBrand extends Component
     public function store()
     {
         $validateData = $this->validate();
-        $logoName = $this->logo ? 'c' . time() . $this->logo->getClientOriginalExtension() : null;
-        $this->logo->storeAs('public/logo/brand', $logoName);
+        $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
+        $this->logo->storeAs('public/logo/brand', $logoName,'public');
 
         $brand = Brand::create([
             'brand_name' => $this->brand_name,
