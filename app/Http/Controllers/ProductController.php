@@ -68,7 +68,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($pro_id);
-        return show("show",["product"=>$product]);
+        return view("show",["product"=>$product]);
     }
 
     /**
