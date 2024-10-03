@@ -52,7 +52,7 @@
                                             <div class="d-flex align-items-center gap-3 mt-1 bg-light bg-opacity-50 p-2 rounded-2">
                                                  <a href="#!" class="fw-medium text-dark">UI/UX Figma Design</a>
                                                  <div class="ms-auto">
-                                                      <a href="#!" class="fw-medium text-primary fs-18" data-bs-toggle="tooltip" data-bs-title="Download" data-bs-placement="bottom"><iconify-icon icon="iconamoon:cloud-download-duotone"></iconify-icon></a>
+                                                 4                        <a href="#!" class="fw-medium text-primary fs-18" data-bs-toggle="tooltip" data-bs-title="Download" data-bs-placement="bottom"><iconify-icon icon="iconamoon:cloud-download-duotone"></iconify-icon></a>
                                                  </div>
                                             </div>
                                             <h6 class="mt-3 text-muted">Monday , 3:00 PM</h6>
