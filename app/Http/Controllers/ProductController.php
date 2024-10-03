@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($pro_id);
-        return show("show",["product"=>$product]);
+        return view("show",["product"=>$product]);
     }
 
     /**
@@ -101,7 +101,7 @@ class ProductController extends Controller
     public function destroy(Product $pro_id)
     {
         //
-        $data = Producet::find($pro_id);
+        $data = Product::find($pro_id);
         $data->delete();
 
         return redirect()->route("")->with("error","Data  deleted successfully");

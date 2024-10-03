@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 Route::view('/', 'welcome')->name('home');
@@ -48,7 +49,7 @@ Route::get('admin/brands/brand-add',function(){
 });
 Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
-});
+})->name('manage_category');
 Route::get('admin/categories/category-edit',function(){
     return view('admin.categories.category_edit');
 });
