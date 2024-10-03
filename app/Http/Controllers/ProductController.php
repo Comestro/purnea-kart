@@ -13,7 +13,9 @@ class ProductController extends Controller
     public function index()
     {
         //
-        // return view("home",["Product" => Product::all()]);
+        $products = Product::all();
+        return view("admin.product.product_calling")->with('products', $products);
+
     }
 
     /**
