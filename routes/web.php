@@ -28,7 +28,9 @@ Route::get('/admin/products/product_create',function(){
     return view('admin.product.product_create');
 });
 
-Route::resource('products',ProductController::class);
+Route::prefix('admin')->group(function () {
+    Route::resource('product', ProductController::class);
+});
 
 Route::get('/admin/product/product_edit',function(){
     return view('admin.product.product_edit');
@@ -71,7 +73,14 @@ Route::get('admin/orders/order-checkout',function(){
 });
 Route::get('admin/orders/order-detail',function(){
     return view('admin.orders.order_detail');
-});Route::get('admin/orders/order-list',function(){
+});
+Route::get('admin/orders/order-list',function(){
     return view('admin.orders.order_list');
 });
+
+// SETTINGS
+Route::get('admin/settings',function(){
+    return view('admin.settings');
+});
+
 

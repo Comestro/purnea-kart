@@ -42,19 +42,19 @@
                 <div class="collapse" id="sidebarProducts">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/products/product_list/')}}">List</a>
+                            <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/products/product_list/')}}">Grid</a>
+                            <a class="sub-nav-link" href="">Grid</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/products/product_details/')}}">Details</a>
+                            <a class="sub-nav-link" href="">Details</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/products/product_edit/')}}">Edit</a>
+                            <a class="sub-nav-link" href="">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/products/product_create/')}}">Create</a>
+                            <a class="sub-nav-link" href="">Create</a>
                         </li>
                     </ul>
                 </div>
@@ -224,7 +224,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="settings.html">
+                <a class="nav-link" href="{{url('admin/settings')}}">
                     <span class="nav-icon">
                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                     </span>
