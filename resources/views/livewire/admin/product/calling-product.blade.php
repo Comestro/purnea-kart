@@ -22,7 +22,7 @@
           <tbody>
 
           @foreach ($products as $product)
-               
+
 
                <tr>
                     <td>
@@ -31,7 +31,7 @@
                               <label class="form-check-label" for="customCheck2">&nbsp;</label>
                          </div>
                     </td>
-                    
+
                     <td>
                          <div class="d-flex align-items-center gap-2">
                               {{--<div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
@@ -58,16 +58,13 @@
                          <div class="d-flex gap-2">
                               <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
                               <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                              <form action="{{route('product.destroy',$product)}}" method="post">
-                                   @method("delete")
-                                    <button type="submit" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></button>
-                                    @csrf
-                              </form>
+                            <button wire:confirm="Are you want to delete this Product?" wire:click="delete({{$product->id}})" type="button" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></button>
+
                          </div>
                     </td>
                </tr>
 
-         
+
 
                @endforeach
 

@@ -13,13 +13,10 @@ class CallingProduct extends Component
     }
 
 
-    //public function delete()
-    //{
-        //if ($this->product_id) {
-            //Product::findOrFail($this->product_id)->delete();
+    public function delete($id)
+    {
+            Product::findOrFail($id)->delete();
 
-            //$this->closeModal();
-            //session()->flash('message', 'Product deleted successfully.');
-        //}
-    //}
+            session()->flash('message', 'Product deleted successfully.');
+    }
 }
