@@ -59,7 +59,7 @@
                     </ul>
                 </div>
             </li>
-
+            {{-- categories --}}
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarCategory">
@@ -82,6 +82,31 @@
                     </ul>
                 </div>
             </li>
+
+            {{-- BANNER --}}
+            
+            {{-- <li class="nav-item">
+                <a class="nav-link menu-arrow" href="#sidebarBanner" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarBanner">
+                    <span class="nav-icon">
+                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                    </span>
+                    <span class="nav-text"> Banner </span>
+                </a>
+                <div class="collapse" id="sidebarBanner">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-edit')}}">Edit</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarBrand" data-bs-toggle="collapse" role="button"
@@ -224,12 +249,23 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/settings')}}">
+                <a class="nav-link" href="">
                     <span class="nav-icon">
                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                     </span>
                     <span class="nav-text"> Settings </span>
                 </a>
+                <div class="collapse" id="sidebarBanner">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
+                        </li>
+                      
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Banner</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <li class="menu-title mt-2">Users</li>

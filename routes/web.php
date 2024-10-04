@@ -30,13 +30,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
-//categories
-Route::get('admin/categories/category-add', function () {
-    return view('admin.categories.category_add');
-});
-
-
-
+//brand
 Route::get('admin/brands/brand-add', function () {
     return view('admin.brands.brand_add');
 });
@@ -45,6 +39,17 @@ Route::get('admin/brands/manage-brand',function(){
     return view('admin.brands.manage_brand');
 });
 
+
+//Banner
+Route::get('admin/banner/banner_create', function () {
+    return view('admin.banner.banner_create');
+});
+Route::get('admin/banner/calling-banner', function () {
+    return view('admin.banner.calling-banner');
+});
+
+
+//Caregory
 Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
 })->name('manage_category');
@@ -52,6 +57,10 @@ Route::get('admin/categories/category-list',function(){
 Route::get('admin/categories/category-edit', function () {
     return view('admin.categories.category_edit');
 });
+Route::get('admin/categories/category-add', function () {
+    return view('admin.categories.category_add');
+});
+
 
 //INVENTORY
 Route::get('admin/inventory/inventory_receivedOrder', function () {
