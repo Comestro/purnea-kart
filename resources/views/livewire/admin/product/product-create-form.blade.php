@@ -41,7 +41,7 @@
                     <div class="col-lg-4">
                             <div class="mb-3">
                                 <label for="product-brand" class="form-label">Product Brand</label>
-                                <select id="brand_id" name="brand_id" class="form-control">
+                                <select id="brand_id" name="brand_id" wire:model="brand_id" class="form-control">
                                     <option value="">Select Brand</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
