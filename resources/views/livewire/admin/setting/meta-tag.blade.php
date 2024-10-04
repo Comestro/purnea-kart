@@ -10,7 +10,7 @@
             <button wire:click="update" type="submit" id="saveButton2" class="  btn btn-primary">save</button>
         </div>
     @else
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="mb-3 d-flex justify-content-between align-items-center">
             <div>
                 <label for="meta-tag" class="form-label">Meta Tag</label>
                 <p class="text-lg font-medium">{{ $meta_tag }}</p>

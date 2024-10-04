@@ -44,13 +44,5 @@ class GeneralSettingController extends Controller
         return redirect()->back()->with('success', 'banner updated successfully');
     }
 
-    public function updateMetaCopyright(Request $req)
-    {
-        $data = $req->validate([
-            'copyright' => 'required|string|max:255',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'copyright updated successfully');
-    }
+    
 }

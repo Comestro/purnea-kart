@@ -9,7 +9,7 @@
             <button wire:click="update" type="submit" id="saveButton6" class="  btn btn-primary">save</button>
         </div>
     @else
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="mb-3 d-flex justify-content-between align-items-center">
             <div>
                 <label for="meta-description" class="form-label">Meta Description</label>
                 <p class="text-lg font-medium">{{ $meta_description }}</p>

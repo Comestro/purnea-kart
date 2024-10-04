@@ -324,23 +324,7 @@
                                 </div>
 
 
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaCopyright') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <div class="mb-3">
-                                                    <label for="copyright" class="form-label">Copyright</label>
-                                                    <input name="copyright" type="text" id="copyright"
-                                                        class="form-control" placeholder="copyright....">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <button type="submit" id="saveButton5"
-                                                        class="  btn btn-primary">save</button>
-
-                                                </div>
-                                    </form>
-                                </div>
+                                <livewire:admin.setting.meta-copyright/>
                                 <livewire:admin.setting.meta-description />
 
                             </div>
