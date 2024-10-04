@@ -311,7 +311,7 @@
                                    </div>
                               </div>
                            
-                             <livewire:admin.brand.insert-brand/>
+                             <livewire:admin.brand.manage-brand/>
                             
                          </div>
                     </div>
