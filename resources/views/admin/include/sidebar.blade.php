@@ -94,7 +94,7 @@
                 <div class="collapse" id="sidebarBrand">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/brands/manage-brand')}}">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
