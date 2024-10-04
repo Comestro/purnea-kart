@@ -51,14 +51,18 @@
                          <p class="mb-1 text-muted"><span class="text-dark fw-medium">{{$product->quantity}}</span> Left</p>
                     </td>
                     <td>{{$product->category->cat_title}}</td>
-                    <td>{{$product->brand->brand_name}}</td>
+                    <td>{{($product->brand)? $product->brand->brand_name : ""}}</td>
                     {{--<td> <span class="badge p-1 bg-light text-dark fs-12 me-1"><i class="bx bxs-star align-text-top fs-14 text-warning me-1"></i> 4.5</span> 55 Review</td>
                    --}}
                     <td>
                          <div class="d-flex gap-2">
                               <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
                               <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                              <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                              <form action="{{route('product.destroy',$product)}}" method="post">
+                                   @method("delete")
+                                    <button type="submit" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></button>
+                                    @csrf
+                              </form>
                          </div>
                     </td>
                </tr>

@@ -81,7 +81,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //$data = Student::find($std_id);
+        //$data = Product::find($std_id);
         return view("admin.product.product_edit",['product' => $product]);
         
     }
@@ -97,12 +97,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $pro_id)
+    public function destroy(Product $product)
     {
         //
-        $data = Product::find($pro_id);
-        $data->delete();
 
-        return redirect()->route("")->with("error","Data  deleted successfully");
+        // dd($product);
+        $data = Product::where("id", $product->id)->delete();
+        return redirect()->route("home")->with("error","Data  deleted successfully");
     }
 }

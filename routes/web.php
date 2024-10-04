@@ -23,7 +23,9 @@ Route::get('/admin',function(){
 // products
 Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
+
 });
+
 
 //categories
 Route::get('admin/categories/category-add',function(){
