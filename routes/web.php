@@ -75,6 +75,7 @@ Route::get('admin/orders/order-list', function () {
 // SETTINGS
 Route::get('admin/settings', function () {
     // Setting::truncate();
+    // dd('testing');
     $setting = Setting::all()->count();
 
     if($setting == 0){
