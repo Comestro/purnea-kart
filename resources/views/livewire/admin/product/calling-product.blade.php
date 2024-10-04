@@ -49,10 +49,9 @@
                     <td>{{$product->discount_price}}</td>
                     <td>
                          <p class="mb-1 text-muted"><span class="text-dark fw-medium">{{$product->quantity}}</span> Left</p>
-                         <p class="mb-0 text-muted">155 Sold</p>
                     </td>
-                    <td>{{$product->category_id}}</td>
-                    <td>{{$product->brand_id}}</td>
+                    <td>{{$product->category->cat_title}}</td>
+                    <td>{{$product->brand->brand_name}}</td>
                     {{--<td> <span class="badge p-1 bg-light text-dark fs-12 me-1"><i class="bx bxs-star align-text-top fs-14 text-warning me-1"></i> 4.5</span> 55 Review</td>
                    --}}
                     <td>
