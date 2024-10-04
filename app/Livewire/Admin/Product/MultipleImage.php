@@ -27,9 +27,7 @@ class MultipleImage extends Component
         $image = ProductImage::find($imageId);
 
         if ($image) {
-            // Remove the image from storage
             Storage::delete('public/image/product/' . $image->path);
-            // Delete the image record from the database
             $image->delete();
             session()->flash('message', 'Image deleted successfully.');
         }
