@@ -14,7 +14,8 @@
                 <label for="meta-name" class="form-label">Meta Title</label>
                 <p class="text-lg font-medium">{{ $meta_title }}</p>
             </div>
-            <button wire:click="toggle" class="fs-4 px-2 py-1 rounded bg-dark border-none text-light align-items-center">edit</button>
+            <button wire:click="toggle"
+                class="fs-4 px-2 py-1 rounded bg-dark border-none text-light align-items-center">edit</button>
         </div>
     @endif
 
