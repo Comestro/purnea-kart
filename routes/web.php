@@ -100,7 +100,6 @@ Route::get('admin/settings', function () {
 });
 
 Route::prefix('settings')->controller(GeneralSettingController::class)->group(function () {
-    Route::post('/meta-description', 'updateMetaDescription')->name('settings.updateMetaDescription');
     Route::post('/meta-logo', 'updateMetaLogo')->name('settings.updateMetaLogo');
     Route::post('/copyright', 'updateMetaCopyright')->name('settings.updateMetaCopyright');
 });

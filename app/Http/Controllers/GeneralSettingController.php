@@ -8,15 +8,7 @@ use Illuminate\Http\Request;
 class GeneralSettingController extends Controller
 {
 
-    public function updateMetaDescription(Request $req)
-    {
-        $data = $req->validate([
-            'meta_description' => 'required|string',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'description updated successfully');
-    }
+    
 
     public function updateMetaLogo(Request $req)
     {
