@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('sku')->nullable();
             $table->foreignId('vendor_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('brand_id')->nullable()->constrained()->obDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained()->obDelete('cascade');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
