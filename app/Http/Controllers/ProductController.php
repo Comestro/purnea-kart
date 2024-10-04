@@ -82,9 +82,9 @@ class ProductController extends Controller
    
     public function edit(string $slug)
     {
-        //$data = Student::find($std_id);
-        return view("admin.product.product_edit",['product' => $product]);
-        
+
+        $product = Product::where("slug",$slug)->first();
+        return view('admin.product.editProduct', ['product' => $product]);
     }
     
     /**
