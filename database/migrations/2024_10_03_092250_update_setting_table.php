@@ -12,8 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('settings', function (Blueprint $table){
-            // dropping the coloumn here
-            $table->dropColumn('meta_theme');
 
             // adding the two new coloumns here
             $table->string('meta_description')->nullable();
@@ -26,9 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('setting',function (Blueprint $table){
-            // restoring the meta_theme coloumn here
-            $table->string('meta_theme')->nullable();
+        Schema::table('settings',function (Blueprint $table){
 
             // dropping the new coloumn here if it is rolling back
             $table->dropColumn('meta_description');
