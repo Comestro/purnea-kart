@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 class GeneralSettingController extends Controller
 {
 
-    public function updateMetaTitle(Request $req)
-    {
-
-        $data = $req->validate([
-            'meta_title' => 'required|string|max:255',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'title updated successfully!');
-    }
 
     public function updateMetaTag(Request $req)
     {

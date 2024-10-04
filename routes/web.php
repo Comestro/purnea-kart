@@ -84,11 +84,10 @@ Route::get('admin/settings', function () {
     if($setting == 0){
         Setting::create();
     }
-    return view('admin.settings');
+    return view('admin.settings', ['setting' => Setting::first()]);
 });
 
 Route::prefix('settings')->controller(GeneralSettingController::class)->group(function () {
-    Route::post('/meta-title', 'updateMetaTitle')->name('settings.updateMetaTitle');
     Route::post('/meta-tag', 'updateMetaTag')->name('settings.updateMetaTag');
     Route::post('/meta-description', 'updateMetaDescription')->name('settings.updateMetaDescription');
     Route::post('/meta-logo', 'updateMetaLogo')->name('settings.updateMetaLogo');
