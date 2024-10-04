@@ -43,9 +43,8 @@ class InsertBrand extends Component
             'logo' => $logoName,
         ]);
 
-        $brand ? session()->flash('success', 'Brand added successfully.') :
-            // return redirect()->route('bra.index');
-            session()->flash('error', 'Unable to add brand.');
+        $brand ? session()->flash('success', 'Brand added successfully.') : (session()->flash('error', 'Unable to add brand.') && redirect()->route('admin.brands.manage-brand'));
+
     }
 
     public function render()

@@ -54,7 +54,7 @@
                             <a class="sub-nav-link" href="">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Create</a>
+                            <a class="sub-nav-link" href="{{ route('product.create') }}">Create</a>
                         </li>
                     </ul>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="collapse" id="sidebarBrand">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="category-list.html">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/brands/manage-brand')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>

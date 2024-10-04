@@ -12,6 +12,6 @@
     
     @section('content')
     @show
-
+    @include('desktop.components.footer')
 </body>
 </html>

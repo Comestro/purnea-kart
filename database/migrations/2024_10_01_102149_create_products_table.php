@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('discount_price', 10, 2)->nullable();
             $table->integer('quantity')->default(0)->nullable();
             $table->string('sku')->nullable();
-            $table->foreignId('Vendor_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('vendor_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('brand_id')->nullable()->constrained()->obDelete('cascade');
             $table->boolean('status')->default(false);
