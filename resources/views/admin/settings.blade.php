@@ -305,8 +305,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <livewire:admin.setting.meta-title/>
-                                <livewire:admin.setting.meta-tag/>
+                                <livewire:admin.setting.meta-title />
+                                <livewire:admin.setting.meta-tag />
                                 <div class="col-lg-6">
                                     <form action="{{ route('settings.updateMetaLogo') }}" method="POST"
                                         enctype="multipart/form-data">
@@ -341,24 +341,12 @@
                                                 </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div>
-                                <form action="{{ route('settings.updateMetaDescription') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <label for="meta-description" class="form-label">Description</label>
-                                        <textarea name="meta_description" class="form-control bg-light-subtle" id="meta-description" rows="4"
-                                            placeholder="Type description"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button type="submit" id="saveButton6" class="  btn btn-primary">save</button>
-                                    </div>
-                                </form>
+                                <livewire:admin.setting.meta-description />
 
                             </div>
 
                             {{-- js here for the submit button --}}
-                            <script>
+                            {{-- <script>
                                 const inputFields = document.querySelectorAll('.form-control');
                                 const saveButtons = [
                                     document.getElementById('saveButton1'),
@@ -384,7 +372,7 @@
                                         }, 200);
                                     });
                                 });
-                            </script>
+                            </script> --}}
                             {{-- js ends here --}}
 
                         </div>
