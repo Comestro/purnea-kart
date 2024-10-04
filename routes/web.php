@@ -5,6 +5,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
+use App\Models\Banner;
 
 Route::view('/', 'home')->name('home');
 
@@ -44,6 +45,8 @@ Route::get('admin/brands/manage-brand',function(){
 Route::get('admin/banner/banner_create', function () {
     return view('admin.banner.banner_create');
 });
+    // Banner::truncate();
+
 Route::get('admin/banner/calling-banner', function () {
     return view('admin.banner.calling-banner');
 });

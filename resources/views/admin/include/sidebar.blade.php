@@ -248,22 +248,26 @@
                 </div>
             </li>
 
+           
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarRoles">
                     <span class="nav-icon">
                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                     </span>
-                    <span class="nav-text"> Settings </span>
+                    <span class="nav-text"> Setting </span>
                 </a>
-                <div class="collapse" id="sidebarBanner">
+                <div class="collapse" id="sidebarRoles">
                     <ul class="nav sub-navbar-nav">
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
-                        </li>
-                      
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Banner</a>
-                        </li>
+                        <ul class="nav sub-navbar-nav">
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
+                            </li>
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Banner</a>
+                            </li>
+                            
+                        </ul>
                     </ul>
                 </div>
             </li>
