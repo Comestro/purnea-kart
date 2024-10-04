@@ -9,11 +9,5 @@ class Setting extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'meta_title',
-        'meta_logo',
-        'meta_theme',
-        'banner',
-        'copyright',
-    ];
+    protected $guarded = [];
 }
