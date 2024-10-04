@@ -61,7 +61,7 @@
                                             class="badge bg-success-subtle text-success px-2 py-1 ms-1"> Completed</span>
                                     </p>
                                     <div class="d-flex align-items-center gap-3 mt-1 bg-light bg-opacity-50 p-2 rounded-2">
-                             f           <a href="#!" class="fw-medium text-dark">UI/UX Figma Design</a>
+                                        f <a href="#!" class="fw-medium text-dark">UI/UX Figma Design</a>
                                         <div class="ms-auto">
                                             <a href="#!" class="fw-medium text-primary fs-18" data-bs-toggle="tooltip"
                                                 data-bs-title="Download" data-bs-placement="bottom"><iconify-icon
@@ -350,23 +350,7 @@
                                     </form>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaBanner') }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <label for="banner" class="form-label">Banner</label>
-                                                <input name="banner" type="file" class="form-control" id="banner"
-                                                    accept="image/*">
-                                            </div>
-                                            <div class="mb-3">
-                                                <button type="submit" id="saveButton4"
-                                                    class="  btn btn-primary">save</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+
                                 <div class="col-lg-6">
                                     <form action="{{ route('settings.updateMetaCopyright') }}" method="POST">
                                         @csrf
@@ -380,24 +364,24 @@
                                                 <div class="mb-3">
                                                     <button type="submit" id="saveButton5"
                                                         class="  btn btn-primary">save</button>
-                    
-                                        </div>
+
+                                                </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-12">
-                                    <form action="{{ route('settings.updateMetaDescription') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-description" class="form-label">Description</label>
-                                            <textarea name="meta_description" class="form-control bg-light-subtle" id="meta-description" rows="4"
-                                                placeholder="Type description"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton6"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
+                            </div>
+                            <div>
+                                <form action="{{ route('settings.updateMetaDescription') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="meta-description" class="form-label">Description</label>
+                                        <textarea name="meta_description" class="form-control bg-light-subtle" id="meta-description" rows="4"
+                                            placeholder="Type description"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" id="saveButton6" class="  btn btn-primary">save</button>
+                                    </div>
+                                </form>
+
                             </div>
 
                             {{-- js here for the submit button --}}
@@ -572,7 +556,8 @@
                         <div class="card-header">
                             <h4 class="card-title d-flex align-items-center gap-1"><iconify-icon
                                     icon="solar:compass-bold-duotone"
-                                    class="text-primary fs-20"></iconify-icon>Localization Settings</h4>
+                                    class="text-primary fs-20"></iconify-icon>Localization
+                                Settings</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">

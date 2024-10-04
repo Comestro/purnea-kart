@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('meta_title')->nullable();
             $table->string('meta_logo')->nullable();
-            $table->string('meta_theme')->nullable();
-            $table->string('banner')->nullable();
             $table->string('copyright')->nullable();
             $table->timestamps();
         });

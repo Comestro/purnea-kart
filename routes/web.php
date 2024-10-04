@@ -4,6 +4,7 @@ use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Models\Setting;
 
 Route::view('/', 'home')->name('home');
 
@@ -73,6 +74,12 @@ Route::get('admin/orders/order-list', function () {
 
 // SETTINGS
 Route::get('admin/settings', function () {
+    // Setting::truncate();
+    $setting = Setting::all()->count();
+
+    if($setting == 0){
+        Setting::create();
+    }
     return view('admin.settings');
 });
 
@@ -81,6 +88,5 @@ Route::prefix('settings')->controller(GeneralSettingController::class)->group(fu
     Route::post('/meta-tag', 'updateMetaTag')->name('settings.updateMetaTag');
     Route::post('/meta-description', 'updateMetaDescription')->name('settings.updateMetaDescription');
     Route::post('/meta-logo', 'updateMetaLogo')->name('settings.updateMetaLogo');
-    Route::post('/meta-banner', 'updateMetaBanner')->name('settings.updateMetaBanner');
     Route::post('/copyright', 'updateMetaCopyright')->name('settings.updateMetaCopyright');
 });

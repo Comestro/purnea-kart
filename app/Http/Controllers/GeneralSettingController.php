@@ -15,7 +15,7 @@ class GeneralSettingController extends Controller
             'meta_title' => 'required|string|max:255',
         ]);
 
-        Setting::create($data);
+        Setting::first()->update($data);
         return redirect()->back()->with('success', 'title updated successfully!');
     }
 
@@ -26,7 +26,7 @@ class GeneralSettingController extends Controller
         ]);
 
 
-        Setting::create($data);
+        Setting::first()->update($data);
         return redirect()->back()->with('success', 'tag updated successfully');
     }
 
@@ -36,7 +36,7 @@ class GeneralSettingController extends Controller
             'meta_description' => 'required|string',
         ]);
 
-        Setting::create($data);
+        Setting::first()->update($data);
         return redirect()->back()->with('success', 'description updated successfully');
     }
 
@@ -52,7 +52,7 @@ class GeneralSettingController extends Controller
         $image->move(public_path('images'), $imageName);
         $data['meta_logo'] = $imageName;
 
-        Setting::create($data);
+        Setting::first()->update($data);
         return redirect()->back()->with('success', 'logo updated successfully');
     }
 
@@ -80,7 +80,7 @@ class GeneralSettingController extends Controller
             'copyright' => 'required|string|max:255',
         ]);
 
-        Setting::create($data);
+        Setting::first()->update($data);
         return redirect()->back()->with('success', 'copyright updated successfully');
     }
 }
