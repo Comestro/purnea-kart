@@ -305,34 +305,31 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
+                                <livewire:admin.setting.meta-title/>
                                 <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaTitle') }}" method="POST">
-                                        @csrf
+
+                                    @if (!isset($meta_tag) || empty($meta_tag))
+                                        <form action="{{ route('settings.updateMetaTag') }}" method="POST">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="meta-tag" class="form-label">Meta Tag
+                                                    Keyword</label>
+                                                <input name="meta_tag" type="text" id="meta-tag"
+                                                    class="form-control" placeholder="Enter word">
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" id="saveButton2"
+                                                    class="  btn btn-primary">save</button>
+                                            </div>
+                                        </form>
+                                    @else
                                         <div class="mb-3">
-                                            <label for="meta-name" class="form-label">Meta Title</label>
-                                            <input name="meta_title" type="text" id="meta-name" class="form-control"
-                                                placeholder="Title">
+                                            <label for="meta-tag" class="form-label">Meta Tag</label>
+                                            <p class="text-lg font-medium">{{ $meta_tag }}</p>
                                         </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton1"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaTag') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-tag" class="form-label">Meta Tag
-                                                Keyword</label>
-                                            <input name="meta_tag" type="text" id="meta-tag" class="form-control"
-                                                placeholder="Enter word">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton2"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
+                                    @endif
+
+
                                 </div>
                                 <div class="col-lg-6">
                                     <form action="{{ route('settings.updateMetaLogo') }}" method="POST"
