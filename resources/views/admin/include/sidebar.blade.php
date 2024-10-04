@@ -54,7 +54,7 @@
                             <a class="sub-nav-link" href="">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Create</a>
+                            <a class="sub-nav-link" href="{{ route('product.create') }}">Create</a>
                         </li>
                     </ul>
                 </div>

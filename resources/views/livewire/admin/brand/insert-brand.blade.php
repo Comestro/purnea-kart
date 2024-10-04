@@ -13,7 +13,6 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="col-xl-6">
                         <label for="slug" class="form-label">
                             Brand Slug

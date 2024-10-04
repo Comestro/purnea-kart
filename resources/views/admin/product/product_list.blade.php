@@ -170,6 +170,8 @@
                                   </div>
                              </div>
                              <div>
+                              <livewire:admin.product.calling-product/>
+
                                   <div class="table-responsive">
                                        <table class="table align-middle mb-0 table-hover table-centered">
                                             <thead class="bg-light-subtle">
@@ -245,16 +247,24 @@
                                   <!-- end table-responsive -->
                              </div>
                              <div class="card-footer border-top">
-                                  <nav aria-label="Page navigation example">
-                                       <ul class="pagination justify-content-end mb-0">
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-                                       </ul>
-                                  </nav>
-                             </div>
+                              <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-end mb-0">
+                                      <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                                          <a class="page-link" href="{{ $products->previousPageUrl() }}" tabindex="-1">Previous</a>
+                                      </li>
+                                      
+                                      @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                          <li class="page-item {{ $i == $products->currentPage() ? 'active' : '' }}">
+                                              <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                                          </li>
+                                      @endfor
+                      
+                                      <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                                          <a class="page-link" href="{{ $products->nextPageUrl() }}">Next</a>
+                                      </li>
+                                  </ul>
+                              </nav>
+                          </div>
                         </div>
                    </div>
 
