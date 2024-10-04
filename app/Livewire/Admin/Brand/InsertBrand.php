@@ -34,7 +34,7 @@ class InsertBrand extends Component
     {
         $validateData = $this->validate();
         $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
-        $this->logo->storeAs('public/logo/brand', $logoName,'public');
+        $this->logo->storeAs('storage/public/logo/brand', $logoName,'public');
 
         $brand = Brand::create([
             'brand_name' => $this->brand_name,
@@ -43,7 +43,7 @@ class InsertBrand extends Component
             'logo' => $logoName,
         ]);
 
-        $brand ? session()->flash('success', 'Brand added successfully.') : (session()->flash('error', 'Unable to add brand.') && redirect()->route('admin.brands.manage-brand'));
+        $brand ? session()->flash('success', 'Brand added successfully.') : (session()->flash('error', 'Unable to add brand.') && redirect()->route('manage_brand'));
 
     }
 

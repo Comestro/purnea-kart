@@ -11,4 +11,12 @@ class CallingProduct extends Component
         $data['products']=Product::all();
         return view('livewire.admin.product.calling-product',$data);
     }
+
+
+    public function delete($id)
+    {
+            Product::findOrFail($id)->delete();
+
+            session()->flash('message', 'Product deleted successfully.');
+    }
 }
