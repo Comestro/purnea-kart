@@ -42,7 +42,7 @@ class CreateBannerForm extends Component
         ]);
         if ($banner) {
             session()->flash('message', 'Banner added successfully.');
-           return redirect()->route('manage_category');
+           return redirect()->back();
          
         } else {
             session()->flash('message', 'Unable to add banner.');
@@ -50,6 +50,7 @@ class CreateBannerForm extends Component
 
 
     }
+    
     public function render()
     {
         $data['banners']=Banner::all();

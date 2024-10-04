@@ -129,6 +129,8 @@
                                     <th>Image</th>
                                     <th>title</th>
                                     <th>Alt</th>
+                                    <th>Status</th>
+
                                     <th>Expiry Date</th>
 
                                     <th>Action</th>
@@ -157,6 +159,8 @@
                                             <p class="text-dark fw-medium fs-15 mb-0">{{ $banner->title }}</p>
                                         </td>
                                         <td>{{ $banner->alt }}</td>
+                                        <td>{{ $banner->status }}</td>
+                                        
                                         <td>{{ $banner->expiry_date }}</td>
 
 
