@@ -34,9 +34,9 @@
 
                     <td>
                          <div class="d-flex align-items-center gap-2">
-                              {{--<div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
+                              <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
                                    <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-md">
-                              </div>--}}
+                              </div>
                               <div>
                                    <a href="#!" class="text-dark fw-medium fs-15">{{$product->name}}</a>
                                     {{--<p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>S , M , L , Xl </p>--}}
@@ -58,7 +58,7 @@
                          <div class="d-flex gap-2">
                               <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
                               <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                            <button wire:confirm="Are you want to delete this Product?" wire:click="delete({{$product->id}})" type="button" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></button>
+                              <button wire:confirm="Are you want to delete this Product?" wire:click="delete({{$product->id}})" type="button" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></button>
 
                          </div>
                     </td>
