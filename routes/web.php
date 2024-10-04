@@ -35,6 +35,10 @@ Route::get('admin/brands/brand-add',function(){
     return view('admin.brands.brand_add');
 });
 
+Route::get('admin/brands/manage-brand',function(){
+    return view('admin.brands.manage_brand');
+});
+
 Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
 })->name('manage_category');
