@@ -57,6 +57,7 @@ class CreateBannerForm extends Component
 
 
     }
+    
 
     public function deleteBanner($id)
     {

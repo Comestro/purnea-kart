@@ -65,6 +65,11 @@ Route::get('admin/categories/category-add', function () {
     return view('admin.categories.category_add');
 });
 
+//Coupon
+Route::get('admin/coupon/coupon-add',function(){
+    return view('admin.coupons.coupon-add');
+})->name('coupon_add');
+
 
 //INVENTORY
 Route::get('admin/inventory/inventory_receivedOrder', function () {
