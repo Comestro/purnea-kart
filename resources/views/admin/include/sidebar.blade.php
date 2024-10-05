@@ -372,7 +372,7 @@
                 <div class="collapse" id="sidebarCoupons">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="coupons-list.html">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/coupon/coupon-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/coupon/coupon-add')}}">Add</a>

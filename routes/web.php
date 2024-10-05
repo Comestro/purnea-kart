@@ -70,6 +70,10 @@ Route::get('admin/coupon/coupon-add',function(){
     return view('admin.coupons.coupon-add');
 })->name('coupon_add');
 
+Route::get('admin/coupon/coupon-list',function(){
+    return view('admin.coupons.coupon-list');
+})->name('coupon_add');
+
 
 //INVENTORY
 Route::get('admin/inventory/inventory_receivedOrder', function () {

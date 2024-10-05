@@ -268,6 +268,7 @@
             @section('content')
 
             @show
+            
 
 
             <!-- Vendor Javascript (Require in all Page) -->

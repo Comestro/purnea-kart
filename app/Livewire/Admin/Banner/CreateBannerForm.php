@@ -43,11 +43,12 @@ class CreateBannerForm extends Component
 
         ]);
 
-        $current_date = now(); 
-        if ($banner->expiry_date < $current_date) {
-            $banner->update(['status' => 'inactive']);
-        }
+        // $current_date = now(); 
+        // if ($banner->expiry_date < $current_date) {
+        //     $banner->update(['status' => 'inactive']);
+        // }
         if ($banner) {
+            $this->reset(["title","expiry_date","alt","image_path","status"]);
             session()->flash('message', 'Banner added successfully.');
            return redirect()->back();
          
