@@ -1,4 +1,6 @@
 @extends('admin.include.adminBase')
+@section('title', 'Order Cart ||')
+
 @section('content')
  
           <!-- Activity Timeline -->

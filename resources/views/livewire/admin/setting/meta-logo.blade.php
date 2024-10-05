@@ -11,21 +11,13 @@
         <div class="card-body">
             <div class="d-flex">
                 @if ($isEdit)
-                    <input wire:model="meta_logo" type="text" class="form-control" id="meta_logo"
+                    <input wire:model="meta_logo" type="file" class="form-control" id="meta_logo"
                         placeholder="meta logo section">
                     <button wire:click="update" type="submit" class="rounded-0 btn btn-primary">save</button>
                 @else
                     <p class="lead text-capitalize font-medium text-dark mb-0">
                         @if (!empty($meta_logo))
-                            {{ $meta_logo }}
-                            <div class="mx-auto">
-                                <div wire:loading wire:target="toggle" class="p-3">
-                                    <div class="spinner-border text-muted" role="status"></div>
-                                    <p class="mt-2 mb-0">Loading...</p>
-                                </div>
-                                <div wire:loading.remove wire:target="toggle" class="lead text-capitalize font-medium text-dark mb-0"> {{ $meta_title }}
-                                </div>
-                            </div>
+                            <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail img-fluid w-70 ">
                         @else
                             <i class="text-muted">Meta Logo section is Empty</i>
                         @endif

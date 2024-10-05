@@ -4,7 +4,7 @@
             <div class="card-header d-flex justify-content-between align-items-center gap-1">
                 <h4 class="card-title flex-grow-1">All Categories List</h4>
                 <a href="product-add.html" class="btn btn-sm btn-primary">
-                    Add Product
+                    Add Category
                 </a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +50,7 @@
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
                                         <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                            <img src="{{asset('image/category/'.$cat->image)}}" alt="" class="avatar-md">
+                                            <img src="{{asset('storage/public/image/category/'.$cat->image)}}" alt="" class="avatar-md">
                                         </div>
                                         <p class="text-dark fw-medium fs-15 mb-0">{{$cat->name}}</p>
                                     </div>

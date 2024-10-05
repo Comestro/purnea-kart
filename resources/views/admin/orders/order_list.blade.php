@@ -1,4 +1,6 @@
 @extends('admin.include.adminBase')
+@section('title', 'Order List  ||')
+
 @section('content')
           <!-- Activity Timeline -->
           <div>
