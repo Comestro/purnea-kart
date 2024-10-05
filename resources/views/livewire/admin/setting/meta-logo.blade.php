@@ -4,7 +4,9 @@
         {{-- this is the card header --}}
         <div class="card-header py-2 align-items-center d-flex justify-content-between">
             <h5 class="m-0 fw-normal">Meta Logo</h5>
-            {!! !$isEdit ? '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>' :  '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Cancel</button>'!!}
+            {!! !$isEdit
+                ? '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>'
+                : '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Cancel</button>' !!}
         </div>
 
         {{-- this is the card body --}}
@@ -17,27 +19,29 @@
                 @else
                     <p class="lead text-capitalize font-medium text-dark mb-0">
                         @if (!empty($meta_logo))
-                        <div class="mx-auto">
-                            <div wire:loading wire:target="toggle" class="p-3">
-                                <div class="spinner-border text-muted" role="status"></div>
-                                <p class="mt-2 mb-0">Loading...</p>
+                            <div class="mx-auto">
+                                <div wire:loading wire:target="toggle" class="p-3">
+                                    <div class="spinner-border text-muted" role="status"></div>
+                                    <p class="mt-2 mb-0">Loading...</p>
+                                </div>
+                                <div wire:loading.remove wire:target="toggle"
+                                    class="lead text-capitalize font-medium text-dark mb-0">
+                                    <img src="{{ asset('storage/images/setting/' . $meta_logo) }}" alt="meta logo"
+                                        class="img-thumbnail w-25 h-25">
+                                </div>
                             </div>
-                            <div wire:loading.remove wire:target="toggle"
-                                class="lead text-capitalize font-medium text-dark mb-0"> 
-                                <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail img-fluid w-70 ">
-                            </div>
-                        </div>
                         @else
-                        <div class="mx-auto">
-                            <div wire:loading wire:target="toggle" class="p-3">
-                                <div class="spinner-border text-muted" role="status"></div>
-                                <p class="mt-2 mb-0">Loading...</p>
+                            <div class="mx-auto">
+                                <div wire:loading wire:target="toggle" class="p-3">
+                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%"
+                                        aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" role="status"></div>
+                                    <p class="mt-2 mb-0">Loading...</p>
+                                </div>
+                                <div wire:loading.remove wire:target="toggle"
+                                    class="lead text-capitalize font-medium text-dark mb-0">
+                                    <i class="text-muted">Meta Logo section is Empty</i>
+                                </div>
                             </div>
-                            <div wire:loading.remove wire:target="toggle"
-                                class="lead text-capitalize font-medium text-dark mb-0"> 
-                                <i class="text-muted">Meta Logo section is Empty</i>
-                            </div>
-                        </div>
                         @endif
                     </p>
                 @endif
