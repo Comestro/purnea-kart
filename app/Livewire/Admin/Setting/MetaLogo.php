@@ -4,9 +4,13 @@ namespace App\Livewire\Admin\Setting;
 
 use App\Models\Setting;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
 
 class MetaLogo extends Component
-{
+{   
+    use WithFileUploads;
+
     public $meta_logo;
     public $isEdit = false;
 
@@ -28,13 +32,15 @@ class MetaLogo extends Component
         ]);
 
         // image work
-        $image = $this->file('meta_logo');
+        $image = $this->meta_logo;
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
+        $image->storeAs("images/setting", $imageName, "public");
         $data['meta_logo'] = $imageName;
 
-        Setting::first()->update($data);
+        $setting = Setting::first();
+        $setting->update($data);
         $this->toggle();
+        $this->meta_logo = $setting->meta_logo;
         return redirect()->back()->with('success', 'logo updated successfully');
     }
 

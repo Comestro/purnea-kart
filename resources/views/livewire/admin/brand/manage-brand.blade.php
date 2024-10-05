@@ -18,7 +18,7 @@
                     <td>{{ $item->brand_slug }}</td>
                     <td>{{ $item->brand_description }}</td>
                     <td>
-                        <img src="{{ $item->logo ? asset('public/logo/brand/' . $item->logo) : asset('public/logo/brand/default.png') }}"
+                        <img src="{{ $item->logo ? asset('storage/public/logo/brand/' . $item->logo) : asset('public/logo/brand/default.png') }}"
                             alt="Logo" style="max-width: 100px; max-height: 100px;">
                     </td>
                     <td>
