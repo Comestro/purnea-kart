@@ -10,13 +10,16 @@
             <button wire:click="update" type="submit" id="saveButton2" class="  btn btn-primary">save</button>
         </div>
     @else
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <div>
-                <label for="meta-tag" class="form-label">Meta Tag</label>
-                <p class="text-lg font-medium">{{ $meta_tag }}</p>
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <label for="meta-tag" class="form-label">Meta Tag</label>
+                        <p class="text-lg font-medium">{{ $meta_tag }}</p>
+                    </div>
+                    <button wire:click="toggle" class="btn btn-outline-primary ">Edit</button>
+                </div>
             </div>
-            <button wire:click="toggle"
-                class="fs-4 px-2 py-1 rounded bg-dark border-none text-light align-items-center">edit</button>
         </div>
     @endif
 

@@ -16,6 +16,7 @@ class MetaTitle extends Component
     }
     public function toggle(){
         $this->isEdit = !$this->isEdit;
+        $this->meta_title = $this->meta_title ? $this->meta_title : $this->meta_title;
     }
 
     public function update(){
