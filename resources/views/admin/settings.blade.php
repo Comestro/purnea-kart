@@ -305,35 +305,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaTitle') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-name" class="form-label">Meta Title</label>
-                                            <input name="meta_title" type="text" id="meta-name" class="form-control"
-                                                placeholder="Title">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton1"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaTag') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-tag" class="form-label">Meta Tag
-                                                Keyword</label>
-                                            <input name="meta_tag" type="text" id="meta-tag" class="form-control"
-                                                placeholder="Enter word">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton2"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <livewire:admin.setting.meta-title />
+                                <livewire:admin.setting.meta-tag />
                                 <div class="col-lg-6">
                                     <form action="{{ route('settings.updateMetaLogo') }}" method="POST"
                                         enctype="multipart/form-data">
@@ -351,41 +324,13 @@
                                 </div>
 
 
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaCopyright') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <div class="mb-3">
-                                                    <label for="copyright" class="form-label">Copyright</label>
-                                                    <input name="copyright" type="text" id="copyright"
-                                                        class="form-control" placeholder="copyright....">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <button type="submit" id="saveButton5"
-                                                        class="  btn btn-primary">save</button>
-
-                                                </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div>
-                                <form action="{{ route('settings.updateMetaDescription') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <label for="meta-description" class="form-label">Description</label>
-                                        <textarea name="meta_description" class="form-control bg-light-subtle" id="meta-description" rows="4"
-                                            placeholder="Type description"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button type="submit" id="saveButton6" class="  btn btn-primary">save</button>
-                                    </div>
-                                </form>
+                                <livewire:admin.setting.meta-copyright/>
+                                <livewire:admin.setting.meta-description />
 
                             </div>
 
                             {{-- js here for the submit button --}}
-                            <script>
+                            {{-- <script>
                                 const inputFields = document.querySelectorAll('.form-control');
                                 const saveButtons = [
                                     document.getElementById('saveButton1'),
@@ -411,7 +356,7 @@
                                         }, 200);
                                     });
                                 });
-                            </script>
+                            </script> --}}
                             {{-- js ends here --}}
 
                         </div>

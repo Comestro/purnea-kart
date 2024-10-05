@@ -8,37 +8,7 @@ use Illuminate\Http\Request;
 class GeneralSettingController extends Controller
 {
 
-    public function updateMetaTitle(Request $req)
-    {
-
-        $data = $req->validate([
-            'meta_title' => 'required|string|max:255',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'title updated successfully!');
-    }
-
-    public function updateMetaTag(Request $req)
-    {
-        $data = $req->validate([
-            'meta_tag' => 'required|string|max:255',
-        ]);
-
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'tag updated successfully');
-    }
-
-    public function updateMetaDescription(Request $req)
-    {
-        $data = $req->validate([
-            'meta_description' => 'required|string',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'description updated successfully');
-    }
+    
 
     public function updateMetaLogo(Request $req)
     {
@@ -74,13 +44,5 @@ class GeneralSettingController extends Controller
         return redirect()->back()->with('success', 'banner updated successfully');
     }
 
-    public function updateMetaCopyright(Request $req)
-    {
-        $data = $req->validate([
-            'copyright' => 'required|string|max:255',
-        ]);
-
-        Setting::first()->update($data);
-        return redirect()->back()->with('success', 'copyright updated successfully');
-    }
+    
 }
