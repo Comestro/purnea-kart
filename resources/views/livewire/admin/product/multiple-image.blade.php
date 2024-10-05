@@ -1,7 +1,7 @@
  <!-- Flash message display -->
 
  <div class="container mt-4">
-    <div class="card">
+    <div class="card ">
         @if(session()->has('message'))
         <div class="alert alert-success mt-4">
             {{ session('message') }}
@@ -22,14 +22,14 @@
                                 <label for="dropzone-file" class="w-100">
                                     <div class="border border-secondary border-dashed rounded d-flex align-items-center justify-content-center"
                                          style="height: 200px; cursor: pointer;">
-                                        <div class="text-center">
+                                        <div class="text-center px-4">
                                             <i class="bx bx-cloud-upload fs-48 text-primary"></i>
 
                                             <h3 class="mt-2 fs-5">Drop your images here, or <span class="text-primary">click to browse</span></h3>
                                             <span class="text-muted fs-6">
                                                 1600 x 1200 (4:3) recommended. PNG, JPG and GIF files are allowed
                                                 </span>
-                                              </div>
+                                        </div>
                                     </div>
                                     <input id="dropzone-file" wire:model="path" type="file" class="d-none" />
                                 </label>

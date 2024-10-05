@@ -44,22 +44,16 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
                         </li>
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Grid</a>
-                        </li>
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Details</a>
-                        </li>
-                        {{-- <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Edit</a>
-                        </li> --}}
+                        
+                       
+                        
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{ route('product.create') }}">Create</a>
                         </li>
                     </ul>
                 </div>
             </li>
-
+            {{-- categories --}}
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarCategory">
@@ -73,15 +67,40 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
                         </li>
-                        <li class="sub-nav-item">
+                        {{-- <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-edit')}}">Edit</a>
-                        </li>
+                        </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-add')}}">Create</a>
                         </li>
                     </ul>
                 </div>
             </li>
+
+            {{-- BANNER --}}
+            
+            {{-- <li class="nav-item">
+                <a class="nav-link menu-arrow" href="#sidebarBanner" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarBanner">
+                    <span class="nav-icon">
+                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                    </span>
+                    <span class="nav-text"> Banner </span>
+                </a>
+                <div class="collapse" id="sidebarBanner">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/categories/category-edit')}}">Edit</a>
+                        </li>
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarBrand" data-bs-toggle="collapse" role="button"
@@ -96,9 +115,9 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/manage-brand')}}">List</a>
                         </li>
-                        <li class="sub-nav-item">
+                        {{-- <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
-                        </li>
+                        </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/brand-add')}}">Create</a>
                         </li>
@@ -223,13 +242,29 @@
                 </div>
             </li>
 
+           
             <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/settings')}}">
+                <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarRoles">
                     <span class="nav-icon">
                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                     </span>
-                    <span class="nav-text"> Settings </span>
+                    <span class="nav-text"> Setting </span>
                 </a>
+                <div class="collapse" id="sidebarRoles">
+                    <ul class="nav sub-navbar-nav">
+                        <ul class="nav sub-navbar-nav">
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Banner</a>
+                            </li>
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
+                            </li>
+                           
+                            
+                        </ul>
+                    </ul>
+                </div>
             </li>
 
             <li class="menu-title mt-2">Users</li>
@@ -291,9 +326,9 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="customer-list.html">List</a>
                         </li>
-                        <li class="sub-nav-item">
+                        {{-- <li class="sub-nav-item">
                             <a class="sub-nav-link" href="customer-detail.html">Details</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>

@@ -305,112 +305,13 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <livewire:admin.setting.meta-title/>
-                                <div class="col-lg-6">
-
-                                    @if (!isset($meta_tag) || empty($meta_tag))
-                                        <form action="{{ route('settings.updateMetaTag') }}" method="POST">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="meta-tag" class="form-label">Meta Tag
-                                                    Keyword</label>
-                                                <input name="meta_tag" type="text" id="meta-tag"
-                                                    class="form-control" placeholder="Enter word">
-                                            </div>
-                                            <div class="mb-3">
-                                                <button type="submit" id="saveButton2"
-                                                    class="  btn btn-primary">save</button>
-                                            </div>
-                                        </form>
-                                    @else
-                                        <div class="mb-3">
-                                            <label for="meta-tag" class="form-label">Meta Tag</label>
-                                            <p class="text-lg font-medium">{{ $meta_tag }}</p>
-                                        </div>
-                                    @endif
-
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaLogo') }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-logo" class="form-label">Logo</label>
-                                            <input name="meta_logo" type="file" class="form-control" id="meta-logo"
-                                                accept="image/*">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton3"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaCopyright') }}" method="POST">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <div class="mb-3">
-                                                    <label for="copyright" class="form-label">Copyright</label>
-                                                    <input name="copyright" type="text" id="copyright"
-                                                        class="form-control" placeholder="copyright....">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <button type="submit" id="saveButton5"
-                                                        class="  btn btn-primary">save</button>
-
-                                                </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div>
-                                <form action="{{ route('settings.updateMetaDescription') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <label for="meta-description" class="form-label">Description</label>
-                                        <textarea name="meta_description" class="form-control bg-light-subtle" id="meta-description" rows="4"
-                                            placeholder="Type description"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button type="submit" id="saveButton6" class="  btn btn-primary">save</button>
-                                    </div>
-                                </form>
+                                <livewire:admin.setting.meta-title />
+                                <livewire:admin.setting.meta-tag />
+                                <livewire:admin.setting.meta-logo />
+                                <livewire:admin.setting.meta-copyright />
+                                <livewire:admin.setting.meta-description />
 
                             </div>
-
-                            {{-- js here for the submit button --}}
-                            <script>
-                                const inputFields = document.querySelectorAll('.form-control');
-                                const saveButtons = [
-                                    document.getElementById('saveButton1'),
-                                    document.getElementById('saveButton2'),
-                                    document.getElementById('saveButton3'),
-                                    document.getElementById('saveButton4'),
-                                    document.getElementById('saveButton5'),
-                                    document.getElementById('saveButton6'),
-                                ];
-
-                                inputFields.forEach((input, index) => {
-                                    const saveButton = saveButtons[index];
-
-                                    input.addEventListener('focus', () => {
-                                        saveButtons.forEach((btn) => btn.classList.add(''));
-
-                                        saveButton.classList.remove('');
-                                    });
-
-                                    input.addEventListener('blur', () => {
-                                        setTimeout(() => {
-                                            saveButton.classList.add('');
-                                        }, 200);
-                                    });
-                                });
-                            </script>
-                            {{-- js ends here --}}
-
                         </div>
                     </div>
 

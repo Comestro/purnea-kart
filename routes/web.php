@@ -5,6 +5,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
+use App\Models\Banner;
 
 Route::view('/', 'home')->name('home');
 
@@ -30,13 +31,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
-//categories
-Route::get('admin/categories/category-add', function () {
-    return view('admin.categories.category_add');
-});
-
-
-
+//brand
 Route::get('admin/brands/brand-add', function () {
     return view('admin.brands.brand_add');
 });
@@ -45,6 +40,19 @@ Route::get('admin/brands/manage-brand',function(){
     return view('admin.brands.manage_brand');
 });
 
+
+//Banner
+Route::get('admin/banner/banner_create', function () {
+    return view('admin.banner.banner_create');
+});
+    // Banner::truncate();
+
+Route::get('admin/banner/calling-banner', function () {
+    return view('admin.banner.calling-banner');
+});
+
+
+//Caregory
 Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
 })->name('manage_category');
@@ -52,6 +60,10 @@ Route::get('admin/categories/category-list',function(){
 Route::get('admin/categories/category-edit', function () {
     return view('admin.categories.category_edit');
 });
+Route::get('admin/categories/category-add', function () {
+    return view('admin.categories.category_add');
+});
+
 
 //INVENTORY
 Route::get('admin/inventory/inventory_receivedOrder', function () {
@@ -87,9 +99,4 @@ Route::get('admin/settings', function () {
     return view('admin.settings', ['setting' => Setting::first()]);
 });
 
-Route::prefix('settings')->controller(GeneralSettingController::class)->group(function () {
-    Route::post('/meta-tag', 'updateMetaTag')->name('settings.updateMetaTag');
-    Route::post('/meta-description', 'updateMetaDescription')->name('settings.updateMetaDescription');
-    Route::post('/meta-logo', 'updateMetaLogo')->name('settings.updateMetaLogo');
-    Route::post('/copyright', 'updateMetaCopyright')->name('settings.updateMetaCopyright');
-});
+
