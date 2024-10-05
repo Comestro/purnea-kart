@@ -4,7 +4,7 @@
             <div class="card-header d-flex justify-content-between align-items-center gap-1">
                 <h4 class="card-title flex-grow-1">All Categories List</h4>
                 <a href="product-add.html" class="btn btn-sm btn-primary">
-                    Add Product
+                    Add Category
                 </a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">

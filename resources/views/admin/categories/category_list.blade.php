@@ -41,7 +41,8 @@
                                                   <h6 class="mt-2 text-muted">Monday , 4:24 PM</h6>
                                              </div>
                                         </div>
-                                   </div>
+                                   </div>@section('title', 'Dashboard ||')
+
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
                                              <span class="position-absolute start-0 avatar-sm translate-middle-x bg-success d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><iconify-icon icon="iconamoon:check-circle-1-duotone"></iconify-icon></span>
