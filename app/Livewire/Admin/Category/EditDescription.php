@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class EditDescription extends Component
 {
-  
+    public $category;
     public $cat_description;
     public $isEdit = false;
     public function toggle(){
