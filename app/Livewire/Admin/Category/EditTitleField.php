@@ -72,7 +72,7 @@ class EditTitleField extends Component
 
 
             </div>
-            @error('main_category')
+            @error('cat_title')
                 <p class="text-danger small">{{ $message }}</p>
             @enderror
         </div>
