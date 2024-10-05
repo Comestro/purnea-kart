@@ -44,9 +44,7 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
                         </li>
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="">Grid</a>
-                        </li>
+                        
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="">Details</a>
                         </li>
@@ -73,9 +71,9 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-list')}}">List</a>
                         </li>
-                        <li class="sub-nav-item">
+                        {{-- <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-edit')}}">Edit</a>
-                        </li>
+                        </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/categories/category-add')}}">Create</a>
                         </li>
@@ -121,9 +119,9 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/manage-brand')}}">List</a>
                         </li>
-                        <li class="sub-nav-item">
+                        {{-- <li class="sub-nav-item">
                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
-                        </li>
+                        </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/brand-add')}}">Create</a>
                         </li>
@@ -261,11 +259,12 @@
                     <ul class="nav sub-navbar-nav">
                         <ul class="nav sub-navbar-nav">
                             <li class="sub-nav-item">
-                                <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
-                            </li>
-                            <li class="sub-nav-item">
                                 <a class="sub-nav-link" href="{{url('admin/banner/banner_create')}}">Banner</a>
                             </li>
+                            <li class="sub-nav-item">
+                                <a class="sub-nav-link" href="{{url('admin/settings')}}">General Settings</a>
+                            </li>
+                           
                             
                         </ul>
                     </ul>
