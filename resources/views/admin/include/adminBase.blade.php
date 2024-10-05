@@ -4,27 +4,27 @@
     <head>
         <!-- Title Meta -->
         <meta charset="utf-8" />
-        
-        <title>@yield('title') Admin panel || {{env('APP_NAME')}}</title>
+
+        <title>@yield('title') Admin panel || {{ env('APP_NAME') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A fully responsive premium admin dashboard template" />
         <meta name="author" content="Techzaa" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('assets_admin/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{ asset('assets_admin/images/favicon.ico') }}">
 
         <!-- Vendor css (Require in all Page) -->
-        <link href="{{asset('assets_admin/css/vendor.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets_admin/css/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Icons css (Require in all Page) -->
-        <link href="{{asset('assets_admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets_admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css (Require in all Page) -->
-        <link href="{{asset('assets_admin/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets_admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Theme Config js (Require in all Page) -->
-        <script src="{{asset('assets_admin/js/config.js')}}"></script>
+        <script src="{{ asset('assets_admin/js/config.js') }}"></script>
     </head>
 
     <body>
@@ -47,7 +47,8 @@
 
                             <!-- Menu Toggle Button -->
                             <div class="topbar-item">
-                                <h4 class="fw-bold topbar-button pe-none text-uppercase mb-0">{{env('APP_NAME')}}!</h4>
+                                <h4 class="fw-bold topbar-button pe-none text-uppercase mb-0">{{ env('APP_NAME') }}!
+                                </h4>
                             </div>
                         </div>
 
@@ -56,15 +57,16 @@
                             <!-- Theme Color (Light/Dark) -->
                             <div class="topbar-item">
                                 <button type="button" class="topbar-button" id="light-dark-mode">
-                                    <iconify-icon icon="solar:moon-bold-duotone" class="fs-24 align-middle"></iconify-icon>
+                                    <iconify-icon icon="solar:moon-bold-duotone"
+                                        class="fs-24 align-middle"></iconify-icon>
                                 </button>
                             </div>
 
                             <!-- Notification -->
                             <div class="dropdown topbar-item">
                                 <button type="button" class="topbar-button position-relative"
-                                    id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                    id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <iconify-icon icon="solar:bell-bing-bold-duotone"
                                         class="fs-24 align-middle"></iconify-icon>
                                     <span
@@ -79,7 +81,8 @@
                                                 <h6 class="m-0 fs-16 fw-semibold"> Notifications</h6>
                                             </div>
                                             <div class="col-auto">
-                                                <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                                <a href="javascript: void(0);"
+                                                    class="text-dark text-decoration-underline">
                                                     <small>Clear All</small>
                                                 </a>
                                             </div>
@@ -87,11 +90,13 @@
                                     </div>
                                     <div data-simplebar style="max-height: 280px;">
                                         <!-- Item -->
-                                        <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom text-wrap">
+                                        <a href="javascript:void(0);"
+                                            class="dropdown-item py-3 border-bottom text-wrap">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{asset('assets_admin/images/users/avatar-1.jpg')}}"
-                                                        class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-1" />
+                                                    <img src="{{ asset('assets_admin/images/users/avatar-1.jpg') }}"
+                                                        class="img-fluid me-2 avatar-sm rounded-circle"
+                                                        alt="avatar-1" />
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="mb-0"><span class="fw-medium">Josephine Thompson
@@ -123,8 +128,9 @@
                                         <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{asset('assets_admin/images/users/avatar-3.jpg')}}"
-                                                        class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-3" />
+                                                    <img src="{{ asset('assets_admin/images/users/avatar-3.jpg') }}"
+                                                        class="img-fluid me-2 avatar-sm rounded-circle"
+                                                        alt="avatar-3" />
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="mb-0 fw-semibold">Jacob Gines</p>
@@ -146,7 +152,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <p class="mb-0 fw-semibold text-wrap">You have received <b>20</b> new
+                                                    <p class="mb-0 fw-semibold text-wrap">You have received <b>20</b>
+                                                        new
                                                         messages in the
                                                         conversation</p>
                                                 </div>
@@ -156,8 +163,9 @@
                                         <a href="javascript:void(0);" class="dropdown-item py-3 border-bottom">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{asset('assets_admin/images/users/avatar-5.jpg')}}"
-                                                        class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-5" />
+                                                    <img src="{{ asset('assets_admin/images/users/avatar-5.jpg') }}"
+                                                        class="img-fluid me-2 avatar-sm rounded-circle"
+                                                        alt="avatar-5" />
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="mb-0 fw-semibold">Shawn Bunch</p>
@@ -169,7 +177,8 @@
                                         </a>
                                     </div>
                                     <div class="text-center py-3">
-                                        <a href="javascript:void(0);" class="btn btn-primary btn-sm">View All Notification
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-sm">View All
+                                            Notification
                                             <i class="bx bx-right-arrow-alt ms-1"></i></a>
                                     </div>
                                 </div>
@@ -200,7 +209,8 @@
                                 <a type="button" class="topbar-button" id="page-header-user-dropdown"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="d-flex align-items-center">
-                                        <img class="rounded-circle" width="32" src="{{asset('assets_admin/images/users/avatar-1.jpg')}}"
+                                        <img class="rounded-circle" width="32"
+                                            src="{{ asset('assets_admin/images/users/avatar-1.jpg') }}"
                                             alt="avatar-3">
                                     </span>
                                 </a>
@@ -243,7 +253,8 @@
                                 <div class="position-relative">
                                     <input type="search" class="form-control" placeholder="Search..."
                                         autocomplete="off" value="">
-                                    <iconify-icon icon="solar:magnifer-linear" class="search-widget-icon"></iconify-icon>
+                                    <iconify-icon icon="solar:magnifer-linear"
+                                        class="search-widget-icon"></iconify-icon>
                                 </div>
                             </form>
                         </div>
@@ -251,7 +262,7 @@
                 </div>
             </header>
 
-    
+
 
 
             @section('content')
@@ -260,19 +271,27 @@
 
 
             <!-- Vendor Javascript (Require in all Page) -->
-            <script src="{{asset('assets_admin/js/vendor.js')}}"></script>
+            <script src="{{ asset('assets_admin/js/vendor.js') }}"></script>
 
             <!-- App Javascript (Require in all Page) -->
-            <script src="{{asset('assets_admin/js/app.js')}}"></script>
+            <script src="{{ asset('assets_admin/js/app.js') }}"></script>
 
-        <!-- Vector Map Js -->
-        <script src="{{asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js')}}"></script>
-        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world-merc.js')}}"></script>
-        <script src="{{asset('assets_admin/vendor/jsvectormap/maps/world.js')}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <!-- Dashboard Js -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <script src="{{asset('assets_admin/js/pages/dashboard.js')}}"></script>
+            <!-- Vector Map Js -->
+            <script src="{{ asset('assets_admin/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
+            <script src="{{ asset('assets_admin/vendor/jsvectormap/maps/world-merc.js') }}"></script>
+            <script src="{{ asset('assets_admin/vendor/jsvectormap/maps/world.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+            <!-- Dashboard Js -->
+            <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+            <script src="{{ asset('assets_admin/js/pages/dashboard.js') }}"></script>
+
+            <!-- Bootstrap JS and dependencies -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     </body>
 

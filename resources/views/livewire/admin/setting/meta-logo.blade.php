@@ -31,7 +31,7 @@
                         @else
                         <div class="mx-auto">
                             <div wire:loading wire:target="toggle" class="p-3">
-                                <div class="spinner-border text-muted" role="status"></div>
+                                <div class="progress-bar progress-bar-striped text-muted " style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" role="status"></div>
                                 <p class="mt-2 mb-0">Loading...</p>
                             </div>
                             <div wire:loading.remove wire:target="toggle"
