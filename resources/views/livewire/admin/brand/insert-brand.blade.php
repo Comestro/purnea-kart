@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="border border-secondary border-dashed rounded d-flex align-items-center justify-content-center"
+                            <div class="border flex border-secondary border-dashed rounded d-flex align-items-center justify-content-center"
                                 style="height: 200px;">
                                 <div wire:loading wire:target="logo" class="text-center">
                                     <div class="spinner-border text-muted" role="status"></div>
