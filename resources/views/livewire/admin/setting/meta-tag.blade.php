@@ -1,24 +1,30 @@
 <div class="col-lg-6">
+    <div class="card border">
+        <div class="card-header py-2 align-items-center d-flex justify-content-between">
+            <h5 class="m-0 fw-normal">Meta Tag Keyword</h5>
+            <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>
+        </div>
+        <div class="card-body">
+            <div class="d-flex">
+                @if ($isEdit)
+                    <input wire:model="meta_tag" type="text" id="meta-tag" class="form-control rounded-0"
+                        placeholder="Enter word seprate with comma (,)">
+                    <button wire:click="update" type="submit"
+                        class="rounded-0 btn btn-primary">save</button>
+                @else
+                    <p class="lead  text-capitalize font-medium text-dark mb-0">
+                        @if (!empty($meta_tag))
+                            {{ $meta_tag }}
+                        @else
+                            <i class="text-muted">Meta Tags is Empty</i>
+                        @endif
 
-    @if ($isEdit)
-        <div class="mb-3">
-            <label for="meta-tag" class="form-label">Meta Tag
-                Keyword</label>
-            <input wire:model="meta_tag" type="text" id="meta-tag" class="form-control" placeholder="Enter word">
-        </div>
-        <div class="mb-3">
-            <button wire:click="update" type="submit" id="saveButton2" class="  btn btn-primary">save</button>
-        </div>
-    @else
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <div>
-                <label for="meta-tag" class="form-label">Meta Tag</label>
-                <p class="text-lg font-medium">{{ $meta_tag }}</p>
+                    </p>
+                @endif
             </div>
-            <button wire:click="toggle"
-                class="fs-4 px-2 py-1 rounded bg-dark border-none text-light align-items-center">edit</button>
+            @error('meta_title')
+                <p class="text-danger small">{{ $message }}</p>
+            @enderror
         </div>
-    @endif
-
-
+    </div>
 </div>

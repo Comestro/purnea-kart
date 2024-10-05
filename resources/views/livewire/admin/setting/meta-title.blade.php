@@ -1,23 +1,30 @@
 <div class="col-lg-6">
-    {{-- display the existing meta title if it exists --}}
-    @if ($isEdit)
-        <div class="mb-3">
-            <label for="meta-name" class="form-label">Meta Title</label>
-            <input wire:model="meta_title" type="text" id="meta-name" class="form-control" placeholder="Title">
+    <div class="card border">
+        <div class="card-header py-2 align-items-center d-flex justify-content-between">
+            <h5 class="m-0 fw-normal">Meta Title</h5>
+            <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>
         </div>
-        <div class="mb-3">
-            <button wire:click="update" type="submit" id="saveButton1" class="  btn btn-primary">save</button>
-        </div>
-    @else
-        <div class="mt-3 d-flex justify-content-between align-items-center">
-            <div class="">
-                <label for="meta-name" class="form-label">Meta Title</label>
-                <p class="text-lg font-medium">{{ $meta_title }}</p>
+        <div class="card-body">
+            <div class="d-flex">
+                @if ($isEdit)
+                    <input wire:model="meta_title" type="text" id="meta-name" class="form-control rounded-0"
+                        placeholder="Title">
+                    <button wire:click="update" type="submit" id="saveButton1"
+                        class="rounded-0 btn btn-primary">save</button>
+                @else
+                    <p class="lead  text-capitalize font-medium text-dark mb-0">
+                        @if (!empty($meta_title))
+                            {{ $meta_title }}
+                        @else
+                            <i class="text-muted">Meta Title is Empty</i>
+                        @endif
+
+                    </p>
+                @endif
             </div>
-            <button wire:click="toggle"
-                class="fs-4 px-2 py-1 rounded bg-dark border-none text-light align-items-center">edit</button>
+            @error('meta_title')
+                <p class="text-danger small">{{ $message }}</p>
+            @enderror
         </div>
-    @endif
-
-
+    </div>
 </div>
