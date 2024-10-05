@@ -1,6 +1,6 @@
 <div class="col-lg-6">
 
-    <div class="card border">
+    <div class="card border h-auto">
         {{-- this is the card header --}}
         <div class="card-header py-2 align-items-center d-flex justify-content-between">
             <h5 class="m-0 fw-normal">Meta Logo</h5>
@@ -17,7 +17,7 @@
                 @else
                     <p class="lead text-capitalize font-medium text-dark mb-0">
                         @if (!empty($meta_logo))
-                            <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail img-fluid w-70 ">
+                            <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail" style="object-fit: contain; height:200px">
                         @else
                             <i class="text-muted">Meta Logo section is Empty</i>
                         @endif
