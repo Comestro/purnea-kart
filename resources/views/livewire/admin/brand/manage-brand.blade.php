@@ -58,6 +58,7 @@
             </tbody>
         </table>
     </div>
+
     <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -162,5 +163,33 @@
 
         </div>
     </div>
+
+              <!-- Pagination -->
+              <div class="card-footer border-top">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item {{ $brands->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
+                                tabindex="-1">Previous</a>
+                        </li>
+
+                        @php
+                            $currentPage = $brands->currentPage();
+                            $lastPage = $brands->lastPage();
+                        @endphp
+
+                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        <!-- Next Page Link -->
+                        <li class="page-item {{ $brands->hasMorePages() ? '' : 'disabled' }}">
+                            <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 </div>
 

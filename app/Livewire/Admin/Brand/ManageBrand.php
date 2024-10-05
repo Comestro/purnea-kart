@@ -4,11 +4,13 @@ namespace App\Livewire\Admin\Brand;
 
 use App\Models\Brand;
 use Livewire\Component;
+use Livewire\WithPagination;
+
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class ManageBrand extends Component
 {
-
+    use WithPagination;
     use WithFileUploads;
     public $searchTerm;
     public $brand_name;
@@ -23,7 +25,7 @@ class ManageBrand extends Component
     ];
     public function render()
     {
-        $brands = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')->orWhere('brand_name', 'like', '%' . $this->searchTerm . '%')->get();
+        $brands = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')->orWhere('brand_name', 'like', '%' . $this->searchTerm . '%')->paginate(5);
         return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
     }
 }
