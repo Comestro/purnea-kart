@@ -23,11 +23,10 @@
                                 <p class="mt-2 mb-0">Loading...</p>
                             </div>
                             <div wire:loading.remove wire:target="toggle"
-                                class="lead text-capitalize font-medium text-dark mb-0"> {{ asset('storage/images/setting/' .$meta_logo)}}
+                                class="lead text-capitalize font-medium text-dark mb-0"> 
+                                <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail img-fluid w-70 ">
                             </div>
                         </div>
-                            <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail img-fluid w-70 ">
-                            <img src="{{ asset('storage/images/setting/' .$meta_logo) }}" alt="meta logo" class="img-thumbnail" style="object-fit: contain; height:200px">
                         @else
                         <div class="mx-auto">
                             <div wire:loading wire:target="toggle" class="p-3">

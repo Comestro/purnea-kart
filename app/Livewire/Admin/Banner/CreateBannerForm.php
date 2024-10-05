@@ -11,6 +11,7 @@ class CreateBannerForm extends Component
     use WithFileUploads;
     public $title;
     public $image_path;
+    public $bannerId;
     public $alt;
     public $expiry_date;
     public $status=false;
@@ -34,13 +35,18 @@ class CreateBannerForm extends Component
         $this->image_path->storeAs('public/image/banner', $imageName,"public");
 
         $banner = Banner::create([
-            'title' => $this->title,
+         'title' => $this->title,
             'expiry_date' => $this->expiry_date,
             'alt' => $this->alt,
             'image_path' => $imageName,
             'status' => $this->status, 
 
         ]);
+
+        $current_date = now(); 
+        if ($banner->expiry_date < $current_date) {
+            $banner->update(['status' => 'inactive']);
+        }
         if ($banner) {
             session()->flash('message', 'Banner added successfully.');
            return redirect()->back();
@@ -64,5 +70,13 @@ class CreateBannerForm extends Component
         $data['banners']=Banner::all();
 
         return view('livewire.admin.banner.create-banner-form',$data);
+    }
+    public function toggleStatus($bannerId)
+    {
+        $banner = Banner::find($bannerId);
+        $banner->status = !$banner->status;
+        $banner->save();
+
+        session()->flash('success', 'Banner status updated successfully.');
     }
 }

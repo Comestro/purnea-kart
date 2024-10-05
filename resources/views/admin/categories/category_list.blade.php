@@ -220,7 +220,13 @@
                                         </div>
 
                                         <div class="form-check mb-2">
-                                             <input class="form-check-input" type="radio" name="data-menu-size" id="leftbar-size-small-hover" value="sm-hover">
+                                             public function deleteBanner($id)
+                                             {
+                                                 dd('fv');
+                                                     Banner::findOrFail($id)->delete();
+                                         
+                                                     session()->flash('message', 'banner deleted successfully.');
+                                             }            <input class="form-check-input" type="radio" name="data-menu-size" id="leftbar-size-small-hover" value="sm-hover">
                                              <label class="form-check-label" for="leftbar-size-small-hover">
                                                   Small Hover
                                              </label>
