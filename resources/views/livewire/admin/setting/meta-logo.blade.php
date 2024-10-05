@@ -4,9 +4,7 @@
         {{-- this is the card header --}}
         <div class="card-header py-2 align-items-center d-flex justify-content-between">
             <h5 class="m-0 fw-normal">Meta Logo</h5>
-            {!! !$isEdit
-                ? '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>'
-                : '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Cancel</button>' !!}
+                <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">{{!$isEdit? 'Edit':'Cancel'}}</button>                         
         </div>
 
         {{-- this is the card body --}}
