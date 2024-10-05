@@ -9,4 +9,5 @@ class Banner extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    
 }

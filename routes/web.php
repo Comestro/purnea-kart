@@ -45,7 +45,7 @@ Route::get('admin/brands/manage-brand',function(){
 Route::get('admin/banner/banner_create', function () {
     return view('admin.banner.banner_create');
 });
-    // Banner::truncate();
+// Banner::truncate();
 
 Route::get('admin/banner/calling-banner', function () {
     return view('admin.banner.calling-banner');

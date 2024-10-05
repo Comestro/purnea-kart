@@ -15,7 +15,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Banner Information</h4>
@@ -26,19 +26,19 @@
 
                     <form action="" wire:submit.prevent="store" enctype="multipart/form-data">
 
-                        <div class="row">
-                            <div class="col-lg-6 mb-3">
+                        
+                            <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" wire:model="title" required>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="mb-3">
                                 <label for="alt" class="form-label">Alt Text</label>
                                 <input type="text" class="form-control" id="alt" wire:model="alt"
                                     placeholder="Enter alt text" value="{{ old('alt') }}">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 mb-3">
+                       
+                        
+                            <div class=" mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" wire:model="status">
                                     <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
@@ -46,15 +46,16 @@
                                 </select>
                             </div>
 
-                            <div class="col-lg-6 mb-3">
+                            <div class="mb-3">
                                 <label for="expiry_date" class="form-label">Expiry Date</label>
                                 <input type="date" class="form-control" id="expiry_date" wire:model="expiry_date"
                                     value="{{ old('expiry_date') }}">
                             </div>
-                        </div>
+                        
                         <div class="mb-3">
                             <div class="row">
-                                <div class="col-lg-6">
+                                
+                                <div class="col-lg-12">
                                     <div class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone"
                                         data-previews-container="#file-previews"
                                         data-upload-preview-template="#uploadPreviewTemplate">
@@ -62,7 +63,7 @@
 
                                             <div class="dz-message needsclick">
                                                 <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                                                <h3 class="mt-4">Drop your images here, or <span
+                                                <h3 class="mt-2 fs-5">Drop your images here, or <span
                                                         class="text-primary">click to
                                                         browse</span></h3>
                                                 <span class="text-muted fs-13">
@@ -76,8 +77,8 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="dropzone" style="height: 100%">
+                                <div class="col-md-12">
+                                    <div class="dropzone" style="height: 40%">
                                         <!-- Loading spinner when uploading -->
                                         <div wire:loading wire:target="path" class="text-center">
                                             <div class="spinner-border text-muted" role="status"></div>
@@ -108,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center gap-1">
@@ -129,9 +130,10 @@
                                     <th>Image</th>
                                     <th>title</th>
                                     <th>Alt</th>
-                                    <th>Status</th>
+                                    <th>Active/Inactive</th>
 
                                     <th>Expiry Date</th>
+                                    <th>Status</th>
 
                                     <th>Action</th>
                                 </tr>
@@ -139,19 +141,14 @@
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
-                                        {{-- <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                        <label class="form-check-label" for="customCheck2"></label>
-                                    </div>
-                                </td> --}}
+                                     
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
                                                     class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
                                                     <img src="{{ asset('storage/public/image/banner/' . $banner->image_path) }}"
                                                         alt="" class="avatar-md">
-                                                        
+
                                                 </div>
                                             </div>
                                         </td>
@@ -161,19 +158,30 @@
                                         <td>{{ $banner->alt }}</td>
                                         <td>{!! $banner->status ? '<span class="text-success">Active</span>' : '<span class="text-primary">Inactive</span>' !!}</td>
                                         <td>{{ $banner->expiry_date }}</td>
+                                        <td><div class="d-inline-flex align-items-center">
+                                            <button 
+                                                wire:click="toggleStatus({{ $banner->id }})"
+                                                class=" btn-toggle {{ $banner->status ? 'active' : '' }}" 
+                                                aria-pressed="{{ $banner->status ? 'true' : 'false' }}">
+                                                {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
+                                            </button>
+                                        </div>
+                                        
+                                       
+                                        </td>
 
 
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <a href="#!" class="btn btn-light btn-sm"><iconify-icon
-                                                        icon="solar:eye-broken"
-                                                        class="align-middle fs-18"></iconify-icon></a>
+                                                
                                                 <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
                                                         class="align-middle fs-18"></iconify-icon></a>
-                                                <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
+                                                <button wire:confirm="Are you want to delete this Banner ? "
+                                                    wire:click="deleteBanner({{ $banner->id }})" type="button"
+                                                    class="btn btn-soft-danger btn-sm"><iconify-icon
                                                         icon="solar:trash-bin-minimalistic-2-broken"
-                                                        class="align-middle fs-18"></iconify-icon></a>
+                                                        class="align-middle fs-18"></iconify-icon></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -199,3 +207,4 @@
         </div>
     </div>
 </div>
+ <!-- Optional CSS to style toggle -->
