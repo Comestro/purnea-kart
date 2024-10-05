@@ -307,58 +307,11 @@
                             <div class="row">
                                 <livewire:admin.setting.meta-title />
                                 <livewire:admin.setting.meta-tag />
-                                <div class="col-lg-6">
-                                    <form action="{{ route('settings.updateMetaLogo') }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="meta-logo" class="form-label">Logo</label>
-                                            <input name="meta_logo" type="file" class="form-control" id="meta-logo"
-                                                accept="image/*">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" id="saveButton3"
-                                                class="  btn btn-primary">save</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                                <livewire:admin.setting.meta-copyright/>
+                                <livewire:admin.setting.meta-logo />
+                                <livewire:admin.setting.meta-copyright />
                                 <livewire:admin.setting.meta-description />
 
                             </div>
-
-                            {{-- js here for the submit button --}}
-                            {{-- <script>
-                                const inputFields = document.querySelectorAll('.form-control');
-                                const saveButtons = [
-                                    document.getElementById('saveButton1'),
-                                    document.getElementById('saveButton2'),
-                                    document.getElementById('saveButton3'),
-                                    document.getElementById('saveButton4'),
-                                    document.getElementById('saveButton5'),
-                                    document.getElementById('saveButton6'),
-                                ];
-
-                                inputFields.forEach((input, index) => {
-                                    const saveButton = saveButtons[index];
-
-                                    input.addEventListener('focus', () => {
-                                        saveButtons.forEach((btn) => btn.classList.add(''));
-
-                                        saveButton.classList.remove('');
-                                    });
-
-                                    input.addEventListener('blur', () => {
-                                        setTimeout(() => {
-                                            saveButton.classList.add('');
-                                        }, 200);
-                                    });
-                                });
-                            </script> --}}
-                            {{-- js ends here --}}
-
                         </div>
                     </div>
 
