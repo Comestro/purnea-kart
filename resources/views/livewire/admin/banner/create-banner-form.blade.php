@@ -130,9 +130,10 @@
                                     <th>Image</th>
                                     <th>title</th>
                                     <th>Alt</th>
-                                    <th>Status</th>
+                                    <th>Active/Inactive</th>
 
                                     <th>Expiry Date</th>
+                                    <th>Status</th>
 
                                     <th>Action</th>
                                 </tr>
@@ -140,12 +141,7 @@
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
-                                        {{-- <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                        <label class="form-check-label" for="customCheck2"></label>
-                                    </div>
-                                </td> --}}
+                                     
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
@@ -162,13 +158,22 @@
                                         <td>{{ $banner->alt }}</td>
                                         <td>{!! $banner->status ? '<span class="text-success">Active</span>' : '<span class="text-primary">Inactive</span>' !!}</td>
                                         <td>{{ $banner->expiry_date }}</td>
+                                        <td><div class="d-inline-flex align-items-center">
+                                            <button 
+                                                wire:click="toggleStatus({{ $banner->id }})"
+                                                class=" btn-toggle {{ $banner->status ? 'active' : '' }}" 
+                                                aria-pressed="{{ $banner->status ? 'true' : 'false' }}">
+                                                {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
+                                            </button>
+                                        </div>
+                                        
+                                       
+                                        </td>
 
 
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <a href="#!" class="btn btn-light btn-sm"><iconify-icon
-                                                        icon="solar:eye-broken"
-                                                        class="align-middle fs-18"></iconify-icon></a>
+                                                
                                                 <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
                                                         class="align-middle fs-18"></iconify-icon></a>
@@ -202,3 +207,4 @@
         </div>
     </div>
 </div>
+ <!-- Optional CSS to style toggle -->
