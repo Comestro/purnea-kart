@@ -253,7 +253,7 @@
 
                     <div class="row">
 
-                         <div class="col-xl-12 col-lg-8 ">
+                         <div class="col-xl-12 col-lg-12 ">
                               <div class="card">
                                    <div class="card-header d-flex justify-content-between align-items-center gap-1">
                                         <h4 class="card-title flex-grow-1">All Brand List</h4>
