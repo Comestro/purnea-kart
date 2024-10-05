@@ -375,7 +375,7 @@
                             <a class="sub-nav-link" href="coupons-list.html">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="coupons-add.html">Add</a>
+                            <a class="sub-nav-link" href="{{url('admin/coupon/coupon-add')}}">Add</a>
                         </li>
                     </ul>
                 </div>

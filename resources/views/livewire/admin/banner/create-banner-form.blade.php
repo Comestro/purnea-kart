@@ -41,8 +41,8 @@
                             <div class=" mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" wire:model="status">
-                                    <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
-                                    <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
+                                    <option value="1" {{ old('status') == 1 ? 'Active' : '' }}>Active</option>
+                                    <option value="0" {{ old('status') == 0 ? 'Inactive' : '' }}>Inactive</option>
                                 </select>
                             </div>
 
@@ -157,7 +157,7 @@
                                         </td>
                                         <td>{{ $banner->alt }}</td>
                                         <td>{!! $banner->status ? '<span class="text-success">Active</span>' : '<span class="text-primary">Inactive</span>' !!}</td>
-                                        <td>{{ $banner->expiry_date }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($banner->expiry_date)->diffForHumans() }}</td>
                                         <td><div class="d-inline-flex align-items-center">
                                             <button 
                                                 wire:click="toggleStatus({{ $banner->id }})"
