@@ -28,7 +28,7 @@ class MetaLogo extends Component
     public function update()
     {
         $data = $this->validate([
-            'meta_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'meta_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:200|dimensions:ratio=3/1',
         ]);
 
         // image work
