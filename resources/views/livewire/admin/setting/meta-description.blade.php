@@ -43,7 +43,7 @@
                 @endif
             </div>
             @error('meta_description')
-                <p class="text-danger small">{{ $message }}</p>
+                <p class=" small">{{ $message }}</p>
             @enderror
         </div>
     </div>
