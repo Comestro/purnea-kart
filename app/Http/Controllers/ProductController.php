@@ -15,11 +15,12 @@ class ProductController extends Controller
     public function index()
     {
         // Fetch products with pagination (5 per page)
-        $products = Product::paginate(3);
+        // $products = Product::paginate(3);
         
         // Return the view with products data
-        return view('admin.product.product_list', compact('products'));
+        return view('admin.product.product_list');
     }
+    
     /**
      * Show the form for creating a new resource.
      */
