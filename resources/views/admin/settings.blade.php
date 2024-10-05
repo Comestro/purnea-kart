@@ -1,5 +1,5 @@
 @extends('admin.include.adminBase')
-@section('title', 'Dashboard ||')
+@section('title', 'General Setting ||')
 
 @section('content')
 

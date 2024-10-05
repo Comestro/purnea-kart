@@ -1,7 +1,7 @@
 
 
 @extends('admin.include.adminBase')
-@section('title', 'Create Product ||')
+@section('title', 'Edit Product ||')
 
 @section('content')
 

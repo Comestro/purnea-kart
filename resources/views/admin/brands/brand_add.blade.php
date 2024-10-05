@@ -1,5 +1,6 @@
 
 @extends('admin.include.adminBase')
+@section('title', 'Create Brand   ||')
 @section('content')
 
 
