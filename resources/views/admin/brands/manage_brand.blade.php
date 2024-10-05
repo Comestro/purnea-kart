@@ -258,7 +258,7 @@
                                    <div class="card-header d-flex justify-content-between align-items-center gap-1">
                                         <h4 class="card-title flex-grow-1">All Brand List</h4>
       
-                                        <a href="" class="btn btn-sm btn-primary">
+                                        <a href="{{url('admin/brands/brand-add')}}" class="btn btn-sm btn-primary">
                                              Add Brand
                                         </a>
       
