@@ -72,8 +72,32 @@
 
         </tbody>
     </table>
-    <!-- Pagination Links -->
-    <div class="mt-4">
-        {{ $products->links() }}
+    <!-- Pagination -->
+    <div class="card-footer border-top">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end mb-0">
+                <!-- Previous Page Link -->
+                <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled" tabindex="-1">Previous</a>
+                </li>
+
+                <!-- Display Only Two Page Numbers -->
+                @php
+                    $currentPage = $products->currentPage();
+                    $lastPage = $products->lastPage();
+                @endphp
+
+                @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                    <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                        <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                <!-- Next Page Link -->
+                <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
