@@ -3,7 +3,7 @@
         <h4 class="card-title">Edit Category</h4>
     </div>
 
-    <form wire:submit.prevent="store">
+    
         <div class="card-body">
             <div class="row">
             <livewire:admin.category.edit-main-field :category="$category"/>
@@ -14,5 +14,5 @@
 
         
         </div>
-    </form>
+    
 </div>
