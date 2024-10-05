@@ -14,6 +14,7 @@ class CreateBannerForm extends Component
     public $alt;
     public $expiry_date;
     public $status=false;
+    
      public function rules(){
         return[
             'title' => ['required', 'string', 'max:255'],
