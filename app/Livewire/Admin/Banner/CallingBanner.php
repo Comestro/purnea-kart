@@ -8,7 +8,11 @@ class CallingBanner extends Component
 {
     public function render()
     {
+        dd('gbjbnj');
         $data['banners']=Banner::all();
         return view('livewire.admin.banner.calling-banner',$data);
     }
+
+   
 }
+

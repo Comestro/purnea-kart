@@ -50,6 +50,13 @@ class CreateBannerForm extends Component
 
 
     }
+
+    public function deleteBanner($id)
+    {
+        Banner::findOrFail($id)->delete();
+
+        session()->flash('message', 'banner deleted successfully.');
+    }
     
     public function render()
     {
