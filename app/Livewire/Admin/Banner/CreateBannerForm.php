@@ -14,6 +14,7 @@ class CreateBannerForm extends Component
     public $alt;
     public $expiry_date;
     public $status=false;
+    
      public function rules(){
         return[
             'title' => ['required', 'string', 'max:255'],
@@ -49,6 +50,13 @@ class CreateBannerForm extends Component
         }
 
 
+    }
+
+    public function deleteBanner($id)
+    {
+        Banner::findOrFail($id)->delete();
+
+        session()->flash('message', 'banner deleted successfully.');
     }
     
     public function render()
