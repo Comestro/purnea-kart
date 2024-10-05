@@ -57,9 +57,10 @@ Route::get('admin/categories/category-list',function(){
     return view('admin.categories.category_list');
 })->name('manage_category');
 
-Route::get('admin/categories/category-edit', function () {
-    return view('admin.categories.category_edit');
-});
+Route::get('admin/categories/category-edit/{cat_id}', function ($cat_id) {
+    
+    return view('admin.categories.category_edit',['cat_id' => $cat_id]);
+})->name('edit.category');
 Route::get('admin/categories/category-add', function () {
     return view('admin.categories.category_add');
 });
