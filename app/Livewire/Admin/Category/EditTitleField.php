@@ -7,6 +7,7 @@ use Livewire\Component;
 class EditTitleField extends Component
 {
 
+    public $category;
     public $cat_title;
     public $isEdit = false;
     public function toggle()

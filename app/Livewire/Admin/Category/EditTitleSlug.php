@@ -7,6 +7,7 @@ use Livewire\Component;
 class EditTitleSlug extends Component
 {
 
+    public $category;
     public $cat_slug;
     public $isEdit = false;
     public function toggle()

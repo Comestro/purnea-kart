@@ -39,7 +39,7 @@
                 @endif
             </div>
             @error('meta_logo')
-                <p class="text-danger small">{{ $message }}</p>
+                <p class=" small">{{ "Meta logo should be Of dimension 300 X 100" }}</p>
             @enderror
         </div>
     </div>

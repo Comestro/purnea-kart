@@ -39,7 +39,7 @@
                 @endif
             </div>
             @error('copyright')
-                <p class="text-danger small">{{ $message }}</p>
+                <p class=" small">{{ $message }}</p>
             @enderror
         </div>
     </div>
