@@ -2,7 +2,7 @@
     <div class="card border">
         <div class="card-header py-2 align-items-center d-flex justify-content-between">
             <h5 class="m-0 fw-normal">Meta Description</h5>
-            <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>
+            {!! !$isEdit ? '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>' :  '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Cancel</button>'!!}
         </div>
         <div class="card-body">
             <div class="d-flex flex-column gap-2">
