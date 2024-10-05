@@ -99,6 +99,4 @@ Route::get('admin/settings', function () {
     return view('admin.settings', ['setting' => Setting::first()]);
 });
 
-Route::prefix('settings')->controller(GeneralSettingController::class)->group(function () {
-    Route::post('/meta-logo', 'updateMetaLogo')->name('settings.updateMetaLogo');
-});
+

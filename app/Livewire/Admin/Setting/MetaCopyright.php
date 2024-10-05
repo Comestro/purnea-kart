@@ -13,7 +13,7 @@ class MetaCopyright extends Component
     public function mount()
     {
         $setting = Setting::first();
-        $this->copyright = ($setting->copyright) ? $setting->description : null;
+        $this->copyright = ($setting->copyright) ? $setting->copyright : null;
     }
 
     public function toggle()
