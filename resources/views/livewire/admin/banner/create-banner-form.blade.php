@@ -159,8 +159,7 @@
                                             <p class="text-dark fw-medium fs-15 mb-0">{{ $banner->title }}</p>
                                         </td>
                                         <td>{{ $banner->alt }}</td>
-                                        <td>{{ $banner->status }}</td>
-                                        
+                                        <td>{!! $banner->status ? '<span class="text-success">Active</span>' : '<span class="text-primary">Inactive</span>' !!}</td>
                                         <td>{{ $banner->expiry_date }}</td>
 
 
