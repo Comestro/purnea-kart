@@ -7,7 +7,8 @@
                     Add Category
                 </a>
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         This Month
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
@@ -39,49 +40,73 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach ($category as $cat )
-                          <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                        <label class="form-check-label" for="customCheck2"></label>
-                                    </div>
-                                </td>
-                                <td>{{$cat->cat_title}}</td>
-                                <td>{{$cat->cat_slug}}</td>
-                                <td>{{$cat->cat_description}}</td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                            <img src="{{asset('storage/public/image/category/'.$cat->image)}}" alt="" class="avatar-md">
+                            @foreach ($category as $cat)
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                                            <label class="form-check-label" for="customCheck2"></label>
                                         </div>
-                                        <p class="text-dark fw-medium fs-15 mb-0">{{$cat->name}}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                        <a href="{{route('edit.category',$cat->id)}}" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                        <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                    </div>
-                                </td>
-                            </tr>
-                          
-                          @endforeach
-                     
+                                    </td>
+                                    <td>{{ $cat->cat_title }}</td>
+                                    <td>{{ $cat->cat_slug }}</td>
+                                    <td>{{ $cat->cat_description }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div
+                                                class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
+                                                <img src="{{ asset('storage/public/image/category/' . $cat->image) }}"
+                                                    alt="" class="avatar-md">
+                                            </div>
+                                            <p class="text-dark fw-medium fs-15 mb-0">{{ $cat->name }}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="#!" class="btn btn-light btn-sm"><iconify-icon
+                                                    icon="solar:eye-broken"
+                                                    class="align-middle fs-18"></iconify-icon></a>
+                                            <a href="{{ route('edit.category', $cat->id) }}"
+                                                class="btn btn-soft-primary btn-sm"><iconify-icon
+                                                    icon="solar:pen-2-broken"
+                                                    class="align-middle fs-18"></iconify-icon></a>
+                                            <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
+                                                    icon="solar:trash-bin-minimalistic-2-broken"
+                                                    class="align-middle fs-18"></iconify-icon></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
                 <!-- end table-responsive -->
             </div>
+            <!-- Pagination -->
             <div class="card-footer border-top">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end mb-0">
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                        <li class="page-item {{ $category->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
+                                tabindex="-1">Previous</a>
+                        </li>
+
+                        @php
+                            $currentPage = $category->currentPage();
+                            $lastPage = $category->lastPage();
+                        @endphp
+
+                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        <!-- Next Page Link -->
+                        <li class="page-item {{ $category->hasMorePages() ? '' : 'disabled' }}">
+                            <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

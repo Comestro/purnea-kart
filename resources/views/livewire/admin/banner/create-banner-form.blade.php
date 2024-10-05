@@ -192,17 +192,33 @@
                     </div>
                     <!-- end table-responsive -->
                 </div>
-                <div class="card-footer border-top">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
+                  <!-- Pagination -->
+            <div class="card-footer border-top">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item {{ $banners->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
+                                tabindex="-1">Previous</a>
+                        </li>
+
+                        @php
+                            $currentPage = $banners->currentPage();
+                            $lastPage = $banners->lastPage();
+                        @endphp
+
+                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        <!-- Next Page Link -->
+                        <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
+                            <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             </div>
         </div>
     </div>

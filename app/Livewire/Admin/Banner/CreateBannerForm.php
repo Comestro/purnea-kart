@@ -3,11 +3,13 @@
 namespace App\Livewire\Admin\Banner;
 use App\Models\Banner;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
 
 class CreateBannerForm extends Component
 {
+    use WithPagination;
     use WithFileUploads;
     public $title;
     public $image_path;
@@ -43,10 +45,7 @@ class CreateBannerForm extends Component
 
         ]);
 
-        // $current_date = now(); 
-        // if ($banner->expiry_date < $current_date) {
-        //     $banner->update(['status' => 'inactive']);
-        // }
+       
         if ($banner) {
             $this->reset(["title","expiry_date","alt","image_path","status"]);
             session()->flash('message', 'Banner added successfully.');
@@ -69,7 +68,7 @@ class CreateBannerForm extends Component
     
     public function render()
     {
-        $data['banners']=Banner::all();
+        $data['banners']=Banner::paginate(3);
 
         return view('livewire.admin.banner.create-banner-form',$data);
     }

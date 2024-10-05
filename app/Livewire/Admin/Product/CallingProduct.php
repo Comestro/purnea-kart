@@ -10,13 +10,12 @@ class CallingProduct extends Component
 {
     
     use WithPagination;
-    public $itemsPerPage = 1;
     
 
 
     public function render()
     {
-        $data['products']=Product::paginate(1);
+        $data['products']=Product::paginate(5);
         return view('livewire.admin.product.calling-product',$data);
     }
 
