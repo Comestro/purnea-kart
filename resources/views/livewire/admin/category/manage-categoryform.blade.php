@@ -34,7 +34,7 @@
                                 <th>Category Name</th>
                                 <th>Category slug</th>
                                 <th>Category Description</th>
-                                
+                                <th>Category Logo</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,6 +47,9 @@
                                         <label class="form-check-label" for="customCheck2"></label>
                                     </div>
                                 </td>
+                                <td>{{$cat->cat_title}}</td>
+                                <td>{{$cat->cat_slug}}</td>
+                                <td>{{$cat->cat_description}}</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
                                         <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
@@ -55,9 +58,6 @@
                                         <p class="text-dark fw-medium fs-15 mb-0">{{$cat->name}}</p>
                                     </div>
                                 </td>
-                                <td>{{$cat->cat_slug}}</td>
-                                <td>{{$cat->cat_description}}</td>
-                               
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
