@@ -10,11 +10,8 @@
             <livewire:admin.category.edit-title-field :category="$category"/>
             <livewire:admin.category.edit-title-slug :category="$category"/>
             <livewire:admin.category.edit-description :category="$category"/>
-            <livewire:admin.category.edit-category-image :category="$category"/>
             
-            
-
-        
         </div>
+        <livewire:admin.category.edit-category-image :category="$category"/>
     
 </div>
