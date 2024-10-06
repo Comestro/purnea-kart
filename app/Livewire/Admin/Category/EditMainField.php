@@ -30,7 +30,7 @@ class EditMainField extends Component
         $this->category->update($data);
 
         $this->toggle();
-        return redirect()->back()->with('success', 'title updated successfully!');
+        return redirect()->back()->with('success', 'Main title updated successfully!');
     }
 
     public function render()
@@ -69,7 +69,7 @@ class EditMainField extends Component
                                     <p class="mt-2 mb-0">Loading...</p>
                                 </div>
                                 <p class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">Main category</i>
+                                <i class="text-muted">{{$this->category->parent_category_id}}</i>
                                 </p>
                             @endif
                         </div>
