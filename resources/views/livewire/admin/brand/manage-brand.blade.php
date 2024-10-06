@@ -39,7 +39,7 @@
                                 <a href="" class="btn btn-light btn-sm">
                                     <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
                                 </a>
-                                <a href="" class="btn btn-soft-primary btn-sm" data-toggle="modal" data-target="#brandModal" wire:click="editBrand({{ $item->id }})">
+                                <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm"  wire:click="editBrand({{ $item->id }})">
                                     <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                                 </a>
                                 <button wire:click="confirmDelete({{ $item->id }})"
@@ -55,7 +55,7 @@
         </table>
     </div>
 
-    <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div>
                 <div class="card border-0 shadow-sm bg-white">
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Pagination -->
     <div class="card-footer border-top">
