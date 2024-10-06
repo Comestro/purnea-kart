@@ -72,7 +72,7 @@ Route::get('admin/coupon/coupon-add',function(){
 
 Route::get('admin/coupon/coupon-list',function(){
     return view('admin.coupons.coupon-list');
-})->name('coupon_add');
+})->name('coupon_list');
 
 
 //INVENTORY
