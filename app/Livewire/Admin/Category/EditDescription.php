@@ -31,7 +31,7 @@ class EditDescription extends Component
          <div class="col-lg-6">
             <div class="card border">
                 <div class="card-header py-2 align-items-center d-flex justify-content-between">
-                 <h5 class="m-0 fw-normal">Category Title</h5>
+                 <h5 class="m-0 fw-normal">Category Description</h5>
             {!! !$isEdit
                 ? '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Edit</button>'
                 : '<button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">Cancel</button>' !!}
