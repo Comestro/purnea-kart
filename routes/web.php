@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
 use App\Models\Banner;
+use App\Models\Brand;
 
 Route::view('/', 'home')->name('home');
 
@@ -38,7 +39,11 @@ Route::get('admin/brands/brand-add', function () {
 
 Route::get('admin/brands/manage-brand',function(){
     return view('admin.brands.manage_brand');
-});
+})->name('manage_brand');
+
+Route::get('admin/brands/brand-edit/{brand_id}',function($brand_id){
+    return view('admin.brands.brand_edit',['brand_id'=> $brand_id]);
+})->name('edit_brand');
 
 
 //Banner

@@ -12,6 +12,7 @@ class ManageBrand extends Component
 {
     use WithPagination;
     use WithFileUploads;
+    public $brandData;
     public $searchTerm;
     public $brand_name;
     public $brand_description;
@@ -23,6 +24,10 @@ class ManageBrand extends Component
         "brand_slug" => "required|string|max:255",
         "logo" => "required|string|max:255",
     ];
+    public function mount(Brand $brand)
+    {
+        $this->brandData = $brand;
+    }
     public function render()
     {
         $brands = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')->orWhere('brand_name', 'like', '%' . $this->searchTerm . '%')->paginate(5);

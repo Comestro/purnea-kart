@@ -41,7 +41,7 @@
                                 <a href="" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken"
                                         class="align-middle fs-18"></iconify-icon></a>
                                 {{-- edit --}}
-                                <a href="" class="btn btn-soft-primary btn-sm" data-toggle="modal" data-target="#brandModal"><iconify-icon
+                                <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm" ><iconify-icon
                                         icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                 {{-- delete --}}
                                 <a href="" class="btn btn-soft-danger btn-sm"><iconify-icon

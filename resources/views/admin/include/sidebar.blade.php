@@ -116,7 +116,7 @@
                             <a class="sub-nav-link" href="{{url('admin/brands/manage-brand')}}">List</a>
                         </li>
                         {{-- <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="category-edit.html">Edit</a>
+                            <a class="sub-nav-link" href="{{url('admin/brands/brand-edit')}}">Edit</a>
                         </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/brand-add')}}">Create</a>
