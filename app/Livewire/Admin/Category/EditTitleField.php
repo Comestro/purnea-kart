@@ -58,8 +58,7 @@ class EditTitleField extends Component
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
-                                        <i class="text-muted">Category title</i>
-                                    </p>
+                                    <i class="text-muted">{{$this->category->cat_title}}</i>                                    </p>
                                 @endif
                             </div>
                         @endif

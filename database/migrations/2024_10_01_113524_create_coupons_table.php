@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->enum('discount_type', ['percentage', 'fixed']);
+            $table->enum('discount_type', ['percentage', 'fixed','freeShipping']);
             $table->decimal('discount_value')->nullable();
             $table->date('expiration_date')->nullable();
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

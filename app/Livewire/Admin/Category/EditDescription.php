@@ -22,7 +22,7 @@ class EditDescription extends Component
         $this->category->update($data);
         
         $this->toggle();
-        return redirect()->back()->with('success', 'title updated successfully!');
+        return redirect()->back()->with('success', 'Description updated successfully!');
     }
     public function render()
     {
@@ -63,7 +63,7 @@ class EditDescription extends Component
                                 </div>
                                 <div wire:loading.remove wire:target="toggle"
                                     class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">  category description</i>
+                                    <i class="text-muted">{{$this->category->cat_description}}</i>
                                 </div>
                             </div>
                         @endif
