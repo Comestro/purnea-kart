@@ -1,5 +1,5 @@
 @extends('admin.include.adminBase')
-@section('title', 'Create Category ||')
+@section('title', 'Coupon List ||')
 
 @section('content')
 
