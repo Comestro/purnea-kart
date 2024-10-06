@@ -27,7 +27,7 @@
          background-color: white;
          border-radius: 50%;
          position: absolute;
-         top: 0.125rem;
+         top: 0.126rem;
          left: 0.125rem;
          transition: transform 0.3s ease;
      }
