@@ -16,7 +16,7 @@ class EditCategoryImage extends Component
     public function mount()
     {
         $categoryImage = $this->category;
-        $this->cat_image = ($categoryImage->cat_image) ? $categoryImage->cat_image : null;
+        $this->cat_image = ($categoryImage->image) ? $categoryImage->image : null;
     }
 
     public function toggle()
@@ -33,7 +33,7 @@ class EditCategoryImage extends Component
         // image work
         $image = $this->cat_image;
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs("'public/image/category", $imageName, "public");
+        $image->storeAs("public/image/category", $imageName, "public");
         $data['cat_image'] = $imageName;
 
 
