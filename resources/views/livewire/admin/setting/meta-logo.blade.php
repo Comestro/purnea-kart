@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-4">
 
     <div class="card border h-auto">
         {{-- this is the card header --}}

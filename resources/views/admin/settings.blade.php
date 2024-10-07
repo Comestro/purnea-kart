@@ -305,11 +305,15 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <livewire:admin.setting.meta-title />
+                            <livewire:admin.setting.meta-title />
                                 <livewire:admin.setting.meta-tag />
                                 <livewire:admin.setting.meta-logo />
-                                <livewire:admin.setting.meta-copyright />
-                                <livewire:admin.setting.meta-description />
+</div>
+
+                               <div class="row">
+                               <livewire:admin.setting.meta-copyright />
+                               <livewire:admin.setting.meta-description />
+                               </div>
 
                             </div>
                         </div>
