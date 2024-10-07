@@ -13,4 +13,11 @@ class CouponCalling extends Component
         $data['coupons']=Coupon::where('code','like','%'.$this->search.'%')->get();
         return view('livewire.admin.coupon.coupon-calling' ,$data);
     }
+
+    public function delete($id)
+    {
+        Coupon::findOrFail($id)->delete();
+
+        session()->flash('message', 'Coupon deleted successfully.');
+    }
 }
