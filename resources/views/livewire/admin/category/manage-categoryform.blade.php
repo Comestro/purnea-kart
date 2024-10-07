@@ -50,6 +50,7 @@
                                         <label class="form-check-label" for="customCheck1"></label>
                                     </div>
                                 </th>
+                                <th>Id</th>
                                 <th>Category Name</th>
                                 <th>Category slug</th>
                                 <th>Category Description</th>
@@ -66,6 +67,7 @@
                                             <label class="form-check-label" for="customCheck2"></label>
                                         </div>
                                     </td>
+                                    <td>{{$cat->id}}</td>
                                     <td>{{ $cat->cat_title }}</td>
                                     <td>{{ $cat->cat_slug }}</td>
                                     <td>{{ $cat->cat_description }}</td>
