@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 class InsertBrand extends Component
 {
     use WithFileUploads;
+
     public $brand_name;
     public $brand_description;
     public $logo;
@@ -25,7 +26,7 @@ class InsertBrand extends Component
         ];
     }
 
-    public function updatedBrandname($value)
+    public function updatedBrandName($value) // Corrected from updatedBrandname to updatedBrandName
     {
         $this->brand_slug = Str::slug($value);
     }
@@ -34,7 +35,10 @@ class InsertBrand extends Component
     {
         $validateData = $this->validate();
         $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
-        $this->logo->storeAs('/public/logo/brand', $logoName,'public');
+
+        if ($this->logo) {
+            $this->logo->storeAs('/public/logo/brand', $logoName, 'public');
+        }
 
         $brand = Brand::create([
             'brand_name' => $this->brand_name,
@@ -44,9 +48,8 @@ class InsertBrand extends Component
         ]);
 
         if ($brand) {
-            session()->flash('message', 'brand added successfully.');
-           return redirect()->route('manage_brand');
-         
+            session()->flash('message', 'Brand added successfully.');
+            return redirect()->route('manage_brand');
         } else {
             session()->flash('message', 'Unable to add brand.');
         }
