@@ -26,7 +26,7 @@
 
                 <div class="mb-4">
                     <label class="form-label">
-                        Brand Logo
+                        Brand Logo  
                     </label>
                     <div class="row">
                         <div class="col-md-6 mb-3">
