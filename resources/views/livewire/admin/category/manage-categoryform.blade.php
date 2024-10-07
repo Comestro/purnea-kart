@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center gap-1">
                 <h4 class="card-title flex-grow-1">All Categories List</h4>
-                <a href="{{ route('create.category') }}" class="btn btn-sm btn-primary">
+                <a href="{{ url('admin/categories/category-add') }}" class="btn btn-sm btn-primary">
                     Add Category
                 </a>
                 <div class="dropdown">
