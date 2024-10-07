@@ -68,7 +68,7 @@ Route::get('admin/categories/category-edit/{cat_id}', function ($cat_id) {
 })->name('edit.category');
 Route::get('admin/categories/category-add', function () {
     return view('admin.categories.category_add');
-});
+})->name('create.category');
 
 //Coupon
 Route::get('admin/coupon/coupon-add',function(){
