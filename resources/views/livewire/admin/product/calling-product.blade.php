@@ -8,6 +8,7 @@
                         <label class="form-check-label" for="customCheck1"></label>
                     </div>
                 </th>
+                <th>Id</th>
                 <th>Product Name & Size</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -28,7 +29,7 @@
                             <label class="form-check-label" for="customCheck2">&nbsp;</label>
                         </div>
                     </td>
-
+                    <td>{{ $product->id }}</td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
                             {{-- <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
