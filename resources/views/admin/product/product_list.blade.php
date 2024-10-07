@@ -2,6 +2,13 @@
 @section('title', 'Product List ||')
 
 @section('content')
+<!-- <style>
+        .truncate {
+            white-space: nowrap; 
+            overflow: hidden;    
+            text-overflow: ellipsis; 
+        }
+    </style> -->
 
 
     <!-- Activity Timeline -->

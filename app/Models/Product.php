@@ -21,9 +21,12 @@ class Product extends Model
     {
         return $this->hasOne(category::class,"id","category_id");
     }
+
     public function brand()
     {
         return $this->hasOne(brand::class,"id","brand_id");
     }
+
+    
 
 }

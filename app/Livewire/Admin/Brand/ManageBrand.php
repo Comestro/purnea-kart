@@ -13,7 +13,7 @@ class ManageBrand extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $searchTerm = '';
+    public $search = '';
     public $logo;
     public $brandId;
     public $confirmingDelete = false;
@@ -51,7 +51,7 @@ class ManageBrand extends Component
 
     public function render()
     {
-        $brands = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')
+        $brands = Brand::where('brand_name', 'like', '%'.$this->search.'%')
             ->paginate(5);
 
         return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
