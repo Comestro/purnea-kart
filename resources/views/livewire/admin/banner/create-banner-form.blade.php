@@ -127,6 +127,7 @@
                                         <label class="form-check-label" for="customCheck1"></label>
                                     </div>
                                 </th> --}}
+                                    <th>Id</th>
                                     <th>Image</th>
                                     <th>title</th>
                                     <th>Alt</th>
@@ -141,7 +142,7 @@
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
-                                     
+                                        <td>{{$banner->id}}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
@@ -152,6 +153,7 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        
                                         <td>
                                             <p class="text-dark fw-medium fs-15 mb-0">{{ $banner->title }}</p>
                                         </td>
