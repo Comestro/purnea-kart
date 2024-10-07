@@ -1,4 +1,4 @@
-<div class="col-lg-4">
+<div class="col-lg-6">
 
     <div class="card border h-auto">
         {{-- this is the card header --}}
@@ -25,7 +25,7 @@
                                 <div wire:loading.remove wire:target="toggle"
                                     class="lead text-capitalize font-medium text-dark mb-0">
                                     <img src="{{ asset('storage/images/setting/' . $meta_logo) }}" alt="meta logo"
-                                        class="img-thumbnail w-25 h-25">
+                                        class="img-thumbnail w-50 h-25">
                                 </div>
                             </div>
                         @else

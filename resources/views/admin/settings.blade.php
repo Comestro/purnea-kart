@@ -307,12 +307,15 @@
                             <div class="row">
                             <livewire:admin.setting.meta-title />
                                 <livewire:admin.setting.meta-tag />
-                                <livewire:admin.setting.meta-logo />
+                                <livewire:admin.setting.meta-copyright />
+
 </div>
 
                                <div class="row">
-                               <livewire:admin.setting.meta-copyright />
+                                
                                <livewire:admin.setting.meta-description />
+                               <livewire:admin.setting.meta-logo />
+
                                </div>
 
                             </div>
