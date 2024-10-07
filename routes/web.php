@@ -66,6 +66,7 @@ Route::get('admin/categories/category-edit/{cat_id}', function ($cat_id) {
     
     return view('admin.categories.category_edit',['cat_id' => $cat_id]);
 })->name('edit.category');
+
 Route::get('admin/categories/category-add', function () {
     return view('admin.categories.category_add');
 });
