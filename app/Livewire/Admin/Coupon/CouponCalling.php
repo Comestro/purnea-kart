@@ -12,4 +12,10 @@ class CouponCalling extends Component
         $data['coupons']=Coupon::all();
         return view('livewire.admin.coupon.coupon-calling' ,$data);
     }
+    public function delete($id)
+    {
+        Product::findOrFail($id)->delete();
+
+        session()->flash('message', 'Coupon deleted successfully.');
+    }
 }

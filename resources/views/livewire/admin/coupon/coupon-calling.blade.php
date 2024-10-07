@@ -31,6 +31,7 @@
                                                 <label class="form-check-label" for="customCheck1"></label>
                                            </div>
                                       </th>
+                                      <th>Id</th>
                                       <th>Product Code</th>
                                       <th>Discount Type</th>
                                       <th>Discount Value</th>
@@ -60,14 +61,22 @@
                                         </div>
 
                                    </td>-->
+                                   <td>{{$coupon->id}}</td>
                                    <td>{{$coupon->code}}</td>
                                    <td>{{$coupon->discount_type}}</td>
                                    <td>{{$coupon->discount_value}}</td>
                                    <td>{{$coupon->expiration_date}}</td>
                                    {{-- <td>{{$coupon->status}}</td> --}}
                                    <td>
-                                        <span class="badge text-success bg-success-subtle fs-12"><i class="bx bx-check-double"></i>Active</span>
+                                        <div class="inline-flex items-center">
+                                             <a
+                                                 wire:click="toggleStatus({{ $coupon->id }})"
+                                                 class="">
+                                                 <span class="text-xl">{{ $coupon->status ? 'Deactivate' : 'Activate' }}</span>   
+                                             </a>
+                                         </div>
                                    </td>
+                                   
                                    <td>
                                         <div class="d-flex gap-2">
                                              <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
