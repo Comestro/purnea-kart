@@ -17,7 +17,7 @@
                             @if ($logo)
                                 <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" />
                             @else
-                                <p class="text-muted"></p>
+                                <p class="text-muted">No logo uploaded</p>
                             @endif
                         </div>
                     </div>
@@ -37,7 +37,7 @@
             </div>
             <hr>
             <div class="card-body">
-                <form>
+                <form wire:submit.prevent="store"> <!-- Prevent default form submission -->
                     <div class="mb-4 row g-3">
                         <div class="col-xl-6">
                             <label class="form-label">Brand Name</label>

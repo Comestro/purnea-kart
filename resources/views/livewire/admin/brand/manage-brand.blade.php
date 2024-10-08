@@ -15,61 +15,61 @@
         </svg>
     </div>
 </div>
-    <div class="table-responsive">
-        <table class="table align-middle mb-0 table-hover table-centered">
-            <thead class="bg-light-subtle">
+<div class="table-responsive">
+    <table class="table align-middle mb-0 table-hover table-centered">
+        <thead class="bg-light-subtle">
+            <tr>
+                <th style="width: 20px;">
+                    <div class="form-check ms-1">
+                        <input type="checkbox" class="form-check-input" id="selectAll" wire:model="selectAll">
+                        <label class="form-check-label" for="selectAll"></label>
+                    </div>
+                </th>
+                <th scope="col">Id</th>
+                <th scope="col">Brand Name</th>
+                <th scope="col">Brand Slug</th>
+                <th scope="col">Brand Description</th>
+                <th scope="col">Logo</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($brands as $item)
                 <tr>
-                    <th style="width: 20px;">
+                    <td>
                         <div class="form-check ms-1">
-                            <input type="checkbox" class="form-check-input" id="selectAll">
-                            <label class="form-check-label" for="selectAll"></label>
+                            <input type="checkbox" class="form-check-input" id="customCheck{{ $item->id }}" wire:model="selectedBrands" value="{{ $item->id }}">
+                            <label class="form-check-label" for="customCheck{{ $item->id }}">&nbsp;</label>
                         </div>
-                    </th>
-                    <th scope="col">Id</th>
-                    <th scope="col">Brand Name</th>
-                    <th scope="col">Brand Slug</th>
-                    <th scope="col">Brand Description</th>
-                    <th scope="col">Logo</th>
-                    <th scope="col">Action</th>
+                    </td>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->brand_name }}</td>
+                    <td>{{ $item->brand_slug }}</td>
+                    <td>{{ $item->brand_description }}</td>
+                    <td>
+                        <img src="{{ $item->logo ? asset('storage/public/logo/brand/' . $item->logo) : asset('storage/logo/brand/default.png') }}" alt="Logo" style="max-width: 100px; max-height: 100px;">
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="" class="btn btn-light btn-sm">
+                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
+                            <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm"  wire:click="editBrand({{ $item->id }})">
+                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
+                            <button wire:click="confirmDelete({{ $item->id }})"
+                                class="btn btn-soft-danger btn-sm"
+                                aria-label="Delete brand {{ $item->brand_name }}">
+                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($brands as $item)
-                    <tr>
-                        <td>
-                            <div class="form-check ms-1">
-                                <input type="checkbox" class="form-check-input" id="customCheck{{ $item->id }}">
-                                <label class="form-check-label" for="customCheck{{ $item->id }}">&nbsp;</label>
-                            </div>
-                        </td>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->brand_name }}</td>
-                        <td>{{ $item->brand_slug }}</td>
-                        <td>{{ $item->brand_description }}</td>
-                        <td>
-                            <img src="{{ $item->logo ? asset('storage/public/logo/brand/' . $item->logo) : asset('storage/logo/brand/default.png') }}"
-                                alt="Logo" style="max-width: 100px; max-height: 100px;">
-                        </td>
-                        <td>
-                            <div class="d-flex gap-2">
-                                <a href="" class="btn btn-light btn-sm">
-                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                                </a>
-                                <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm"  wire:click="editBrand({{ $item->id }})">
-                                    <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
-                                </a>
-                                <button wire:click="confirmDelete({{ $item->id }})"
-                                    class="btn btn-soft-danger btn-sm"
-                                    aria-label="Delete brand {{ $item->brand_name }}">
-                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
     {{-- <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
