@@ -10,10 +10,11 @@ use Livewire\WithPagination;
 class ManageCategoryform extends Component
 {
     use WithPagination;
+    public $search="";
 
     public function render()
     {
-        $data['category']=Category::paginate(3);
+        $data['category']=Category::where('cat_title','LIKE',"%".$this->search."%")->paginate(3);
 
         return view('livewire.admin.category.manage-categoryform', $data);
     }

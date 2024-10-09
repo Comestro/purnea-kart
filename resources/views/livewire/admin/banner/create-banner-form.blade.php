@@ -77,10 +77,10 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="dropzone" style="height: 40%">
+                                <div class="col-md-12 mt-2">
+                                    <div class="dropzone">
                                         <!-- Loading spinner when uploading -->
-                                        <div wire:loading wire:target="path" class="text-center">
+                                        <div wire:loading wire:target="image_path" class="text-center">
                                             <div class="spinner-border text-muted" role="status"></div>
                                             <p class="mt-2">Uploading...</p>
                                         </div>
@@ -127,6 +127,7 @@
                                         <label class="form-check-label" for="customCheck1"></label>
                                     </div>
                                 </th> --}}
+                                    <th>Id</th>
                                     <th>Image</th>
                                     <th>title</th>
                                     <th>Alt</th>
@@ -141,7 +142,7 @@
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
-                                     
+                                        <td>{{$banner->id}}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
@@ -152,6 +153,7 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        
                                         <td>
                                             <p class="text-dark fw-medium fs-15 mb-0">{{ $banner->title }}</p>
                                         </td>

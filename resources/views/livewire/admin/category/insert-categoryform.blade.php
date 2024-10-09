@@ -13,11 +13,7 @@
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->cat_title }}</option>
                         @endforeach<form>
-                            <div class="mb-3">
-                                <label for="end-date" class="form-label text-dark">End Date</label>
-                                <input type="text" id="end-date" class="form-control flatpickr-input active"
-                                    placeholder="dd-mm-yyyy" readonly="readonly">
-                            </div>
+                            
                         </form>
                     </select>
                     @error('parent_category_id')

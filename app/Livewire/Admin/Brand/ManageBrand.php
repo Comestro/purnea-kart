@@ -13,27 +13,30 @@ class ManageBrand extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $searchTerm = '';
+    public $search = '';
     public $logo;
     public $brandId;
     public $confirmingDelete = false;
 
+    public function render()
+    {
+        $brands = Brand::where('brand_name', 'like', '%'.$this->search.'%')
+            ->paginate(5);
+
+        return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
+    }
+
+
     public function deleteBrand()
     {
         if ($this->confirmingDelete) {
-            $brand = Brand::find($this->brandId);
-            
-            if ($brand) {
-                if ($brand->logo) {
-                    Storage::delete('public/logo/brand/' . $brand->logo);
-                }
-                $brand->delete();
-                session()->flash('message', 'Brand deleted successfully.');
-            } else {
-                session()->flash('error', 'Brand not found.');
+            $brand = Brand::find($this->brandId);            
+            if ($brand->image) {
+                Storage::delete('public/logo/brand/' . $brand->image);
             }
-            
-            $this->resetConfirmation();
+            $brand->delete();
+            $this->confirmingDelete = false;
+            session()->flash('message', 'Brand deleted successfully.');
         }
     }
 
@@ -41,19 +44,5 @@ class ManageBrand extends Component
     {
         $this->brandId = $brandId;
         $this->confirmingDelete = true;
-    }
-
-    public function resetConfirmation()
-    {
-        $this->confirmingDelete = false;
-        $this->brandId = null;
-    }
-
-    public function render()
-    {
-        $brands = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')
-            ->paginate(5);
-
-        return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
     }
 }

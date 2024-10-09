@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<div class="col-lg-6">
     <div class="card border">
         <div class="card-header py-2 align-items-center d-flex justify-content-between">
             <h5 class="m-0 fw-normal">Meta Description</h5>
