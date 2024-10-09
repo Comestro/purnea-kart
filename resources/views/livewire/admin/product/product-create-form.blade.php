@@ -1,84 +1,27 @@
 <div class="row">
     <div class="col-lg-4">
+        <!-- preview -->
         <div class="card">
-            <div class="card-body">
-                <img src="assets/images/product/p-1.png" alt="" class="img-fluid rounded bg-light">
-                <div class="mt-3">
-                    <h4>Product name: <span class="fs-14 text-muted ms-1">{{ $name }}</span></h4>
-                    <h4>Product description: <span class="fs-14 text-muted ms-1">{{ $description }}</span></h4>
-                    <h4 class="text-dark fw-medium mt-3">Price : <span class="text-muted text-decoration-line-through">${{ $price }}</span> ${{ $discount_price }} <small class="text-muted">
-                    </small></h5>
-                       
-                    </h4>
-                    
-                    <h4>Product quantity: <span class="fs-14 text-muted ms-1">{{ $quantity }}</span></h4>
-                    <h4>Product sku: <span class="fs-14 text-muted ms-1">{{ $sku }}</span></h4>
-
-                    <!-- <div class="mt-3">
-                        <h5 class="text-dark fw-medium">Size :</h5>
-                        <div class="d-flex flex-wrap gap-2" role="group"
-                            aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="size-s">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="size-s">S</label>
-
-                            <input type="checkbox" class="btn-check" id="size-m" checked>
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="size-m">M</label>
-
-                            <input type="checkbox" class="btn-check" id="size-xl">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="size-xl">Xl</label>
-
-                            <input type="checkbox" class="btn-check" id="size-xxl">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="size-xxl">XXL</label>
-
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <h5 class="text-dark fw-medium">Colors :</h5>
-                        <div class="d-flex flex-wrap gap-2" role="group"
-                            aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="color-dark">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="color-dark"> <i class="bx bxs-circle fs-18 text-dark"></i></label>
-
-                            <input type="checkbox" class="btn-check" id="color-yellow">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="color-yellow"> <i class="bx bxs-circle fs-18 text-warning"></i></label>
-
-                            <input type="checkbox" class="btn-check" id="color-white">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="color-white"> <i class="bx bxs-circle fs-18 text-white"></i></label>
-
-                            <input type="checkbox" class="btn-check" id="color-red">
-                            <label
-                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                for="color-red"> <i class="bx bxs-circle fs-18 text-danger"></i></label>
-
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-            <!-- <div class="card-footer bg-light-subtle">
-                <div class="row g-2">
-                    <div class="col-lg-6">
-                        <a href="#!" class="btn btn-outline-secondary w-100">Create Product</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a href="#!" class="btn btn-primary w-100">Cancel</a>
-                    </div>
-                </div>
-            </div> -->
+    <div class="card-body">
+        <img src="assets/images/product/p-1.png" alt="" class="img-fluid rounded bg-light">
+        <div class="mt-3">
+            <h4>Product name: <span class="fs-14 text-muted ms-1">{{ $name }}</span></h4>
+            <h4>Product description: <span class="fs-14 text-muted ms-1">{{ $description }}</span></h4>
+           
+            <h4 class="text-dark fw-medium mt-3">Price : 
+                <span class="text-muted text-decoration-line-through">${{ $price }}</span> 
+                ${{ $discount_price }} 
+            </h4>  
+            <h4 class="text-dark fw-medium mt-3">brand : 
+                <span class="text-muted text-decoration-line-through"></span> 
+                ${{ $brand_id }} 
+            </h4>
+            <h4>Product quantity: <span class="fs-14 text-muted ms-1">{{ $quantity }}</span></h4>
+            <h4>Product sku: <span class="fs-14 text-muted ms-1">{{ $sku }}</span></h4>
         </div>
+    </div>
+</div>
+
     </div>
     <div class="col-lg-8">
 
@@ -126,7 +69,7 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-brand" class="form-label">Product Brand</label>
-                                    <select id="brand_id" name="brand_id" wire:model="brand_id" class="form-control">
+                                    <select id="brand_id" name="brand_id" wire:model.live="brand_id" class="form-control">
                                         <option value="">Select Brand</option>
                                         @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
@@ -145,7 +88,7 @@
                     </div> --}}
                             <div class="col-lg-4">
                                 <label for="product-categories" class="form-label">Product Categories</label>
-                                <select class="form-control" id="product-categories" wire:model='category_id'
+                                <select class="form-control" id="product-categories" wire:model.live='category_id'
                                     name="category_id">
                                     <option value="">Choose a category</option>
                                     @foreach ($categories as $cat)
@@ -269,7 +212,7 @@
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control bg-light-subtle" wire:model='description'
+                                    <textarea class="form-control bg-light-subtle" wire:model.live='description'
                                         id="description" rows="7"
                                         placeholder="Short description about the product"></textarea>
                                 </div>
@@ -289,7 +232,7 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-quantity" class="form-label">Stock</label>
-                                    <input type="number" id="product-quantity" wire:model='quantity'
+                                    <input type="number" id="product-quantity" wire:model.live='quantity'
                                         class="form-control" placeholder="Quantity">
                                 </div>
 
@@ -297,7 +240,7 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-stock" class="form-label">SKU</label>
-                                    <input type="number" id="product-sku" wire:model="sku" class="form-control"
+                                    <input type="number" id="product-sku" wire:model.live="sku" class="form-control"
                                         placeholder="Sku">
                                 </div>
 
