@@ -90,7 +90,7 @@
                                                 class="btn btn-soft-primary btn-sm"><iconify-icon
                                                     icon="solar:pen-2-broken"
                                                     class="align-middle fs-18"></iconify-icon></a>
-                                            <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon
+                                            <a href="#" class="btn btn-soft-danger btn-sm"><iconify-icon
                                                     icon="solar:trash-bin-minimalistic-2-broken"
                                                     class="align-middle fs-18"></iconify-icon></a>
                                         </div>
