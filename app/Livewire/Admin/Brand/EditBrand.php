@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Brand;
 use App\Models\Brand;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Str;
 
 class EditBrand extends Component
 {
@@ -28,6 +29,10 @@ class EditBrand extends Component
 
     }
 
+    public function updatedBrandName($value)
+    {      
+        $this->brand_slug = Str::slug($value);
+    }
     public function update(){
         $data = $this->validate([
             'brand_name' => 'required|string|max:255',
