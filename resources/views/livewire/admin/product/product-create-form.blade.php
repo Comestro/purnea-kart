@@ -12,9 +12,11 @@
                 <span class="text-muted text-decoration-line-through">${{ $price }}</span> 
                 ${{ $discount_price }} 
             </h4>  
-            <h4 class="text-dark fw-medium mt-3">brand : 
-                <span class="text-muted text-decoration-line-through"></span> 
-                ${{ $brand_id }} 
+            <h4 class="text-dark fw-medium mt-3">Brand: 
+                <span class="text-muted">{{ $brand_name }}</span>
+            </h4>
+             <h4 class="text-dark fw-medium mt-3">Category: 
+                <span class="text-muted">{{ $cat_title }}</span>
             </h4>
             <h4>Product quantity: <span class="fs-14 text-muted ms-1">{{ $quantity }}</span></h4>
             <h4>Product sku: <span class="fs-14 text-muted ms-1">{{ $sku }}</span></h4>

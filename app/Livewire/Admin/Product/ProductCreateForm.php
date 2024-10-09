@@ -20,8 +20,29 @@ class ProductCreateForm extends Component
     public $vendor_id;
     public $category_id;
     public $brand_id;
+    public $brand_name;
+    public $cat_title;
 
-    // Validation rules
+
+    public function mount()
+    {
+        if ($this->brand_id) {
+            $this->brand_name = Brand::where('id', $this->brand_id)->value('brand_name');
+        } 
+        if ($this->category_id) {
+            $this->cat_title = Category::where('id', $this->category_id)->value('cat_title');
+        }
+    }
+
+    public function updatedBrandId($value)
+    {
+        $this->brand_name = Brand::where('id', $value)->value('brand_name');
+    }
+      public function updatedCategoryId($value)
+    {
+        $this->cat_title = Category::where('id', $value)->value('cat_title');
+    }
+
     public function rules()
     {
         return [
