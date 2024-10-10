@@ -34,6 +34,9 @@
                                 </div>
                             </div>
                         </div>
+                        @error('status')
+                            <p class="text-red text-xs">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -47,7 +50,7 @@
                             <input type="date" wire:model="expiration_date" id="expiration-date" class="form-control"
                                 placeholder="dd-mm-yyyy" >
                             @error('expiration_date')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-red text-xs">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -64,7 +67,7 @@
                             <label for="code" class="form-label">Coupon Code</label>
                             <input type="text" id="code" wire:model="code" class="form-control" placeholder="Enter Code">
                             @error('code')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-red text-xs">{{ $message }}</span>
                             @enderror
                         </div>
 
@@ -89,7 +92,7 @@
                                 </div>
                             </div>
                             @error('discount_type')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-red text-xs">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -97,7 +100,7 @@
                             <label for="discount_value" class="form-label">Discount Value</label>
                             <input type="text" id="discount_value" wire:model="discount_value" class="form-control" placeholder="Enter value">
                             @error('discount_value')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-red text-xs">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>

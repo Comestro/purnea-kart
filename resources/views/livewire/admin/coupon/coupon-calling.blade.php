@@ -83,7 +83,6 @@
                                     <td>{{ $coupon->discount_type }}</td>
                                     <td>{{ $coupon->discount_value }}</td>
                                     <td>{{ $coupon->expiration_date }}</td>
-                                    {{-- <td>{{$coupon->status}}</td> --}}
                                     <td>
                                         <div class="inline-flex items-center">
                                             <a wire:click="toggleStatus({{ $coupon->id }})"

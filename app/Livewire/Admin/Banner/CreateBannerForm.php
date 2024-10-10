@@ -37,7 +37,7 @@ class CreateBannerForm extends Component
         $this->image_path->storeAs('public/image/banner', $imageName,"public");
 
         $banner = Banner::create([
-         'title' => $this->title,
+            'title' => $this->title,
             'expiry_date' => $this->expiry_date,
             'alt' => $this->alt,
             'image_path' => $imageName,
@@ -72,6 +72,7 @@ class CreateBannerForm extends Component
 
         return view('livewire.admin.banner.create-banner-form',$data);
     }
+    
     public function toggleStatus($bannerId)
     {
         $banner = Banner::find($bannerId);

@@ -44,7 +44,7 @@ class CouponCreate extends Component
             return redirect()->route('coupon_add');
         }
         else {
-            session()->flash('message', 'Unable to add product.');
+            session()->flash('message', 'Unable to add coupon.');
         }
         
 

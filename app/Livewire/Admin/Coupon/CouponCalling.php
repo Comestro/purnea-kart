@@ -20,4 +20,14 @@ class CouponCalling extends Component
 
         session()->flash('message', 'Coupon deleted successfully.');
     }
+
+
+    public function toggleStatus($couponId)
+    {
+        $coupon = Coupon::find($couponId);
+        $coupon->status = !$coupon->status;
+        $coupon->save();
+
+        session()->flash('success', 'Coupon status updated successfully.');
+    }
 }
