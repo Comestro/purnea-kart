@@ -21,8 +21,8 @@ class CouponCreate extends Component
             'code' => 'required|string|max:255|unique:coupons,code',
             'discount_type' => 'required|in:percentage,fixed,freeShipping',
             'discount_value' => 'required|numeric|min:0',
-            'expiration_date' => 'nullable|date|after_or_equal:today',
-            'status' => 'nullable|boolean',
+            'expiration_date' => 'required|date|after_or_equal:today',
+            'status' => 'required|boolean',
         ];
     }
     
