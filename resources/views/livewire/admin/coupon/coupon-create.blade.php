@@ -23,14 +23,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" wire:model="status" type="radio" value="1" id="activeStatus">
-                                    <label class="form-check-label" for="activeStatus">Active</label>
+                                    <input class="form-check-input" wire:model="status" type="radio"  value="0" id="inactiveStatus">
+                                    <label class="form-check-label" for="inactiveStatus">Active</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" wire:model="status" type="radio"  value="0" id="inactiveStatus">
-                                    <label class="form-check-label" for="inactiveStatus">In Active</label>
+                                    <input class="form-check-input" wire:model="status" type="radio" value="1" id="activeStatus">
+                                    <label class="form-check-label" for="activeStatus">De Active</label>
                                 </div>
                             </div>
                         </div>
