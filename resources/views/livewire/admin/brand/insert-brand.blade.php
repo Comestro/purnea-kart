@@ -6,22 +6,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Brand Preview</h4>
                 </div>
-                <div class="card-body text-center">
-                    <div class="border border-secondary border-dashed rounded d-flex align-items-center justify-content-center" style="height: 200px; cursor: pointer;">
-                        <div wire:loading wire:target="logo" class="text-center">
-                            <div class="spinner-border text-muted" role="status"></div>
-                            <p class="mt-2">Uploading...</p>
-                        </div>
-
-                        <div wire:loading.remove wire:target="logo" class="w-100 h-100 d-flex align-items-center justify-content-center">
-                            @if ($logo)
-                                <img src="{{ $logo->temporaryUrl() }}" class="img-fluid"  style="height: 180px; cursor: pointer;"/>
-                            @else
-                                <p class="text-muted">No logo uploaded</p>
-                            @endif
-                        </div>
-                    </div>
-
+                <div class="card-body text-center">                    
                     <div class="text-start">
                         <p><strong>Name:</strong> <span>{{ $brand_name }}</span></p>
                         <p class="text-truncate"><strong>Description:</strong> <span>{{ $brand_description }}</span></p>
