@@ -22,7 +22,7 @@ class InsertBrand extends Component
             'brand_name' => ['required', 'string', 'max:255'],
             'brand_description' => ['required', 'string', 'max:255'],
             'brand_slug' => ['required', 'string', 'max:255'],
-            'logo' => ['nullable', 'image', 'max:2048'], // Validate as an image with a max size of 2MB
+            'logo' => ['nullable']
         ];
     }
 
