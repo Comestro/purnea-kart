@@ -1,4 +1,4 @@
-<div class="flex w-full justify-around items-center bg-white gap-5 shadow-md px-4 py-3 ">
+<div class="flex w-full justify-around items-center bg-white gap-5 shadow-md px-4 py-3 overflow-hidden">
     <div class="text-center bg-red-50 p-2 rounded-md" style="min-width: 100px; min-height: 100px;">
         <img src="https://picsum.photos/50" alt="Top Offers" class="mx-auto rounded-full shadow">
         <p class="mt-2 text-gray-700 font-medium truncate">Top Offers</p>
