@@ -34,7 +34,7 @@ class CreateBannerForm extends Component
     public function messages()
     {
         return [
-            'image_path.dimensions' => 'The banner image must be exactly of 1500x300 pixels.',
+            'image_path.dimensions' => 'The image must be exactly of 1500x300 pixels.',
         ];
     }
 

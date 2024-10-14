@@ -6,10 +6,11 @@
     
         <div class="card-body">
         @if (session()->has('success'))
-                <div class="text-black">
-                    {{ session('success') }}
-                </div>
-            @endif
+            <div class="text-black">
+                
+                {{ session('success') }}
+            </div>
+         @endif
           
             <div class="row">
             <livewire:admin.category.edit-main-field :category="$category"/>
