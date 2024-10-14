@@ -27,33 +27,7 @@
         <script src="{{ asset('assets_admin/js/config.js') }}"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet" />
 
-        <style>
-             img {
-        display: block;
-        max-width: 100%;
-    }
-    .preview {
-        text-align: center;
-        overflow: hidden;
-        width: 160px; 
-        height: 160px;
-        margin: 10px;
-        border: 1px solid red;
-    }
-    input{
-        margin-top:40px;
-    }
-    .section{
-        margin-top:150px;
-        background:#fff;
-        padding:50px 30px;
-    }
-    .modal-lg{
-        max-width: 1000px !important;
-    }
-        </style>
     </head>
-
     <body>
 
         <!-- START Wrapper -->
