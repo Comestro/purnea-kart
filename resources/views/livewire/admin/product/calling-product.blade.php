@@ -39,7 +39,7 @@
         </thead>
         <tbody>
 
-            @foreach ($products as $product)
+            @foreach ($products as $key=>$product)
                 <tr>
                     <td>
                         <div class="form-check ms-1">
@@ -47,7 +47,7 @@
                             <label class="form-check-label" for="customCheck2">&nbsp;</label>
                         </div>
                     </td>
-                   <td>{{ $product->id }}</td>
+                   <td>{{ $key+1}}</td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
                             {{-- <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">

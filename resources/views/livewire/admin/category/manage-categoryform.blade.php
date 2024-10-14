@@ -59,7 +59,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($category as $cat)
+                            @foreach ($category as $key=>$cat)
                                 <tr>
                                     <td>
                                         <div class="form-check">
@@ -67,7 +67,7 @@
                                             <label class="form-check-label" for="customCheck2"></label>
                                         </div>
                                     </td>
-                                    <td>{{$cat->id}}</td>
+                                    <td>{{$key+1}}</td>
                                     <td>{{ $cat->cat_title }}</td>
                                     <td>{{ $cat->cat_slug }}</td>
                                     <td>{{ $cat->cat_description }}</td>
