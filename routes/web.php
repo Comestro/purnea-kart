@@ -8,7 +8,13 @@ use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
 
-Route::view('/', 'home')->name('home');
+Route::get('/', function(){
+
+    $data['categories'] = Category::all();
+    // dd($data);
+    return view('home', $data);
+}
+)->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
