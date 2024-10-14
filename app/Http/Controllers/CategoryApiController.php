@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryReq;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Str;
@@ -19,34 +20,25 @@ class CategoryApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryReq $request)
     {
-      
-        $validatedData = $request->validate([
-            'cat_title' => 'required|string|max:255',
-            'cat_slug' => 'required|string|max:255|unique:categories,cat_slug',
-            'cat_description' => 'required|string',
-            'parent_category_id' => 'nullable|exists:categories,id',
-            'image' => 'nullable|image|max:2048',
-        ]);
 
-       
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/images/categories', $imageName);
-        } else {
-            $imageName = null;
-        }
+        $imageName = $request->hasFile('image')
+            ? time() . '.' . $request->image->extension()
+            : null;
+     if($imageName) $request->image->storeAs('storage/public/image/category', $imageName,'public');
+        
 
-        $category = Category::create([
-            'parent_category_id' => $request->parent_category_id,
-            'cat_title' => $request->cat_title,
-            'cat_slug' => $request->cat_slug,
-            'cat_description' => $request->cat_description,
-            'image' => $imageName,
-        ]);
 
-        return response()->json(['message' => 'Category created successfully', 'category' => $category], 201);
+
+        $category = new Category();
+        $category->cat_title = $request->cat_title;
+        $category->parent_category_id = $request->parent_category_id;
+        $category->cat_slug = $request->cat_slug;
+        $category->cat_description = $request->cat_description;
+        $category->image = $imageName;
+
+        return response()->json(['message' => 'Category created successfully', 'category' => $category], 200);
     }
 
     /**
