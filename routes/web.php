@@ -2,13 +2,25 @@
 
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
 
-Route::view('/', 'home')->name('home');
+Route::get('/', function(){
+
+    $data['categories'] = Category::all();
+    $data['products'] = Product::all();
+    $data['brands'] = Brand::all();
+    // dd($data);
+    return view('home', $data);
+})->name('home');
+
+Route::get('/singleview', function(){
+    return view('single-view');
+})->name('viewpage');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -114,5 +126,38 @@ Route::get('admin/settings', function () {
     }
     return view('admin.settings', ['setting' => Setting::first()]);
 });
+
+
+//vendor
+Route::get('/vendor',function(){
+    return view('vendor.index');
+})->name('vendor.index');
+
+//Product
+
+Route::get('/vendor/addproduct',function(){
+    return view('vendor.product.addproduct');
+})->name('vendor.addproduct');
+Route::get('/vendor/product-list',function(){
+    return view('vendor.product.productList');
+})->name('vendor.product-list');
+
+//Category
+Route::get('/vendor/addCategory',function(){
+    return view('vendor.category.addcategory');
+})->name('vendor.addcategory');
+Route::get('/vendor/category-list',function(){
+    return view('vendor.category.categoryList');
+})->name('vendor.category-list');
+
+//Brand
+Route::get('/vendor/addBrand',function(){
+    return view('vendor.brand.addBrand');
+})->name('vendor.addbrand');
+Route::get('/vendor/brand-list',function(){
+    return view('vendor.brand.brandList');
+})->name('vendor.brand-list');
+
+
 
 
