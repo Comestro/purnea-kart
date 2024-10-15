@@ -116,3 +116,13 @@ Route::get('admin/settings', function () {
 });
 
 
+Route::get('/vendor',function(){
+    return view('vendor.index');
+})->name('vendor.index');
+
+Route::get('/vendor/addproduct',function(){
+    return view('vendor.product.addproduct');
+})->name('vendor.addproduct');
+
+
+
