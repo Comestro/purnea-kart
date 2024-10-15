@@ -128,13 +128,22 @@ Route::get('admin/settings', function () {
 });
 
 
+//vendor
 Route::get('/vendor',function(){
     return view('vendor.index');
 })->name('vendor.index');
 
+//Product
+
 Route::get('/vendor/addproduct',function(){
     return view('vendor.product.addproduct');
 })->name('vendor.addproduct');
+
+//Category
+Route::get('/vendor/addCategory',function(){
+    return view('vendor.category.addcategory');
+})->name('vendor.addcategory');
+
 
 
 
