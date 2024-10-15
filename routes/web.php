@@ -13,6 +13,7 @@ Route::get('/', function(){
 
     $data['categories'] = Category::all();
     $data['products'] = Product::all();
+    $data['brands'] = Brand::all();
     // dd($data);
     return view('home', $data);
 })->name('home');
@@ -125,5 +126,15 @@ Route::get('admin/settings', function () {
     }
     return view('admin.settings', ['setting' => Setting::first()]);
 });
+
+
+Route::get('/vendor',function(){
+    return view('vendor.index');
+})->name('vendor.index');
+
+Route::get('/vendor/addproduct',function(){
+    return view('vendor.product.addproduct');
+})->name('vendor.addproduct');
+
 
 
