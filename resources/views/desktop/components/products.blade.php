@@ -6,8 +6,8 @@
         {{-- card --}}
         @foreach($products as $product)
         <div class="max-w-xs bg-white p-2 rounded-lg shadow-lg">
-            <img class="w-full h-36 object-cover rounded-md" src="https://via.placeholder.com/200x300"
-                alt="POCO X6 5G">
+            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->image) }}"
+                alt="">
 
             <div class="mt-2 flex justify-between items-center">
                 <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">36% off</span>
