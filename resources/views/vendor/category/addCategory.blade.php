@@ -5,7 +5,7 @@
     <div class="container mx-auto p-6">
         <form class="row g-3 needs-validation p-12 mx-4 my-4" novalidate>
             <!-- Parent Category -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="parentCategory" class="form-label">Parent Category (optional)</label>
                 <select class="form-select" id="parentCategory" name="parent_category_id">
                     <option value="">No Parent</option>
@@ -15,7 +15,7 @@
             </div>
 
             <!-- Category Title -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="catTitle" class="form-label">Category Title</label>
                 <input type="text" class="form-control" id="catTitle" name="cat_title" required>
                 <div class="invalid-feedback">
@@ -23,21 +23,28 @@
                 </div>
             </div>
 
-            <!-- Category Image -->
-            
-            <div class="col-md-6">
-                <label for="catImage" class="form-label">Category Image</label>
-                <input type="file" class="form-control" id="catImage" name="image">
-            </div>
-
+           
             <!-- Category Slug -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="catSlug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="catSlug" name="cat_slug" placeholder="Auto-generated slug" readonly>
+                <input type="text" class="form-control" id="catSlug" name="cat_slug" placeholder="Auto-generated slug"
+                    readonly>
             </div>
+                      <!-- Category Image -->
+
+        <div class="card col-md-6 mb-4">
+            <div class="card-body">
+                <div action="/file-upload" class="dropzone">
+                    <input type="file" name="file" hidden />
+                </div>
+            </div>
+            <div class="demo-code-preview">
+
+            </div>
+        </div>
 
             <!-- Category Description -->
-            <div class="col-md-12 mb-4">
+            <div class="col-md-6 mb-4">
                 <label for="catDescription" class="form-label">Category Description</label>
                 <div class="card">
                     <div class="card-body">
@@ -51,6 +58,7 @@
                 <button class="btn btn-primary" type="submit">Submit form</button>
             </div>
         </form>
+          
     </div>
     <!-- ./ content -->
 @endsection

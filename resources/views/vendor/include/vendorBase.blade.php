@@ -24,6 +24,7 @@
 
     <!-- Main style file -->
     <link rel="stylesheet" href="{{ asset('assets_vendor/css/app.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets_vendor/libs/dropzone/dropzone.css')}}" type="text/css">
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -544,6 +545,8 @@
     <!-- ./ layout-wrapper -->
 
     <!-- Bundle scripts -->
+    <script src="{{ asset('assets_vendor/libs/dropzone/dropzone.js')}}"></script>
+
     <script src="{{ asset('assets_vendor/libs/bundle.js') }}"></script>
 
     <!-- Apex chart -->
