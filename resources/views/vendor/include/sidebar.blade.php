@@ -71,7 +71,7 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="product-list.html">List
+                        <a href="{{url('/vendor/product-list')}}">List
                             View</a>
                     </li>
                     <li>
@@ -103,7 +103,7 @@
                             Create category</a>
                     </li>
                     <li>
-                        <a href="product-grid.html">Grid
+                        <a href="{{url('/vendor/category-list')}}">List
                             View</a>
                     </li>
                     <li>
