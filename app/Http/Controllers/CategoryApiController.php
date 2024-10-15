@@ -22,14 +22,12 @@ class CategoryApiController extends Controller
      */
     public function store(StoreCategoryReq $request)
     {
-
-        $imageName = $request->hasFile('image')
-            ? time() . '.' . $request->image->extension()
-            : null;
-     if($imageName) $request->image->storeAs('storage/public/image/category', $imageName,'public');
-        
-
-
+    
+        $imageName = null;
+        if ($request->hasFile('image')) {            
+            $imageName = Str::uuid() . '.' . $request->image->extension();            
+            $request->image->storeAs('public/image/category', $imageName);
+        }
 
         $category = new Category();
         $category->cat_title = $request->cat_title;
@@ -37,8 +35,11 @@ class CategoryApiController extends Controller
         $category->cat_slug = $request->cat_slug;
         $category->cat_description = $request->cat_description;
         $category->image = $imageName;
-
-        return response()->json(['message' => 'Category created successfully', 'category' => $category], 200);
+        $category->save(); 
+        return response()->json([
+            'message' => 'Category created successfully',
+            'category' => $category
+        ], 201);
     }
 
     /**
