@@ -13,6 +13,7 @@ Route::get('/', function(){
 
     $data['categories'] = Category::all();
     $data['products'] = Product::all();
+    $data['brands'] = Brand::all();
     // dd($data);
     return view('home', $data);
 })->name('home');
