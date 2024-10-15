@@ -2,13 +2,25 @@
 
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
 
-Route::view('/', 'home')->name('home');
+Route::get('/', function(){
+
+    $data['categories'] = Category::all();
+    $data['products'] = Product::all();
+    $data['brands'] = Brand::all();
+    // dd($data);
+    return view('home', $data);
+})->name('home');
+
+Route::get('/singleview', function(){
+    return view('single-view');
+})->name('viewpage');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
