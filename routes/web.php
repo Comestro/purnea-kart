@@ -138,11 +138,25 @@ Route::get('/vendor',function(){
 Route::get('/vendor/addproduct',function(){
     return view('vendor.product.addproduct');
 })->name('vendor.addproduct');
+Route::get('/vendor/product-list',function(){
+    return view('vendor.product.productList');
+})->name('vendor.product-list');
 
 //Category
 Route::get('/vendor/addCategory',function(){
     return view('vendor.category.addcategory');
 })->name('vendor.addcategory');
+Route::get('/vendor/category-list',function(){
+    return view('vendor.category.categoryList');
+})->name('vendor.category-list');
+
+//Brand
+Route::get('/vendor/addBrand',function(){
+    return view('vendor.brand.addBrand');
+})->name('vendor.addbrand');
+Route::get('/vendor/brand-list',function(){
+    return view('vendor.brand.brandList');
+})->name('vendor.brand-list');
 
 
 
