@@ -13,6 +13,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ol>
             </nav>
         </div>

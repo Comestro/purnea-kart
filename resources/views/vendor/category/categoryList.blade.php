@@ -12,7 +12,8 @@
                             <i class="bi bi-globe2 small me-2"></i> Dashboard
                         </a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    <li class="breadcrumb-item active" aria-current="page">Category</li>
+                    <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ol>
             </nav>
         </div>
@@ -22,7 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-md-flex gap-4 align-items-center">
-                            <div class="d-none d-md-flex">All Products</div>
+                            <div class="d-none d-md-flex">All category</div>
                             <div class="d-md-flex gap-4 align-items-center">
                                 <form class="mb-3 mb-md-0">
                                     <div class="row g-3">
@@ -58,12 +59,12 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-custom table-lg mb-0" id="products">
+                    <table class="table table-custom table-lg mb-0" id="category">
                         <thead>
                             <tr>
                                 <th>
                                     <input class="form-check-input select-all" type="checkbox"
-                                        data-select-all-target="#products" id="defaultCheck1">
+                                        data-select-all-target="#category" id="defaultCheck1">
                                 </th>
                                 <th>ID</th>
                                 <th>Photo</th>
@@ -84,7 +85,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/1.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/1.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -119,7 +120,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/2.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/2.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -154,7 +155,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/3.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/3.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -189,7 +190,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/4.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/4.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -224,7 +225,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/5.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/5.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -259,7 +260,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/6.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/6.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -294,7 +295,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/7.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/7.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -329,7 +330,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/8.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/8.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -364,7 +365,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/9.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/9.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -399,7 +400,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('assets_vendor/images/products/10.jpg') }}" class="rounded"
+                                        <img src="{{ asset('assets_vendor/images/category/10.jpg') }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>
@@ -447,7 +448,7 @@
                 </nav>
             </div>
             <div class="col-md-4">
-                <h5 class="mb-4">Filter Products</h5>
+                <h5 class="mb-4">Filter category</h5>
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
