@@ -150,6 +150,14 @@ Route::get('/vendor/category-list',function(){
     return view('vendor.category.categoryList');
 })->name('vendor.category-list');
 
+//Brand
+Route::get('/vendor/addBrand',function(){
+    return view('vendor.brand.addBrand');
+})->name('vendor.addbrand');
+Route::get('/vendor/brand-list',function(){
+    return view('vendor.brand.brandList');
+})->name('vendor.brand-list');
+
 
 
 
