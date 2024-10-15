@@ -7,7 +7,7 @@
         <div class="max-w-lg mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Card Image & Content -->
             <div class="relative">
-                <img class="w-full h-64 object-cover" src="https://picsum.photos/400/250" alt="Product Image">
+                <img class="w-full h-64 object-cover" src="{{ asset('storage/public/logo/brand/'.$brand->logo) }}" alt="Product Image">
 
                 <div
                     class="absolute top-0 left-0 w-full h-full flex flex-col justify-center p-6 bg-gradient-to-t from-transparent to-white">
