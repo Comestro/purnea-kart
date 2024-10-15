@@ -1,9 +1,9 @@
 <header class="fixed top-0 left-0 w-full z-10 bg-white shadow-md">
     <div class="flex w-full justify-between items-center py-3 px-10 gap-5">
         <!-- Logo -->
-        <div class="flex w-48">
+        <a href="{{ route('home') }}" class="flex w-48">
             <img src="{{ asset('purneakart.png') }}" alt="Logo" class="h-12">
-        </div>
+        </a>
 
         <!-- Search Input -->
         <div class="mx-6 w-[80%]">

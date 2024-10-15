@@ -5,7 +5,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {{-- card --}}
         @foreach($products as $product)
-        <div class="max-w-xs bg-white p-2 rounded-lg shadow-lg">
+        <a href="{{ route('viewpage') }}" class="max-w-xs bg-white p-2 rounded-lg shadow-lg">
             <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->image) }}"
                 alt="">
 
@@ -14,13 +14,13 @@
                 <span class="text-red-600 font-medium text-xs">Great Indian Festival</span>
             </div>
 
-            <div class="mt-2 flex items-center justify-center">
+            <div class="mt-2 flex items-center">
                 <span class="text-2xl font-semibold text-gray-800">₹{{ $product->discount_price }}</span>
                 <span class="text-xs text-gray-600 ml-2">M.R.P: <del>₹{{ $product->price }}</del></span>
             </div>
 
             <p class="text-sm font-medium text-gray-700 mt-2 line-clamp-2">{{ $product->name }}</p>
-        </div>
+        </a>
         @endforeach
     </div>
 </div>
