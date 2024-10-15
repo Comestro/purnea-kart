@@ -24,16 +24,12 @@
             </div>
 
             <!-- Category Image -->
-            
-            <div class="col-md-6">
-                <label for="catImage" class="form-label">Category Image</label>
-                <input type="file" class="form-control" id="catImage" name="image">
-            </div>
-
+           
             <!-- Category Slug -->
             <div class="col-md-6">
                 <label for="catSlug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="catSlug" name="cat_slug" placeholder="Auto-generated slug" readonly>
+                <input type="text" class="form-control" id="catSlug" name="cat_slug" placeholder="Auto-generated slug"
+                    readonly>
             </div>
 
             <!-- Category Description -->
@@ -51,6 +47,16 @@
                 <button class="btn btn-primary" type="submit">Submit form</button>
             </div>
         </form>
+        <div class="card">
+            <div class="card-body">
+                <form action="/file-upload" class="dropzone">
+                    <input type="file" name="file" />
+                </form>
+            </div>
+            <div class="demo-code-preview">
+
+            </div>
+        </div>
     </div>
     <!-- ./ content -->
 @endsection
