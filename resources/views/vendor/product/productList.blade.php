@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-              <livewire:vender.product.list-product/>
+              <livewire:vendor.product.list-product/>
             </div>
             <div class="col-md-4">
                 <h5 class="mb-4">Filter Products</h5>
