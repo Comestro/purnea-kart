@@ -10,36 +10,35 @@ use Illuminate\Support\Str;
 
 class AddProduct extends Component
 {
-    public $product_name;
+    public $name;
     public $description;
     public $price;
     public $discount_price;
     public $quantity;
     public $category_id;
     public $brand_id;
-    public $product_slug;
+    public $slug;
 
     
-    public $sku;
+    public $sku;   
 
     public function rules(){
         return [
-            'product_name' => ['required','string','max:255'],
+            'name' => ['required','string','max:255'],
             'description' => ['required','string','max:255'],
             'price' => ['required','numeric'],
             'discount_price' => ['nullable','numeric'],
             'quantity' => ['required','integer'],
             'category_id' => ['required','integer'],
             'brand_id' => ['required','integer'],
-           'product_slug' => ['required','string','max:255'],
+           'slug' => ['required','string','max:255'],
            'sku' => ['required','string','max:100'],
         ];
     }
 
-    public function updatedProductName($value): void
-    {
-        dd($this->slug);
-        $this->product_slug = str::slug($value);
+    public function updatedName($value){
+
+        $this->slug = str::slug($value);
     }
 
     public function store(){
@@ -47,7 +46,7 @@ class AddProduct extends Component
         $this->validate();
 
          $ProductCreated =Product::create([
-            'name'=>$this->product_name,
+            'name'=>$this->name,
             'description'=>$this->description,
             'price'=>$this->price,
             'discount_price'=>$this->discount_price,
@@ -55,7 +54,7 @@ class AddProduct extends Component
             'category_id'=>$this->category_id,
             'brand_id'=>$this->brand_id,
             'sku'=>$this->sku,
-           'slug'=>$this->product_slug,
+           'slug'=>$this->slug,
          ]);
          if($ProductCreated)
          {

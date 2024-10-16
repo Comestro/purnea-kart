@@ -1,7 +1,7 @@
 <form class="row  g-3 needs-validation p-12 mx-4 my-4" wire:submit.prevent="store">
     <div class="col-md-6">
         <label for="productName" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="productName" model:wire.live="product_name">
+        <input type="text" class="form-control" id="productName" wire:model.live="name">
         <div class="invalid-feedback">
             Please provide a product name.
         </div>
@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-6">
         <label for="productSlug" class="form-label">Slug</label>
-        <input class="form-control" type="text" model:wire.live="product_slug" placeholder="slug here..." aria-label="readonly input example" readonly>
+        <input class="form-control" type="text" wire:model.live="slug" placeholder="slug here..." aria-label="readonly input example" readonly>
         <div class="invalid-feedback">
             Please provide a unique slug.
         </div>
@@ -47,7 +47,7 @@
     </div>
     <div class="col-md-4">
         <label for="productDiscountPrice" class="form-label">Discount Price</label>
-        <input type="number" class="form-control" id="productDiscountPrice" name="discount_price" step="0.01">
+        <input type="number" class="form-control" id="productDiscountPrice" wire:model.live="discount_price" step="0.01">
     </div>
     @error('discount_price')
         <p class="text-black small">{{$message}}</p>
