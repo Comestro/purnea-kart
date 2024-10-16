@@ -3,6 +3,7 @@
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Setting;
@@ -14,12 +15,12 @@ Route::get('/', function(){
     $data['categories'] = Category::all();
     $data['products'] = Product::all();
     $data['brands'] = Brand::all();
-    // dd($data);
     return view('home', $data);
 })->name('home');
 
-Route::get('/singleview', function(){
-    return view('single-view');
+Route::get('/view/{product_slug}', function($product_slug){
+    $data['product'] = Product::where('slug',$product_slug)->first();
+    return view('single-view',$data);
 })->name('viewpage');
 
 Route::view('dashboard', 'dashboard')

@@ -19,4 +19,5 @@ class ManageCategoryform extends Component
         return view('livewire.admin.category.manage-categoryform', $data);
     }
     
+    
 }
