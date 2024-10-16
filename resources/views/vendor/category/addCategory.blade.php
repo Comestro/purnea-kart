@@ -2,6 +2,6 @@
 
 @section('content')
     <!-- content -->
- <livewire:vender.category.add-category/>
+ <livewire:vendor.category.add-category/>
     <!-- ./ content -->
 @endsection

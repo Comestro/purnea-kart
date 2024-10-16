@@ -70,7 +70,8 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{ $cat->cat_title }}</td>
                                     <td>{{ $cat->cat_slug }}</td>
-                                    <td>{{ $cat->cat_description }}</td>
+                                    <td class="text-truncate" style="width: 50px;">{{ $cat->cat_description }}</td>
+
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             <div

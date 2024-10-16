@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Vender\Category;
+namespace App\Livewire\vendor\Category;
 
 use App\Models\Category;
 use Livewire\Component;
@@ -70,6 +70,6 @@ class AddCategory extends Component
     public function render()
     {
         $data['parent']=Category::where('parent_category_id',Null)->get();
-        return view('livewire.vender.category.add-category',$data);
+        return view('livewire.vendor.category.add-category',$data);
     }
 }
