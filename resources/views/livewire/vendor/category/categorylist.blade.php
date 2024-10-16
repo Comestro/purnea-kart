@@ -79,7 +79,7 @@
                                     <input class="form-check-input" type="checkbox">
                                 </td>
                                 <td>
-                                    <a href="#">{{$key+1}}</a>
+                                    <a href="#">{{$cat->id}}</a>
                                 </td>
                                 <td>
                                     <a href="#">

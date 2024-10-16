@@ -13,7 +13,6 @@
         margin: 10px;
         border: 1px solid red;
     }
-
     input {
         margin-top: 40px;
     }
@@ -51,6 +50,7 @@
                 <h2 class="card-title">Insert Brand</h2>
             </div>
             <hr>
+            
             <div class="card-body">
                 <form wire:submit.prevent="store">
                     <!-- Brand Name and Slug Fields -->
