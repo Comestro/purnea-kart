@@ -4,9 +4,10 @@
     <!-- Product Cards Section -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {{-- card --}}
+        
         @foreach($products as $product)
-        <a href="{{ route('viewpage') }}" class="max-w-xs bg-white p-2 rounded-lg shadow-lg">
-            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->image) }}"
+        <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}" class=" max-w-xs bg-white p-2 rounded-lg shadow-lg">
+            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
                 alt="">
 
             <div class="mt-2 flex justify-between items-center">

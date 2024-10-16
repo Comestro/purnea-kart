@@ -69,18 +69,18 @@ class CategoryApiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(StoreCategoryReq $request, Category $category)
-    {       
-        $category->cat_title = $request->cat_title;
-        $category->parent_category_id = $request->parent_category_id;
-        $category->cat_slug = $request->cat_slug;
-        $category->cat_description = $request->cat_description;
-
+    {    
         
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->storeAs('public/image/category', $imageName);
             $category->image = $imageName;
-        }        
+        }  
+
+        $category->cat_title = $request->cat_title;
+        $category->parent_category_id = $request->parent_category_id;
+        $category->cat_slug = $request->cat_slug;
+        $category->cat_description = $request->cat_description;
         $category->save();
        
         return response()->json([
