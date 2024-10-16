@@ -312,7 +312,7 @@
                           </div>
                      </div>
                      <div class="col-lg-8">
-                          <div class="card">
+                        {{-- <div class="card">
                                <div class="card-body">
                                     <h4 class="badge bg-success text-light fs-14 py-1 px-2">New Arrival</h4>
                                     <p class="mb-1">
@@ -412,7 +412,9 @@
                                     </div>
                                </div>
                           </div>
-                     </div>
+                     </div>--}}
+
+                     <livewire:admin.product.product-view :product="$pro_id"/>
                 </div>
                 <div class="row">
                      <div class="col-lg-12">

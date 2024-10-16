@@ -26,6 +26,8 @@ class CallingProduct extends Component
         // ->select('products.*') 
         ->paginate(5);
 
+        $data['callingProduct']=Product::all();
+
     return view('livewire.admin.product.calling-product', $data);
     }
 
