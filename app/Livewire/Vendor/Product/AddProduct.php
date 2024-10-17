@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Vender\Product;
+namespace App\Livewire\Vendor\Product;
 
 use App\Models\Brand;
 use App\Models\Category;
@@ -68,6 +68,6 @@ class AddProduct extends Component
         $data['category']=Category::all();
         $data['brand']=Brand::all();
 
-        return view('livewire.vender.product.add-product',$data);
+        return view('livewire.vendor.product.add-product',$data);
     }
 }

@@ -53,6 +53,7 @@ class InsertCategoryform extends Component
             'cat_description' => $this->cat_description,
             'cat_slug' => $this->cat_slug,
             'image' => $imageName,
+            'status'=>1
         ]);
 
         

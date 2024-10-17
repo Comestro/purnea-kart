@@ -50,7 +50,6 @@ class ProductView extends Component
             'description' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
             'discount_price' => ['nullable', 'numeric', 'lt:price'],
-            //'slug' => ['required', 'string', 'max:255', 'unique:products,slug,' . $id],
             'quantity' => ['required', 'integer', 'min:0'],
             'sku' => ['required', 'string', 'max:255'],
             'vendor_id' => ['nullable', 'exists:vendors,id'],
