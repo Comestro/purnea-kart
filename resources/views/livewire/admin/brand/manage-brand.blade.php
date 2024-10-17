@@ -83,6 +83,19 @@
                                 aria-label="Delete brand {{ $item->brand_name }}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
+                            <form wire:submit="status({{$item->id}})">
+
+                                @if ($isActive)
+                                <button type="submit" class="btn  btn-soft-sucess btn-sm" wire:loading.attr="disabled">Active</button>
+
+
+                                @else
+                                <button type="submit" class="btn  btn-soft-red btn-sm" wire:loading.attr="disabled">
+                                    Inactive
+                                </button>
+
+                                @endif
+                            </form>
                         </div>
                     </td>
                 </tr>
