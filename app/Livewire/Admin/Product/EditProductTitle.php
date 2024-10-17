@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Product;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class EditProductTitle extends Component
 
@@ -25,9 +26,16 @@ class EditProductTitle extends Component
 
         $data = $this->validate([
             'name' => 'required|string|max:255',
+           
         ]);
 
-        $this->product->update($data);
+        $slug = Str::slug($this->name);
+        
+        $this->product->update([
+            'name' => $data['name'],
+            'slug' => $slug,
+        ]);
+        //$this->product->update($data);
 
         $this->toggle();
         return redirect()->back()->with('success', 'title updated successfully!');
