@@ -6,7 +6,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Product View</h4>
+                            <h4 class="card-title">Product Edit</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -22,30 +22,11 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="product-brand" class="form-label">Product Brand</label>
-                                        <select id="brand_id" name="brand_id" wire:model.live="brand_id"
-                                            class="form-control">
-                                            <option value="">Select Brand</option>
-                                            @foreach ($brands as $brand)
-                                                <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                
+                                <livewire:admin.product.edit-product-brand :product="$product" :brands="$brands" />
+                                
+                                <livewire:admin.product.edit-product-category :product="$product" :categories="$categories" />
 
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="product-categories" class="form-label">Product Categories</label>
-                                    <select class="form-control" id="product-categories" wire:model.live='category_id'
-                                        name="category_id">
-                                        <option value="">Choose a category</option>
-                                        @foreach ($categories as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                               
                                 <div class="col-lg-4">
                                     <label for="vendor" class="form-label">Vendor</label>
                                     <select class="form-control" id="gender" data-choices data-choices-groups
@@ -64,7 +45,8 @@
                                 <livewire:admin.product.edit-product-description :product="$product"/>
                             </div>
                             <div class="row">
-                            
+                                <livewire:admin.product.edit-product-sku :product="$product"/>
+                                <livewire:admin.product.edit-product-quantity :product="$product"/>
                                 
                             </div>
                         </div>
@@ -80,7 +62,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-3 bg-light mb-3 rounded">
+                    {{-- <div class="p-3 bg-light mb-3 rounded">
+                        <div class="row justify-content-end g-2">
+                            <div class="col-l<div class="p-3 bg-light mb-3 rounded">
                         <div class="row justify-content-end g-2">
                             <div class="col-lg-2">
                                 <button type="submit" class="btn btn-outline-secondary w-100">
@@ -88,7 +72,13 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div>g-2">
+                                <button type="submit" class="btn btn-outline-secondary w-100">
+                                    Submit Product
+                                </button>
+                            </div>
+                        </div>
+                    </div> --}}
                 </form>
             </div>
 

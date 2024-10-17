@@ -2,13 +2,15 @@
     <h2 class="text-2xl font-bold text-gray-700 mb-4 ">Best of Electronics</h2>
 
     <!-- Product Cards Section -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-5 sm:grid-cols-5 lg:grid-cols-7 gap-5">
         {{-- card --}}
         
         @foreach($products as $product)
         <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}" class=" max-w-xs bg-white p-2 rounded-lg shadow-lg">
-            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
-                alt="">
+           @if ($product->images->count() > 0)
+           <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
+           alt="">
+           @endif
 
             <div class="mt-2 flex justify-between items-center">
                 <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">36% off</span>

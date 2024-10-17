@@ -50,6 +50,7 @@ class InsertBrand extends Component
             'brand_description' => $this->brand_description,
             'brand_slug' => $this->brand_slug,
             'logo' => $logoName,
+            'status'=> 1
         ]);
 
         // Flash message and redirect

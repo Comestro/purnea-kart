@@ -304,7 +304,7 @@
                          </div>
                     </div>
                     <livewire:admin.category.manage-categoryform/>
-
+                    <livewire:admin.category.vendor-category/>
                </div>
                <!-- End Container Fluid -->
 

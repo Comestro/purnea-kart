@@ -1,6 +1,6 @@
 <div>
     <div class="card-header d-flex justify-content-between align-items-center gap-1">
-        <h4 class="card-title flex-grow-1">All Brand List</h4>
+        <h4 class="card-title flex-grow-1"> Pending for approvel</h4>
 
         <a href="{{url('admin/brands/brand-add')}}" class="btn btn-sm btn-primary">
             Add Brand
@@ -55,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($brands as $key=>$item)
+                @foreach ($vendorBrand as $key=>$item)
                 <tr>
                     <td>
                         <div class="form-check ms-1">
@@ -72,30 +72,10 @@
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                            <a href="" class="btn btn-light btn-sm">
-                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm" wire:click="editBrand({{ $item->id }})">
-                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <button wire:click="confirmDelete({{ $item->id }})"
-                                class="btn btn-soft-danger btn-sm"
-                                aria-label="Delete brand {{ $item->brand_name }}">
-                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </button>
-                            <form wire:submit="status({{$item->id}})">
+                           
 
-                                @if ($isActive)
-                                <button type="submit" class="btn  btn-soft-sucess btn-sm" wire:loading.attr="disabled">Active</button>
+                            <button wire:click="status({{$item->id}})" class="btn btn-soft-success btn-sm">Active</button>
 
-
-                                @else
-                                <button type="submit" class="btn  btn-soft-red btn-sm" wire:loading.attr="disabled">
-                                    Inactive
-                                </button>
-
-                                @endif
-                            </form>
                         </div>
                     </td>
                 </tr>
@@ -187,28 +167,5 @@
 </div> --}}
 
 <!-- Pagination -->
-<div class="card-footer border-top">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end mb-0">
-            <li class="page-item {{ $brands->onFirstPage() ? 'disabled' : '' }}">
-                <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled" tabindex="-1">Previous</a>
-            </li>
 
-            @php
-            $currentPage = $brands->currentPage();
-            $lastPage = $brands->lastPage();
-            @endphp
-
-            @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
-                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
-                </li>
-                @endfor
-
-                <li class="page-item {{ $brands->hasMorePages() ? '' : 'disabled' }}">
-                    <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
-                </li>
-        </ul>
-    </nav>
-</div>
 </div>

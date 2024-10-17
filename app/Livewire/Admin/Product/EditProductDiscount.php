@@ -12,6 +12,7 @@ class EditProductDiscount extends Component
 
     public function mount($product){
         $this->product;
+        $this->discount_price = $product->discount_price; 
 
     }
     public function toggle()
@@ -54,14 +55,14 @@ class EditProductDiscount extends Component
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
-                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{$product->discount_price}}</p>
+                                    <p class="lead text-capitalize font-medium text-dark mb-0">₹: {{$product->discount_price}}</p>
                                 @else
                                     <div wire:loading wire:target="toggle" class="p-3">
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">{{$product->discount_price}}</i>
+                                    <i class="text-muted">₹: {{$product->discount_price}}</i>
                                 </p>
                                 @endif
                             </div>

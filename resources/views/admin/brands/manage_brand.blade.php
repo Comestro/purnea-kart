@@ -255,29 +255,11 @@
 
                          <div class="col-xl-12 col-lg-12 ">
                               <div class="card">
-                                   <div class="card-header d-flex justify-content-between align-items-center gap-1">
-                                        <h4 class="card-title flex-grow-1">All Brand List</h4>
-      
-                                        <a href="{{url('admin/brands/brand-add')}}" class="btn btn-sm btn-primary">
-                                             Add Brand
-                                        </a>
-      
-                                        <div class="dropdown">
-                                             <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  This Month
-                                             </a>
-                                             <div class="dropdown-menu dropdown-menu-end">
-                                                  <!-- item-->
-                                                  <a href="#!" class="dropdown-item">Download</a>
-                                                  <!-- item-->
-                                                  <a href="#!" class="dropdown-item">Export</a>
-                                                  <!-- item-->
-                                                  <a href="#!" class="dropdown-item">Import</a>
-                                             </div>
-                                        </div>
-                                   </div>
+                                 
                                    <div>
                                         <livewire:admin.brand.manage-brand/>
+
+                                        <livewire:admin.brand.vendor-brand/>
                                         <!-- end table-responsive -->
                                    </div>
                                    

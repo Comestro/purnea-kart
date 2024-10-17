@@ -20,7 +20,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center gap-1">
-                <h4 class="card-title flex-grow-1">All Categories List</h4>
+                <h4 class="card-title flex-grow-1">Pending for approvel</h4>
                 <a href="product-add.html" class="btn btn-sm btn-primary">
                     Add Category
                 </a>
@@ -59,7 +59,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($category as $key=>$cat)
+                            @foreach ($vendorCat as $key=>$cat)
                                 <tr>
                                     <td>
                                         <div class="form-check">
@@ -84,30 +84,9 @@
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="#!" class="btn btn-light btn-sm"><iconify-icon
-                                                    icon="solar:eye-broken"
-                                                    class="align-middle fs-18"></iconify-icon></a>
-                                            <a href="{{ route('edit.category', $cat->id) }}"
-                                                class="btn btn-soft-primary btn-sm"><iconify-icon
-                                                    icon="solar:pen-2-broken"
-                                                    class="align-middle fs-18"></iconify-icon></a>
-                                            <a href="#" class="btn btn-soft-danger btn-sm"><iconify-icon
-                                                    icon="solar:trash-bin-minimalistic-2-broken"
-                                                    class="align-middle fs-18"></iconify-icon></a>
-
-                                             <form wire:submit="status({{$cat->id}})">
-                                                
-                                              @if ($isActive)
-                                              <button type="submit" class="btn  btn-soft-sucess btn-sm" wire:loading.attr="disabled">Active</button>
-
-                                             
-                                                @else
-                                                <button type="submit" class="btn  btn-soft-red btn-sm" wire:loading.attr="disabled">
-                                                    Inactive
-                                                </button>
-                                               
-                                              @endif
-                                             </form>       
+                                           <form wire:submit="status({{$cat->id}})">
+                                            <button type="submit" class="btn btn-soft-success btn-sm">Active</button>
+                                           </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -119,32 +98,7 @@
                 <!-- end table-responsive -->
             </div>
             <!-- Pagination -->
-            <div class="card-footer border-top">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end mb-0">
-                        <li class="page-item {{ $category->onFirstPage() ? 'disabled' : '' }}">
-                            <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
-                                tabindex="-1">Previous</a>
-                        </li>
-
-                        @php
-                            $currentPage = $category->currentPage();
-                            $lastPage = $category->lastPage();
-                        @endphp
-
-                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
-                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                                <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
-                            </li>
-                        @endfor
-
-                        <!-- Next Page Link -->
-                        <li class="page-item {{ $category->hasMorePages() ? '' : 'disabled' }}">
-                            <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+           
         </div>
     </div>
 </div>

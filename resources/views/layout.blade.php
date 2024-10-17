@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('purneakart.png') }}">
     {{--<title>@yield('title')|{{env('APP_NAME')}}</title>--}}
     @vite('resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
     @include('desktop.components.header')
@@ -14,5 +15,7 @@
     @section('content')
     @show
     @include('desktop.components.footer')
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>

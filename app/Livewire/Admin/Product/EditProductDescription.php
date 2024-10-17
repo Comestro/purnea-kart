@@ -13,6 +13,7 @@ class EditProductDescription extends Component
 
     public function mount($product){
         $this->product;
+        $this->description = $product->description; 
 
     }
     public function toggle()
