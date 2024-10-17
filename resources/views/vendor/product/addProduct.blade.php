@@ -2,7 +2,7 @@
 @section('content')
     <!-- content -->
 
-   <livewire:vender.product.addProduct/>
+   <livewire:vendor.product.addProduct/>
     
    
 
