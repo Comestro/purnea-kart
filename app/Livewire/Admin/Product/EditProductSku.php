@@ -12,6 +12,7 @@ class EditProductSku extends Component
 
     public function mount($product){
         $this->product;
+        $this->sku = $product->sku; 
 
     }
     public function toggle()

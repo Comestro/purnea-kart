@@ -6,7 +6,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Product View</h4>
+                            <h4 class="card-title">Product Edit</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">

@@ -12,6 +12,7 @@ class EditProductQuantity extends Component
 
     public function mount($product){
         $this->product;
+        $this->quantity = $product->quantity; 
 
     }
     public function toggle()

@@ -14,6 +14,7 @@ class EditProductTitle extends Component
 
     public function mount($product){
         $this->product;
+        $this->name = $product->name; 
 
     }
     public function toggle()
@@ -54,7 +55,7 @@ class EditProductTitle extends Component
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         @if ($isEdit)
-                            <input wire:model="name" type="text" class="form-control rounded-0" placeholder="Enter product title">
+                            <input wire:model.live="name" type="text" class="form-control rounded-0" placeholder="Enter product title">
                             <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
                         @else
                             <div class="mx-auto text-center">

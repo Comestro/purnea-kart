@@ -12,6 +12,7 @@ class EditProductPrice extends Component
 
     public function mount($product){
         $this->product;
+        $this->price = $product->price; 
 
     }
     public function toggle()
@@ -39,7 +40,7 @@ class EditProductPrice extends Component
                 <div class="card-header py-2 d-flex justify-content-between align-items-center">
                     <h5 class="m-0 fw-normal">Product Price</h5>
                     <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">
-                        {{ $isEdit ? 'Cancel' : 'Edit' }}
+                     {{ $isEdit ? 'Cancel' : 'Edit' }}
                     </button>
                 </div>
                 <div class="card-body">
@@ -54,14 +55,14 @@ class EditProductPrice extends Component
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
-                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{$product->price}}</p>
+                                    <p class="lead text-capitalize font-medium text-dark mb-0">₹: {{$product->price}}</p>
                                 @else
                                     <div wire:loading wire:target="toggle" class="p-3">
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">{{$product->price}}</i>
+                                    <i class="text-muted">₹: {{$product->price}}</i>
                                 </p>
                                 @endif
                             </div>
