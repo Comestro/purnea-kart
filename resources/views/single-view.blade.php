@@ -80,11 +80,11 @@
             <h2 class="text-2xl font-bold text-gray-700 mb-4 ">Related Products</h2>
 
             <!-- Product Cards Section -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-6">
                 {{-- card --}}
                 {{-- @foreach ($products as $product) --}}
                 <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}"
-                    class="max-w-xs bg-white p-2 rounded-lg shadow-lg">
+                    class="max-w-[208px] bg-white p-2 rounded-lg shadow-lg">
                     <img class="w-full h-36 object-cover rounded-md" src="https://picsum.photos/200" alt="">
 
                     <div class="mt-2 flex justify-between items-center">

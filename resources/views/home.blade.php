@@ -7,7 +7,8 @@
             @include('desktop.components.category')
         </div>
         <div class="flex">
-            <img src="{{ asset('banner.webp') }}" alt="">
+            {{-- <img src="{{ asset('banner.webp') }}" alt=""> --}}
+            @include('desktop.components.hero-image')
         </div>
         @include('desktop.components.products')
         <div class="mt-4">
