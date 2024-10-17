@@ -2,7 +2,7 @@
     <h2 class="text-2xl font-bold text-gray-700 mb-4 ">Best of Electronics</h2>
 
     <!-- Product Cards Section -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-5 sm:grid-cols-5 lg:grid-cols-7 gap-5">
         {{-- card --}}
         
         @foreach($products as $product)
