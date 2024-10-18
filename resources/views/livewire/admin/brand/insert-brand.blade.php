@@ -52,7 +52,7 @@
             <hr>
             
             <div class="card-body">
-                <form wire:submit.prevent="store">
+                <form wire:submit.prevent="store" method="post" enctype="multipart/form-data">
                     <!-- Brand Name and Slug Fields -->
                     <div class="mb-4 row g-3">
                         <div class="col-xl-6">
