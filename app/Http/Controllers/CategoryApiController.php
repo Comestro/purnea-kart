@@ -44,7 +44,7 @@ class CategoryApiController extends Controller
         return response()->json([
             'message' => 'Category created successfully',
             'category' => $category
-        ], 201);
+        ], 200);
     }
 
     /**

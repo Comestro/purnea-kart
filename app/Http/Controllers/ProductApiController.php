@@ -19,7 +19,7 @@ class ProductApiController extends Controller
         return response()->json([
             'message' => 'Product Fetched successfully',
             'products' => $products
-        ], 201);
+        ], 200);
       }
 
     /**
@@ -42,7 +42,7 @@ class ProductApiController extends Controller
         return response()->json([
             'message' => 'Product created successfully',
             'product' => $product
-        ], 201);
+        ], 200);
     }
 
     /**
@@ -72,7 +72,7 @@ class ProductApiController extends Controller
         return response()->json([
             'message' => 'Product update successfully',
             'product' => $product
-        ], 201);
+        ], 200);
     }
 
     /**
