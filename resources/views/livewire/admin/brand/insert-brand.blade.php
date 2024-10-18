@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-xl-6">
                             <label for="slug" class="form-label">Brand Slug</label>
-                            <input type="text" wire:model="brand_slug" class="form-control bg-light" readonly />
+                            <input type="text" wire:model.live="brand_slug" class="form-control bg-light" readonly />
                             @error('brand_slug') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
