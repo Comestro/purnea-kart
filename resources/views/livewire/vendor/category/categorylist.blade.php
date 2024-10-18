@@ -83,7 +83,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="{{ asset('storage/public/image/category/' . $cat->image) }}" class="rounded"
+                                        <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/image/category/' . $cat->image) }}" class="rounded"
                                             width="40" alt="...">
                                     </a>
                                 </td>

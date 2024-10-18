@@ -14,7 +14,7 @@ class CategoryApiController extends Controller
      */
     public function index()
     {
-       $categories = Category::all();
+        $categories= Category::where('parent_category_id',NULL)->get();
        return response()->json([
         'message' => 'Categories fetched successfully',
         'categories' => $categories
@@ -33,11 +33,11 @@ class CategoryApiController extends Controller
             $imageName = Str::uuid() . '.' . $request->image->extension();            
             $request->image->storeAs('public/image/category', $imageName);
         }
-
+        $catSlug = Str::slug($request->cat_title);
         $category = new Category();
         $category->cat_title = $request->cat_title;
         $category->parent_category_id = $request->parent_category_id;
-        $category->cat_slug = $request->cat_slug;
+        $category->cat_slug =$catSlug;
         $category->cat_description = $request->cat_description;
         $category->image = $imageName;
         $category->save(); 

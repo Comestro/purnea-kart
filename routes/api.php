@@ -1,11 +1,21 @@
 <?php
 
+use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
+use App\Http\Controllers\ProductApiController;
 use Illuminate\Support\Facades\Route;
 
 // POST request to create a category
-Route::post('admin/categories/category-add', [CategoryApiController::class, 'store']);
-// routes/api.php
-Route::get('admin/categories/{category}', [CategoryApiController::class, 'show']);
-Route::put('admin/categories/{category}', [CategoryApiController::class, 'update']);
-Route::delete('admin/categories/{category}', [CategoryApiController::class, 'destroy']);
+Route::get('/categories', [CategoryApiController::class, 'index']);
+
+Route::post('categories/category-add', [CategoryApiController::class, 'store']);
+Route::get('/categories/{category}', [CategoryApiController::class, 'show']);
+Route::put('/categories/{category}', [CategoryApiController::class, 'update']);
+Route::delete('/categories/{category}', [CategoryApiController::class, 'destroy']);
+
+// Brnad api
+
+Route::get("/brands",[BrandApiController::class,"index"]);
+
+// Product api
+Route::get("/products", [ProductApiController::class,"index"]);

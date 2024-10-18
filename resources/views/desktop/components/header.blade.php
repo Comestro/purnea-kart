@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 w-full z-10 bg-white shadow-md">
+<header class="fixed top-0 left-0 w-full z-10 bg-white shadow-sm">
     <div class="flex w-full justify-between items-center py-3 px-10 gap-5">
         <!-- Logo -->
         <a href="{{ route('home') }}" class="flex w-48">

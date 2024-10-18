@@ -23,6 +23,10 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
+Route::get('/filter', function(){
+    return view('filter-page');
+})->name('filter');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

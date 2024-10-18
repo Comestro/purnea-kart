@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string("cat_title");
             $table->string("image")->nullable();
             $table->longText("cat_description");
-            $table->string("cat_slug")->unique();            
+            $table->string("cat_slug")->unique(); 
+            $table->string("status")->default(0);           
             $table->timestamps();
         });
     }

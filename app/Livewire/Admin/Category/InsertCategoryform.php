@@ -42,7 +42,7 @@ class InsertCategoryform extends Component
 
        
             $imageName = $this->image ? "C" . time() . '.' . $this->image->getClientOriginalExtension() : null;
-            $this->image->storeAs('public/image/category', $imageName,'public');
+            $this->image->storeAs('public/image/category', $imageName,'s3');
       
 
 
@@ -53,6 +53,7 @@ class InsertCategoryform extends Component
             'cat_description' => $this->cat_description,
             'cat_slug' => $this->cat_slug,
             'image' => $imageName,
+            'status'=>1
         ]);
 
         
