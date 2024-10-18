@@ -23,12 +23,9 @@ class CallingProduct extends Component
         ->where('name', 'LIKE', "%".$this->search."%")
         ->orWhere('cat_title', 'LIKE', "%".$this->search."%")
         ->orWhere('brand_name', 'LIKE', "%".$this->search."%")
-        // ->select('products.*') 
         ->paginate(5);
 
-        $data['callingProduct']=Product::all();
-
-    return view('livewire.admin.product.calling-product', $data);
+        return view('livewire.admin.product.calling-product', $data);
     }
 
 

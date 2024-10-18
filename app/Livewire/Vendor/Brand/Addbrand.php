@@ -41,7 +41,7 @@ class Addbrand extends Component
         $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
 
         if ($this->logo) {
-            $this->logo->storeAs('public/logo/brand', $logoName, 'public');
+            $this->logo->storeAs('public/logo/brand', $logoName, 's3');
         }
 
         // Create the brand

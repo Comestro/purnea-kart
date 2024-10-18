@@ -39,7 +39,7 @@
         </thead>
         <tbody>
 
-            @foreach ($callingProduct as $key=>$product)
+            @foreach ($products as $key=>$product)
                 <tr>
                     <td>
                         <div class="form-check ms-1">

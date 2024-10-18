@@ -62,23 +62,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="p-3 bg-light mb-3 rounded">
-                        <div class="row justify-content-end g-2">
-                            <div class="col-l<div class="p-3 bg-light mb-3 rounded">
-                        <div class="row justify-content-end g-2">
-                            <div class="col-lg-2">
-                                <button type="submit" class="btn btn-outline-secondary w-100">
-                                    Submit Product
-                                </button>
-                            </div>
-                        </div>
-                    </div>g-2">
-                                <button type="submit" class="btn btn-outline-secondary w-100">
-                                    Submit Product
-                                </button>
-                            </div>
-                        </div>
-                    </div> --}}
                 </form>
             </div>
 

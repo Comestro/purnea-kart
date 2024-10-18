@@ -65,7 +65,7 @@
                 </td>
                 <td>
                     <a href="#">
-                        <img src="{{ $brand->logo ? asset('storage/public/logo/brand/' . $brand->logo) : asset('storage/logo/brand/default.png') }}" alt="Logo" style="max-width: 100px; max-height: 100px;">
+                        <img src="{{ $brand->logo ? asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/logo/brand/' . $brand->logo) : asset('storage/logo/brand/default.png') }}" alt="Logo" style="max-width: 100px; max-height: 100px;">
 
                     </a>
                 </td>
