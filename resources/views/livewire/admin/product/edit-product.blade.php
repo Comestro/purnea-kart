@@ -1,5 +1,5 @@
 <div>
     <h1>Edit Product</h1>
     <livewire:admin.product.multiple-image :product="$product" />
-    <livewire:admin.product.product-variant/>
+    
 </div>
