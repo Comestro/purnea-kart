@@ -47,7 +47,7 @@ class ProductCreateForm extends Component
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'text'],
             'price' => ['required', 'numeric', 'min:0'],
             'discount_price' => ['nullable', 'numeric', 'lt:price'],
             'slug' => ['required', 'string', 'max:255', 'unique:products,slug'],

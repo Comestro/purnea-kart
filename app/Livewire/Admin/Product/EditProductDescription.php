@@ -25,7 +25,7 @@ class EditProductDescription extends Component
     {
 
         $data = $this->validate([
-            'description' => 'required|string|max:255',
+            'description' => 'required|string|text',
         ]);
 
         $this->product->update($data);
