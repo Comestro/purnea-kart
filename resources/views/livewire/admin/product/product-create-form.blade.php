@@ -1,44 +1,103 @@
 <div class="row">
     <div class="col-lg-4">
         <!-- preview -->
-        <div class="card">
-    <div class="card-body">
-        <img src="assets/images/product/p-1.png" alt="" class="img-fluid rounded bg-light">
-        <div class="mt-3">
-            <h4>Product name: <span class="fs-14 text-muted ms-1">{{ $name }}</span></h4>
-            <h4>Product description: <span class="fs-14 text-muted ms-1">{{ $description }}</span></h4>
-           
-            <h4 class="text-dark fw-medium mt-3">Price : 
-                <span class="text-muted text-decoration-line-through">${{ $price }}</span> 
-                ${{ $discount_price }} 
-            </h4>  
-            <h4 class="text-dark fw-medium mt-3">Brand: 
-                <span class="text-muted">{{ $brand_name }}</span>
-            </h4>
-             <h4 class="text-dark fw-medium mt-3">Category: 
-                <span class="text-muted">{{ $cat_title }}</span>
-            </h4>
-            <h4>Product quantity: <span class="fs-14 text-muted ms-1">{{ $quantity }}</span></h4>
-            <h4>Product sku: <span class="fs-14 text-muted ms-1">{{ $sku }}</span></h4>
+        <div class="card shadow-lg rounded-lg">
+            <div class="card-body">
+                <!-- Product Image -->
+                <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt=""
+                    class="img-fluid rounded bg-light">
+        
+                <!-- Product Information -->
+                <div class="mt-3">
+                    <!-- Product Name and Category -->
+                    <h4 class="text-lg font-semibold text-gray-800">
+                        {{ $name ?? 'Men Black Slim Fit T-shirt' }} 
+                        <span class="fs-14 text-muted ms-1">({{ $cat_title ?? 'Fashion' }})</span>
+                    </h4>
+        
+                    <!-- Price Section -->
+                    <h5 class="text-dark fw-medium mt-3">Price :</h5>
+                    <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
+                        <span class="text-muted text-decoration-line-through">${{ $price ?? 100 }}</span>
+                        ${{ $discount_price ?? 80 }}
+                        <small class="text-muted"> 30%off</small>
+                    </h4>
+        
+                    <!-- Size Section -->
+                    <div class="mt-3">
+                        <h5 class="text-dark fw-medium">Size :</h5>
+                        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                            <input type="checkbox" class="btn-check" id="size-s">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-s">S</label>
+        
+                            <input type="checkbox" class="btn-check" id="size-m" checked>
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-m">M</label>
+        
+                            <input type="checkbox" class="btn-check" id="size-xl">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-xl">XL</label>
+        
+                            <input type="checkbox" class="btn-check" id="size-xxl">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-xxl">XXL</label>
+                        </div>
+                    </div>
+        
+                    <div class="mt-3">
+                        <h5 class="text-dark fw-medium">Colors :</h5>
+                        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                            <input type="checkbox" class="btn-check" id="color-dark">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-dark">
+                                <i class="bx bxs-circle fs-18 text-dark"></i>
+                            </label>
+        
+                            <input type="checkbox" class="btn-check" id="color-yellow">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-yellow">
+                                <i class="bx bxs-circle fs-18 text-warning"></i>
+                            </label>
+        
+                            <input type="checkbox" class="btn-check" id="color-white">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-white">
+                                <i class="bx bxs-circle fs-18 text-white"></i>
+                            </label>
+        
+                            <input type="checkbox" class="btn-check" id="color-red">
+                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-red">
+                                <i class="bx bxs-circle fs-18 text-danger"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Footer -->
+            <div class="card-footer bg-light-subtle">
+                <div class="row g-2">
+                    <div class="col-lg-6">
+                        <a href="#!" class="btn btn-outline-secondary w-100">view Product</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="#!" class="btn btn-primary w-100">Cancel</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        
+        
 
     </div>
     <div class="col-lg-8">
 
         <div>
             <div x-data="{ showAlert: true }" x-show="showAlert">
-                @if($errors->any())
-                <div class="alert alert-danger relative p-4 border border-red-400 bg-red-100 text-red-700 rounded">
-                    <button @click="showAlert = false"
-                        class="absolute top-0 right-0 mt-2 mr-2 text-red-700 font-bold">&times;</button>
-                    <ul>
-                        @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger relative p-4 border border-red-400 bg-red-100 text-red-700 rounded">
+                        <button @click="showAlert = false"
+                            class="absolute top-0 right-0 mt-2 mr-2 text-red-700 font-bold">&times;</button>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
             </div>
 
@@ -61,8 +120,9 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label ">Product Slug</label>
-                                    <input type="text" id="product-name" wire:model="slug" disabled class="form-control"
-                                        style="background-color: rgb(214, 214, 214)" placeholder="Items Name">
+                                    <input type="text" id="product-name" wire:model.live="slug" disabled
+                                        class="form-control" style="background-color: rgb(214, 214, 214)"
+                                        placeholder="Items Name">
                                 </div>
                             </div>
 
@@ -71,10 +131,11 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-brand" class="form-label">Product Brand</label>
-                                    <select id="brand_id" name="brand_id" wire:model.live="brand_id" class="form-control">
+                                    <select id="brand_id" name="brand_id" wire:model.live="brand_id"
+                                        class="form-control">
                                         <option value="">Select Brand</option>
                                         @foreach ($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                            <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,7 +155,7 @@
                                     name="category_id">
                                     <option value="">Choose a category</option>
                                     @foreach ($categories as $cat)
-                                    <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
+                                        <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -214,8 +275,7 @@
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control bg-light-subtle" wire:model.live='description'
-                                        id="description" rows="7"
+                                    <textarea class="form-control bg-light-subtle" wire:model.live='description' id="description" rows="7"
                                         placeholder="Short description about the product"></textarea>
                                 </div>
                             </div>
@@ -242,8 +302,8 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-stock" class="form-label">SKU</label>
-                                    <input type="number" id="product-sku" wire:model.live="sku" class="form-control"
-                                        placeholder="Sku">
+                                    <input type="number" id="product-sku" wire:model.live="sku"
+                                        class="form-control" placeholder="Sku">
                                 </div>
 
                             </div>
@@ -271,7 +331,7 @@
                                 <label for="product-price" class="form-label">Price</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                    <input type="number" id="product-price" wire:model='price' class="form-control"
+                                    <input type="number" id="product-price" wire:model.live='price' class="form-control"
                                         placeholder="000">
                                 </div>
                             </div>
@@ -281,7 +341,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text fs-20"><i class='bx bxs-discount'></i></span>
                                     <input type="number" id="product-discount" class="form-control"
-                                        wire:model='discount_price' placeholder="000">
+                                        wire:model.live='discount_price' placeholder="000">
                                 </div>
 
                             </div>
@@ -299,7 +359,7 @@
                 </div>
                 <div class="p-3 bg-light mb-3 rounded">
                     <div class="row justify-content-end g-2">
-                        <div class="col-lg-2"><button type="submit" class="btn btn-outline-secondary w-100">
+                        <div class="col-lg-3"><button type="submit" class="btn btn-outline-secondary w-100">
                                 Create Product
                             </button>
                         </div>

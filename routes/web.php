@@ -48,6 +48,15 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::get('/admin/product-grid', function () {
+    return view('admin.product.product_grid');
+});
+
+
+
+
+
+
 
 //brand
 Route::get('admin/brands/brand-add', function () {
@@ -131,6 +140,7 @@ Route::get('admin/settings', function () {
     }
     return view('admin.settings', ['setting' => Setting::first()]);
 });
+
 
 
 //vendor

@@ -20,6 +20,7 @@ class ProductController extends Controller
         // Return the view with products data
         return view('admin.product.product_list');
     }
+   
     
     /**
      * Show the form for creating a new resource.
