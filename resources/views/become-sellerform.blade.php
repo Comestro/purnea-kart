@@ -3,25 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>become a seller</title>
+    <title>Responsive Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="flex flex-1 justify-center">
-        <form action="" method="post" class="5/12">
-            @csrf
-            <div class="w-full mb-3">
-                <input type="number" class="px-3 py-3 rounded-md border border-slate-300" placeholder="Enter Mobile Number">
+<body class=" p-6 w-full">
+     <!-- Stepper -->
+     <div class="flex items-center justify-between mb-6">
+            <div class="flex  items-center text-sm">
+                <div class="text-blue-500 border-b-2 border-blue-500">EMAIL ID & GST</div>
+                <div class="ml-6 text-gray-500">PASSWORD CREATION</div>
+                <div class="ml-6 text-gray-500">ONBOARDING DASHBOARD</div>
             </div>
-            <div class="w-full mb-3">
-                <input type="number" class="px-3 py-3 rounded-md border border-slate-300" placeholder="Email ID">
-            </div>
-            <div>
-                <input type="text">
-            </div>
-        </form>
-
-    </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+        </div>
+   <livewire:seller.seller-form/>
 </body>
 </html>
