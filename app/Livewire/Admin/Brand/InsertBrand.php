@@ -34,7 +34,7 @@ class InsertBrand extends Component
 
     public function store()
     {
-        // Validate the data
+        // Validate the data 
         $validatedData = $this->validate();
 
         // Handle logo upload
