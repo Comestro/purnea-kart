@@ -1,4 +1,4 @@
-
+<!-- 
 <style>
     img {
         display: block;
@@ -26,7 +26,7 @@
     .modal-lg {
         max-width: 1000px !important;
     }
-</style>
+</style> -->
 <div class="container">
     <div class="row">
         <!-- Brand Preview Section -->
@@ -164,7 +164,7 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"
     integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -215,4 +215,4 @@
             });
         });
     });
-</script>
+</script> -->
