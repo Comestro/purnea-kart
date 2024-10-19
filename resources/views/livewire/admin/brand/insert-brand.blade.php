@@ -33,8 +33,7 @@
                         @if (!$brand_name && !$brand_slug)
                             <h4>Luxury Fashion </h4> 
                         @else
-                        <h4>{{ $brand_name }}<span>/</span>{{ $brand_slug
-                         }}</h4>
+                        <h4>{{ $brand_name }}<span>/</span>{{ $brand_slug }}</h4>
                         @endif
                        
                         @if (!$brand_description)

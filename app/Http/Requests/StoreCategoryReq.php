@@ -26,7 +26,7 @@ class StoreCategoryReq extends FormRequest
             'cat_slug' => 'required|string|max:255|unique:categories,cat_slug',
             'cat_description' => 'required|string',
             'parent_category_id' => 'nullable|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:8048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

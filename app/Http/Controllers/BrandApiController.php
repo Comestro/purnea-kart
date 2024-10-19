@@ -27,19 +27,17 @@ class BrandApiController extends Controller
      */
     public function store(StoreBrandReq $request)
     {
-        
+
         if ($request->hasFile('logo')) {
-            $image = $request->file('logo');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();           
-            $path = $image->storeAs('public/logo/brand', $imageName, 's3');
-            $imageUrl = Storage::disk('s3')->url($path);
+            $imageName = time() . '.' . $request->logo->extension();
+            $request->image->storeAs('logo/brand', $imageName, 'public');
         }
         $brandSlug = Str::slug($request->brand_slug);
         $brand = new Brand();
         $brand->brand_name = $request->brand_name;
         $brand->brand_description = $request->brand_description;
         $brand->brand_slug = $brandSlug;
-        $brand->logo = isset($imageUrl) ? $imageUrl : null;
+        $brand->logo = $imageName;
         $brand->save();
         return response()->json([
             'message' => 'Brand created successfully',

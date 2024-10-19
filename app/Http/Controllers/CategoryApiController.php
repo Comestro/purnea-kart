@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryReq;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Storage;
 use Str;
+use Image;
 
 class CategoryApiController extends Controller
 {
@@ -27,11 +29,9 @@ class CategoryApiController extends Controller
      */
     public function store(StoreCategoryReq $request)
     {
-        $imageName = null;
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/image/category', $imageName);
-
+            $request->image->storeAs('image/category', $imageName,'public');         
         }
 
         $catSlug = Str::slug($request->cat_title);
@@ -95,7 +95,17 @@ class CategoryApiController extends Controller
      */
     public function destroy(Category $category)
     {
-        return $category->delete() ? response()->json(['message' => 'Category deleted successfully'], 200) : response()->json(['message' => 'Category not found or could not be deleted'], 404);
+      
+      $imagePath = $category->image ? 'public/image/category/' . $category->image : null;
+        if ($imagePath && Storage::exists($imagePath)) {
+            Storage::delete($imagePath);
+        }
+        $deleted = $category->delete();
+
+        return $deleted ?
+            response()->json(['message' => 'Category deleted successfully'], 200) :
+            response()->json(['message' => 'Category could not be deleted'], 500);
     }
+
 
 }
