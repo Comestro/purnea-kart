@@ -8,9 +8,7 @@ use Str;
 
 class ProductApiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $products = Product::with(["category", "brand","images"])->get();
@@ -19,13 +17,9 @@ class ProductApiController extends Controller
             'products' => $products
         ], 200);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreProductReq $request)
     {
-        $productSlug = Str::slug($request->slug);
+        $productSlug = Str::slug($request->name);
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $productSlug;
@@ -45,17 +39,11 @@ class ProductApiController extends Controller
         ], 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Product $product)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(StoreProductReq $request, Product $product)
     {
         $product->name = $request->name;
@@ -75,9 +63,6 @@ class ProductApiController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         //
