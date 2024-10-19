@@ -129,7 +129,7 @@
 
         <div class="flex items-center gap-3">
             <a href="#" class="hover:text-blue-600 text-xl">Login</a>
-            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-none hover:bg-blue-500 text-xl">Start Selling</a>
+            <a href="{{route('seller.register')}}" class="bg-blue-600 text-white px-4 py-2 rounded-none hover:bg-blue-500 text-xl">Start Selling</a>
         </div>
     </div>
 </header>
