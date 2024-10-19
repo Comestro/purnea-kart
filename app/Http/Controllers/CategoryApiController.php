@@ -27,12 +27,11 @@ class CategoryApiController extends Controller
      */
     public function store(StoreCategoryReq $request)
     {
-    
         $imageName = null;
-        if ($request->hasFile('image')) {            
-            $imageName = Str::uuid() . '.' . $request->image->extension();            
-            $request->image->storeAs('public/image/category', $imageName);
-        }
+    if ($request->hasFile('image')) {
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/image/category', $imageName);
+    }
         $catSlug = Str::slug($request->cat_title);
         $category = new Category();
         $category->cat_title = $request->cat_title;
