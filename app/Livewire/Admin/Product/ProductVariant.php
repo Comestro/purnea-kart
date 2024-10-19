@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Product;
 
 use Livewire\Component;
 use App\Models\Product;
-use App\Models\Product_Variant;
+use App\Models\ProductVariant as ProductVariantModel;
 
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage; 
@@ -15,16 +15,21 @@ class ProductVariant extends Component
     use WithFileUploads;
 
     public $variant_type;
-    public $product_name;
+    public $variant_name;
     public $sku;
     public $price;
     public $stock;
     public $variant_image;
+    public $p_id;
+
+    public function mount(Product $product){
+        $this->p_id = $product->id;
+    }
 
     // Validation rules
     protected $rules = [
         'variant_type' => 'required|string',
-        'product_name' => 'required|string|max:255',
+        'variant_name' => 'required|string|max:255',
         'sku' => 'required', 
         'price' => 'required|numeric|min:0',
         'stock' => 'required|integer|min:0',
@@ -40,9 +45,10 @@ class ProductVariant extends Component
 
 
         
-        Product_Variant::create([
+        ProductVariantModel::create([
             'variant_type' => $this->variant_type,
-            'product_id' => $this->product_name,
+            'product_id' => $this->p_id,
+            'variant_name' => $this->variant_name,
             'sku' => $this->sku,
             'price' => $this->price,
             'stock' => $this->stock,
@@ -50,7 +56,7 @@ class ProductVariant extends Component
         ]);
 
         
-        $this->reset(['variant_type', 'product_name', 'sku', 'price', 'stock', 'variant_image']);
+        $this->reset(['variant_type', 'variant_name', 'sku', 'price', 'stock', 'variant_image']);
 
         
         session()->flash('message', 'Variant added successfully!');

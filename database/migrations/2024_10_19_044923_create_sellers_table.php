@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('mobile');
+            $table->unsignedBigInteger('mobile')->unique();
             $table->string('email')->unique();
             $table->string('gst')->unique();
-            $table->string('password')->nullable();
+            $table->string('password');
+            $table->bigInteger('status')->default(0);
             $table->timestamps();
         });
     }

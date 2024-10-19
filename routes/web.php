@@ -11,6 +11,7 @@ use App\Http\Controllers\SellerController;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\Seller;
 
 use function Livewire\store;
 
@@ -23,6 +24,7 @@ Route::get('/', function(){
 })->name('home');
 Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
 Route::get('/become-seller/create',[SellerController::class,'index'])->name('seller.register');
+Route::get('/become-seller/create/status',[SellerController::class,'status'])->name('seller.status');
 
 Route::get('/view/{product_slug}', function($product_slug){
     $data['product'] = Product::where('slug',$product_slug)->first();
