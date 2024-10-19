@@ -25,7 +25,7 @@ class ProductVariant extends Component
     protected $rules = [
         'variant_type' => 'required|string',
         'product_name' => 'required|string|max:255',
-        'sku' => 'required|string', 
+        'sku' => 'required', 
         'price' => 'required|numeric|min:0',
         'stock' => 'required|integer|min:0',
         'variant_image' => 'nullable|image|max:1024', // Optional, max 1MB
@@ -33,21 +33,20 @@ class ProductVariant extends Component
     
     public function store()
     {
-        
         $this->validate();
-        $imagePath = null;
-        if ($this->variant_image) {
-            $imagePath = $this->variant_image->store('variant_images', 'public'); // Store image in 'public/variant_images'
-        }
+        
+        $imageName = $this->variant_image ? "C" . time() . '.' . $this->variant_image->getClientOriginalExtension() : null;
+        $this->variant_image->storeAs('public/image/product', $imageName, 'public');
+
 
         
-        Variant::create([
+        Product_Variant::create([
             'variant_type' => $this->variant_type,
-            'product_name' => $this->product_name,
+            'product_id' => $this->product_name,
             'sku' => $this->sku,
             'price' => $this->price,
             'stock' => $this->stock,
-            'variant_image' => $imagePath, 
+            'variant_image' => $imageName, 
         ]);
 
         

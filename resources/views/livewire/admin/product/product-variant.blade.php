@@ -6,8 +6,8 @@
             <div class="col-md-12">
                 <div class="row gap-4 mb-4">
                 <div class="col-md-3">
-                    <label wire:model.live="variant_type" class="form-label fw-semibold">Variant Type</label>
-                    <select class="form-select">
+                    <label class="form-label fw-semibold">Variant Type</label>
+                    <select class="form-select" wire:model="variant_type" >
                         <option value="">Select Variant Type</option>
                         <option value="size">Size</option>
                         <option value="color">Color</option>
@@ -18,38 +18,38 @@
                     @enderror
                 </div>
                 <div class="col-md-3">
-                    <label wire:model.live="product_name" class="form-label fw-semibold">Variant Name</label>
-                    <input type="text" class="form-control" placeholder="e.g., Red, XL" />
+                    <label  class="form-label fw-semibold">Variant Name</label>
+                    <input type="text" wire:model="product_name" class="form-control" placeholder="e.g., Red, XL" />
                     @error('varient_name')
                     <div class="text-danger small">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="col-md-3">
-                    <label wire:model.live="sku" class="form-label fw-semibold">Variant Sku</label>
-                    <input type="text" class="form-control" placeholder="Enter Variant Sku" />
+                    <label class="form-label fw-semibold">Variant Sku</label>
+                    <input type="text" wire:model="sku"  class="form-control" placeholder="Enter Variant Sku" />
                     @error('sku')
                     <div class="text-danger small">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="row gap-4 mb-3">
                     <div class="col-md-3">
-                        <label wire:model.live="price" class="form-label fw-semibold">Variant Price</label>
-                        <input class="form-control" placeholder="Enter Variant Price" />
+                        <label class="form-label fw-semibold">Variant Price</label>
+                        <input class="form-control" wire:model="price"  placeholder="Enter Variant Price" />
                         @error('price')
                          <div class="text-danger small">{{$message}}</div>
                         @enderror
                     </div>
     
                     <div class="col-md-3">
-                        <label wire:model.live="stock" class="form-label fw-semibold">Variant Stock</label>
-                        <input type="text" class="form-control" placeholder="Enter Variant Stock" />
+                        <label class="form-label fw-semibold">Variant Stock</label>
+                        <input type="text" wire:model="stock"  class="form-control" placeholder="Enter Variant Stock" />
                         @error('stock')
                         <div class="text-danger small">{{$message}}</div>
                         @enderror
                     </div>
                     <div class=" col-md-3">
-                        <label wire:model.live="variant_image" class="form-label fw-semibold">Variant Image</label>
-                        <input type="file" name="variant_image" class="form-control">
+                        <label class="form-label fw-semibold">Variant Image</label>
+                        <input type="file" wire:model="variant_image"  name="variant_image" class="form-control">
                         @error('variant_image') 
                         <div class="text-danger small">{{$message}}</div>
                         @enderror
@@ -63,7 +63,7 @@
         <!-- Submit Button -->
         <div class="mt-4 d-flex gap-4 justify-content-end">
 
-            <button type="submit" wire:click="" class="btn btn-success">
+            <button type="submit" class="btn btn-success">
                 Add Variant
             </button>
 
