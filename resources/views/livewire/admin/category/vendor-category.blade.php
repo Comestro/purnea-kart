@@ -1,4 +1,10 @@
 <div>
+    @if($vendorCat->isEmpty())
+    <div class="text-center py-4">
+        <p class="text-muted">No vendor categories available.<i class="bi bi-emoji-astonished"></i></p>
+    </div>
+@else
+
 <div class="mb-3 position-relative">
     <div class="input-group">
         <input type="search"
@@ -21,9 +27,9 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center gap-1">
                 <h4 class="card-title flex-grow-1">Pending for approvel</h4>
-                <a href="product-add.html" class="btn btn-sm btn-primary">
+                {{-- <a href="product-add.html" class="btn btn-sm btn-primary">
                     Add Category
-                </a>
+                </a> --}}
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -102,5 +108,6 @@
         </div>
     </div>
 </div>
+@endif
 
 </div>

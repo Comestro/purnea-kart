@@ -27,19 +27,17 @@ class CategoryApiController extends Controller
      */
     public function store(StoreCategoryReq $request)
     {
-    
-        $imageName = null;
-        if ($request->hasFile('image')) {            
-            $imageName = Str::uuid() . '.' . $request->image->extension();            
-            $request->image->storeAs('public/image/category', $imageName);
-        }
+        dd($request->name);
+        $filename = time() . "." . $request->image->extension();
+        $request->image->move(public_path("image/category"), $filename);
+        
         $catSlug = Str::slug($request->cat_title);
         $category = new Category();
         $category->cat_title = $request->cat_title;
         $category->parent_category_id = $request->parent_category_id;
         $category->cat_slug =$catSlug;
         $category->cat_description = $request->cat_description;
-        $category->image = $imageName;
+        $category->image = $filename;
         $category->save(); 
         return response()->json([
             'message' => 'Category created successfully',

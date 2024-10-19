@@ -16,6 +16,8 @@ Route::delete('/categories/{category}', [CategoryApiController::class, 'destroy'
 // Brnad api
 
 Route::get("/brands",[BrandApiController::class,"index"]);
+Route::post("/brands/brand-add",[BrandApiController::class,"store"]);
 
 // Product api
 Route::get("/products", [ProductApiController::class,"index"]);
+Route::post("/products/create", [ProductApiController::class,"store"]);

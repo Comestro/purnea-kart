@@ -44,6 +44,9 @@
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
                         </li>
+                         <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{ url('admin/product-grid') }}">Grid</a>
+                        </li>
                         
                        
                         

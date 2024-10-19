@@ -1,47 +1,67 @@
-<!-- 
-<style>
-    img {
-        display: block;
-        max-width: 100%;
-    }
 
-    .preview {
-        text-align: center;
-        overflow: hidden;
-        width: 160px;
-        height: 160px;
-        margin: 10px;
-        border: 1px solid red;
-    }
-    input {
-        margin-top: 40px;
-    }
-
-    .section {
-        margin-top: 150px;
-        background: #fff;
-        padding: 50px 30px;
-    }
-
-    .modal-lg {
-        max-width: 1000px !important;
-    }
-</style> -->
 <div class="container">
     <div class="row">
         <!-- Brand Preview Section -->
         <div class="col-lg-3">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4 class="card-title">Brand Preview</h4>
+         
+        <div class="card">
+            <div class="card-body">
+                <div class="bg-light text-center rounded bg-light">
+                    <div class="dropzone">
+                        <div wire:loading wire:target="logo" class="text-center">
+                            <div class="spinner-border text-muted" role="status"></div>
+                            <p class="mt-2">Uploading...</p>
+                        </div>
+
+                        <div wire:loading.remove wire:target="logo"
+                            class="w-100 h-100 d-flex align-items-center justify-content-center">
+                            @if ($logo)
+                                <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" alt="Image Preview" />
+                            @else
+                                <img src="{{ asset('assets_admin/images/brands/ups.png') }}" alt="Static Preview"
+                                    class="avatar-xxl">
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body text-center">
+
+                <!-- Name, Slug, Description -->
+                <div class="mt-3">
                     <div class="text-start">
-                        <p><strong>Name:</strong> <span>{{ $brand_name }}</span></p>
-                        <p class="text-truncate"><strong>Description:</strong> <span>{{ $brand_description }}</span></p>
+                        <!-- Static Preview before form submission -->
+                        
+                        @if (!$brand_name && !$brand_slug)
+                            <h4>Luxury Fashion </h4> 
+                        @else
+                        <h4>{{ $brand_name }}<span>/</span>{{ $brand_slug
+                         }}</h4>
+                        @endif
+                       
+                        @if (!$brand_description)
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus provident, rem omnis
+                                exercitationem odio voluptate consequatur dolorem? Quo, nisi numquam, saepe voluptatem
+                                modi voluptatibus neque vero, dolorem assumenda dolore perspiciatis.</p>
+                        @else
+                            <p>{{ $brand_description }}</p>
+                        @endif
+
                     </div>
                 </div>
             </div>
+
+            <!-- Footer buttons -->
+            <div class="card-footer border-top">
+                <div class="row g-2">
+                    <div class="col-lg-7">
+                        <a href="" class="btn btn-outline-secondary w-100">view Brand</a>
+                    </div>
+                    <div class="col-lg-5">
+                        <a href="#!" class="btn btn-primary w-100">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         </div>
 
         <!-- Brand Insertion Form Section -->

@@ -6,9 +6,12 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SellerController;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
+
+use function Livewire\store;
 
 Route::get('/', function(){
 
@@ -17,6 +20,8 @@ Route::get('/', function(){
     $data['brands'] = Brand::all();
     return view('home', $data);
 })->name('home');
+
+Route::get('/become-seller',[SellerController::class,'index'])->name('seller.register');
 
 Route::get('/view/{product_slug}', function($product_slug){
     $data['product'] = Product::where('slug',$product_slug)->first();
@@ -47,6 +52,15 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
 
 });
+
+Route::get('/admin/product-grid', function () {
+    return view('admin.product.product_grid');
+});
+
+
+
+
+
 
 
 //brand
@@ -131,6 +145,7 @@ Route::get('admin/settings', function () {
     }
     return view('admin.settings', ['setting' => Setting::first()]);
 });
+
 
 
 //vendor
