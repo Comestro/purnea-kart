@@ -185,7 +185,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <livewire:admin.product.product-variant/>
+                                    <livewire:admin.product.product-variant :product="$pro_id"/>
                                 </div>
                             </div>
                         </div>

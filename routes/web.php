@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SellerController;
 use App\Models\Setting;
 use App\Models\Banner;
@@ -180,5 +181,10 @@ Route::get('/vendor/brand-list',function(){
     return view('vendor.brand.brandList');
 })->name('vendor.brand-list');
 
-// Route::get("/bocome-a-seller",[SellerController::class, 'index'])->name('become-seller');
 
+// public controller grouping here:
+
+Route::controller(PublicController::class)->group(function(){
+    Route::get('/about-us','aboutHome')->name('about.home');
+    Route::get('/ethics','Ethics')->name('about.ethics');
+});

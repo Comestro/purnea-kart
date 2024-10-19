@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-3">
                     <label  class="form-label fw-semibold">Variant Name</label>
-                    <input type="text" wire:model="product_name" class="form-control" placeholder="e.g., Red, XL" />
+                    <input type="text" wire:model="variant_name" class="form-control" placeholder="e.g., Red, XL" />
                     @error('varient_name')
                     <div class="text-danger small">{{$message}}</div>
                     @enderror

@@ -13,18 +13,18 @@ class ProductApiController extends Controller
      */
     public function index()
     {
-        $products = Product::with(["category", "brand","productImage"])->get();
+        $products = Product::with(["category", "brand","images"])->get();
         return response()->json([
             'message' => 'Product Fetched successfully',
             'products' => $products
         ], 200);
-      }
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreProductReq $request)
-    {        
+    {
         $productSlug = Str::slug($request->slug);
         $product = new Product();
         $product->name = $request->name;
@@ -33,7 +33,7 @@ class ProductApiController extends Controller
         $product->discount_price = $request->discount_price;
         $product->description = $request->description;
         $product->quantity = $request->quantity;
-        $product->sku = $request->sku;
+        $product->sku = $request->sku;        
         $product->vendor_id = $request->vendor_id;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
