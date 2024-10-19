@@ -16,6 +16,7 @@ class InsertBrand extends Component
     public $logo;
     public $brand_slug;
     
+    
     public function rules()
     {
         return [
