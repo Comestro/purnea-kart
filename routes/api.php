@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
+use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::post("/brands/brand-add",[BrandApiController::class,"store"]);
 // Product api
 Route::get("/products", [ProductApiController::class,"index"]);
 Route::post("/products/create", [ProductApiController::class,"store"]);
+
+
+// product images (multipleImage)
+Route::apiResource('multipleImage',MultipleImageController::class);

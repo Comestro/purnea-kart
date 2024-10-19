@@ -29,9 +29,9 @@ class StoreProductReq extends FormRequest
             'slug' => ['required', 'string', 'max:255', 'unique:products,slug'],
             'quantity' => ['required', 'integer', 'min:0'],
             'sku' => ['required', 'string', 'max:255'],
-            'vendor_id' => ['nullable', 'exists:vendors,id'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'brand_id' => ['nullable', 'exists:brands,id'],
+            'vendor_id' => 'nullable', 'exists:vendors,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'brand_id' => 'nullable', 'exists:brands,id',
         ];
     }
 }
