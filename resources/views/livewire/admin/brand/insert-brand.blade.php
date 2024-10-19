@@ -33,7 +33,8 @@
                         @if (!$brand_name && !$brand_slug)
                             <h4>Luxury Fashion </h4> 
                         @else
-                        <h4>{{ $cat_title }}<span>/</span>{{ $cat_slug }}</h4>
+                        <h4>{{ $brand_name }}<span>/</span>{{ $brand_slug
+                         }}</h4>
                         @endif
                        
                         @if (!$brand_description)
@@ -41,7 +42,7 @@
                                 exercitationem odio voluptate consequatur dolorem? Quo, nisi numquam, saepe voluptatem
                                 modi voluptatibus neque vero, dolorem assumenda dolore perspiciatis.</p>
                         @else
-                            <p>{{ $cat_description }}</p>
+                            <p>{{ $brand_description }}</p>
                         @endif
 
                     </div>
@@ -71,7 +72,7 @@
             <hr>
             
             <div class="card-body">
-                <form wire:submit.prevent="store" method="post" enctype="multipart/form-data">
+                <form wire:submit.prevent="store">
                     <!-- Brand Name and Slug Fields -->
                     <div class="mb-4 row g-3">
                         <div class="col-xl-6">
