@@ -86,6 +86,7 @@ class CreateBannerForm extends Component
         $banner->status = !$banner->status;
         $banner->save();
 
+        
         session()->flash('success', 'Banner status updated successfully.');
     }
 }
