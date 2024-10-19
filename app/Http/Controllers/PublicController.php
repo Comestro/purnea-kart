@@ -13,4 +13,8 @@ class PublicController extends Controller
     public function Ethics(){
         return view('about-us.ethics');
     }
+
+    public function Culture(){
+        return view('about-us.culture');
+    }
 }
