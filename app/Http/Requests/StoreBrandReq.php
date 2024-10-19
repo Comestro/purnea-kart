@@ -25,7 +25,7 @@ class StoreBrandReq extends FormRequest
             'brand_name' => 'required|string|max:255',
             'brand_description' => 'required|string|max:500',
             'brand_slug' => 'required|string|max:255|unique:brands,brand_slug',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

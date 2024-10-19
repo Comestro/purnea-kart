@@ -8,9 +8,10 @@
         @foreach($products as $product)
         <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}" class=" max-w-xs bg-white p-2 rounded-lg shadow-lg">
            @if ($product->images->count() > 0)
-           <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
-           alt="">
+            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
+            alt="">
            @endif
+
 
             <div class="mt-2 flex justify-between items-center">
                 <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">36% off</span>
