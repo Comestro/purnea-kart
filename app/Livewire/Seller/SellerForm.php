@@ -25,7 +25,7 @@ class SellerForm extends Component
             'name'=>'required',
             'mobile' => 'required|min:10',
             'email' => 'required|email',
-            'gst' => 'required|',
+            'gst' => 'required|',// todo
             'password' => 'required | min:8'
         ];
     }
