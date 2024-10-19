@@ -35,10 +35,9 @@ class ProductVariant extends Component
     {
         $this->validate();
         
-        $imagePath = null;
-        if ($this->variant_image) {
-            $imagePath = $this->variant_image->store('variant_images', 'public'); // Store image in 'public/variant_images'
-        }
+        $imageName = $this->variant_image ? "C" . time() . '.' . $this->variant_image->getClientOriginalExtension() : null;
+        $this->variant_image->storeAs('public/image/product', $imageName, 'public');
+
 
         
         Product_Variant::create([
@@ -47,7 +46,7 @@ class ProductVariant extends Component
             'sku' => $this->sku,
             'price' => $this->price,
             'stock' => $this->stock,
-            'variant_image' => $imagePath, 
+            'variant_image' => $imageName, 
         ]);
 
         
