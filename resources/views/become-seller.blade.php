@@ -1,5 +1,9 @@
 @extends('become-seller.components.seller-layout')
 
+@section('title')
+    Become a seller
+@endsection
+
 @section('content')
 
     <br>
