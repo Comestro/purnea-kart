@@ -20,8 +20,9 @@ Route::get('/', function(){
     $data['brands'] = Brand::all();
     return view('home', $data);
 })->name('home');
-
+Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
 Route::get('/become-seller',[SellerController::class,'index'])->name('seller.register');
+Route::get('become-seller/password',[SellerController::class,'show'])->name('seller.password');
 
 Route::get('/view/{product_slug}', function($product_slug){
     $data['product'] = Product::where('slug',$product_slug)->first();
@@ -178,6 +179,5 @@ Route::get('/vendor/brand-list',function(){
     return view('vendor.brand.brandList');
 })->name('vendor.brand-list');
 
-
-
+// Route::get("/bocome-a-seller",[SellerController::class, 'index'])->name('become-seller');
 

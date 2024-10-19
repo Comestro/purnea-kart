@@ -68,7 +68,8 @@
                     <td>{{ $item->brand_slug }}</td>
                     <td>{{ $item->brand_description }}</td>
                     <td>
-                        <img src="{{ $item->logo ? asset('storage/public/logo/brand/' . $item->logo) : asset('storage/logo/brand/default.png') }}" alt="Logo" style="max-width: 100px; max-height: 100px;">
+                        <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/logo/brand/' . $item->logo) }}"
+                            alt="" class="avatar-md">
                     </td>
                     <td>
                         <div class="d-flex gap-2">

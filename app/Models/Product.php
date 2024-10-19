@@ -27,8 +27,11 @@ class Product extends Model
     {
         return $this->hasOne(brand::class,"id","brand_id");
     }
-
-
+    
+    public function variants()
+    {
+        return $this->hasMany(Product_Variant::class,"id","product_id");
+    }
     
 
 }
