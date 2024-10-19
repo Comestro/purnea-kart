@@ -13,4 +13,7 @@ class SellerController extends Controller
     public function show(){
         return view('become-seller');
     }
+    public function status(){
+        return view('seller-status');
+    }
 }
