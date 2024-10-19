@@ -17,6 +17,7 @@ class SellerForm extends Component
 
     public $step = 1;
 
+    
 
     public function rules()
     {
@@ -51,12 +52,31 @@ class SellerForm extends Component
 
     $seller->save();
 
+    // redirect()->route(route: 'seller.status');
+    
+
     }
     public  function nextStep(){
+       if($this->mobile && $this->name && $this->email && $this->gst)
+       {
         $this->step++;
+       }
+    }
+    public function previouStep(){
+        $this->step--;
+    }
+    public function Onboard(){
+       if($this->password)
+       {
+        $this->step++;
+    
+       }
+        
     }
     public function render()
     {
+       
+
         return view('livewire.seller.seller-form');
     }
 }
