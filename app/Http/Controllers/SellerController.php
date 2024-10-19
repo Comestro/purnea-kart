@@ -10,4 +10,7 @@ class SellerController extends Controller
         return view('become-sellerform');
         
     }
+    public function show(){
+        view('seller-password');
+    }
 }
