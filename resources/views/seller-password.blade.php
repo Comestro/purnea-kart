@@ -12,6 +12,7 @@
      <livewire:seller.seller-password/>
      
   <div class="flex flex-1 bg-blue-50 ">
+    
   <div class="max-w-7xl mx-auto p-8">
         <!-- Heading -->
         <h2 class="text-3xl font-bold text-center mb-10">Why sell on Purneakart?</h2>
