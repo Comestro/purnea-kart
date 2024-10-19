@@ -187,4 +187,5 @@ Route::get('/vendor/brand-list',function(){
 Route::controller(PublicController::class)->group(function(){
     Route::get('/about-us','aboutHome')->name('about.home');
     Route::get('/ethics','Ethics')->name('about.ethics');
+    Route::get('/culture','Culture')->name('about.culture');
 });

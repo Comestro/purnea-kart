@@ -10,7 +10,7 @@
         <nav class=" text-gray-600 flex gap-10">
             <a href="{{ route('about.home') }}" class="hover:text-blue-600 text-xl font-thin">About</a>
             <a href="{{ route('about.ethics') }}" class="hover:text-blue-600 text-xl font-thin">Ethics</a>
-            <a href="#" class="hover:text-blue-600 text-xl font-thin">Culture</a>
+            <a href="{{ route('about.culture') }}" class="hover:text-blue-600 text-xl font-thin">Culture</a>
             <a href="#" class="hover:text-blue-600 text-xl font-thin">Technology</a>
             <a href="#" class="hover:text-blue-600 text-xl font-thin">Sustainability</a>
             <a href="#" class="hover:text-blue-600 text-xl font-thin">Stories</a>
