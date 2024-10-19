@@ -29,26 +29,18 @@ class CategoryApiController extends Controller
      */
     public function store(StoreCategoryReq $request)
     {
-        $validatedData = $request->validated();
-
-        $imagePath = $request->hasFile('image')
-            ? $request->image->store('public/image/category')
-            : null;
-
-        if ($imagePath) {
-            $validatedData['image'] = $imagePath;
-        } else {
-            return response()->json([
-                'message' => 'No valid image file uploaded.',
-            ], 400);
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('image/category', $imageName,'public');         
         }
+
         $catSlug = Str::slug($request->cat_title);
         $category = new Category();
         $category->cat_title = $request->cat_title;
         $category->parent_category_id = $request->parent_category_id;
         $category->cat_slug = $catSlug;
         $category->cat_description = $request->cat_description;
-        $category->image = $imagePath;
+        $category->image = $imageName;
         $category->save();
         return response()->json([
             'message' => 'Category created successfully',
