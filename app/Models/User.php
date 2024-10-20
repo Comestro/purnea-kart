@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'is_admin',        
-        'is_vendor',        
+        // 'is_vendor',        
         // 'email_verified_at',        
     ];
 
@@ -35,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims() {
         return [
             'is_admin' =>$this->is_admin,
-            'is_vendor'=>$this->is_vendor,
+            // 'is_vendor'=>$this->is_vendor,
         ];
     }  
 
