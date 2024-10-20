@@ -347,7 +347,7 @@
                 <div class="collapse" id="sidebarSellers">
                     <ul class="nav sub-navbar-nav">
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="seller-list.html">List</a>
+                            <a class="sub-nav-link" href="{{url('admin/seller/seller-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="seller-details.html">Details</a>
@@ -356,7 +356,7 @@
                             <a class="sub-nav-link" href="seller-edit.html">Edit</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="seller-add.html">Create</a>
+                            <a class="sub-nav-link" href="{{url('admin/seller/seller-add')}}">Create</a>
                         </li>
                     </ul>
                 </div>

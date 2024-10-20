@@ -149,6 +149,19 @@ Route::get('admin/settings', function () {
     return view('admin.settings', ['setting' => Setting::first()]);
 });
 
+//seller
+Route::get('admin/seller/seller-list',function(){
+    return view('admin.seller.seller_list');
+})->name('seller_list');
+
+Route::get('admin/seller/seller-add',function(){
+    return view('admin.seller.seller_add');
+})->name('seller_add');
+
+
+
+
+
 
 
 //vendor

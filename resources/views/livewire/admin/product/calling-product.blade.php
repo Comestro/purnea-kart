@@ -52,7 +52,7 @@
                                     <div
                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
                                         @if ($product->images->count() > 0)
-                                            <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/image/product/' . $product->images->first()->path) }}"
+                                            <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}"
                                           
                                                 alt="" class="avatar-md">
                                             @else
