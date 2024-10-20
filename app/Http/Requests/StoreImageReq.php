@@ -22,7 +22,8 @@ class StoreImageReq extends FormRequest
     public function rules(): array
     {
         return [
-           "image"=> 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'product_id' => 'required', 'exists:products,id',
+           "path"=> 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

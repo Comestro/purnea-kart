@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryReq;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Storage;
 use Str;
-use Image;
 
 class CategoryApiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $categories = Category::where('parent_category_id', NULL)->get();
@@ -24,9 +20,6 @@ class CategoryApiController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCategoryReq $request)
     {
         if ($request->hasFile('image')) {
@@ -35,12 +28,14 @@ class CategoryApiController extends Controller
         }
 
         $catSlug = Str::slug($request->cat_title);
+
         $category = new Category();
         $category->cat_title = $request->cat_title;
         $category->parent_category_id = $request->parent_category_id;
         $category->cat_slug = $catSlug;
         $category->cat_description = $request->cat_description;
         $category->image = $imageName;
+        $category->status = 1;
         $category->save();
         return response()->json([
             'message' => 'Category created successfully',
@@ -74,13 +69,13 @@ class CategoryApiController extends Controller
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/image/category', $imageName);
-            $category->image = $imageName;
+            $request->image->storeAs('image/category', $imageName,'public');           
         }
 
         $category->cat_title = $request->cat_title;
         $category->parent_category_id = $request->parent_category_id;
         $category->cat_slug = $request->cat_slug;
+        $category->image = $imageName;
         $category->cat_description = $request->cat_description;
         $category->save();
 
