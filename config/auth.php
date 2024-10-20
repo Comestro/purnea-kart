@@ -47,10 +47,15 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
-        // "admin" => [
-        //     "driver" => "session",
-        //     "provider" => "admin"
-        // ]
+        "admin" => [
+            "driver" => "session",
+            "provider" => "admin"
+        ],
+        "vendor"=>[
+            "driver"=> "session",
+            "provider"=>"vendor"
+
+        ]
 
     ],
 
@@ -110,6 +115,10 @@ return [
             'throttle' => 60,
         ],
         'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'vendor' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],

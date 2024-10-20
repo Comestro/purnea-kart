@@ -13,26 +13,16 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+   
     protected $fillable = [
         'name',
         'email',
         'password',
         'is_admin',        
-        // 'is_vendor',        
+        'is_vendor',        
         // 'email_verified_at',        
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -45,18 +35,14 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims() {
         return [
             'is_admin' =>$this->is_admin,
-            // 'is_vendor'=>$this->is_vendor,
+            'is_vendor'=>$this->is_vendor,
         ];
     }  
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    
     protected function casts(): array
     {
         return [
