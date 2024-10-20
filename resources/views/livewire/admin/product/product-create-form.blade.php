@@ -330,7 +330,7 @@
                             <div class="col-lg-4">
                                 <label for="product-price" class="form-label">Price</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
+                                    <span class="input-group-text fs-20"><i class="bi bi-currency-rupee"></i></span>
                                     <input type="number" id="product-price" wire:model.live='price' class="form-control"
                                         placeholder="000">
                                 </div>

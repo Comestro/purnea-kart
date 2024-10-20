@@ -52,7 +52,8 @@
                                     <div
                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
                                         @if ($product->images->count() > 0)
-                                            <img src="{{ asset('storage/public/image/product/' . $product->images->first()->path) }}"
+                                            <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}"
+                                          
                                                 alt="" class="avatar-md">
                                             @else
                                         <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="" class="avatar-md">
@@ -60,7 +61,7 @@
                                     </div>
                                     <div>
                                         <a href="#!" class="text-dark fw-medium fs-15">{{ $product->name }}</a>
-                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>S , M , L , Xl </p>
+                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>{{($product->variants)}}</p>
                                     </div>
                                 </div>
 

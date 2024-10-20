@@ -149,6 +149,23 @@ Route::get('admin/settings', function () {
     return view('admin.settings', ['setting' => Setting::first()]);
 });
 
+//seller
+Route::get('admin/seller/seller-list',function(){
+    return view('admin.seller.seller_list');
+})->name('seller_list');
+
+Route::get('admin/seller/seller-add',function(){
+    return view('admin.seller.seller_add');
+})->name('seller_add');
+Route::get('admin/seller/seller-details/{id}',function($id){
+    
+    return view('admin.seller.seller-details',["seller_id" => $id]);
+})->name('seller_details');
+
+
+
+
+
 
 
 //vendor
@@ -188,4 +205,5 @@ Route::controller(PublicController::class)->group(function(){
     Route::get('/about-us','aboutHome')->name('about.home');
     Route::get('/ethics','Ethics')->name('about.ethics');
     Route::get('/culture','Culture')->name('about.culture');
+    Route::get('/technology','Technology')->name('about.technology');
 });

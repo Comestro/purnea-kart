@@ -45,8 +45,7 @@ class MultipleImage extends Component
         // Ensure photo is not empty
         if ($this->path) {
             $imageName = "p" . time() . '.' . $this->path->getClientOriginalExtension();
-            $this->path->storeAs('public/image/product', $imageName,"public");
-
+            $this->path->storeAs('public/image/product', $imageName,"s3");
             // Save the image to the product_images table
             ProductImage::create([
                 'product_id' => $this->product->id,

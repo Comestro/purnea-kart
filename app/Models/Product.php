@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\Product_Variant;
 use App\Models\Brand;
 
 class Product extends Model
@@ -30,8 +31,9 @@ class Product extends Model
     
     public function variants()
     {
-        return $this->hasMany(Product_Variant::class,"id","product_id");
+        // return $this->hasMany(Product_Variant::class,"id","product_id");
+        return $this->hasMany(ProductVariant::class,"id","product_id");
     }
-    
+
 
 }

@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class LeftSidebar extends Component
 {
+    public $category;
+    public $moreCategories=[];
     public function render()
     {
         $data['categories']=Category::all();

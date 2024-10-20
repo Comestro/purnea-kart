@@ -102,7 +102,7 @@ class EditCategoryImage extends Component
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div> -->
-                                    <img src="{{ asset('storage/public/image/category/'. $category->image) }}" alt="Category Image" class="img-thumbnail w-25 h-25" />
+                                    <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/image/category/' . $category->image) }}" alt="Category Image" class="img-thumbnail w-25 h-25" />
                                 @else
                                     <p>No image uploaded</p>
                                 @endif

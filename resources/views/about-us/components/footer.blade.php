@@ -1,5 +1,5 @@
 <header class="shadow-xl w-full bg-gray-100">
-    <div class="container mx-auto px-20 py-3 flex justify-between items-center">
+    <div class="container mx-auto px-10 py-3 flex justify-between items-center">
 
         <div class="flex">
             <!-- Logo -->
