@@ -184,9 +184,15 @@
                                 <h4 class="card-title">Product Varient</h4>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <livewire:admin.product.product-variant :product="$pro_id"/>
-                                </div>
+                              <div class="row">
+                                   <livewire:admin.product.calling-variant/>
+                               </div>
+                                
+                            </div>
+                            <div class="card-footer">
+                              <div class="row">
+                                   <livewire:admin.product.product-variant :product="$pro_id"/>
+                               </div>
                             </div>
                         </div>
                     </div>
