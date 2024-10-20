@@ -68,7 +68,8 @@
                     <td>{{ $item->brand_slug }}</td>
                     <td>{{ $item->brand_description }}</td>
                     <td>
-                        <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/logo/brand/' . $item->logo) }}"
+
+                        <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/brand/' . $item->logo) }}"
                             alt="" class="avatar-md">
                     </td>
                     <td>

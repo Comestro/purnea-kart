@@ -42,7 +42,7 @@ class InsertBrand extends Component
         $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
 
         if ($this->logo) {
-            $this->logo->storeAs('public/logo/brand', $logoName, 's3');
+            $this->logo->storeAs('public/image/brand', $logoName, 's3');
         }
 
         // Create the brand

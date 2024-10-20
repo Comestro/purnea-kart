@@ -204,7 +204,7 @@
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
                                                     class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                    <img src="{{ asset('https://purneakart.s3.ap-south-1.amazonaws.com/public/image/category/' . $cat->image) }}"
+                                                    <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/category/' . $cat->image) }}"
                                                         alt="" class="avatar-md">
                                                 </div>
                                                 <div>
