@@ -350,7 +350,7 @@
                             <a class="sub-nav-link" href="{{url('admin/seller/seller-list')}}">List</a>
                         </li>
                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="seller-details.html">Details</a>
+                            <a class="sub-nav-link" href="{{url('admin/seller/seller-details')}}">Details</a>
                         </li>
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="seller-edit.html">Edit</a>

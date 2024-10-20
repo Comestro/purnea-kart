@@ -157,6 +157,9 @@ Route::get('admin/seller/seller-list',function(){
 Route::get('admin/seller/seller-add',function(){
     return view('admin.seller.seller_add');
 })->name('seller_add');
+Route::get('admin/seller/seller-details',function(){
+    return view('admin.seller.seller-details');
+})->name('seller_details');
 
 
 
