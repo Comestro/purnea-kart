@@ -13,6 +13,7 @@
         </thead>
         <tbody>
             @foreach ($variants as $key=>$variant)
+            {{-- {{dd($variant)}} --}}
                 <tr>
 
                     <td>{{ $key + 1 }}</td>
@@ -21,7 +22,10 @@
                     <td>{{ $variant->sku }}</td>
                     <td>{{ $variant->price }}</td>
                     <td>{{ $variant->stock }}</td>
-                    <td>{{ $variant->variant_image }}</td>
+                   <td>
+                    <img src="{{ asset('storage/public/image/product' . $variant->variant_image) }}"
+                    alt="" class="avatar-md">
+                   </td>
                   </tr>
             @endforeach
         </tbody>
