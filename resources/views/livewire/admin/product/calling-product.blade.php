@@ -61,7 +61,19 @@
                                     </div>
                                     <div>
                                         <a href="#!" class="text-dark fw-medium fs-15">{{ $product->name }}</a>
-                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>{{($product->variants)}}</p>
+                                        
+                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span> 
+                                            @foreach ($product->variants as $variant)
+                                            @if ($variant->variant_type == "size")
+                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endif
+                                        @endforeach</p> 
+                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Color : </span> 
+                                            @foreach ($product->variants as $variant)
+                                            @if ($variant->variant_type == "color")
+                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endif
+                                        @endforeach</p>
                                     </div>
                                 </div>
 
