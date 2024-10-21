@@ -206,4 +206,5 @@ Route::controller(PublicController::class)->group(function(){
     Route::get('/ethics','Ethics')->name('about.ethics');
     Route::get('/culture','Culture')->name('about.culture');
     Route::get('/technology','Technology')->name('about.technology');
+    Route::get('/sustainability','SustainAbility')->name('about.sustainability');
 });
