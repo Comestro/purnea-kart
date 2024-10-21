@@ -4,7 +4,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
             <!-- Section 1: About Us -->
             <div>
-                <a href="#">
+                <a href="{{ route('about.home') }}">
                     <h3 class="text-lg font-semibold mb-3">About Us</h3>
                 </a>
                 <ul>
