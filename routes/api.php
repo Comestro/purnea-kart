@@ -10,7 +10,8 @@ Route::group(["prefix" => "auth"], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });
-Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
+Route::middleware('auth:api')->get('/user', [AuthController::class, 'user']);
+
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);

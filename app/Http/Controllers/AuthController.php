@@ -57,8 +57,35 @@ class AuthController extends Controller
     }
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        try {            
+            $user = JWTAuth::user();
+                        return response()->json([
+                'user' => $user
+            ]);
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            // Token has expired
+            return response()->json([
+                'error' => 'Token has expired.',
+                'message' => 'Your session has expired. Please log in again to obtain a new token.',
+                'status_code' => 401
+            ], 401);
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+            // Token is invalid
+            return response()->json([
+                'error' => 'Invalid token.',
+                'message' => 'The token provided is invalid. Please log in again to obtain a valid token.',
+                'status_code' => 401
+            ], 401);
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+            // No token or token is missing
+            return response()->json([
+                'error' => 'Authorization token missing.',
+                'message' => 'Authorization token is required to access this resource. Please log in.',
+                'status_code' => 401
+            ], 401);
+        }
     }
+    
     public function logout()
     {
         JWTAuth::invalidate(JWTAuth::getToken());
