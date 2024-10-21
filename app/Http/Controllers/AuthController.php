@@ -55,6 +55,10 @@ class AuthController extends Controller
 
         return response()->json(['error' => 'Invalid credentials'], 401);
     }
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
     public function logout()
     {
         JWTAuth::invalidate(JWTAuth::getToken());
@@ -62,7 +66,7 @@ class AuthController extends Controller
             'message' => 'Successfully logged out'
         ]);
     }
-
+    
     protected function respondWithToken($token, $isAdmin, $isVendor, $userType, $user)
     {
         return response()->json([
