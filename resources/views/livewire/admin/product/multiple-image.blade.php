@@ -78,8 +78,8 @@
                                         <div class="col-md-4 mb-3 ">
                                             <div class="">
                                                 <!-- Show product image -->
-                                                <img src="{{ asset('storage/public/image/product/' . $image->path) }}" class="img-fluid rounded shadow">
-                    
+                                                <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $image->path) }}" class="img-fluid rounded shadow">
+                
                                                 <!-- Delete button for image -->
                                                 <button type="button" wire:click="deleteImage({{ $image->id }})"
                                                         class="btn btn-danger btn-sm position-absolute top-0 end-0 ">

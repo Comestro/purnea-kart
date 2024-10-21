@@ -14,10 +14,7 @@ class SellerForm extends Component
     public $gst;
     public $password;
     public $confirmPassword;
-
     public $step = 1;
-
-
 
     public function rules()
     {
@@ -31,8 +28,6 @@ class SellerForm extends Component
     }
     public function store()
     {
-
-
 
         $this->validate();
 
@@ -73,8 +68,6 @@ class SellerForm extends Component
     }
     public function render()
     {
-
-
         return view('livewire.seller.seller-form');
     }
 }
