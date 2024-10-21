@@ -10,13 +10,17 @@ Route::group(["prefix" => "auth"], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });
+Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
 
     Route::middleware('is_admin')->group(function () {
         // // dummmy data
-        // Route::post('/products', [ProductApiController::class, 'store']);  
+        Route::apiResource('/products', ProductApiController::class);
+        Route::apiResource('brands', BrandApiController::class);
+        Route::apiResource('multipleImage', MultipleImageController::class);
+        Route::apiResource('/categories', CategoryApiController::class);
         // Route::put('/products/{product}', [ProductApiController::class, 'update']);
         // Route::delete('/products/{product}', [ProductApiController::class, 'destroy']);
     });
@@ -25,10 +29,11 @@ Route::middleware(['auth:api'])->group(function () {
         // Vendor-specific routes can go here
         // Route::post('/products', [ProductApiController::class, 'store']);  
     });
+
 });
 
 // Unauthenticated Routes (Public Access)
-Route::apiResource('/categories', CategoryApiController::class);
-Route::apiResource("brands", BrandApiController::class);
-Route::apiResource("/products", ProductApiController::class);
-Route::apiResource('multipleImage', MultipleImageController::class);
+// Route::middleware(['auth:api'])->group(function () {
+
+
+// });
