@@ -4,8 +4,13 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
             <!-- Section 1: About Us -->
             <div>
+<<<<<<< HEAD
                 <a href="#">
                     <h3 class="text-lg font-semibold mb-3"> <a href="{{route('about.home')}}">About Us</a></h3>
+=======
+                <a href="{{ route('about.home') }}">
+                    <h3 class="text-lg font-semibold mb-3">About Us</h3>
+>>>>>>> 93b2d4feae4f16605728209fec3daa17eb786d16
                 </a>
                 <ul>
                     <li class="mb-2"><a href="#" class="hover:text-gray-400">Company Info</a></li>
