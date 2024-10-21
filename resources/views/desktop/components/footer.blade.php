@@ -5,7 +5,7 @@
             <!-- Section 1: About Us -->
             <div>
                 <a href="#">
-                    <h3 class="text-lg font-semibold mb-3">About Us</h3>
+                    <h3 class="text-lg font-semibold mb-3"> <a href="{{route('about.home')}}">About Us</a></h3>
                 </a>
                 <ul>
                     <li class="mb-2"><a href="#" class="hover:text-gray-400">Company Info</a></li>
