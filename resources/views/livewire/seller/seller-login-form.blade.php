@@ -18,7 +18,7 @@
                     @enderror
             </div>
 
-            <button
+            <button type="submit"
                 class="w-full bg-blue-500 text-white py-2 rounded-lg focus:outline-none hover:bg-blue-600 transition-colors">
                 Next
             </button>

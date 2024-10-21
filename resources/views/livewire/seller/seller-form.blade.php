@@ -30,7 +30,7 @@
 
 
         <!-- Form Fields -->
-        <form wire:submit="store">
+        <form wire:submit.prevent="store">
             @if ($step == 1)
                 <div class="mb-4">
                     <input type="text" id="name" wire:model.lazy="name"
