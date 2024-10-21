@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
+<div class="absolute z-10 left-[40%] top-[35%] shadow-lg  bg-gray-100">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 class="text-xl font-semibold text-gray-800 mb-4">Login</h2>
         
