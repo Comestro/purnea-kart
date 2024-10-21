@@ -20,6 +20,7 @@ class ProductController extends Controller
         // Return the view with products data
         return view('admin.product.product_list');
     }
+   
     
     /**
      * Show the form for creating a new resource.
@@ -70,11 +71,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $pro_id)
+    public function show($pro_id)
     {
         //
-        $product = Product::find($pro_id);
-        return view("admin.product.product_details",["product"=>$product]);
+        
+        return view("admin.product.product_details",["pro_id"=>$pro_id]);
     }
 
     /**

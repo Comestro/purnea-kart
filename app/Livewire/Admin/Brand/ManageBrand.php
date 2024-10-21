@@ -13,14 +13,38 @@ class ManageBrand extends Component
     use WithPagination;
     use WithFileUploads;
 
+  
+    
+    public $isActive = false;
+
     public $search = '';
     public $logo;
     public $brandId;
     public $confirmingDelete = false;
 
+    public function status($id)
+    {
+        $this->brandId=$id;
+
+        
+     
+        if($this->isActive)
+        {
+            Brand::where('id',$this->brandId)->update(['status' => 1]);
+            $this->isActive = !$this->isActive;
+        }
+        else{
+            Brand::where('id',$this->brandId)->update(['status' => 0]);
+            $this->isActive = !$this->isActive;
+        }
+
+       
+        return redirect()->route('manage_brand');
+    }
+
     public function render()
     {
-        $brands = Brand::where('brand_name', 'like', '%'.$this->search.'%')
+        $brands = Brand::where('status',1)->where('brand_name', 'like', '%'.$this->search.'%')
             ->paginate(5);
 
         return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);

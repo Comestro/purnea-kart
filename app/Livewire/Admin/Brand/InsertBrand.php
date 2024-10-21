@@ -16,13 +16,14 @@ class InsertBrand extends Component
     public $logo;
     public $brand_slug;
     
+    
     public function rules()
     {
         return [
             'brand_name' => ['required', 'string', 'max:255'],
             'brand_description' => ['required', 'string', 'max:255'],
             'brand_slug' => ['required', 'string', 'max:255'],
-            'logo' => ['nullable', 'image', 'max:2048'], // Validate as an image with a max size of 2MB
+            'logo' => ['nullable']
         ];
     }
 
@@ -34,14 +35,14 @@ class InsertBrand extends Component
 
     public function store()
     {
-        // Validate the data
+        // Validate the data 
         $validatedData = $this->validate();
 
         // Handle logo upload
         $logoName = $this->logo ? 'c' . time() . '.' . $this->logo->getClientOriginalExtension() : null;
 
         if ($this->logo) {
-            $this->logo->storeAs('public/logo/brand', $logoName, 'public');
+            $this->logo->storeAs('public/image/brand', $logoName, 's3');
         }
 
         // Create the brand
@@ -50,6 +51,7 @@ class InsertBrand extends Component
             'brand_description' => $this->brand_description,
             'brand_slug' => $this->brand_slug,
             'logo' => $logoName,
+            'status'=> 1
         ]);
 
         // Flash message and redirect

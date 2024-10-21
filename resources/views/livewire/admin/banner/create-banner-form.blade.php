@@ -140,9 +140,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($banners as $banner)
+                                @foreach ($banners as $key=>$banner)
                                     <tr>
-                                        <td>{{$banner->id}}</td>
+                                        <td>{{$key+1}}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
@@ -168,6 +168,7 @@
                                                 {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
                                             </button>
                                         </div>
+                                        
                                         
                                        
                                         </td>

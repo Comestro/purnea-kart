@@ -58,7 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($coupons as $coupon)
+                            @foreach ($coupons as $key=>$coupon)
                                 <tr>
                                     <td>
                                         <div class="form-check">
@@ -78,12 +78,11 @@
                                         </div>
 
                                    </td>-->
-                                    <td>{{ $coupon->id }}</td>
+                                    <td>{{ $key+1 }}</td>
                                     <td>{{ $coupon->code }}</td>
                                     <td>{{ $coupon->discount_type }}</td>
                                     <td>{{ $coupon->discount_value }}</td>
                                     <td>{{ $coupon->expiration_date }}</td>
-                                    {{-- <td>{{$coupon->status}}</td> --}}
                                     <td>
                                         <div class="inline-flex items-center">
                                             <a wire:click="toggleStatus({{ $coupon->id }})"

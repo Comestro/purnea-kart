@@ -18,15 +18,25 @@ class CallingProduct extends Component
     {
         
 
-        $data['products'] = Product::join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('brands','brands.id','=','products.brand_id')
-        ->where('name', 'LIKE', "%".$this->search."%")
-        ->orWhere('cat_title', 'LIKE', "%".$this->search."%")
-        ->orWhere('brand_name', 'LIKE', "%".$this->search."%")
-        // ->select('products.*') 
-        ->paginate(5);
+        // $data['products'] = Product::join('categories', 'categories.id', '=', 'products.category_id')
+        // ->join('brands','brands.id','=','products.brand_id')
+        // ->where('name', 'LIKE', "%".$this->search."%")
+        // ->orWhere('cat_title', 'LIKE', "%".$this->search."%")
+        // ->orWhere('brand_name', 'LIKE', "%".$this->search."%")
+        // ->paginate(5);
 
-    return view('livewire.admin.product.calling-product', $data);
+        // $data['products'] = Product::paginate(5);
+
+        $data['products'] = Product::where('name', 'LIKE', "%".$this->search."%")
+    ->orWhereHas('category', function($query) {
+        $query->where('cat_title', 'LIKE', "%".$this->search."%");
+    })
+    ->orWhereHas('brand', function($query) {
+        $query->where('brand_name', 'LIKE', "%".$this->search."%");
+    })
+    ->paginate(5);
+
+        return view('livewire.admin.product.calling-product', $data);
     }
 
 

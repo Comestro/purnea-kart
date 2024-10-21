@@ -2,13 +2,38 @@
 
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SellerController;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\Seller;
 
-Route::view('/', 'home')->name('home');
+use function Livewire\store;
+
+Route::get('/', function(){
+
+    $data['categories'] = Category::all();
+    $data['products'] = Product::all();
+    $data['brands'] = Brand::all();
+    return view('home', $data);
+})->name('home');
+Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
+Route::get('/become-seller/create',[SellerController::class,'index'])->name('seller.register');
+Route::get('/become-seller/create/status',[SellerController::class,'status'])->name('seller.status');
+
+Route::get('/view/{product_slug}', function($product_slug){
+    $data['product'] = Product::where('slug',$product_slug)->first();
+    return view('single-view',$data);
+})->name('viewpage');
+
+Route::get('/filter', function(){
+    return view('filter-page');
+})->name('filter');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -30,6 +55,15 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
 
 });
+
+Route::get('/admin/product-grid', function () {
+    return view('admin.product.product_grid');
+});
+
+
+
+
+
 
 
 //brand
@@ -115,4 +149,61 @@ Route::get('admin/settings', function () {
     return view('admin.settings', ['setting' => Setting::first()]);
 });
 
+//seller
+Route::get('admin/seller/seller-list',function(){
+    return view('admin.seller.seller_list');
+})->name('seller_list');
 
+Route::get('admin/seller/seller-add',function(){
+    return view('admin.seller.seller_add');
+})->name('seller_add');
+Route::get('admin/seller/seller-details/{id}',function($id){
+    
+    return view('admin.seller.seller-details',["seller_id" => $id]);
+})->name('seller_details');
+
+
+
+
+
+
+
+//vendor
+Route::get('/vendor',function(){
+    return view('vendor.index');
+})->name('vendor.index');
+
+//Product
+
+Route::get('/vendor/addproduct',function(){
+    return view('vendor.product.addproduct');
+})->name('vendor.addproduct');
+Route::get('/vendor/product-list',function(){
+    return view('vendor.product.productList');
+})->name('vendor.product-list');
+
+//Category
+Route::get('/vendor/addCategory',function(){
+    return view('vendor.category.addcategory');
+})->name('vendor.addcategory');
+Route::get('/vendor/category-list',function(){
+    return view('vendor.category.categoryList');
+})->name('vendor.category-list');
+
+//Brand
+Route::get('/vendor/addBrand',function(){
+    return view('vendor.brand.addBrand');
+})->name('vendor.addbrand');
+Route::get('/vendor/brand-list',function(){
+    return view('vendor.brand.brandList');
+})->name('vendor.brand-list');
+
+
+// public controller grouping here:
+
+Route::controller(PublicController::class)->group(function(){
+    Route::get('/about-us','aboutHome')->name('about.home');
+    Route::get('/ethics','Ethics')->name('about.ethics');
+    Route::get('/culture','Culture')->name('about.culture');
+    Route::get('/technology','Technology')->name('about.technology');
+});

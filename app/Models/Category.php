@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Str;
 
 class Category extends Model
 {
@@ -24,5 +25,4 @@ class Category extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
-
 }

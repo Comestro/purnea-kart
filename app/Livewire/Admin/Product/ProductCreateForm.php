@@ -47,7 +47,7 @@ class ProductCreateForm extends Component
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
             'discount_price' => ['nullable', 'numeric', 'lt:price'],
             'slug' => ['required', 'string', 'max:255', 'unique:products,slug'],
@@ -85,7 +85,7 @@ class ProductCreateForm extends Component
 
         if ($product) {
             session()->flash('message', 'Product added successfully.');
-            return redirect()->route('product.index'); // Ensure this route exists
+            return redirect()->route('product.edit', $product->slug); // Ensure this route exists
         } else {
             session()->flash('message', 'Unable to add product.');
         }
