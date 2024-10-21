@@ -50,9 +50,7 @@
                    <td>{{ $key+1}}</td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
-                            {{-- <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                   <img src="{{asset('assets_admin/images/product/p-1.png')}}" alt="" class="avatar-md">
-                              </div> --}}
+                           
                             <div>
                                 <a href="#!" class="text-dark fw-medium fs-15">{{ $product->name }}</a>
                                 {{-- <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>S , M , L , Xl </p> --}}
