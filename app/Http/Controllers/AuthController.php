@@ -18,18 +18,16 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
+        // Create a new user and hash the password
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        // Hash the password before saving
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
+        $user->is_admin = $request->is_admin ?? 0; 
+        $user->is_vendor = $request->is_vendor ?? 0;
         $user->save();
 
-        // Return response with the user data (excluding password)
-        return response()->json([
-            'message' => 'User successfully registered',
-            'user' => $user->makeHidden(['password']) // Hide password from the response
-        ], 200);
+        return response()->json(['message' => 'User successfully registered', 'user' => $user], 200);
     }
 
     // Login method
@@ -39,41 +37,33 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
-
+        
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
 
         $credentials = $request->only('email', 'password');
-
         if ($token = JWTAuth::attempt($credentials)) {
             $user = JWTAuth::user();
-            $isAdmin = $user->is_admin;
-            $isVendor = $user->is_vendor;
+            $isAdmin = $user->is_admin ?? 0;
+            $isVendor = $user->is_vendor ?? 0;
 
-            // Use the respondWithToken method to send the token with user roles
-            return $this->respondWithToken($token, $isAdmin, $isVendor);
+            $userType = ($isAdmin == 1 && $isVendor == 1) ? 'admin' : (($isAdmin == 0 && $isVendor == 1) ? 'vendor' : 'user');
+
+            return $this->respondWithToken($token, $isAdmin, $isVendor, $userType, $user);
         }
 
-        return response()->json([
-            'error' => 'Invalid credentials'
-        ], 401);
+        return response()->json(['error' => 'Invalid credentials'], 401);
     }
-
-    // Logout method
     public function logout()
     {
-        // Invalidate the JWT token
         JWTAuth::invalidate(JWTAuth::getToken());
-
-        // Return a logout success message
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
     }
 
-    // Helper method to return token with user roles
-    protected function respondWithToken($token, $isAdmin, $isVendor)
+    protected function respondWithToken($token, $isAdmin, $isVendor, $userType, $user)
     {
         return response()->json([
             'access_token' => $token,
@@ -81,6 +71,8 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'is_admin' => $isAdmin,
             'is_vendor' => $isVendor,
+            'user_type' => $userType, 
+            'user' => $user 
         ]);
     }
 }
