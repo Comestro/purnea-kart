@@ -22,5 +22,8 @@ class PublicController extends Controller
         return view('about-us.technology');
     }
 
+    public function SustainAbility(){
+        return view('about-us.sustainability');
+    }
     
 }

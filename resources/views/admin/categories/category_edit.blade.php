@@ -12,7 +12,7 @@
                <div class="container-xxl">
 
                     <div class="row">
-                         <div class="col-xl-3 col-lg-4">
+                         {{-- <div class="col-xl-3 col-lg-4">
                               <div class="card">
                                    <div class="card-body">
                                         <div class="bg-light text-center rounded bg-light">
@@ -24,6 +24,7 @@
                                              <div class="row">
                                                   <div class="col-lg-4 col-4">
                                                        <p class="mb-1 mt-2">Cat Slug :</p>
+
                                                        <h5 class="mb-0">{{$categoryItems->cat_slug}}</h5>
                                                   </div>
                                                   <div class="col-lg-4 col-4">
@@ -48,9 +49,9 @@
                                         </div>
                                    </div>
                               </div>
-                         </div>
+                         </div> --}}
 
-                         <div class="col-xl-9 col-lg-8 ">
+                         <div class="col-xl-12 col-lg-12 ">
                               <div class="card">
                                 <livewire:admin.category.edit-category :cat="$cat_id"/>
                               </div>

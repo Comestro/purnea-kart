@@ -13,10 +13,7 @@
     <div class="flex flex-col lg:flex-row  p-8 items-center justify-center py-10">
         <div class="flex px-[10%]">
             <!-- Left Side (Image) -->
-            <p class="text-4xl font-bold italic">“Studies indicate that happy employees are more productive, more creative,
-                and provide better client service. They’re less likely to quit or call in sick. What’s more, they act as
-                brand ambassadors outside the office, spreading positive impressions of their company and attracting star
-                performers to their team.”
+            <p class="text-4xl font-bold italic">“A great place to work is built on celebrating difference, and we take pride in being a diverse and employee-centric organisation which keeps the best interest of all its employees at the heart of all our initiatives.”
                 ― Ron Friedman, The Best Place to Work: The Art and Science of Creating an Extraordinary Workplace</p>
         </div>
     </div>

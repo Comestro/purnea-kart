@@ -61,7 +61,19 @@
                                     </div>
                                     <div>
                                         <a href="#!" class="text-dark fw-medium fs-15">{{ $product->name }}</a>
-                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>{{($product->variants)}}</p>
+                                        
+                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span> 
+                                            @foreach ($product->variants as $variant)
+                                            @if ($variant->variant_type == "size")
+                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endif
+                                        @endforeach</p> 
+                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Color : </span> 
+                                            @foreach ($product->variants as $variant)
+                                            @if ($variant->variant_type == "color")
+                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endif
+                                        @endforeach</p>
                                     </div>
                                 </div>
 
@@ -80,12 +92,17 @@
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('product.show', $product->id) }}"
+                                    {{-- <a href="">Details</a> --}}
+                                  
+                                            
+                                            <a href="{{url('/admin/product-details')}}"
                                         class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
-                                    <a href="{{ route('product.edit', $product->slug) }}"
+
+                                    <a href="{{ route('product.show', $product->id) }}"
                                         class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
+
                                     <button wire:confirm="Are you want to delete this Product?"
                                         wire:click="delete({{ $product->id }})" type="button"
                                         class="btn btn-soft-danger btn-sm"><iconify-icon

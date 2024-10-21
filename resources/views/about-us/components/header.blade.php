@@ -12,7 +12,7 @@
             <a href="{{ route('about.ethics') }}" class="hover:text-blue-600 text-xl font-thin">Ethics</a>
             <a href="{{ route('about.culture') }}" class="hover:text-blue-600 text-xl font-thin">Culture</a>
             <a href="{{ route('about.technology') }}" class="hover:text-blue-600 text-xl font-thin">Technology</a>
-            <a href="#" class="hover:text-blue-600 text-xl font-thin">Sustainability</a>
+            <a href="{{ route('about.sustainability') }}" class="hover:text-blue-600 text-xl font-thin">Sustainability</a>
             <a href="#" class="hover:text-blue-600 text-xl font-thin">Stories</a>
         </nav>
 

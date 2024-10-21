@@ -64,7 +64,7 @@
                                         </div> <!-- end col -->
 
                                         <?php
-                                        $totalVendor = App\Models\Vendor::count();
+                                        $totalVendor = App\Models\Seller::count();
                                         ?>
                                         <div class="col-6 text-end">
                                             <p class="text-muted mb-0 text-truncate">Total Vendors</p>

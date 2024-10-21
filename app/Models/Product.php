@@ -32,7 +32,7 @@ class Product extends Model
     public function variants()
     {
         // return $this->hasMany(Product_Variant::class,"id","product_id");
-        return $this->hasMany(ProductVariant::class,"id","product_id");
+        return $this->hasMany(ProductVariant::class,"product_id","id");
     }
 
 
