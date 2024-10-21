@@ -41,9 +41,14 @@
             <div class="mt-6">
                 <h3 class="text-lg font-medium text-gray-800">Choose Color</h3>
                 <div class="flex space-x-4 mt-2">
-                    <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-gray-300"></button>
-                    <button class="w-8 h-8 rounded-full bg-blue-500 border-2 border-gray-300"></button>
-                    <button class="w-8 h-8 rounded-full bg-green-500 border-2 border-gray-300"></button>
+                    @foreach ($product->variants as $item)
+                        @if ($item->variant_type === 'color')
+                            <button class="w-8 h-8 rounded-full border-2 border-gray-300"
+                                style="background-color: {{ $item->variant_name }};" value="{{ $item->variant_name }}">
+                            </button>
+                        @endif
+                    @endforeach
+
                 </div>
             </div>
 
