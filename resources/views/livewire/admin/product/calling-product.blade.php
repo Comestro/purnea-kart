@@ -92,12 +92,17 @@
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('product.show', $product->id) }}"
+                                    {{-- <a href="">Details</a> --}}
+                                  
+                                            
+                                            <a href="{{url('/admin/product-details')}}"
                                         class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
-                                    <a href="{{ route('product.edit', $product->slug) }}"
+
+                                    <a href="{{ route('product.show', $product->id) }}"
                                         class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
+
                                     <button wire:confirm="Are you want to delete this Product?"
                                         wire:click="delete({{ $product->id }})" type="button"
                                         class="btn btn-soft-danger btn-sm"><iconify-icon

@@ -59,6 +59,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/admin/product-grid', function () {
     return view('admin.product.product_grid');
 });
+Route::get('/admin/product-details', function () {
+    return view('admin.product.product_details');
+});
+
 
 
 
@@ -206,4 +210,5 @@ Route::controller(PublicController::class)->group(function(){
     Route::get('/ethics','Ethics')->name('about.ethics');
     Route::get('/culture','Culture')->name('about.culture');
     Route::get('/technology','Technology')->name('about.technology');
+    Route::get('/sustainability','SustainAbility')->name('about.sustainability');
 });

@@ -31,31 +31,7 @@
                 </a>
             </li>
 
-            <li class="nav-item" x-data="{ open: false }">
-                <a @click="open = !open" class="nav-link  menu-arrow"  href="#sidebarProducts" data-bs-toggle="collapse" role="button"
-                    aria-expanded="false" aria-controls="sidebarProducts" >
-                    <span class="nav-icon">
-                        <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
-                    </span>
-                    <span class="nav-text"> Products </span>
-                </a>
-                <div class="collapse" id="sidebarProducts">
-                    <ul class="nav sub-navbar-nav">
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
-                        </li>
-                         <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{ url('admin/product-grid') }}">Grid</a>
-                        </li>
-                        
-                       
-                        
-                        <li class="sub-nav-item">
-                            <a class="sub-nav-link" href="{{ route('product.create') }}">Create</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+           
             {{-- categories --}}
             <li class="nav-item">
                 <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse" role="button"
@@ -123,6 +99,32 @@
                         </li> --}}
                         <li class="sub-nav-item">
                             <a class="sub-nav-link" href="{{url('admin/brands/brand-add')}}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item" x-data="{ open: false }">
+                <a @click="open = !open" class="nav-link  menu-arrow"  href="#sidebarProducts" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarProducts" >
+                    <span class="nav-icon">
+                        <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
+                    </span>
+                    <span class="nav-text"> Products </span>
+                </a>
+                <div class="collapse" id="sidebarProducts">
+                    <ul class="nav sub-navbar-nav">
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{ route('product.index') }}">List</a>
+                        </li>
+                         <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{ url('admin/product-grid') }}">Grid</a>
+                        </li>
+                        
+                       
+                        
+                        <li class="sub-nav-item">
+                            <a class="sub-nav-link" href="{{ route('product.create') }}">Create</a>
                         </li>
                     </ul>
                 </div>

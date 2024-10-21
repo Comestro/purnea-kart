@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
@@ -22,8 +23,8 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
-        $user->is_admin = $request->is_admin ?? 0; 
+        $user->password = Hash::make($request->password); // Hashing the password
+        $user->is_admin = $request->is_admin ?? 0;
         $user->is_vendor = $request->is_vendor ?? 0;
         $user->save();
 
@@ -37,7 +38,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
@@ -55,10 +56,29 @@ class AuthController extends Controller
 
         return response()->json(['error' => 'Invalid credentials'], 401);
     }
+
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        $token = JWTAuth::getToken();
+    
+        if (!$token) {
+            return response()->json(['error' => 'Token is required'], 400);
+        }    
+        try {           
+            $user = JWTAuth::toUser($token);            
+            return response()->json([
+                'message' => 'User authentication successful',
+                'user' => $user,
+                'token' => $token 
+            ], 200);
+    
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'Invalid or expired token'], 401);
+        }
     }
+    
+
+    // Logout method (invalidate token)
     public function logout()
     {
         JWTAuth::invalidate(JWTAuth::getToken());
@@ -66,7 +86,8 @@ class AuthController extends Controller
             'message' => 'Successfully logged out'
         ]);
     }
-    
+
+    // Respond with token
     protected function respondWithToken($token, $isAdmin, $isVendor, $userType, $user)
     {
         return response()->json([
