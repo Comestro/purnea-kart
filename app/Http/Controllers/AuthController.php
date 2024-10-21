@@ -12,8 +12,7 @@ class AuthController extends Controller
 {
     // Register method
     public function register(Request $request)
-    {
-        // Restrict method to POST
+    {      
         if (!$request->isMethod('post')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
@@ -24,7 +23,6 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        // Create a new user and hash the password
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -33,13 +31,11 @@ class AuthController extends Controller
         $user->is_vendor = $request->is_vendor ?? 0;
         $user->save();
 
-        return response()->json(['message' => 'User successfully registered', 'user' => $user], 200);
+        return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
     }
 
-    // Login method
     public function login(Request $request)
     {
-        // Restrict method to POST
         if (!$request->isMethod('post')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
@@ -55,22 +51,14 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if ($token = JWTAuth::attempt($credentials)) {
-            $user = JWTAuth::user();
-            $isAdmin = $user->is_admin ?? 0;
-            $isVendor = $user->is_vendor ?? 0;
-
-            $userType = ($isAdmin && $isVendor) ? 'admin' : (($isAdmin && !$isVendor) ? 'user' : 'vendor');
-
-            return $this->respondWithToken($token, $isAdmin, $isVendor, $userType, $user);
+            return $this->respondWithToken($token);
         }
 
         return response()->json(['error' => 'Invalid credentials'], 401);
     }
 
-    // User details method
     public function user(Request $request)
     {
-        // Restrict method to GET
         if (!$request->isMethod('get')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
@@ -78,7 +66,7 @@ class AuthController extends Controller
         $token = JWTAuth::getToken();
 
         if (!$token) {
-            return response()->json(['error' => 'Token is required'], 400);
+            return response()->json(['error' => 'Token is required'], 401);
         }
 
         try {
@@ -86,32 +74,38 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'User authentication successful',
                 'user' => $user,
-                'token' => $token
+                'token' => $token,
+                'expires_in' => auth()->factory()->getTTL() * 60
             ], 200);
         } catch (JWTException $e) {
             return response()->json(['error' => 'Invalid or expired token'], 401);
         }
     }
 
-    // Logout method (invalidate token)
     public function logout()
     {
-        JWTAuth::invalidate(JWTAuth::getToken());
-        return response()->json([
-            'message' => 'Successfully logged out'
-        ]);
+        $token = JWTAuth::getToken();
+        if (!$token) {
+            return response()->json(['error' => 'Token is required for logout'], 401);
+        }
+        JWTAuth::invalidate($token);
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     // Respond with token
-    protected function respondWithToken($token, $isAdmin, $isVendor, $userType, $user)
+    protected function respondWithToken($token)
     {
+        $user = JWTAuth::user();
+        $isAdmin = $user->is_admin ?? 0;
+        $isVendor = $user->is_vendor ?? 0;
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
             'is_admin' => $isAdmin,
             'is_vendor' => $isVendor,
-            'user_type' => $userType,
+            'user_type' => ($isAdmin && $isVendor) ? 'admin' : (($isAdmin) ? 'user' : 'vendor'),
             'user' => $user
         ]);
     }
