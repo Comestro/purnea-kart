@@ -8,8 +8,7 @@
 
     <br>
     <br>
-
-    <div class="b-50">
+    <div class="bg-gray-50">
         <!-- Main Banner Section -->
         <section class="bg-blue-50 py-16">
             <div class="container mx-auto px-4 text-center">
@@ -24,7 +23,6 @@
                     class="mt-8 mx-auto rounded-md shadow-lg" />
             </div>
         </section>
-    <livewire:seller.seller-login-form/>
         <!-- Key Features Section -->
         <section class="py-16 bg-white">
             <div class="container mx-auto px-4">

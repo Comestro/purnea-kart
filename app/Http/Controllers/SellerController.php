@@ -16,4 +16,7 @@ class SellerController extends Controller
     public function status(){
         return view('seller-status');
     }
+    public function login(){
+        return view('seller-login');
+    }
 }

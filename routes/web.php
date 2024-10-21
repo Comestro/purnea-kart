@@ -24,6 +24,7 @@ Route::get('/', function(){
 })->name('home');
 Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
 Route::get('/become-seller/create',[SellerController::class,'index'])->name('seller.register');
+Route::get('/become-seller/login',[SellerController::class,'login'])->name('seller.login');
 Route::get('/become-seller/create/status',[SellerController::class,'status'])->name('seller.status');
 
 Route::get('/view/{product_slug}', function($product_slug){
