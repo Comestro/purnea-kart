@@ -85,8 +85,9 @@ class ProductCreateForm extends Component
 
         if ($product) {
             session()->flash('message', 'Product added successfully.');
-            return redirect()->route('product.edit', $product->slug); // Ensure this route exists
+            return redirect()->route('product.show', $product->id); // Ensure this route exists
         } else {
+            
             session()->flash('message', 'Unable to add product.');
         }
     }

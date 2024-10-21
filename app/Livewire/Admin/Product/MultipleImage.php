@@ -12,16 +12,20 @@ class MultipleImage extends Component
 {
     use WithFileUploads;
 
-    public $product;
-    public $path; // Single image upload
-    public $isEditing = true; // Always in editing mode
+    // public $product;
+    public $path; 
+    public $isEditing = true; 
+    public $p_id;
 
-    public function mount(Product $product)
-    {
-        $this->product = $product;
+    public function mount(Product $product){
+        $this->p_id = $product->id;
     }
 
-    // Function to delete an image from the database and storage
+    // public function mount(Product $product)
+    // {
+    //     $this->product = $product;
+    // }
+
     public function deleteImage($imageId)
     {
         $image = ProductImage::find($imageId);
@@ -34,26 +38,21 @@ class MultipleImage extends Component
     }
     
 
-    // Update product images one by one
     public function update()
     {
-        // Validate the uploaded image
         $this->validate([
-            'path' => 'nullable|image|max:1024', // Validate the image
+            'path' => 'nullable|image|max:1024', 
         ]);
 
-        // Ensure photo is not empty
         if ($this->path) {
             $imageName = "p" . time() . '.' . $this->path->getClientOriginalExtension();
             $this->path->storeAs('public/image/product', $imageName,"s3");
-            // Save the image to the product_images table
             ProductImage::create([
-                'product_id' => $this->product->id,
-                'path' => $imageName, // Saving the image path
-                'status' => true, // Set the status to true (or you can adjust based on conditions)
+                'product_id' => $this->p_id,
+                'path' => $imageName, 
+                'status' => true, 
             ]);
 
-            // Flash success message and reset the photo input
             session()->flash('message', 'Product image uploaded successfully!');
             $this->path = null; // Clear the input after saving
         }
@@ -61,8 +60,8 @@ class MultipleImage extends Component
 
     public function render()
     {
-        return view('livewire.admin.product.multiple-image', [
-            'productImages' => $this->product->images, // Pass existing images to the view
-        ]);
+        $data['productImages'] = Product::find($this->p_id)?->images ?? [];
+        return view('livewire.admin.product.multiple-image',$data
+        );
     }
 }
