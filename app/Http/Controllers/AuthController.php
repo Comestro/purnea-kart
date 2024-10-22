@@ -12,7 +12,7 @@ use Validator;
 class AuthController extends Controller
 {
     public function register(Request $request)
-    {      
+    {
         if (!$request->isMethod('post')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
@@ -62,15 +62,15 @@ class AuthController extends Controller
         if (!$request->isMethod('get')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
-    
+
         $token = JWTAuth::getToken();
-            if (!$token) {
+        if (!$token) {
             return response()->json(['error' => 'Token is required'], 401);
         }
-    
+
         try {
             $user = JWTAuth::toUser($token);
-    
+
             return response()->json([
                 'message' => 'User authentication successful',
                 'user' => $user,
@@ -92,11 +92,11 @@ class AuthController extends Controller
         if (!$token) {
             return response()->json(['error' => 'Token is required for logout'], 401);
         }
-    
+
         JWTAuth::invalidate($token);
         return response()->json(['message' => 'Successfully logged out']);
     }
-    
+
     public function refresh(Request $request)
     {
         try {
@@ -110,8 +110,8 @@ class AuthController extends Controller
             return response()->json(['error' => 'Could not refresh token'], 500);
         }
     }
-    
-    
+
+
     // Respond with token
     protected function respondWithToken($token)
     {
@@ -125,8 +125,9 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'is_admin' => $isAdmin,
             'is_vendor' => $isVendor,
-            'user_type' => ($isAdmin && $isVendor) ? 'admin' : (($isAdmin) ? 'user' : 'vendor'),
+            'user_type' => $isAdmin ? 'admin' : ($isVendor ? 'vendor' : 'user'),
             'user' => $user
         ]);
     }
+
 }
