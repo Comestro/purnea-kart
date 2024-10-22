@@ -11,7 +11,6 @@ use Validator;
 
 class AuthController extends Controller
 {
-    // Register method
     public function register(Request $request)
     {      
         if (!$request->isMethod('post')) {

@@ -49,11 +49,11 @@ return [
         ],
         "admin" => [
             "driver" => "session",
-            "provider" => "admin"
+            "provider" => "admins"
         ],
         "vendor"=>[
             "driver"=> "session",
-            "provider"=>"vendor"
+            "provider"=>"vendors"
 
         ],
         'seller' => [
@@ -88,6 +88,14 @@ return [
         'sellers' => [
         'driver' => 'eloquent',
         'model' => App\Models\Seller::class,
+    ],
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+    'vendors' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
 
         // 'users' => [
