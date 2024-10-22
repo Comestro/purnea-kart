@@ -24,7 +24,7 @@ class CategoryApiController extends Controller
     {
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('image/category', $imageName,'public');         
+            $request->image->storeAs('image/category', $imageName,'s3');         
         }
 
         $catSlug = Str::slug($request->cat_title);
