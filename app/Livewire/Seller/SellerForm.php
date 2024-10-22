@@ -22,14 +22,18 @@ class SellerForm extends Component
             'name' => 'required',
             'mobile' => 'required|min:10', //todo-error handling
             'email' => 'required|email', //todo-error handling
-            'gst' => 'required|', // todo//todo-error handling
+            'gst' =>  ['required', 'regex:/^([0-9]{2})([A-Z]{5})([0-9]{4})([A-Z]{1})([1-9A-Z]{1})(Z)([0-9A-Z]{1})$/'],
             'password' => 'required | min:8'
         ];
+    }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function store()
     {
 
-        $this->validate();
+        $validate=$this->validate();
 
         $seller = new Seller();
         $seller->name = $this->name;

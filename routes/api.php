@@ -6,6 +6,9 @@ use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
 use Illuminate\Support\Facades\Route;
 
+Route::fallback(function () {
+    return response()->json(['error' => 'Method not allowed'], 405);
+});
 Route::group(["prefix" => "auth"], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
@@ -17,10 +20,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::middleware('is_admin')->group(function () {
         // // dummmy data
-        Route::apiResource('/products', ProductApiController::class);
-        Route::apiResource('brands', BrandApiController::class);
-        Route::apiResource('multipleImage', MultipleImageController::class);
-        Route::apiResource('/categories', CategoryApiController::class);
+       
         // Route::put('/products/{product}', [ProductApiController::class, 'update']);
         // Route::delete('/products/{product}', [ProductApiController::class, 'destroy']);
     });
@@ -35,5 +35,8 @@ Route::middleware(['auth:api'])->group(function () {
 // Unauthenticated Routes (Public Access)
 // Route::middleware(['auth:api'])->group(function () {
 
-
+Route::apiResource('/products', ProductApiController::class);
+Route::apiResource('brands', BrandApiController::class);
+Route::apiResource('multipleImage', MultipleImageController::class);
+Route::apiResource('/categories', CategoryApiController::class);
 // });

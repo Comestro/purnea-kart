@@ -8,7 +8,10 @@
                                 class="text-dark">Categories</a></li>
                         <li class="breadcrumb-item active">All Product</li>
                     </ol>
-                    <p class="mb-0 text-muted">Showing all <span class="text-dark fw-semibold">5,786</span> items results
+                    <p class="mb-0 text-muted">Showing all
+                        <span class="text-dark fw-semibold">
+                            {{ $products->count() }}
+                        </span> items results
                     </p>
                 </div>
                 <div class="col-lg-6">
@@ -17,7 +20,8 @@
                             Setting</button>
                         <button type="button" class="btn btn-outline-secondary me-1"><i
                                 class="bx bx-filter-alt me-1"></i> Filters</button>
-                        <a href="{{ route('product.create') }}" class="btn btn-success me-1"><i class="bx bx-plus"></i> New
+                        <a href="{{ route('product.create') }}" class="btn btn-success me-1"><i class="bx bx-plus"></i>
+                            New
                             Product</a>
                     </div>
                 </div>
@@ -98,31 +102,33 @@
 
     </div>
 
-   <!-- Pagination -->
-   <div class="card-footer border-top">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end mb-0">
-            <!-- Previous Page Link -->
-            <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
-                <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled" tabindex="-1">Previous</a>
-            </li>
-
-            <!-- Display Only Two Page Numbers -->
-            @php
-                $currentPage = $products->currentPage();
-                $lastPage = $products->lastPage();
-            @endphp
-
-            @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
-                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                    <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+    <!-- Pagination -->
+    <div class="card-footer border-top">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end mb-0">
+                <!-- Previous Page Link -->
+                <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
+                        tabindex="-1">Previous</a>
                 </li>
-            @endfor
 
-            <!-- Next Page Link -->
-            <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
-            </li>
-        </ul>
-    </nav>
-</div></div>
+                <!-- Display Only Two Page Numbers -->
+                @php
+                    $currentPage = $products->currentPage();
+                    $lastPage = $products->lastPage();
+                @endphp
+
+                @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                    <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                        <a class="page-link" wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                <!-- Next Page Link -->
+                <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
