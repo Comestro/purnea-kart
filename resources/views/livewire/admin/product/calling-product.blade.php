@@ -43,8 +43,7 @@
                         <tr>
                             <td>
                                 <div class="form-check ms-1">
-                                    <input type="checkbox" class="form-check-input" id="customCheck2">
-                                    <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                    <p>{{ $product->id }}</p>
                                 </div>
                             </td>
                             <td>
@@ -71,7 +70,6 @@
                                                 return $variant->variant_type == 'color';
                                             });
                                         @endphp
-                                    
                                     
                                         @if($sizeVariants->isNotEmpty())
                                         <p class="text-muted mb-0 mt-1 fs-13">
@@ -112,7 +110,7 @@
                                     {{-- <a href="">Details</a> --}}
                                   
                                             
-                                            <a href="{{url('/admin/product-details')}}"
+                                    <a href="{{route('adminProductView', $product->id)}}"
                                         class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
 

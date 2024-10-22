@@ -63,9 +63,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/admin/product-grid', function () {
     return view('admin.product.product_grid');
 });
+
 Route::get('/admin/product-details', function () {
     return view('admin.product.product_details');
-});
+})->name('adminProductView');
 
 
 
@@ -166,9 +167,9 @@ Route::get('admin/seller/seller-add',function(){
     return view('admin.seller.seller_add');
 })->name('seller_add');
 Route::get('admin/seller/seller-details/{id}',function($id){
-    
     return view('admin.seller.seller-details',["seller_id" => $id]);
 })->name('seller_details');
+
 
 
 
