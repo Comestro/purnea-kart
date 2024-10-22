@@ -64,8 +64,8 @@ Route::get('/admin/product-grid', function () {
     return view('admin.product.product_grid');
 });
 
-Route::get('/admin/product-details', function () {
-    return view('admin.product.product_details');
+Route::get('/admin/product-details/{id}', function ($id) {
+    return view('admin.product.product_details',['id' => $id]);
 })->name('adminProductView');
 
 

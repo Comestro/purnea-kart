@@ -94,7 +94,9 @@
                </div>
                <div class="col-lg-8">
                     <div class="card">
-                         <livewire:admin.product.calling-single-page :product="$product"/>
+                     
+                         
+                         <livewire:admin.product.calling-single-page :product="$id"/>
  
                     </div>
                </div>
