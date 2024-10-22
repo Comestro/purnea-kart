@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('mobile')->unique();
-            $table->string('email')->unique();
-            $table->string('gst')->unique();
-            $table->string('password');
-            $table->bigInteger('status')->default(0);
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('mobile')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
+            $table->string('gst')->nullable()->unique();
+            $table->string('password')->nullable();
+            $table->bigInteger('status')->nullable()->default(0);
             $table->timestamps();
         });
     }
