@@ -14,8 +14,10 @@ class EditProductCategory extends Component
     public function mount($product, $categories)
     {
         $this->product = $product;
+        $this->cat_title = $product->cat_title; 
+
         $this->categories = $categories;
-        $this->category_id = $product->category_id; 
+        $this->category_id = $product->category_id;
     }
 
     // Toggle the edit state
@@ -65,13 +67,15 @@ class EditProductCategory extends Component
                         <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
                         @else
                             <div class="mx-auto text-center">
-                                @if (!empty($product->cat_title))
-                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{ $product->cat_title }}</p>
+
+                                @if (!empty($product->category->cat_title))
+                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{ $product->category->cat_title }}</p>
                                 @else
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">No Category selected</i>
+                                    <i class="text-muted">No brand selected</i>
                                 </p>
                                 @endif
+                              
                             </div>
                         @endif
                     </div>
