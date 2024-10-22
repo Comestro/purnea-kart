@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import Container from '../container/container'
-import {Logo,Cart,Seller,Login,Menu} from '../index'
+import {Logo,Cart,Seller,Login,Menu} from '../Index'
 
 function Header() {
   return (

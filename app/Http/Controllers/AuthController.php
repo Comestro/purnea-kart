@@ -3,8 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
@@ -62,23 +63,27 @@ class AuthController extends Controller
         if (!$request->isMethod('get')) {
             return response()->json(['error' => 'Method not allowed'], 405);
         }
-
+    
         $token = JWTAuth::getToken();
-
-        if (!$token) {
+            if (!$token) {
             return response()->json(['error' => 'Token is required'], 401);
         }
-
+    
         try {
             $user = JWTAuth::toUser($token);
+    
             return response()->json([
                 'message' => 'User authentication successful',
                 'user' => $user,
                 'token' => $token,
                 'expires_in' => auth()->factory()->getTTL() * 60
             ], 200);
+        } catch (TokenExpiredException $e) {
+            return response()->json(['error' => 'Token has expired'], 401);
+        } catch (TokenInvalidException $e) {
+            return response()->json(['error' => 'Token is invalid'], 401);
         } catch (JWTException $e) {
-            return response()->json(['error' => 'Invalid or expired token'], 401);
+            return response()->json(['error' => 'Could not parse the token'], 401);
         }
     }
 
@@ -88,24 +93,25 @@ class AuthController extends Controller
         if (!$token) {
             return response()->json(['error' => 'Token is required for logout'], 401);
         }
+    
         JWTAuth::invalidate($token);
         return response()->json(['message' => 'Successfully logged out']);
     }
+    
     public function refresh(Request $request)
     {
-        $token = JWTAuth::getToken();
-
-        if (!$token) {
-            return response()->json(['error' => 'Token is required'], 401);
-        }
-
         try {
-            $newToken = JWTAuth::refresh($token);
-            return response()->json(['access_token' => $newToken], 200);
+            $newToken = JWTAuth::refresh(JWTAuth::getToken());
+            return $this->respondWithToken($newToken);
+        } catch (TokenExpiredException $e) {
+            return response()->json(['error' => 'Token has expired'], 401);
+        } catch (TokenInvalidException $e) {
+            return response()->json(['error' => 'Token is invalid'], 401);
         } catch (JWTException $e) {
-            return response()->json(['error' => 'Could not refresh token'], 401);
+            return response()->json(['error' => 'Could not refresh token'], 500);
         }
     }
+    
     
     // Respond with token
     protected function respondWithToken($token)
