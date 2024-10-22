@@ -62,19 +62,35 @@
                                     <div>
                                         <a href="#!" class="text-dark fw-medium fs-15">{{ $product->name }}</a>
                                         
-                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span> 
-                                            @foreach ($product->variants as $variant)
-                                            @if ($variant->variant_type == "size")
-                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
-                                            @endif
-                                        @endforeach</p> 
-                                        <p class="text-muted mb-0 mt-1 fs-13"><span>Color : </span> 
-                                            @foreach ($product->variants as $variant)
-                                            @if ($variant->variant_type == "color")
-                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
-                                            @endif
-                                        @endforeach</p>
+                                        @php
+                                            $sizeVariants = $product->variants->filter(function($variant) {
+                                                return $variant->variant_type == 'size';
+                                            });
+                                            
+                                            $colorVariants = $product->variants->filter(function($variant) {
+                                                return $variant->variant_type == 'color';
+                                            });
+                                        @endphp
+                                    
+                                        @if($sizeVariants->isNotEmpty())
+                                        <p class="text-muted mb-0 mt-1 fs-13">
+                                            <span>Size :</span>
+                                            @foreach ($sizeVariants as $variant)
+                                                {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endforeach
+                                        </p>
+                                        @endif
+                                    
+                                        @if($colorVariants->isNotEmpty())
+                                        <p class="text-muted mb-0 mt-1 fs-13">
+                                            <span>Color :</span>
+                                            @foreach ($colorVariants as $variant)
+                                                {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            @endforeach
+                                        </p>
+                                        @endif
                                     </div>
+                                    
                                 </div>
 
                             </td>
