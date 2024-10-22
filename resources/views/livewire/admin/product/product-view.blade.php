@@ -5,9 +5,9 @@
                 <form  wire:submit.prevent="update" method="post">
 
                     <div class="card">
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             <h4 class="card-title">Product Edit</h4>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             <div class="row">
                               <livewire:admin.product.edit-product-title :product="$product"/>
