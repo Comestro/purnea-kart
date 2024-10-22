@@ -7,14 +7,14 @@
             {{ session('message') }}
         </div>
        @endif
-        <div class="card-header">
+        {{-- <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title mb-0">Add Product Photo</h4>
                 <a href="{{ route('product.index') }}" class="btn btn-primary">Back</a>
             </div>
             
-        </div>
-        <div class="container mt-4">
+        </div> --}}
+        <div class="container">
             <form wire:submit.prevent="update" method="POST" enctype="multipart/form-data">
                 <div class="p-4 bg-light rounded shadow mb-4">
                     <label class="form-label fw-bold">Product Images</label>
