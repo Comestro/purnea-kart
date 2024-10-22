@@ -9,12 +9,12 @@
 
         <!-- Product Image -->
         <div class="px-5">
-            <img src="{{ asset('storage/public/image/product/' . $product->images->first()->path) }}"
+            <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}"
                 alt="Product Image" class="w-full h-90 object-cover rounded-lg shadow-md">
 
             <div class="flex mt-2 gap-3 items-center">
                 @foreach ($product->images->skip(1) as $image)
-                    <img src="{{ asset('storage/public/image/product/' . $image->path) }}" alt="" class="h-24">
+                    <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $image->path) }}" alt="" class="h-24">
                 @endforeach
             </div>
         </div>
@@ -22,7 +22,7 @@
         <!-- Product Information -->
         <div class="bg-white px-5 rounded-lg ">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $product->name }}</h1>
-            <p class="text-xl text-gray-600 mt-4">₹{{ $product->price }}</p>
+            <p class="text-2xl text-gray-800 mt-4 font-bold">₹{{ $product->price }}</p>
 
             <!-- Ratings -->
             <div class="flex items-center mt-4">
