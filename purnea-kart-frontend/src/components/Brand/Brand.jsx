@@ -24,18 +24,19 @@ function Brand() {
    if (error) return <p>Error: {error}</p>;
 
    return (
-    <div className='h-16 bg-white mt-3 mx-3'>
-      {brand.map((brand)=>{return(
-         <div key={brand.id}>
-          <img src='/public/assets/puma.jpg'
-          className='w-16'></img>
-         {/* <img src={brand.logo}></img>
-         <h3>{brand.brand_name}</h3> */}
-      </div>
-      )}
+    // <div className='h-16 bg-white mt-3 mx-3'>
+    //   {brand.map((brand)=>{return(
+    //      <div key={brand.id}>
+    //       <img src='/public/assets/puma.jpg'
+    //       className='w-16'></img>
+    //      {/* <img src={brand.logo}></img>
+    //      <h3>{brand.brand_name}</h3> */}
+    //   </div>
+    //   )}
          
-      )}
-    </div>
+    //   )}
+    // </div>
+    <div>hk</div>
      
   )
 }
