@@ -31,6 +31,7 @@ Route::get('/become-seller/create/status',[SellerController::class,'status'])->n
 
 Route::get('/view/{product_slug}', function($product_slug){
     $data['product'] = Product::where('slug',$product_slug)->first();
+    $data['relatedProducts'] = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->take(5) ->get();
     return view('single-view',$data);
 })->name('viewpage');
 

@@ -108,6 +108,9 @@
                     <input type="password" id="confirmPassword" wire:model="confirmPassword"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Confirm Password">
+                        @if (session()->has('error'))
+                        <p class="mt-4 p-2 text-red-600 ">{{ session('message') }}</p>
+                    @endif
                   
                     <div class="flex gap-2 items-center  w-full ">
                         <button wire:click="previouStep"

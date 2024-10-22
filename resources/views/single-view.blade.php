@@ -33,9 +33,10 @@
                 <span class="text-gray-300 text-xl">&#9733;</span>
                 <span class="ml-2 text-gray-600">(120 reviews)</span>
             </div>
+            <h2><span class="font-semibold text-gray-600">Cateogory: </span>{{ $product->category->cat_title }}</h2>
 
             <!-- Description -->
-            <p class="text-gray-700 mt-6">{{ $product->description }}</p>
+            <p class="text-gray-700 mt-4">{{ $product->description }}</p>
 
             <!-- Color Options -->
             <div class="mt-6">
@@ -43,7 +44,7 @@
                 <div class="flex space-x-4 mt-2">
                     @foreach ($product->variants as $item)
                         @if ($item->variant_type === 'color')
-                            <button class="w-8 h-8 rounded-full border-2 border-gray-300"
+                            <button class="w-8 h-8 rounded-full border-2 border-gray-300 "
                                 style="background-color: {{ $item->variant_name }};" value="{{ $item->variant_name }}">
                             </button>
                         @endif
@@ -71,14 +72,14 @@
             <!-- Add to Cart Button -->
             <div class="mt-8">
                 <button
-                    class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-500 transition duration-200">
+                    class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-500 transition duration-200">
                     Add to Cart
                 </button>
             </div>
 
             <!-- Buy Now Button -->
             <div class="mt-4">
-                <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-500 transition duration-200">
+                <button class="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-500 transition duration-200">
                     Buy Now
                 </button>
             </div>
@@ -92,24 +93,26 @@
         <!-- Product Cards Section -->
         <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-6">
             {{-- card --}}
-            {{-- @foreach ($products as $product) --}}
-            <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}"
+            @foreach ($relatedProducts as $relatedProduct)
+            <a href="{{ route('viewpage', ['product_slug' => $relatedProduct->slug]) }}"
                 class="max-w-[208px] bg-white p-2 rounded-lg shadow-lg">
-                <img class="w-full h-36 object-cover rounded-md" src="https://picsum.photos/200" alt="">
-
-                <div class="mt-2 flex justify-between items-center">
-                    <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">36% off</span>
-                    <span class="text-red-600 font-medium text-xs">Great Indian Festival</span>
-                </div>
-
-                <div class="mt-2 flex items-center">
-                    <span class="text-2xl font-semibold text-gray-800">₹5745</span>
-                    <span class="text-xs text-gray-600 ml-2">M.R.P: <del>₹57394</del></span>
-                </div>
-
-                <p class="text-sm font-medium text-gray-700 mt-2 line-clamp-2">testing data</p>
-            </a>
-            {{-- @endforeach --}}
+                 <img class="w-full h-36 object-cover rounded-md"
+                      src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $relatedProduct->images->first()->path) }}"
+                      alt="{{ $relatedProduct->name }}">
+ 
+                 <div class="mt-2 flex justify-between items-center">
+                     <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">{{ $relatedProduct->discount_percentage }}% off</span>
+                     <span class="text-red-600 font-medium text-xs">Great Indian Festival</span>
+                 </div>
+ 
+                 <div class="mt-2 flex items-center">
+                     <span class="text-2xl font-semibold text-gray-800">₹{{ $relatedProduct->price }}</span>
+                     <span class="text-xs text-gray-600 ml-2">M.R.P: <del>₹{{ $relatedProduct->original_price }}</del></span>
+                 </div>
+ 
+                 <p class="text-sm font-medium text-gray-700 mt-2 line-clamp-2">{{ $relatedProduct->description }}</p>
+             </a>
+            @endforeach
         </div>
     </div>
 </div>

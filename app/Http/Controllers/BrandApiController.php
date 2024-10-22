@@ -24,7 +24,7 @@ class BrandApiController extends Controller
 
         if ($request->hasFile('logo')) {
             $imageName = time() . '.' . $request->logo->extension();
-            $request->logo->storeAs('logo/brand', $imageName, 'public');
+            $request->logo->storeAs('logo/brand', $imageName, 's3');
         }
         $brandSlug = Str::slug($request->brand_name);
         $brand = new Brand();

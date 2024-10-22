@@ -17,7 +17,7 @@ class MultipleImageController extends Controller
     {
         if ($request->hasFile('path')) {
             $imageName = time() . '.' . $request->path->extension();
-            $request->path->storeAs('image/product', $imageName, 'public');
+            $request->path->storeAs('image/product', $imageName, 's3');
         }
         $multipleImage = new ProductImage();
         $multipleImage->product_id = $request->product_id;
