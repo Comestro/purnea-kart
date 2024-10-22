@@ -61,9 +61,11 @@
                             <button type="submit" class="btn btn-success">
                                 Add Variant
                             </button>
+                           <a href="{{route('product.index')}}">
                             <button type="button" wire:click="" class="btn btn-primary">
                                 Update Product
                             </button>
+                           </a>
                         </div>
                     </div>
                 </div>
