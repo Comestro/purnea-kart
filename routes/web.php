@@ -3,6 +3,7 @@
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductVariant;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -22,6 +23,7 @@ Route::get('/', function(){
     $data['brands'] = Brand::all();
     return view('home', $data);
 })->name('home');
+
 Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
 Route::get('/become-seller/create',[SellerController::class,'index'])->name('seller.register');
 Route::get('/become-seller/login',[SellerController::class,'login'])->name('seller.login');

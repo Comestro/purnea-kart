@@ -22,7 +22,7 @@
         <!-- Product Information -->
         <div class="bg-white px-5 rounded-lg ">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $product->name }}</h1>
-            <p class="text-xl text-gray-600 mt-4">testing</p>
+            <p class="text-xl text-gray-600 mt-4">₹{{ $product->price }}</p>
 
             <!-- Ratings -->
             <div class="flex items-center mt-4">
@@ -41,9 +41,14 @@
             <div class="mt-6">
                 <h3 class="text-lg font-medium text-gray-800">Choose Color</h3>
                 <div class="flex space-x-4 mt-2">
-                    <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-gray-300"></button>
-                    <button class="w-8 h-8 rounded-full bg-blue-500 border-2 border-gray-300"></button>
-                    <button class="w-8 h-8 rounded-full bg-green-500 border-2 border-gray-300"></button>
+                    @foreach ($product->variants as $item)
+                        @if ($item->variant_type === 'color')
+                            <button class="w-8 h-8 rounded-full border-2 border-gray-300"
+                                style="background-color: {{ $item->variant_name }};" value="{{ $item->variant_name }}">
+                            </button>
+                        @endif
+                    @endforeach
+
                 </div>
             </div>
 
@@ -51,12 +56,15 @@
             <div class="mt-6">
                 <h3 class="text-lg font-medium text-gray-800">Choose Size</h3>
                 <div class="flex space-x-4 mt-2">
-   
 
-
-                    <!-- <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md border border-gray-300">M</button>
-                        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md border border-gray-300">L</button>
-                        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md border border-gray-300">XL</button> -->
+                    @foreach ($product->variants as $item)
+                        @if ($item->variant_type === 'size')
+                            <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md border border-gray-300"
+                                value="{{ $item->variant_type }}">
+                                {{ $item->variant_name }}
+                            </button>
+                        @endif
+                    @endforeach
                 </div>
             </div>
 
