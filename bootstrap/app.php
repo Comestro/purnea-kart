@@ -12,8 +12,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'admin.auth' => \App\Http\Middleware\IsAdmin::class,
+            'vendor.auth' => \App\Http\Middleware\IsVendor::class,
+            'not.vendor' => \App\Http\Middleware\IsNotVendor::class, 
+            'not.admin' => \App\Http\Middleware\IsNotAdmin::class, 
+        ]);
+
+        $middleware->redirectTo(
+            '/login',
+            '/user/dashboard'
+        );
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
+        // Handle exceptions here if needed
+    })
+    ->create();
