@@ -22,7 +22,7 @@
         <!-- Product Information -->
         <div class="bg-white px-5 rounded-lg ">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $product->name }}</h1>
-            <p class="text-xl text-gray-600 mt-4">testing</p>
+            <p class="text-xl text-gray-600 mt-4">₹{{ $product->price }}</p>
 
             <!-- Ratings -->
             <div class="flex items-center mt-4">
