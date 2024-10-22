@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class EditProductDescription extends Component
 {
-
     public $product;
     public $description;
     public $isEdit = false;
@@ -23,7 +22,6 @@ class EditProductDescription extends Component
     }
     public function update()
     {
-        dd('gh');
 
         $data = $this->validate([
             'description' => 'required|string',
@@ -34,7 +32,6 @@ class EditProductDescription extends Component
         $this->toggle();
         return redirect()->back()->with('success', 'description updated successfully!');
     }
-
     public function render()
     {
         return <<<'HTML'

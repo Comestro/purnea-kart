@@ -29,7 +29,7 @@
     </div>
 
     {{-- second section --}}
-    <div class="flex px-[10%] gap-5">
+    <div class="flex px-[10%] gap-5 mb-10">
         <div class="flex w-8/12 flex-col text-slate-800 gap-8">
             <p class="text-4xl">Sustainability</p>
             <p class="text-xl">
@@ -51,7 +51,7 @@
                 businesses in building a sustainable platform that provides our consumers with trusted ways to shop more
                 sustainably.
             </p>
-            <p class="text-xl">
+            <p class="text-xl ">
                 Through our powerful partnerships with communities, civil society organisations, and coalitions, we seek to
                 drive positive impact with ecosystem conversations, enable cross learning and contribute to building a
                 sustainable future for all. As we start our journey, we know that it would not be easy. We believe that it
@@ -65,12 +65,32 @@
     </div>
 
     {{-- third section --}}
-    <div class="flex bg-orange-600 px-[20%] py-20 justify-center items-center">
+    <div class="flex bg-orange-600 px-[20%] py-5 justify-center items-center">
         <div class="flex flex-col gap-20 justify-center items-center">
             <h2 class="text-center text-4xl font-semibold text-white">Key Milestones in our Journey</h2>
-            <div class="flex p-10">
+            <div class="flex px-10">
                 {{-- left side content --}}
                 <div class="flex flex-col border-r-4 border-dashed border-white">
+                    <div class="flex flex-col p-10">
+                        <div class="bg-white p-5 rounded">
+                            <h2 class="text-4xl font-semibold text-slate-900">In March 2024</h2>
+                            <p>
+                                PurneaKart Group Achieves New Milestone in Water Conservation; Recycles over 67 Million
+                                Liters
+                                of Wastewater in One Year.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col p-10">
+                        <div class="bg-white p-5 rounded">
+                            <h2 class="text-4xl font-semibold text-slate-900">In March 2024</h2>
+                            <p>
+                                PurneaKart Group Achieves New Milestone in Water Conservation; Recycles over 67 Million
+                                Liters
+                                of Wastewater in One Year.
+                            </p>
+                        </div>
+                    </div>
                     <div class="flex flex-col p-10">
                         <div class="bg-white p-5 rounded">
                             <h2 class="text-4xl font-semibold text-slate-900">In March 2024</h2>
@@ -93,7 +113,27 @@
                                 Liters
                                 of Wastewater in One Year.
                             </p>
-                        </div>
+                        </div>                        
+                    </div>
+                    <div class="flex flex-col p-10">
+                        <div class="bg-white p-5 rounded">
+                            <h2 class="text-4xl font-semibold text-slate-900">In March 2024</h2>
+                            <p>
+                                PurneaKart Group Achieves New Milestone in Water Conservation; Recycles over 67 Million
+                                Liters
+                                of Wastewater in One Year.
+                            </p>
+                        </div>                        
+                    </div>
+                    <div class="flex flex-col p-10">
+                        <div class="bg-white p-5 rounded">
+                            <h2 class="text-4xl font-semibold text-slate-900">In March 2024</h2>
+                            <p>
+                                PurneaKart Group Achieves New Milestone in Water Conservation; Recycles over 67 Million
+                                Liters
+                                of Wastewater in One Year.
+                            </p>
+                        </div>                        
                     </div>
                 </div>
             </div>

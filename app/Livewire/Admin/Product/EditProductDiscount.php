@@ -68,7 +68,7 @@ class EditProductDiscount extends Component
                             </div>
                         @endif
                     </div>
-                    @error('name')
+                    @error('discount_price')
                         <p class="text-danger small">{{ $message }}</p>
                     @enderror
                 </div>
