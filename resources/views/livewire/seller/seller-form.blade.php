@@ -33,7 +33,7 @@
         <form wire:submit.prevent="store">
             @if ($step == 1)
                 <div class="mb-4">
-                    <input type="text" id="email" wire:model="name"
+                    <input type="text" id="name" wire:model.lazy="name"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg  shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Enter Your Name">
                     @error('name')
@@ -44,7 +44,7 @@
                 <div class="mb-4">
 
                     <div class="flex flex-col md:flex-row">
-                        <input type="number" id="mobile" wire:model="mobile"
+                        <input type="number" id="mobile" wire:model.lazy="mobile"
                             class="w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                             placeholder="Enter Mobile Number">
                         <!-- <button class="mt-2 md:mt-0 md:ml-2 px-4 py-2 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600">Send OTP</button> -->
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <input type="email" id="email" wire:model="email"
+                    <input type="email" id="email" wire:model.lazy="email"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg  shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Email ID">
                     @error('email')
@@ -68,7 +68,7 @@
 
                 <div class="mb-4">
 
-                    <input type="text" id="gstin" wire:model="gst"
+                    <input type="text" id="gst" wire:model.lazy="gst"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Enter GSTIN Number" required>
                     @error('gst')
@@ -99,18 +99,16 @@
 
             @if ($step == 2)
                 <div class="flex flex-col gap-2 ">
-                    <input type="password" id="password" wire:model.live="password"
+                    <input type="password" id="password" wire:model.lazy="password"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Password">
                     @error('password')
                         <p class="text-black text-xs mb-2 ">{{ $message }}</p>
                     @enderror
-                    <input type="password" id="confirmPassword" wire:model.live="confirmPassword"
+                    <input type="password" id="confirmPassword" wire:model="confirmPassword"
                         class="w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                         placeholder="Confirm Password">
-                    @error('confirmPassword')
-                        <p class="text-black text-xs mb-2">{{ $message }}</p>
-                    @enderror
+                  
                     <div class="flex gap-2 items-center  w-full ">
                         <button wire:click="previouStep"
                             class="flex gap-1 justify-between p-2.5 mt-3 bg-slate-200 rounded-xl">

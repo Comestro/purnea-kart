@@ -74,8 +74,9 @@ class ProductController extends Controller
     public function show($pro_id)
     {
         //
+
         
-        return view("admin.product.product_details",["pro_id"=>$pro_id]);
+        return view("admin.product.product_edit",["pro_id"=>$pro_id]);
     }
 
     /**

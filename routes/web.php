@@ -24,6 +24,7 @@ Route::get('/', function(){
 })->name('home');
 Route::get('/becomeSeller',[SellerController::class,'show'])->name('sellershow');
 Route::get('/become-seller/create',[SellerController::class,'index'])->name('seller.register');
+Route::get('/become-seller/login',[SellerController::class,'login'])->name('seller.login');
 Route::get('/become-seller/create/status',[SellerController::class,'status'])->name('seller.status');
 
 Route::get('/view/{product_slug}', function($product_slug){
@@ -59,6 +60,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/admin/product-grid', function () {
     return view('admin.product.product_grid');
 });
+Route::get('/admin/product-details', function () {
+    return view('admin.product.product_details');
+});
+
 
 
 
@@ -206,4 +211,5 @@ Route::controller(PublicController::class)->group(function(){
     Route::get('/ethics','Ethics')->name('about.ethics');
     Route::get('/culture','Culture')->name('about.culture');
     Route::get('/technology','Technology')->name('about.technology');
+    Route::get('/sustainability','SustainAbility')->name('about.sustainability');
 });

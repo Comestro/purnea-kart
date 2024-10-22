@@ -26,6 +26,7 @@
                             <div class="text-danger small">{{ $message }}</div>
                         @enderror
                     </div>
+                    
                     <div class="col-md-3">
                         <label class="form-label fw-semibold">Variant Sku</label>
                         <input type="text" wire:model="sku" class="form-control" placeholder="Enter Variant Sku" />
