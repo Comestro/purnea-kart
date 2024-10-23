@@ -44,7 +44,7 @@ class CreateBannerForm extends Component
         $validateData = $this->validate();
 
         $imageName = $this->image_path ? 'c' . time() . '.' . $this->image_path->getClientOriginalExtension() : null;
-        $this->image_path->storeAs('public/image/banner', $imageName, "public");
+        $this->image_path->storeAs('public/image/banner', $imageName, "s3");
 
         $banner = Banner::create([
             'title' => $this->title,

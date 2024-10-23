@@ -15,14 +15,14 @@
             </div>
 
 
-            <div class="col-8">
+            {{-- <div class="col-8">
                 <div class="card mt-5 ">
                     <div class="card-body">
 
                         <livewire:admin.brand.previous-item />
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
 

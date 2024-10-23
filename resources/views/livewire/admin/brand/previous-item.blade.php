@@ -1,5 +1,5 @@
 <div>
-    @php
+    {{-- @php
         $latestItem = $previous->isNotEmpty() ? $previous->last() : null;
     @endphp
     
@@ -22,5 +22,5 @@
         </div>
     @else
         <p>No items available.</p>
-    @endif
+    @endif --}}
 </div>

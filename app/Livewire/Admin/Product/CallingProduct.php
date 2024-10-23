@@ -10,12 +10,14 @@ class CallingProduct extends Component
 {
     
     use WithPagination;
+    public $month;
     public $search="";
     
 
 
     public function render()
     {
+       
         
 
         // $data['products'] = Product::join('categories', 'categories.id', '=', 'products.category_id')
@@ -27,7 +29,7 @@ class CallingProduct extends Component
 
         // $data['products'] = Product::paginate(5);
 
-        $data['products'] = Product::where('name', 'LIKE', "%".$this->search."%")
+        $data['products'] = Product::where('name', 'LIKE', "%".$this->search."%")->whereMonth('created_at',$this->month)
     ->orWhereHas('category', function($query) {
         $query->where('cat_title', 'LIKE', "%".$this->search."%");
     })
