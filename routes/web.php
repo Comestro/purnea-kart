@@ -39,7 +39,7 @@ Route::get('/filter', function () {
     return view('filter-page');
 })->name('filter');
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard', 'dashboard') 
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
