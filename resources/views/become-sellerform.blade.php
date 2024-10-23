@@ -35,7 +35,7 @@
             <div class="flex flex-col items-center">
                 <img src="https://img1a.flixcart.com/fk-sp-static/images/Onboarding_logo_Account.svg" alt="Account Management" class="w-12 h-12 mb-4">
                 <h3 class="text-lg font-semibold">Account Management</h3>
-                <p class="text-sm text-gray-600">Our dedicated managers will help your business on Flipkart</p>
+                <p class="text-sm text-gray-600">Our dedicated managers will help your business on purneaKart</p>
             </div>
 
             <!-- Feature 4 -->
@@ -70,7 +70,7 @@
             <div class="flex flex-col items-center">
                 <img src="https://img1a.flixcart.com/fk-sp-static/images/Onboarding_logo_Mobile.svg" alt="Business on the go" class="w-12 h-12 mb-4">
                 <h3 class="text-lg font-semibold">Business on the go</h3>
-                <p class="text-sm text-gray-600">Download our Flipkart Seller App to manage your business anywhere, anytime</p>
+                <p class="text-sm text-gray-600">Download our purneaKart Seller App to manage your business anywhere, anytime</p>
             </div>
         </div>
     </div>
