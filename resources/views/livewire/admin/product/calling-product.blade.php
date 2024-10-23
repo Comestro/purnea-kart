@@ -71,6 +71,7 @@
                                                 return $variant->variant_type == 'color';
                                             });
                                         @endphp
+                                        
                                     
                                     
                                         @if($sizeVariants->isNotEmpty())
