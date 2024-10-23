@@ -70,6 +70,7 @@
                                                 return $variant->variant_type == 'color';
                                             });
                                         @endphp
+                                        
                                     
                                         @if($sizeVariants->isNotEmpty())
                                         <p class="text-muted mb-0 mt-1 fs-13">

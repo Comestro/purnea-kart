@@ -46,8 +46,8 @@
 
                     @if ($step == 3)
                         <div>
-                            <h4 class="fs-16 fw-semibold mb-1">Social Media Links</h4>
-                            <p class="text-muted">Fill your social media links</p>
+                            <h4 class="fs-16 fw-semibold mb-1">Product photos</h4>
+                            {{-- <p class="text-muted">Fill your social media links</p> --}}
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -63,16 +63,14 @@
 
                     @if ($step == 4)
                         <div>
-                            <h4 class="fs-16 fw-semibold mb-1">Social Media Links</h4>
-                            <p class="text-muted">Fill your social media links</p>
+                            <h4 class="fs-16 fw-semibold mb-1">Product Preview</h4>
+                            {{-- <p class="text-muted">Fill your social media links</p> --}}
 
-                            <div class="row">
-                                <div class="col-lg-12 ">
+                            <div class="d-flex justify-content-center">
+                               
                                     <livewire:admin.product.singleproduct-preview :product="$pro_id" />
 
-                                </div> <!-- end col -->
-
-
+                                
 
                             </div><!-- end row -->
                         </div>

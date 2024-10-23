@@ -140,9 +140,9 @@
                                         </div>
 
                                         <div wire:loading.remove wire:target="image"
-                                            class="w-100 h-100 d-flex align-items-center justify-content-center">
+                                            class=" d-flex align-items-center justify-content-center">
                                             @if ($image)
-                                                <img src="{{ $image->temporaryUrl() }}" class="img-fluid" />
+                                                <img src="{{ $image->temporaryUrl() }}" class="img-fluid " style="height:160px" />
                                             @else
                                                 <p>Image Preview</p>
                                             @endif
