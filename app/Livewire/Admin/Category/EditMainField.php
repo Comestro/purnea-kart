@@ -7,35 +7,37 @@ use Livewire\Component;
 
 class EditMainField extends Component
 {
-    public $main_category;
+    public $parent_category_id;
     public $isEdit = false;
     public $category;
     public $categories;
+
     public function mount($category)
     {
         $this->category = $category;
+        $this->parent_category_id = $category->parent_category_id;
     }
+
     public function toggle()
     {
         $this->isEdit = !$this->isEdit;
-        $this->main_category = $this->main_category ? $this->main_category : $this->main_category;
     }
+
     public function update()
     {
-
         $data = $this->validate([
-            'main_category' => 'required|string|max:255',
+            'parent_category_id' => 'required|integer|exists:categories,id',
         ]);
 
         $this->category->update($data);
 
         $this->toggle();
-        return redirect()->back()->with('success', 'Main title updated successfully!');
+        return redirect()->back()->with('success', 'Main category updated successfully!');
     }
 
     public function render()
     {
-        $this->categories = Category::where('parent_id', null)->get();
+        $this->categories = Category::where('parent_category_id', null)->get();
         return <<<'HTML'
     <div class="col-lg-6">
         <div class="card border">
@@ -48,34 +50,26 @@ class EditMainField extends Component
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     @if ($isEdit)
-                        <select wire:model="main_category" class="form-control rounded-0" placeholder="Main Category">
-                            <option value="NULL">Select Main Category</option>
+                        <select wire:model="parent_category_id" class="form-control rounded-0">
+                            <option value="">Select Main Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->main_category }}</option>
+                                <option value="{{ $category->id }}">{{ $category->cat_title }}</option>
                             @endforeach
                         </select>
                         <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
                     @else
                         <div class="mx-auto text-center">
-                            @if (!empty($main_category))
-                                <div wire:loading wire:target="toggle" class="p-3">
-                                    <div class="spinner-border text-muted" role="status"></div>
-                                    <p class="mt-2 mb-0">Loading...</p>
-                                </div>
-                                <p class="lead text-capitalize font-medium text-dark mb-0">{{ $main_category }}</p>
+                            @if (!is_null($parent_category_id))
+                                <p class="lead text-capitalize font-medium text-dark mb-0">{{ optional($categories->find($parent_category_id))->cat_title }}</p>
                             @else
-                                <div wire:loading wire:target="toggle" class="p-3">
-                                    <div class="spinner-border text-muted" role="status"></div>
-                                    <p class="mt-2 mb-0">Loading...</p>
-                                </div>
                                 <p class="lead text-capitalize font-medium text-dark mb-0">
-                                <i class="text-muted">{{$this->category->parent_category_id}}</i>
+                                    <i class="text-muted">No Main Category Selected</i>
                                 </p>
                             @endif
                         </div>
                     @endif
                 </div>
-                @error('main_category')
+                @error('parent_category_id')
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
             </div>
