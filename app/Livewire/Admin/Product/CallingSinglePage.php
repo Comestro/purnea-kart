@@ -9,12 +9,18 @@ class CallingSinglePage extends Component
 {
     public $products;
 
-    public function mount()
+    // public function mount($product_id)
+    public function mount(Product $product)
     {
-        $this->products = Product::all();
+        // $this->product = Product::find($product->id);
+        $this->products = $product;
+      
+        
     }
     public function render()
     {
-        return view('livewire.admin.product.calling-single-page');
+        return view('livewire.admin.product.calling-single-page' 
+          
+        );
     }
 }
