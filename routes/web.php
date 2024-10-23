@@ -29,9 +29,10 @@ Route::get('/become-seller/create', [SellerController::class, 'index'])->name('s
 Route::get('/become-seller/login', [SellerController::class, 'login'])->name('seller.login');
 Route::get('/become-seller/create/status', [SellerController::class, 'status'])->name('seller.status');
 
-Route::get('/view/{product_slug}', function ($product_slug) {
-    $data['product'] = Product::where('slug', $product_slug)->first();
-    return view('single-view', $data);
+Route::get('/view/{product_slug}', function($product_slug){
+    $data['product'] = Product::where('slug',$product_slug)->first();
+    $data['relatedProducts'] = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->take(5) ->get();
+    return view('single-view',$data);
 })->name('viewpage');
 
 Route::get('/filter', function () {
@@ -61,9 +62,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/admin/product-grid', function () {
     return view('admin.product.product_grid');
 });
-Route::get('/admin/product-details', function () {
-    return view('admin.product.product_details');
-});
+
+Route::get('/admin/product-details/{id}', function ($id) {
+    return view('admin.product.product_details',['id' => $id]);
+})->name('adminProductView');
 
 
 
@@ -163,10 +165,10 @@ Route::get('admin/seller/seller-list', function () {
 Route::get('admin/seller/seller-add', function () {
     return view('admin.seller.seller_add');
 })->name('seller_add');
-Route::get('admin/seller/seller-details/{id}', function ($id) {
-
-    return view('admin.seller.seller-details', ["seller_id" => $id]);
+Route::get('admin/seller/seller-details/{id}',function($id){
+    return view('admin.seller.seller-details',["seller_id" => $id]);
 })->name('seller_details');
+
 
 
 

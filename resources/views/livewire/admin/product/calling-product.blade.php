@@ -43,8 +43,7 @@
                         <tr>
                             <td>
                                 <div class="form-check ms-1">
-                                    <input type="checkbox" class="form-check-input" id="customCheck2">
-                                    <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                    <p>{{ $product->id }}</p>
                                 </div>
                             </td>
                             <td>
@@ -111,7 +110,7 @@
                                     {{-- <a href="">Details</a> --}}
                                   
                                             
-                                            <a href="{{url('/admin/product-details')}}"
+                                    <a href="{{route('adminProductView', $product->id)}}"
                                         class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken"
                                             class="align-middle fs-18"></iconify-icon></a>
 

@@ -11,28 +11,39 @@ use Validator;
 
 class AuthController extends Controller
 {
-    // Register method
     public function register(Request $request)
-    {      
-        if (!$request->isMethod('post')) {
-            return response()->json(['error' => 'Method not allowed'], 405);
+    {
+        try {
+            $validatedData = $request->validate(
+                [
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|email|max:255|unique:users,email',
+                    'password' => 'required|string|min:6',
+                ],
+                [
+                    'email.unique' => 'The email address is already registered.',
+                ]
+            );
+
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' =>$validatedData['password'],
+                'is_admin' => $request->is_admin ?? 0,
+                'is_vendor' => $request->is_vendor ?? 0,
+            ]);
+
+            return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['error' => $e->validator->errors()], 422);
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return response()->json(['error' => 'The email address is already registered.'], 409);
+            }
+            return response()->json(['error' => 'Unable to register user. Please try again.'], 500);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Unable to register user. Please try again.'], 500);
         }
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->is_admin = $request->is_admin ?? 0;
-        $user->is_vendor = $request->is_vendor ?? 0;
-        $user->save();
-
-        return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
     }
 
     public function login(Request $request)
@@ -60,22 +71,17 @@ class AuthController extends Controller
 
     public function user(Request $request)
     {
-        if (!$request->isMethod('get')) {
-            return response()->json(['error' => 'Method not allowed'], 405);
-        }
-    
-        $token = JWTAuth::getToken();
-            if (!$token) {
+        $token = $request->bearerToken();
+        if (!$token) {
             return response()->json(['error' => 'Token is required'], 401);
         }
-    
+
         try {
-            $user = JWTAuth::toUser($token);
-    
+            $user = JWTAuth::setToken($token)->authenticate();
+
             return response()->json([
                 'message' => 'User authentication successful',
                 'user' => $user,
-                'token' => $token,
                 'expires_in' => auth()->factory()->getTTL() * 60
             ], 200);
         } catch (TokenExpiredException $e) {
@@ -93,15 +99,20 @@ class AuthController extends Controller
         if (!$token) {
             return response()->json(['error' => 'Token is required for logout'], 401);
         }
-    
+
         JWTAuth::invalidate($token);
         return response()->json(['message' => 'Successfully logged out']);
     }
-    
+
     public function refresh(Request $request)
     {
+        $token = $request->bearerToken();
+        if (!$token) {
+            return response()->json(['error' => 'Token is required for refresh'], 401);
+        }
+
         try {
-            $newToken = JWTAuth::refresh(JWTAuth::getToken());
+            $newToken = JWTAuth::refresh($token);
             return $this->respondWithToken($newToken);
         } catch (TokenExpiredException $e) {
             return response()->json(['error' => 'Token has expired'], 401);
@@ -111,9 +122,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'Could not refresh token'], 500);
         }
     }
-    
-    
-    // Respond with token
+
     protected function respondWithToken($token)
     {
         $user = JWTAuth::user();
@@ -126,7 +135,7 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'is_admin' => $isAdmin,
             'is_vendor' => $isVendor,
-            'user_type' => ($isAdmin && $isVendor) ? 'admin' : (($isAdmin) ? 'user' : 'vendor'),
+            'user_type' => $isAdmin ? 'admin' : ($isVendor ? 'vendor' : 'user'),
             'user' => $user
         ]);
     }

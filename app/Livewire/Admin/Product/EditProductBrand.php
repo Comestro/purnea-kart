@@ -14,9 +14,14 @@ class EditProductBrand extends Component
     public function mount($product, $brands)
     {
         $this->product = $product;
+        $this->brand_name = $product->brand_name; 
+
         $this->brands = $brands;
         $this->brand_id = $product->brand_id; 
+
     }
+
+   
 
     // Toggle the edit state
     public function toggle()
@@ -65,8 +70,9 @@ class EditProductBrand extends Component
                         <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
                         @else
                             <div class="mx-auto text-center">
-                                @if (!empty($product->brand_name))
-                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{ $product->brand_name }}</p>
+                                
+                                @if (!empty($product->brand->brand_name))
+                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{ $product->brand->brand_name }}</p>
                                 @else
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
                                     <i class="text-muted">No brand selected</i>

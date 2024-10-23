@@ -21,10 +21,7 @@ class MultipleImage extends Component
         $this->p_id = $product->id;
     }
 
-    // public function mount(Product $product)
-    // {
-    //     $this->product = $product;
-    // }
+    
 
     public function deleteImage($imageId)
     {
@@ -64,4 +61,5 @@ class MultipleImage extends Component
         return view('livewire.admin.product.multiple-image',$data
         );
     }
+
 }

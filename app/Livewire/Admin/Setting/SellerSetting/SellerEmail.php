@@ -1,36 +1,34 @@
 <?php
 
-namespace App\Livewire\Admin\Product;
+namespace App\Livewire\Admin\Setting\SellerSetting;
 
 use Livewire\Component;
 
-class EditProductDescription extends Component
+class SellerEmail extends Component
 {
-    public $product;
-    public $description;
+    public $seller;
+    public $email;
     public $isEdit = false;
 
-    public function mount($product){
-        $this->product;
-        $this->description = $product->description; 
+    public function mount($seller){
+        $this->seller = $seller;
 
-    }
-    public function toggle()
-    {
-        $this->isEdit = !$this->isEdit;
-        $this->description= $this->description? $this->description: $this->description;
     }
     public function update()
     {
 
         $data = $this->validate([
-            'description' => 'required|string',
+            'email' => 'required|string|max:255',
         ]);
 
-        $this->product->update($data);
-
+        $this->seller->update($data);
         $this->toggle();
-        return redirect()->back()->with('success', 'description updated successfully!');
+        return redirect()->back()->with('success', 'title updated successfully!');
+    }
+    public function toggle()
+    {
+        $this->isEdit = !$this->isEdit;
+        $this->email = $this->email ? $this->email : $this->email;
     }
     public function render()
     {
@@ -38,7 +36,7 @@ class EditProductDescription extends Component
          <div class="col-lg-12">
             <div class="card border">
                 <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                    <h5 class="m-0 fw-normal">Product Description</h5>
+                    <h5 class="m-0 fw-normal">Seller Email</h5>
                     <button wire:click="toggle" class="btn-link text-primary btn align-items-center p-0">
                         {{ $isEdit ? 'Cancel' : 'Edit' }}
                     </button>
@@ -46,29 +44,28 @@ class EditProductDescription extends Component
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         @if ($isEdit)
-                            <input wire:model="description" type="text" class="form-control rounded-0" placeholder="Enter product description">
+                            <input wire:model="email" type="text" class="form-control rounded-0" placeholder="Enter category title">
                             <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
                         @else
                             <div class="mx-auto text-center">
-                                @if (!empty($description))
+                                @if (!empty($email))
                                     <div wire:loading wire:target="toggle" class="p-3">
                                         <div class="spinner-border text-muted" role="status"></div>
-                                        <p class="mt-2 mb-0">Loading...</p>
+                                        <p class="mt-2 mb-0">Loading...</p>  
                                     </div>
-                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{$product->description}}</p>
+                                    <p class="lead text-capitalize font-medium text-dark mb-0">{{ $email }}</p>
                                 @else
                                     <div wire:loading wire:target="toggle" class="p-3">
                                         <div class="spinner-border text-muted" role="status"></div>
                                         <p class="mt-2 mb-0">Loading...</p>
                                     </div>
                                     <p class="lead text-capitalize font-medium text-dark mb-0">
-                                    <i class="text-muted">{{$product->description}}</i>
-                                </p>
+                                    <i class="text-muted">{{$seller->email}}</i></p>
                                 @endif
                             </div>
                         @endif
                     </div>
-                    @error('description')
+                    @error('email')
                         <p class="text-danger small">{{ $message }}</p>
                     @enderror
                 </div>

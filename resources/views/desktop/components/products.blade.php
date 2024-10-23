@@ -8,7 +8,7 @@
         @foreach($products as $product)
         <a href="{{ route('viewpage', ['product_slug' => $product->slug]) }}" class=" max-w-xs bg-white p-2 rounded-lg shadow-lg">
            @if ($product->images->count() > 0)
-            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('storage/public/image/product/'.$product->images->first()->path) }}"
+            <img class="w-full h-36 object-cover rounded-md" src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/'.$product->images->first()->path) }}"
             alt="">
            @endif
 

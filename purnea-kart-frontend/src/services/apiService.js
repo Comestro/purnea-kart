@@ -43,7 +43,9 @@ export const fetchCategories = async ()=>{
 }
 
 
+
 export default apiClient;
+
 
 
 
