@@ -3,7 +3,6 @@
 
 @section('content')
 
-
 <div class="page-content">
 
      <!-- Start Container Fluid -->
