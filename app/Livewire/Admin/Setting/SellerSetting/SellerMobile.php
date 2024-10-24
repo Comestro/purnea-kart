@@ -28,7 +28,7 @@ class SellerMobile extends Component
     public function toggle()
     {
         $this->isEdit = !$this->isEdit;
-        $this->mobile = $this->mobile ? $this->mobile : $this->mobile;
+       
     }
     public function render()
     {
