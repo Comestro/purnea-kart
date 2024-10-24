@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <livewire:admin.product.calling-variant />
+                                            <livewire:admin.product.calling-variant :product="$pro_id"/>
                                         </div>
                                     </div>
                                 </div> <!-- end col -->
