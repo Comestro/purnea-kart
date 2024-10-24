@@ -13,27 +13,27 @@ use Validator;
 
 class AuthController extends Controller
 {
-    private $msg91AuthKey = '433074A27fz5BFYNs671a49f7P1';
-    private $msg91SenderId = 'YOUR_SENDER_ID';
+    private $msg91AuthKey = '433074A27fz5BFYNs671a49f7P1'; 
+    private $msg91SenderId = 'YOUR_SENDER_ID'; 
 
     public function otpLogin(Request $request)
     {
-     
         $validatedData = $request->validate([
             'email' => 'required|string|email|max:255',
         ]);
-    
+
         $email = $validatedData['email'];
         $otp = rand(100000, 999999);
 
-            $user = User::updateOrCreate(
+        $user = User::updateOrCreate(
             ['email' => $email],
-            ['name' => '' . $email, 'otp' => $otp, 'otp_expires_at' => now()->addMinutes(5)]
+            ['name' => 'User ' . $email, 'otp' => $otp, 'otp_expires_at' => now()->addMinutes(5)]
         );
 
+        // Send OTP via email
         $this->sendOtp($email, $otp);
 
-        return response()->json(['message' => 'OTP sent successfully.',"user"=>$user], 200);
+        return response()->json(['message' => 'OTP sent successfully.'], 200);
     }
 
     private function sendOtp($email, $otp)
@@ -70,13 +70,17 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid OTP.'], 401);
         }
 
+        // Check if the OTP is expired
         if ($user->otp_expires_at < now()) {
             return response()->json(['error' => 'OTP has expired.'], 401);
         }
+
+        // Clear the OTP after successful verification
         $user->otp = null;
         $user->otp_expires_at = null;
         $user->save();
 
+        // Generate JWT token
         $token = JWTAuth::fromUser($user);
 
         return $this->respondWithToken($token);
@@ -93,7 +97,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
+            'password' => bcrypt($validatedData['password']),
             'is_admin' => $request->is_admin ?? 0,
             'is_vendor' => $request->is_vendor ?? 0,
         ]);
