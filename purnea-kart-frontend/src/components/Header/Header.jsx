@@ -4,13 +4,17 @@ import Container from '../container/container'
 import {Logo,Cart,Seller,Login,Menu} from '../Index'
 
 function Header() {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
   return (
     <Container>
         <header>
             <nav className='w-full bg-white color-black'>
                 <div className='flex justify-between py-4 px-8 '>
                    <div className='max-w-7xl mx-auto flex items-center justify-between'>
-                        {/* <Link to='/'> */}
+                        {/* <Link to='/home'> */}
                         <Logo/>
                         {/* </Link> */}
                     </div> 
@@ -21,9 +25,15 @@ function Header() {
                         placeholder='search' />
                     </div>
                     <div className=' flex items-center space-x-10'>
-                        <div>
-                            <Login prop='Login'/>
-                        </div>
+                    <div
+                            className="relative"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                            >
+                            <button className=" px-4 py-2">Login</button>
+
+                            {isHovered && <Login/>}
+                    </div>
                         <div className='cart-section'>
                             <Cart/>
                         </div>
