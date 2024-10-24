@@ -29,7 +29,7 @@ class SellerName extends Component
     public function toggle()
     {
         $this->isEdit = !$this->isEdit;
-        $this->name = $this->name ? $this->name : $this->name;
+       
     }
     public function render()
     {
