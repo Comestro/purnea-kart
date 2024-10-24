@@ -12,7 +12,7 @@ class CallingVariant extends Component
 
     public function mount(Product $product)
     {
-        $this->variants = ProductVariant::where('product_id', $product->id)->get();
+        $this->variants = $product->variants;
     }
 
     public function render()
