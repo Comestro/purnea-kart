@@ -28,7 +28,6 @@ class SellerEmail extends Component
     public function toggle()
     {
         $this->isEdit = !$this->isEdit;
-        $this->email = $this->email ? $this->email : $this->email;
     }
     public function render()
     {
