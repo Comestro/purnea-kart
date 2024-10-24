@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -11,6 +12,65 @@ use Validator;
 
 class AuthController extends Controller
 {
+    private $msg91AuthKey = 'YOUR_MSG91_AUTH_KEY'; 
+    private $msg91SenderId = 'YOUR_SENDER_ID'; 
+
+    public function otpLogin(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|string|email|max:255|unique:users,email',
+        ]);
+
+        
+        $otp = rand(100000, 999999); 
+        $email = $validatedData['email'];
+
+        session(['otp' => $otp, 'email' => $email]);
+        $this->sendOtp($email, $otp);
+
+        return response()->json(['message' => 'OTP sent successfully.'], 200);
+    }
+
+    private function sendOtp($email, $otp)
+    {
+        $client = new Client();
+        $response = $client->post('https://api.msg91.com/api/sendotp.php', [
+            'form_params' => [
+                'authkey' => $this->msg91AuthKey,
+                'email' => $email,
+                'message' => "Your OTP is: $otp",
+                'sender' => $this->msg91SenderId,
+                'otp' => true,
+            ]
+        ]);
+
+        return json_decode($response->getBody());
+    }
+
+    public function verifyOtp(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'otp' => 'required|string|size:6',
+        ]);
+        $sessionOtp = session('otp');
+        $sessionEamil = session('eamil');
+        if ($validatedData['eamil'] !== $sessionEamil) {
+            return response()->json(['error' => 'eamil number does not match.'], 401);
+        }
+        if ($validatedData['otp'] !== $sessionOtp) {
+            return response()->json(['error' => 'Invalid OTP.'], 401);
+        }
+        $user = User::firstOrCreate(
+            ['eamil' => $validatedData['eamil']],
+            ['name' => 'User ' . $validatedData['eamil']] 
+        );
+
+        // Generate JWT token
+        $token = JWTAuth::fromUser($user);
+
+        return $this->respondWithToken($token);
+    }
     public function register(Request $request)
     {
         try {
@@ -28,7 +88,7 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
-                'password' =>$validatedData['password'],
+                'password' => $validatedData['password'],
                 'is_admin' => $request->is_admin ?? 0,
                 'is_vendor' => $request->is_vendor ?? 0,
             ]);
