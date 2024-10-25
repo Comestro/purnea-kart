@@ -69,7 +69,9 @@ class InsertCategoryform extends Component
     }
 
     public function render()
-    {  $data['categories'] = Category::where('parent_category_id',NULL)->get();
+    { 
+        $data['categories'] = Category::where('parent_category_id',NULL)->get();
+        
         return view('livewire.admin.category.insert-categoryform',$data);
     }    
 }

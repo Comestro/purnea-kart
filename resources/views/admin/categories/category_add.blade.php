@@ -10,18 +10,12 @@
           <!-- Start right Content here -->
           <!-- ==================================================== -->
           <div class="page-content">
-
                <!-- Start Container Fluid -->
                <div class="container-xxl">
-
                     <div class="row">
-                         
-
-                         <div class="col-xl-12 col-lg-8 ">
-                            
-                           
+                         <div class="col-xl-12 col-lg-8 ">            
                              <livewire:admin.category.insert-categoryform/>
-                            
+             
                          </div>
                     </div>
 
