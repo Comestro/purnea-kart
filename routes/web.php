@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use App\Models\Product;
@@ -130,6 +131,12 @@ Route::get('admin/inventory/inventory_receivedOrder', function () {
 Route::get('admin/inventory/inventory_warehouse', function () {
     return view('admin.inventory.inventory_warehouse');
 });
+
+
+Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
+
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
+
 
 //order
 Route::get('admin/orders/order-cart', function () {
