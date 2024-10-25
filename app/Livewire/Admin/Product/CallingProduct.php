@@ -13,6 +13,22 @@ class CallingProduct extends Component
     public $month = "";
     public $search = "";
 
+    public function status($id)
+    {
+        $product = Product::find($id);
+    
+        if ($product) {
+            $product->status = !$product->status;
+            $product->save();
+    
+            session()->flash('success', 'Category status updated successfully.');
+        } else {
+            session()->flash('error', 'Category not found.');
+        }
+    
+        return redirect()->route('product.index');
+    }
+
     public function render() 
     {
         $data['products'] = Product::query()

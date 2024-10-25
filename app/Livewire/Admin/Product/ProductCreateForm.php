@@ -97,7 +97,7 @@ class ProductCreateForm extends Component
     {
         $data['categories'] = Category::all();
         $data['brands'] = Brand::all();
-
+        
         return view('livewire.admin.product.product-create-form', $data);
     }
 }
