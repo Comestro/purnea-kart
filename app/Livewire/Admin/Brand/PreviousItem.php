@@ -19,7 +19,8 @@ class PreviousItem extends Component
         "brand_description" => "required|string|max:255",
         "brand_slug" => "required|string|max:255",
         "logo" => "required|string|max:255",
-    ];    
+    ];   
+
     public function render()
     {
         $previous = Brand::where('brand_name', 'like', '%' . $this->searchTerm . '%')->orWhere('brand_name', 'like', '%' . $this->searchTerm . '%')->get();

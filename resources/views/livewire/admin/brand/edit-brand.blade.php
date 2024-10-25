@@ -4,8 +4,9 @@
         <div class="card-header">
             <h3 class="text-center mb-0 text-primary">Edit Brand</h2>
         </div>
-        <form action="#" wire:submit.prevent="update" method="post">
-            <div class="card-body">
+
+        <div class="card-body">
+            <form action="#" wire:submit.prevent="update" method="post">
                 <div class="mb-4 row g-3">
                     <div class="col-xl-6">
                         <label class="form-label">
@@ -57,11 +58,11 @@
 
                                 <div wire:loading.remove wire:target="logo"
                                     class="w-100 h-100 d-flex align-items-center justify-content-center">
-                                    {{-- @if ($logo)
-                                                    <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" />
-                                                @else
-                                                    <p>Logo Preview</p>
-                                                @endif --}}
+                                    @if ($logo)
+                                        <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" />
+                                    @else
+                                        <p>Logo Preview</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -83,8 +84,8 @@
                         {{ session('message') }}
                     </div>
                 @endif
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 

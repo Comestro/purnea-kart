@@ -18,7 +18,7 @@
 
             <!-- Google Authentication Button -->
             <div class="flex flex-col items-center mb-4">
-                <a href=""
+                <a href="{{route('google.login')}}"
                     class="bg-blue-600 text-white rounded p-2 w-full text-center hover:bg-blue-500 transition duration-200 flex justify-center gap-10 items-center">
                     <img class="h-8 w-8 rounded-full" src="{{ asset('account/download.jpeg') }}" alt="">
                     Sign in with Google

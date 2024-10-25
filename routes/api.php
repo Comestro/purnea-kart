@@ -18,6 +18,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', [AuthController::class, 'login']);
 });
 
+
+Route::prefix('otp')->group(function () {
+    Route::post('login', [AuthController::class, 'otpLogin']);
+    Route::post('verify', [AuthController::class, 'verifyOtp'])->middleware('throttle:5,1');
+});
+
 // Publicly accessible routes (Guest Routes)
 // You can add guest routes here if needed
 

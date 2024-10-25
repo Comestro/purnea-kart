@@ -1,26 +1,28 @@
 import React from 'react'
  import { Link, useNavigate } from 'react-router-dom'
 import { useState} from 'react'
-import {Logo, Button, Input} from './Index'
+import {Button, Input} from './Index'
 import { useDispatch } from 'react-redux'
 import {useForm} from 'react-hook-form'
 import { login as authlogin } from '../store/authSlice'
+import { getuser } from '../services/authService'
+
 
 
 function Login() {
     const dispatch = useDispatch() 
     const navigate = useNavigate()
     const {register, handleSubmit} = useForm()
-    const {error, setError} = useState('')
+    const [error, setError] = useState('')
 
     const login = async(data)=>{
         console.log(data)
        setError('');
        try{
 
-        const session = await authService.login(data)
+        const session = await login(data)//
         if(session){
-            const userData = await authService.getuser()
+            const userData = await getuser()
             if (userData) dispatch(authlogin(userData))
             navigate('/')
         }
@@ -34,12 +36,7 @@ function Login() {
     <div
     className='flex items-center justify-center w-full'
     >
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-        <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
-        </div>
+        <div className={` absolute top-12 right-0 bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
         <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;
@@ -47,7 +44,6 @@ function Login() {
                         to="/signup"
                         className="font-medium text-primary transition-all duration-200 hover:underline"
                     >
-                        Sign Up
                     </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
@@ -76,8 +72,7 @@ function Login() {
                 />
                 <Button
                 type="submit"
-                className="w-full"
-                >Sign in</Button>
+                className="w-full" >Login</Button>
             </div>
         </form>
         </div>
@@ -86,14 +81,3 @@ function Login() {
 }
 
 export default Login
-
-// export default Login 
-// import React from 'react'
-
-// function Login() {
-//   return (
-//     <div>Login</div>
-//   )
-// }
-
-// export default Login

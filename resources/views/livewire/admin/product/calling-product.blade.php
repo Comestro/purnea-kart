@@ -45,6 +45,7 @@
                             <th>Stock</th>
                             <th>Category</th>
                             <th>Rating</th>
+                            <th>Active</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -119,6 +120,24 @@
                                         class="bx bxs-star align-text-top fs-14 text-warning me-1"></i> 4.5</span> 55
                                 Review
                             </td>
+                            <td>
+                                <form wire:submit.prevent="status({{ $product->id }})">
+                                    <button 
+                                        type="submit" 
+                                        class="btn-toggle {{ $product->status ? 'active' : 'inactive' }}"
+                                        wire:loading.attr="disabled" 
+                                        aria-pressed="{{ $product->status ? 'true' : 'false' }}">
+                                    </button>
+                                </form>
+                            </td>
+                            {{-- <td>
+                                <form wire:submit.prevent="status({{ $product->id }})">
+                                    <button type="submit" class="btn btn-sm {{ $product->status ? 'btn-soft-success' : 'btn-soft-red' }}">
+                                        {{ $product->status ? 'Active' : 'Pending' }}
+                                    </button>
+                                </form>
+                                
+                            </td> --}}
                             <td>
                                 <div class="d-flex gap-2">
                                     {{-- <a href="">Details</a> --}}

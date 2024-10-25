@@ -1,16 +1,18 @@
 
 import React, { useState } from 'react'
 import Container from '../container/container'
-import {Logo,Cart,Seller,Login,Menu} from '../Index'
+import {Logo,Cart,Seller,Menu} from '../Index'
+import { Link } from 'react-router-dom'
 
 function Header() {
+    // 
   return (
     <Container>
         <header>
             <nav className='w-full bg-white color-black'>
                 <div className='flex justify-between py-4 px-8 '>
                    <div className='max-w-7xl mx-auto flex items-center justify-between'>
-                        {/* <Link to='/'> */}
+                        {/* <Link to='/home'> */}
                         <Logo/>
                         {/* </Link> */}
                     </div> 
@@ -21,9 +23,19 @@ function Header() {
                         placeholder='search' />
                     </div>
                     <div className=' flex items-center space-x-10'>
+                    {/* <div
+                            className="relative"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                            >
+                            <button className=" px-4 py-2">Login</button>
+
+                            {isHovered && <SignUp/>}
+                    </div> */}
+
                         <div>
-                            <Login prop='Login'/>
-                        </div>
+                            <Link to={'/signup'}>SignUp</Link>
+                            </div>
                         <div className='cart-section'>
                             <Cart/>
                         </div>

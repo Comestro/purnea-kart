@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use App\Models\Product;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SellerController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
@@ -131,6 +133,12 @@ Route::get('admin/inventory/inventory_warehouse', function () {
     return view('admin.inventory.inventory_warehouse');
 });
 
+
+Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
+
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
+
+
 //order
 Route::get('admin/orders/order-cart', function () {
     return view('admin.orders.order_cart');
@@ -181,10 +189,15 @@ Route::get('/vendor', function () {
     return view('vendor.index');
 })->name('vendor.index');
 
+// pending:
+Route::get('/vendor/pending',function(){
+    return view('vendor.pending');
+})->name('vendor.pending');
+
 //Product
 
 Route::get('/vendor/addproduct', function () {
-    return view('vendor.product.addproduct');
+    return view('vendor.product.addProduct');
 })->name('vendor.addproduct');
 Route::get('/vendor/product-list', function () {
     return view('vendor.product.productList');
@@ -192,7 +205,7 @@ Route::get('/vendor/product-list', function () {
 
 //Category
 Route::get('/vendor/addCategory', function () {
-    return view('vendor.category.addcategory');
+    return view('vendor.category.addCategory');
 })->name('vendor.addcategory');
 Route::get('/vendor/category-list', function () {
     return view('vendor.category.categoryList');
@@ -226,3 +239,4 @@ Route::prefix('account')->group(function () {
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
 });
+

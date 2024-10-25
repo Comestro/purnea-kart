@@ -30,11 +30,17 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" wire:model="title" required>
+                            @error('discount_price')
+                                <p class="text-danger text-xs">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="alt" class="form-label">Alt Text</label>
                             <input type="text" class="form-control" id="alt" wire:model="alt"
                                 placeholder="Enter alt text" value="{{ old('alt') }}">
+                            @error('discount_price')
+                                <p class="text-danger text-xs">{{ $message }}</p>
+                            @enderror
                         </div>
 
 
@@ -50,10 +56,14 @@
                             <label for="expiry_date" class="form-label">Expiry Date</label>
                             <input type="date" class="form-control" id="expiry_date" wire:model="expiry_date"
                                 value="{{ old('expiry_date') }}">
+                            @error('discount_price')
+                                <p class="text-danger text-xs">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <div class="row">
+
 
                                 <div class="col-lg-12">
                                     <div class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone"
@@ -141,7 +151,9 @@
                             </thead>
                             <tbody>
                                 @foreach ($banners as $key => $banner)
+                                @foreach ($banners as $key => $banner)
                                     <tr>
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $key + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
@@ -153,6 +165,7 @@
                                                 </div>
                                             </div>
                                         </td>
+
 
                                         <td>
                                             <p class="text-dark fw-medium fs-15 mb-0">{{ $banner->title }}</p>
@@ -171,14 +184,24 @@
 
 
 
+                                        <td>
+                                            <div class="d-inline-flex align-items-center">
+                                                <button wire:click="toggleStatus({{ $banner->id }})"
+                                                    class=" btn-toggle {{ $banner->status ? 'active' : '' }}"
+                                                    aria-pressed="{{ $banner->status ? 'true' : 'false' }}">
+                                                    {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
+                                                </button>
+                                            </div>
+
+
+
                                         </td>
 
 
                                         <td>
                                             <div class="d-flex gap-2">
 
-                                                <button class="btn btn-soft-primary btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal"><iconify-icon
+                                                <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
                                                         class="align-middle fs-18"></iconify-icon></button>
                                                 <button wire:confirm="Are you want to delete this Banner ? "
@@ -204,7 +227,19 @@
                                 <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
                                     tabindex="-1">Previous</a>
                             </li>
+                <!-- Pagination -->
+                <div class="card-footer border-top">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item {{ $banners->onFirstPage() ? 'disabled' : '' }}">
+                                <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
+                                    tabindex="-1">Previous</a>
+                            </li>
 
+                            @php
+                                $currentPage = $banners->currentPage();
+                                $lastPage = $banners->lastPage();
+                            @endphp
                             @php
                                 $currentPage = $banners->currentPage();
                                 $lastPage = $banners->lastPage();
@@ -216,7 +251,20 @@
                                         wire:click="gotoPage({{ $i }})">{{ $i }}</a>
                                 </li>
                             @endfor
+                            @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                    <a class="page-link"
+                                        wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                                </li>
+                            @endfor
 
+                            <!-- Next Page Link -->
+                            <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
+                                <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
                             <!-- Next Page Link -->
                             <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
                                 <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
@@ -335,4 +383,5 @@
     </div>
 
 </div>
+<!-- Optional CSS to style toggle -->
 <!-- Optional CSS to style toggle -->

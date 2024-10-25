@@ -12,13 +12,11 @@ class CallingVariant extends Component
 
     public function mount(Product $product)
     {
-        $this->variants = ProductVariant::where('product_id', $product->id)->get();
+        $this->variants = $product->variants;
     }
 
     public function render()
     {
-        return view('livewire.admin.product.calling-variant', [
-            'variants' => $this->variants
-        ]);
+        return view('livewire.admin.product.calling-variant');
     }
 }
