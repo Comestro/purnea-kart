@@ -18,9 +18,10 @@ function SignUp() {
     try {
       const userData = await createaccount(data);
       if (userData) {
-        const fetchedUser = await getuser();
-        if (fetchedUser) dispatch(login(fetchedUser));
-        navigate('/');
+          let loginned  = login(userData);
+          const fetchedUser = await getuser();
+        if (fetchedUser) dispatch(loginned);
+        navigate('/home');
       }
     } catch (error) {
       setError(error.message);
@@ -72,7 +73,7 @@ function SignUp() {
           </Button>
         </form>
 
-        {/* <p className="mt-4 text-center text-gray-600">
+        <p className="mt-4 text-center text-gray-600">
           Already have an account?{' '}
           <span
             onClick={() => navigate('/login')}
@@ -80,7 +81,7 @@ function SignUp() {
           >
             Sign In
           </span>
-        </p> */}
+        </p>
       </div>
     </div>
   );

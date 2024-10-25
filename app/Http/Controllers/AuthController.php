@@ -102,7 +102,7 @@ class AuthController extends Controller
             'is_vendor' => $request->is_vendor ?? 0,
         ]);
 
-        return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
+        return response()->json(['message' => 'User successfully registered', 'user' => $user], 200);
     }
 
     public function login(Request $request)
