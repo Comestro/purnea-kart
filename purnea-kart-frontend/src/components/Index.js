@@ -6,6 +6,8 @@ import Login from "./Login"
 import Menu from "./Menu";
 import Button from "./Button"
 import Input from "./Input";
+import SignUp from "./SignUp";
+
 
 export {
     container,
@@ -16,4 +18,6 @@ export {
     Menu,
     Button,
     Input,
+    SignUp,
+    
 }

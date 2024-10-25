@@ -190,7 +190,7 @@ Route::get('/vendor/pending',function(){
 //Product
 
 Route::get('/vendor/addproduct', function () {
-    return view('vendor.product.addproduct');
+    return view('vendor.product.addProduct');
 })->name('vendor.addproduct');
 Route::get('/vendor/product-list', function () {
     return view('vendor.product.productList');
@@ -198,7 +198,7 @@ Route::get('/vendor/product-list', function () {
 
 //Category
 Route::get('/vendor/addCategory', function () {
-    return view('vendor.category.addcategory');
+    return view('vendor.category.addCategory');
 })->name('vendor.addcategory');
 Route::get('/vendor/category-list', function () {
     return view('vendor.category.categoryList');
