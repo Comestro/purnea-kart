@@ -5,7 +5,8 @@ import {Button, Input} from './Index'
 import { useDispatch } from 'react-redux'
 import {useForm} from 'react-hook-form'
 import { login as authlogin } from '../store/authSlice'
-import authService from '../services/authService'
+import { getuser } from '../services/authService'
+
 
 
 function Login() {
@@ -19,9 +20,9 @@ function Login() {
        setError('');
        try{
 
-        const session = await authService.login(data)//
+        const session = await login(data)//
         if(session){
-            const userData = await authService.getuser()
+            const userData = await getuser()
             if (userData) dispatch(authlogin(userData))
             navigate('/')
         }

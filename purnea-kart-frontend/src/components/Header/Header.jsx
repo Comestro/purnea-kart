@@ -1,13 +1,11 @@
 
 import React, { useState } from 'react'
 import Container from '../container/container'
-import {Logo,Cart,Seller,Login,Menu} from '../Index'
+import {Logo,Cart,Seller,Menu} from '../Index'
+import { Link } from 'react-router-dom'
 
 function Header() {
-    const [isHovered, setIsHovered] = useState(false);
-
-    const handleMouseEnter = () => setIsHovered(true);
-    const handleMouseLeave = () => setIsHovered(false);
+    // 
   return (
     <Container>
         <header>
@@ -25,15 +23,19 @@ function Header() {
                         placeholder='search' />
                     </div>
                     <div className=' flex items-center space-x-10'>
-                    <div
+                    {/* <div
                             className="relative"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                             >
                             <button className=" px-4 py-2">Login</button>
 
-                            {isHovered && <Login/>}
-                    </div>
+                            {isHovered && <SignUp/>}
+                    </div> */}
+
+                        <div>
+                            <Link to={'/signup'}>SignUp</Link>
+                            </div>
                         <div className='cart-section'>
                             <Cart/>
                         </div>
