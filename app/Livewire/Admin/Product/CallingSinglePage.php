@@ -9,10 +9,8 @@ class CallingSinglePage extends Component
 {
     public $products;
 
-    // public function mount($product_id)
     public function mount(Product $product)
     {
-        // $this->product = Product::find($product->id);
         $this->products = $product;
       
         

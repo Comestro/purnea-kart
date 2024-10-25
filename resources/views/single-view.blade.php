@@ -96,10 +96,9 @@
             @foreach ($relatedProducts as $relatedProduct)
             <a href="{{ route('viewpage', ['product_slug' => $relatedProduct->slug]) }}"
                 class="max-w-[208px] bg-white p-2 rounded-lg shadow-lg">
-                 <img class="w-full h-36 object-cover rounded-md"
-                      src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $relatedProduct->images->first()->path) }}"
-                      alt="{{ $relatedProduct->name }}">
- 
+                <img class="w-full h-36 object-cover rounded-md"
+                src="{{ $relatedProduct->images->isNotEmpty() ? asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $relatedProduct->images->first()->path) : asset('path/to/default-image.jpg') }}"
+                alt="{{ $relatedProduct->name }}">          
                  <div class="mt-2 flex justify-between items-center">
                      <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">{{ $relatedProduct->discount_percentage }}% off</span>
                      <span class="text-red-600 font-medium text-xs">Great Indian Festival</span>
