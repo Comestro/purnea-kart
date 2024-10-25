@@ -34,19 +34,19 @@ class SocialiteController extends Controller
             if ($newUser) {
                 Auth::login($newUser);
             } else {
-                return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
+                return redirect()->route('account/login')->with('error', 'Unable to login with Google, please try again.');
             }
         }
 
         // Check if the user is an admin
-        // if (Auth::user()->isAdmin == 1) {
-        //     return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
-        // }
-        // else{
-        //     return redirect()->intended('/');
-        // } 
+        if (Auth::user()->isAdmin == 1) {
+            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+        }
+        else{
+            return redirect()->intended('/');
+        } 
     } catch (\Exception $e) {
-        return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
+        return redirect()->route('account/login')->with('error', 'Unable to login with Google, please try again.');
     }
 }
 
