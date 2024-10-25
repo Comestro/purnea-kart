@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SellerController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
@@ -226,3 +227,4 @@ Route::prefix('account')->group(function () {
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
 });
+

@@ -34,45 +34,45 @@ class PublicController extends Controller
         return view('account.signup');
     }
 
-    // signup logics here:
-    public function register(Request $request){
-        $data = $request->validate([
-            'name' => ['required','string','max:255'],
-            'email' => ['required','email','unique:users,email'],
-            'password' => ['required','string','min:8','confirmed'],
-        ]);
+        // signup logics here:
+        public function register(Request $request){
+            $data = $request->validate([
+                'name' => ['required','string','max:255'],
+                'email' => ['required','email','unique:users,email'],
+                'password' => ['required','string','min:8','confirmed'],
+            ]);
 
-        $data['password'] = ($data['password']);
-        
-        $user = User::create($data);
+            $data['password'] = ($data['password']);
+            
+            $user = User::create($data);
 
-        Auth::login($user);
+            Auth::login($user);
 
-        return redirect()->intended('/')->with('success','Registration successfull');
-    }
-
-    // showing login form here:
-    public function ShowLoginForm(){
-        return view('account.login');
-    }
-
-    // login logics here:
-    public function Login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required'],
-            'password' => 'required',
-        ]);
-
-        if(Auth::attempt($credentials)){ 
-          
-
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with('success','Registration successfull');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        // showing login form here:
+        public function ShowLoginForm(){
+            return view('account.login');
+        }
+
+        // login logics here:
+        public function Login(Request $request)
+        {
+            $credentials = $request->validate([
+                'email' => ['required'],
+                'password' => 'required',
+            ]);
+
+            if(Auth::attempt($credentials)){ 
+            
+
+                return redirect()->intended('/');
+            }
+
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
+        }
+        
     }
-    
-}
