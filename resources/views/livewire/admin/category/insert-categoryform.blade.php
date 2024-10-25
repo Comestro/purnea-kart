@@ -84,7 +84,7 @@
                                 </form>
                             </select>
                             @error('parent_category_id')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -92,7 +92,7 @@
                             <label for="title" class="form-label">Category Title</label>
                             <input type="text" wire:model.live="cat_title" class="form-control" placeholder="Title">
                             @error('cat_title')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -101,7 +101,7 @@
                             <input type="text" id="product-stock" wire:model="cat_slug" class="form-control"
                                 readonly>
                             @error('cat_slug')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -124,7 +124,7 @@
                                                 <p class="text-muted">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                             </div>
                                         </div>
-                                        <input id="dropzone-file" wire:model="image" type="file" class="d-none" />
+                                        <input id="dropzone-file" wire:model.live="image" type="file" class="d-none" />
                                     </label>
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
@@ -157,7 +157,7 @@
                             <textarea class="form-control bg-light-subtle" wire:model.live="cat_description" id="description" rows="7"
                                 placeholder="Type description"></textarea>
                             @error('cat_description')
-                                <p class="text-red-500 text-xs">{{ $message }}</p>
+                                <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
