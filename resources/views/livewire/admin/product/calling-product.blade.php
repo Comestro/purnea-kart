@@ -98,6 +98,7 @@
                                             <span>Color :</span>
                                             @foreach ($colorVariants as $variant)
                                             {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            <button style="background-color: {{ $variant->variant_name }}"></button>
                                             @endforeach
                                         </p>
                                         @endif
