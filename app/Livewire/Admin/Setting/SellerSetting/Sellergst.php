@@ -28,7 +28,7 @@ class Sellergst extends Component
     public function toggle()
     {
         $this->isEdit = !$this->isEdit;
-        $this->gst = $this->gst ? $this->gst : $this->gst;
+        
     }
     public function render()
     {

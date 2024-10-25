@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -11,55 +13,104 @@ use Validator;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
-    {
-        try {
-            $validatedData = $request->validate(
-                [
-                    'name' => 'required|string|max:255',
-                    'email' => 'required|string|email|max:255|unique:users,email',
-                    'password' => 'required|string|min:6',
-                ],
-                [
-                    'email.unique' => 'The email address is already registered.',
-                ]
-            );
+    private $msg91AuthKey = '433074A27fz5BFYNs671a49f7P1'; 
+    private $msg91SenderId = 'YOUR_SENDER_ID'; 
 
-            $user = User::create([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' =>$validatedData['password'],
-                'is_admin' => $request->is_admin ?? 0,
-                'is_vendor' => $request->is_vendor ?? 0,
+    public function otpLogin(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|string|email|max:255',
+        ]);
+
+        $email = $validatedData['email'];
+        $otp = rand(100000, 999999);
+
+        $user = User::updateOrCreate(
+            ['email' => $email],
+            ['name' => 'User ' . $email, 'otp' => $otp, 'otp_expires_at' => now()->addMinutes(5)]
+        );
+
+        // Send OTP via email
+        $this->sendOtp($email, $otp);
+
+        return response()->json(['message' => 'OTP sent successfully.'], 200);
+    }
+
+    private function sendOtp($email, $otp)
+    {
+        $client = new Client();
+        try {
+            $response = $client->post('https://api.msg91.com/api/sendotp.php', [
+                'form_params' => [
+                    'authkey' => $this->msg91AuthKey,
+                    'email' => $email,
+                    'message' => "Your OTP is: $otp",
+                    'sender' => $this->msg91SenderId,
+                    'otp' => true,
+                ]
             ]);
 
-            return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json(['error' => $e->validator->errors()], 422);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                return response()->json(['error' => 'The email address is already registered.'], 409);
-            }
-            return response()->json(['error' => 'Unable to register user. Please try again.'], 500);
+            return json_decode($response->getBody());
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Unable to register user. Please try again.'], 500);
+            \Log::error('Failed to send OTP: ' . $e->getMessage());
+            throw new \Exception('Unable to send OTP. Please try again later.');
         }
+    }
+
+    public function verifyOtp(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|string|email|max:255',
+            'otp' => 'required|string|size:6',
+        ]);
+
+        $user = User::where('email', $validatedData['email'])->first();
+
+        if (!$user || $user->otp !== $validatedData['otp']) {
+            return response()->json(['error' => 'Invalid OTP.'], 401);
+        }
+
+        // Check if the OTP is expired
+        if ($user->otp_expires_at < now()) {
+            return response()->json(['error' => 'OTP has expired.'], 401);
+        }
+
+        // Clear the OTP after successful verification
+        $user->otp = null;
+        $user->otp_expires_at = null;
+        $user->save();
+
+        // Generate JWT token
+        $token = JWTAuth::fromUser($user);
+
+        return $this->respondWithToken($token);
+    }
+
+    public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'is_admin' => $request->is_admin ?? 0,
+            'is_vendor' => $request->is_vendor ?? 0,
+        ]);
+
+        return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
     }
 
     public function login(Request $request)
     {
-        if (!$request->isMethod('post')) {
-            return response()->json(['error' => 'Method not allowed'], 405);
-        }
-
-        $validator = Validator::make($request->all(), [
+        $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        }
 
         $credentials = $request->only('email', 'password');
         if ($token = JWTAuth::attempt($credentials)) {
@@ -78,11 +129,10 @@ class AuthController extends Controller
 
         try {
             $user = JWTAuth::setToken($token)->authenticate();
-
             return response()->json([
                 'message' => 'User authentication successful',
                 'user' => $user,
-                'expires_in' => auth()->factory()->getTTL() * 60
+                'expires_in' => auth()->factory()->getTTL() * 60,
             ], 200);
         } catch (TokenExpiredException $e) {
             return response()->json(['error' => 'Token has expired'], 401);
@@ -126,17 +176,13 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user = JWTAuth::user();
-        $isAdmin = $user->is_admin ?? 0;
-        $isVendor = $user->is_vendor ?? 0;
-
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'is_admin' => $isAdmin,
-            'is_vendor' => $isVendor,
-            'user_type' => $isAdmin ? 'admin' : ($isVendor ? 'vendor' : 'user'),
-            'user' => $user
+            'is_admin' => $user->is_admin ?? 0,
+            'is_vendor' => $user->is_vendor ?? 0,
+            'user' => $user,
         ]);
     }
 }

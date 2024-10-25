@@ -6,15 +6,15 @@
                 <!-- Product Image -->
                 <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt=""
                     class="img-fluid rounded bg-light">
-        
+
                 <!-- Product Information -->
                 <div class="mt-3">
                     <!-- Product Name and Category -->
                     <h4 class="text-lg font-semibold text-gray-800">
-                        {{ $name ?? 'Men Black Slim Fit T-shirt' }} 
+                        {{ $name ?? 'Men Black Slim Fit T-shirt' }}
                         <span class="fs-14 text-muted ms-1">({{ $cat_title ?? 'Fashion' }})</span>
                     </h4>
-        
+
                     <!-- Price Section -->
                     <h5 class="text-dark fw-medium mt-3">Price :</h5>
                     <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
@@ -22,52 +22,70 @@
                         ${{ $discount_price ?? 80 }}
                         <small class="text-muted"> 30%off</small>
                     </h4>
-        
+
                     <!-- Size Section -->
                     <div class="mt-3">
                         <h5 class="text-dark fw-medium">Size :</h5>
-                        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                        <div class="d-flex flex-wrap gap-2" role="group"
+                            aria-label="Basic checkbox toggle button group">
                             <input type="checkbox" class="btn-check" id="size-s">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-s">S</label>
-        
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="size-s">S</label>
+
                             <input type="checkbox" class="btn-check" id="size-m" checked>
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-m">M</label>
-        
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="size-m">M</label>
+
                             <input type="checkbox" class="btn-check" id="size-xl">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-xl">XL</label>
-        
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="size-xl">XL</label>
+
                             <input type="checkbox" class="btn-check" id="size-xxl">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-xxl">XXL</label>
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="size-xxl">XXL</label>
                         </div>
                     </div>
-        
+
                     <div class="mt-3">
                         <h5 class="text-dark fw-medium">Colors :</h5>
-                        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                        <div class="d-flex flex-wrap gap-2" role="group"
+                            aria-label="Basic checkbox toggle button group">
                             <input type="checkbox" class="btn-check" id="color-dark">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-dark">
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="color-dark">
                                 <i class="bx bxs-circle fs-18 text-dark"></i>
                             </label>
-        
+
                             <input type="checkbox" class="btn-check" id="color-yellow">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-yellow">
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="color-yellow">
                                 <i class="bx bxs-circle fs-18 text-warning"></i>
                             </label>
-        
+
                             <input type="checkbox" class="btn-check" id="color-white">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-white">
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="color-white">
                                 <i class="bx bxs-circle fs-18 text-white"></i>
                             </label>
-        
+
                             <input type="checkbox" class="btn-check" id="color-red">
-                            <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-red">
+                            <label
+                                class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                for="color-red">
                                 <i class="bx bxs-circle fs-18 text-danger"></i>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
             <!-- Footer -->
             <div class="card-footer bg-light-subtle">
                 <div class="row g-2">
@@ -80,26 +98,14 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
 
     </div>
     <div class="col-lg-8">
 
         <div>
-            <div x-data="{ showAlert: true }" x-show="showAlert">
-                @if ($errors->any())
-                    <div class="alert alert-danger relative p-4 border border-red-400 bg-red-100 text-red-700 rounded">
-                        <button @click="showAlert = false"
-                            class="absolute top-0 right-0 mt-2 mr-2 text-red-700 font-bold">&times;</button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-            </div>
+
 
             <form action="#" wire:submit.prevent="store" method="post">
 
@@ -115,6 +121,9 @@
                                     <label for="product-name" class="form-label">Product Name</label>
                                     <input type="text" id="product-name" wire:model.live="name" class="form-control"
                                         placeholder="Items Name">
+                                    @error('name')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -123,6 +132,9 @@
                                     <input type="text" id="product-name" wire:model.live="slug" disabled
                                         class="form-control" style="background-color: rgb(214, 214, 214)"
                                         placeholder="Items Name">
+                                    @error('slug')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -138,6 +150,9 @@
                                             <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('brand_id')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -157,6 +172,9 @@
                                     @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
                                     @endforeach
+                                    @error('category_id')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </select>
                             </div>
                             {{-- <div class="col-lg-4">
@@ -181,102 +199,21 @@
                                     <option value="">Select vendor</option>
 
                                 </select>
+                                @error('vendor')
+                                    <p class="text-danger text-xs">{{ $message }}</p>
+                                @enderror
 
                             </div>
                         </div>
-                        {{-- <div class="row mb-4">
-                    <div class="col-lg-4">
-                        <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Size :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group"
-                                aria-label="Basic checkbox toggle button group">
-                                <input type="checkbox" class="btn-check" id="size-xs1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-xs1">XS</label>
-
-                                <input type="checkbox" class="btn-check" id="size-s1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-s1">S</label>
-
-                                <input type="checkbox" class="btn-check" id="size-m1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-m1">M</label>
-
-                                <input type="checkbox" class="btn-check" id="size-xl1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-xl1">Xl</label>
-
-                                <input type="checkbox" class="btn-check" id="size-xxl1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-xxl1">XXL</label>
-                                <input type="checkbox" class="btn-check" id="size-3xl1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-3xl1">3XL</label>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Colors :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group"
-                                aria-label="Basic checkbox toggle button group">
-                                <input type="checkbox" class="btn-check" id="color-dark1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-dark1"> <i class="bx bxs-circle fs-18 text-dark"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-yellow1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-yellow1"> <i class="bx bxs-circle fs-18 text-warning"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-white1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-white1"> <i class="bx bxs-circle fs-18 text-white"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-red1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-red1"> <i class="bx bxs-circle fs-18 text-primary"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-green1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-green1"> <i class="bx bxs-circle fs-18 text-success"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-blue1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-blue1"> <i class="bx bxs-circle fs-18 text-danger"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-sky1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-sky1"> <i class="bx bxs-circle fs-18 text-info"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-gray1">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-gray1"> <i class="bx bxs-circle fs-18 text-secondary"></i></label>
-
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="form-control bg-light-subtle" wire:model.live='description' id="description" rows="7"
                                         placeholder="Short description about the product"></textarea>
+                                    @error('description')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -296,6 +233,9 @@
                                     <label for="product-quantity" class="form-label">Stock</label>
                                     <input type="number" id="product-quantity" wire:model.live='quantity'
                                         class="form-control" placeholder="Quantity">
+                                    @error('quantity')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -304,6 +244,9 @@
                                     <label for="product-stock" class="form-label">SKU</label>
                                     <input type="number" id="product-sku" wire:model.live="sku"
                                         class="form-control" placeholder="Sku">
+                                    @error('sku')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -331,17 +274,23 @@
                                 <label for="product-price" class="form-label">Price</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text fs-20"><i class="bi bi-currency-rupee"></i></span>
-                                    <input type="number" id="product-price" wire:model.live='price' class="form-control"
-                                        placeholder="000">
+                                    <input type="number" id="product-price" wire:model.live='price'
+                                        class="form-control" placeholder="000">
+                                    @error('price')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4">
 
-                                <label for="product-discount" class="form-label">Discount</label>
+                                <label for="product-discount" class="form-label">Discount Price</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text fs-20"><i class='bx bxs-discount'></i></span>
                                     <input type="number" id="product-discount" class="form-control"
                                         wire:model.live='discount_price' placeholder="000">
+                                    @error('discount_price')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>

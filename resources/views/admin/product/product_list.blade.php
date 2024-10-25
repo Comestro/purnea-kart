@@ -2,13 +2,41 @@
 @section('title', 'Product List ||')
 
 @section('content')
-<!-- <style>
-        .truncate {
-            white-space: nowrap; 
-            overflow: hidden;    
-            text-overflow: ellipsis; 
-        }
-    </style> -->
+<style>
+    .btn-toggle {
+        width: 2.75rem;
+        height: 1.5rem;
+        background-color: #dc3545;
+        /* Red for inactive */
+        border-radius: 1.5rem;
+        position: relative;
+        padding: 0;
+        border: 0;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-toggle.active {
+        background-color: #28a745;
+        /* Green for active */
+    }
+
+    .btn-toggle::before {
+        content: '';
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 0.126rem;
+        left: 0.125rem;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-toggle.active::before {
+        transform: translateX(1.25rem);
+    }
+</style>
+
 
 
     <!-- ==================================================== -->
@@ -21,34 +49,8 @@
 
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center gap-1">
-                            <h4 class="card-title flex-grow-1">All Product List</h4>
-
-                            <a href="{{ route('product.create') }}" class="btn btn-sm btn-primary">
-                                Add Product
-                            </a>
-
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    This Month
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Download</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Export</a>
-                                    <!-- item-->
-                                    <a href="#!" class="dropdown-item">Import</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <livewire:admin.product.calling-product />
-
-                            <!-- end table-responsive -->
-                        </div>
+                <livewire:admin.product.calling-product />
+                
                         {{-- <div class="card-footer border-top">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end mb-0">
