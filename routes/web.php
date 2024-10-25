@@ -182,6 +182,11 @@ Route::get('/vendor', function () {
     return view('vendor.index');
 })->name('vendor.index');
 
+// pending:
+Route::get('/vendor/pending',function(){
+    return view('vendor.pending');
+});
+
 //Product
 
 Route::get('/vendor/addproduct', function () {
