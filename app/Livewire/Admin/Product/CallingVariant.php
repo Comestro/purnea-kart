@@ -17,8 +17,6 @@ class CallingVariant extends Component
 
     public function render()
     {
-        return view('livewire.admin.product.calling-variant', [
-            'variants' => $this->variants
-        ]);
+        return view('livewire.admin.product.calling-variant');
     }
 }
