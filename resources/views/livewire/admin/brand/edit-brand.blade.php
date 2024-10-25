@@ -58,11 +58,11 @@
 
                                 <div wire:loading.remove wire:target="logo"
                                     class="w-100 h-100 d-flex align-items-center justify-content-center">
-                                    {{-- @if ($logo)
-                                                <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" />
-                                            @else
-                                                <p>Logo Preview</p>
-                                            @endif --}}
+                                    @if ($logo)
+                                        <img src="{{ $logo->temporaryUrl() }}" class="img-fluid" />
+                                    @else
+                                        <p>Logo Preview</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

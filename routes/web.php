@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SellerController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Setting;
 use App\Models\Banner;
 use App\Models\Brand;
@@ -181,6 +182,11 @@ Route::get('/vendor', function () {
     return view('vendor.index');
 })->name('vendor.index');
 
+// pending:
+Route::get('/vendor/pending',function(){
+    return view('vendor.pending');
+});
+
 //Product
 
 Route::get('/vendor/addproduct', function () {
@@ -226,3 +232,4 @@ Route::prefix('account')->group(function () {
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
 });
+
