@@ -37,10 +37,9 @@ class SocialiteController extends Controller
                 return redirect()->route('account/login')->with('error', 'Unable to login with Google, please try again.');
             }
         }
-
-        // Check if the user is an admin
+        
         if (Auth::user()->isAdmin == 1) {
-            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+            return redirect()->route('admin'); 
         }
         else{
             return redirect()->intended('/');
