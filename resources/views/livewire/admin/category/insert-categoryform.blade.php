@@ -13,7 +13,7 @@
                         <div wire:loading.remove wire:target="image"
                             class="w-100 h-100 d-flex align-items-center justify-content-center">
                             @if ($image)
-                                <img src="{{ $image->temporaryUrl() }}" class="img-fluid" alt="Image Preview" />
+                                <img src="{{ $image->temporaryUrl()}}" class="img-fluid" alt="Image Preview" />
                             @else
                                 <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="Static Preview"
                                     class="avatar-xxl">

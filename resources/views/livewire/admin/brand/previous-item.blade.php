@@ -16,9 +16,22 @@
                      alt="{{ $latestItem->brand_name }} Logo" style="max-width: 100px; max-height: 300px;">
                 </div>
                 <div class="mt-3">
+
                     <h4>{{ $latestItem->brand_name }}</h4>
                     <p>{{ $latestItem->brand_description }}</p>
                 </div>
+                {{-- <div class="mt-3">
+                 @if
+                    ({{$latestItem->brand_name }})
+                @else
+                    <h4>({{!$latestItem->brand_name }})<span>
+                @endif
+                @if ($latestItem->brand_description)
+                @else
+                <p>{{!$latestItem->brand_description }}</p>
+                @endif
+                </div> --}}
+
             </div>
             <div class="card-footer border-top">
                 <div class="row g-2">
