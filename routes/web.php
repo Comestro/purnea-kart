@@ -185,7 +185,7 @@ Route::get('/vendor', function () {
 // pending:
 Route::get('/vendor/pending',function(){
     return view('vendor.pending');
-});
+})->name('vendor.pending');
 
 //Product
 

@@ -30,7 +30,7 @@ class SellerLoginForm extends Component
 
         $credentials = ['email'=>$this->email,'password'=>$this->password];
         if(Auth::guard('seller')->attempt($credentials)){
-            return redirect()->route('vendor.index');
+            return redirect()->route('vendor.pending');
         }
         else{
             $this->addError('email', 'Invalid credentials');
