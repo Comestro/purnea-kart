@@ -26,8 +26,6 @@ class ManageBrand extends Component
     {
         $this->brandId=$id;
 
-        
-     
         if($this->isActive)
         {
             Brand::where('id',$this->brandId)->update(['status' => 1]);

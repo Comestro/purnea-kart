@@ -174,7 +174,7 @@
                     <div class="table-responsive">
                         <table class="table align-middle mb-0 table-hover table-centered">
                             <thead class="bg-light-subtle">
-                                <tr>
+                                <tr class="text-center">
                                     <th style="width: 20px;">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="customCheck1">
@@ -193,7 +193,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($category as $cat)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="customCheck2">
@@ -235,11 +235,12 @@
                                                 </button>
                                             </form>
                                         </td>
+                                        
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <a href="#!" class="btn btn-light btn-sm"><iconify-icon
+                                                {{-- <a href="#!" class="btn btn-light btn-sm"><iconify-icon
                                                         icon="solar:eye-broken"
-                                                        class="align-middle fs-18"></iconify-icon></a>
+                                                        class="align-middle fs-18"></iconify-icon></a> --}}
                                                 <a href="{{ route('edit.category', $cat->id) }}"
                                                     class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
