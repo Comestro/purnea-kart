@@ -4,7 +4,7 @@
     </div>
 
     
-        <div class="card-body">
+        <div class="card-body" style="background-color: #f5f5f5;">
         @if (session()->has('success'))
             <div class="text-black">
                 
