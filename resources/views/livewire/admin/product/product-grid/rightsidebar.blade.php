@@ -34,8 +34,8 @@
             <div class="col-lg-6 col-xl-4">
                 <div class="card">
                     @if ($product->images->count() > 0)
-                        <img src="{{ asset('storage/public/image/product/' . $product->images->first()->path) }}"
-                            alt="" class="img-fluid">
+                        
+                             <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}">
                     @else
                         <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="" class="img-fluid ">
                     @endif
