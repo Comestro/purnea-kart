@@ -5,7 +5,6 @@ import {Logo,Cart,Seller,Menu} from '../Index'
 import { Link } from 'react-router-dom'
 
 function Header() {
-    // 
   return (
     <Container>
         <header>
@@ -23,15 +22,6 @@ function Header() {
                         placeholder='search' />
                     </div>
                     <div className=' flex items-center space-x-10'>
-                    {/* <div
-                            className="relative"
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
-                            >
-                            <button className=" px-4 py-2">Login</button>
-
-                            {isHovered && <SignUp/>}
-                    </div> */}
 
                         <div>
                             <Link to={'/signup'}>SignUp</Link>
