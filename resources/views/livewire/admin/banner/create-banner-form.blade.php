@@ -145,15 +145,16 @@
 
                                     <th>Expiry Date</th>
                                     <th>Status</th>
-
                                     <th>Action</th>
+
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($banners as $key => $banner)
+
                                 @foreach ($banners as $key => $banner)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+
                                         <td>{{ $key + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
@@ -181,7 +182,7 @@
                                                     {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
                                                 </button>
                                             </div>
-
+                                            <!--
 
 
                                         <td>
@@ -195,15 +196,161 @@
 
 
 
-                                        </td>
+                                        </td> -->
 
 
                                         <td>
                                             <div class="d-flex gap-2">
 
-                                                <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
+                                                <button data-bs-toggle="modal"
+                                                    data-bs-target="#editBanner{{ $loop->index }}"
+                                                    class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
                                                         class="align-middle fs-18"></iconify-icon></button>
+
+                                                {{-- modal --}}
+                                                <div class="modal show" id="editBanner{{ $loop->index }}"
+                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+
+
+                                                            <!-- Modal Body with Form -->
+                                                            <div class="modal-body">
+                                                                <form wire:submit.prevent="edit" method="POST">
+
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <label for="title"
+                                                                                    class="form-label">Title</label>
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    id="title"
+                                                                                    value="{{ $banner->title }}"
+                                                                                    wire:model="title" required>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label for="alt"
+                                                                                    class="form-label">Alt Text</label>
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    id="alt" wire:model="alt"
+                                                                                    placeholder="Enter alt text"
+                                                                                    value="{{ old('alt') }}">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <label for="status"
+                                                                                    class="form-label">Status</label>
+                                                                                <select class="form-select"
+                                                                                    id="status" wire:model="status"
+                                                                                    required>
+                                                                                    <option value="active">Active
+                                                                                    </option>
+                                                                                    <option value="inactive">Inactive
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label for="expiry_date"
+                                                                                    class="form-label">Expiry
+                                                                                    Date</label>
+                                                                                <input type="date"
+                                                                                    class="form-control"
+                                                                                    id="expiry_date"
+                                                                                    wire:model="expiry_date"
+                                                                                    value="">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+
+                                                                            <div class="col-lg-6">
+                                                                                <div class="dropzone"
+                                                                                    id="myAwesomeDropzone"
+                                                                                    style="height: 0px"
+                                                                                    data-plugin="dropzone"
+                                                                                    data-previews-container="#file-previews"
+                                                                                    data-upload-preview-template="#uploadPreviewTemplate">
+                                                                                    <label for="dropzone-file"
+                                                                                        class="form-label">
+
+                                                                                        <div
+                                                                                            class="dz-message needsclick">
+                                                                                            <i
+                                                                                                class="bx bx-cloud-upload fs-49 text-primary"></i>
+                                                                                            <h3 class="mt-2 fs-13">Drop
+                                                                                                your images here, or
+                                                                                                <span
+                                                                                                    class="text-primary">click
+                                                                                                    to
+                                                                                                    browse</span></h3>
+                                                                                            {{-- <span class="text-muted fs-15">
+                                                1600 x 1200 (4:3) recommended. PNG, JPG, and GIF files are allowed
+                                            </span> --}}
+                                                                                        </div>
+
+                                                                                        <input id="dropzone-file"
+                                                                                            wire:model="image_path"
+                                                                                            type="file"
+                                                                                            class="d-none" />
+                                                                                    </label>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="dropzone">
+                                                                                    <!-- Loading spinner when uploading -->
+                                                                                    <div wire:loading
+                                                                                        wire:target="image_path"
+                                                                                        class="text-center">
+                                                                                        <div class="spinner-border text-muted"
+                                                                                            role="status"></div>
+                                                                                        <p class="mt-2">Uploading...
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                    <!-- Image preview once uploaded -->
+                                                                                    <div wire:loading.remove
+                                                                                        wire:target="image_path"
+                                                                                        class="w-100 h-100 d-flex align-items-center justify-content-center">
+                                                                                        @if ($image_path)
+                                                                                            <img src="{{ $image_path->temporaryUrl() }}"
+                                                                                                class="img-fluid"
+                                                                                                alt="path Preview" />
+                                                                                        @else
+                                                                                            <p>path Preview</p>
+                                                                                        @endif
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Edit
+                                                                    Banner</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <button wire:confirm="Are you want to delete this Banner ? "
                                                     wire:click="deleteBanner({{ $banner->id }})" type="button"
                                                     class="btn btn-soft-danger btn-sm"><iconify-icon
@@ -227,44 +374,45 @@
                                 <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
                                     tabindex="-1">Previous</a>
                             </li>
-                <!-- Pagination -->
-                <div class="card-footer border-top">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item {{ $banners->onFirstPage() ? 'disabled' : '' }}">
-                                <a class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
-                                    tabindex="-1">Previous</a>
-                            </li>
+                            <!-- Pagination -->
+                            <div class="card-footer border-top">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end mb-0">
+                                        <li class="page-item {{ $banners->onFirstPage() ? 'disabled' : '' }}">
+                                            <a class="page-link" wire:click="previousPage"
+                                                wire:loading.attr="disabled" tabindex="-1">Previous</a>
+                                        </li>
 
-                            @php
-                                $currentPage = $banners->currentPage();
-                                $lastPage = $banners->lastPage();
-                            @endphp
-                            @php
-                                $currentPage = $banners->currentPage();
-                                $lastPage = $banners->lastPage();
-                            @endphp
+                                        @php
+                                            $currentPage = $banners->currentPage();
+                                            $lastPage = $banners->lastPage();
+                                        @endphp
+                                        @php
+                                            $currentPage = $banners->currentPage();
+                                            $lastPage = $banners->lastPage();
+                                        @endphp
 
-                            @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
-                                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                                    <a class="page-link"
-                                        wire:click="gotoPage({{ $i }})">{{ $i }}</a>
-                                </li>
-                            @endfor
-                            @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
-                                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                                    <a class="page-link"
-                                        wire:click="gotoPage({{ $i }})">{{ $i }}</a>
-                                </li>
-                            @endfor
+                                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                                <a class="page-link"
+                                                    wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                                            </li>
+                                        @endfor
+                                        @for ($i = max(1, $currentPage - 1); $i <= min($currentPage + 1, $lastPage); $i++)
+                                            <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                                                <a class="page-link"
+                                                    wire:click="gotoPage({{ $i }})">{{ $i }}</a>
+                                            </li>
+                                        @endfor
 
-                            <!-- Next Page Link -->
-                            <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
-                                <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                                        <!-- Next Page Link -->
+                                        <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
+                                            <a class="page-link" wire:click="nextPage"
+                                                wire:loading.attr="disabled">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                             <!-- Next Page Link -->
                             <li class="page-item {{ $banners->hasMorePages() ? '' : 'disabled' }}">
                                 <a class="page-link" wire:click="nextPage" wire:loading.attr="disabled">Next</a>
@@ -276,111 +424,9 @@
         </div>
     </div>
 
-    {{-- modal --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
 
 
-                <!-- Modal Body with Form -->
-                <div class="modal-body">
-                    <form action="your_form_action" method="POST">
-
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="title" wire:model="title"
-                                        required>
-                                </div>
-                                <div class="col-lg-6">
-                                    <label for="alt" class="form-label">Alt Text</label>
-                                    <input type="text" class="form-control" id="alt" wire:model="alt"
-                                        placeholder="Enter alt text" value="{{ old('alt') }}">
-                                </div>
-                            </div>
-
-                        </div>
-                     <div class="mb-3">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="status" class="form-label">Status</label>
-                                <select class="form-select" id="status" name="status" required>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="expiry_date" class="form-label">Expiry Date</label>
-                                <input type="date" class="form-control" id="expiry_date" wire:model="expiry_date"
-                                    value="">
-                            </div>
-                        </div>
-
-                     </div>
-
-                        <div class="mb-3">
-                            <div class="row">
-
-                                <div class="col-lg-6">
-                                    <div class="dropzone" id="myAwesomeDropzone" style="height: 0px" data-plugin="dropzone"
-                                        data-previews-container="#file-previews"
-                                        data-upload-preview-template="#uploadPreviewTemplate">
-                                        <label for="dropzone-file" class="form-label">
-
-                                            <div class="dz-message needsclick">
-                                                <i class="bx bx-cloud-upload fs-49 text-primary"></i>
-                                                <h3 class="mt-2 fs-13">Drop your images here, or <span
-                                                        class="text-primary">click to
-                                                        browse</span></h3>
-                                                {{-- <span class="text-muted fs-15">
-                                                    1600 x 1200 (4:3) recommended. PNG, JPG, and GIF files are allowed
-                                                </span> --}}
-                                            </div>
-
-                                            <input id="dropzone-file" wire:model="image_path" type="file"
-                                                class="d-none" />
-                                        </label>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="dropzone">
-                                        <!-- Loading spinner when uploading -->
-                                        <div wire:loading wire:target="image_path" class="text-center">
-                                            <div class="spinner-border text-muted" role="status"></div>
-                                            <p class="mt-2">Uploading...</p>
-                                        </div>
-
-                                        <!-- Image preview once uploaded -->
-                                        <div wire:loading.remove wire:target="image_path"
-                                            class="w-100 h-100 d-flex align-items-center justify-content-center">
-                                            @if ($image_path)
-                                                <img src="{{ $image_path->temporaryUrl() }}" class="img-fluid"
-                                                    alt="path Preview" />
-                                            @else
-                                                <p>path Preview</p>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Edit Banner</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 </div>
 <!-- Optional CSS to style toggle -->

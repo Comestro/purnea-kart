@@ -17,13 +17,14 @@ class CreateBannerForm extends Component
     public $bannerId;
     public $alt;
     public $expiry_date;
+    public $editId;
     public $status = false;
 
     public function rules()
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:200|dimensions:ratio=5/1',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif',
             'expiry_date' => 'nullable|date|after_or_equal:today',
             'alt' => 'required|string|max:255',
             'status' => 'nullable|boolean',
@@ -36,6 +37,21 @@ class CreateBannerForm extends Component
         return [
             'image_path.dimensions' => 'The image must be exactly of 1500x300 pixels.',
         ];
+    }
+    
+    public function getEditId(Banner $id){
+        $this->editId = $id;
+
+    }
+    
+    public function edit(){
+
+        $this->editId->update([
+            'title' => $this->title,
+            'expiry_date' => $this->expiry_date,
+            'alt' => $this->alt,
+            'image_path' => $this->image_path,]);
+        
     }
 
 

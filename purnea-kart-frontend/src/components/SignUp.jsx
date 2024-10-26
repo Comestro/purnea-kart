@@ -17,12 +17,13 @@ function SignUp() {
     setError('');
     try {
       const userData = await createaccount(data);
-      if (userData) {
-          let loginned  = login(userData);
-          const fetchedUser = await getuser();
-        if (fetchedUser) dispatch(loginned);
-        navigate('/home');
-      }
+    //   if (userData) {
+    //     //   let loginned  = login(userData);
+    //     //   const fetchedUser = await getuser();
+    //     // if (fetchedUser) dispatch(loginned);
+    //     dispatch(userData);
+    //     navigate('/lo');
+    //   }
     } catch (error) {
       setError(error.message);
     }

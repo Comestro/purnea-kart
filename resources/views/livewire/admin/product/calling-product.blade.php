@@ -98,7 +98,8 @@
                                         <p class="text-muted mb-0 mt-1 fs-13">
                                             <span>Color :</span>
                                             @foreach ($colorVariants as $variant)
-                                            {{ $variant->variant_name }}@if(!$loop->last),@endif
+                                            {{-- {{ $variant->variant_name }}@if(!$loop->last),@endif --}}
+                                            <button style="background-color: {{ $variant->variant_name }}; width:20px; height:20px; border-radius:50%;"></button>
                                             @endforeach
                                         </p>
                                         @endif

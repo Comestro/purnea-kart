@@ -41,7 +41,7 @@ class ProductVariant extends Component
         $this->validate();
         
         $imageName = $this->variant_image ? "C" . time() . '.' . $this->variant_image->getClientOriginalExtension() : null;
-        $this->variant_image->storeAs('public/image/product', $imageName, 'public');
+        $this->variant_image->storeAs('public/image/product', $imageName, 's3');
 
 
         

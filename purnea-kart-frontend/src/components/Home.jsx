@@ -15,12 +15,6 @@ function Home() {
           <Products/>
           <Brand/>
           <Footer/>
-          
-          {/* <Categories/>
-          <Offer/>
-          <Products/>
-          <Brand/>
-          <Footer/> */}
        </div>
   )
 }
