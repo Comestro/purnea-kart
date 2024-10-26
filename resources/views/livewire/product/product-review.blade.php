@@ -22,7 +22,7 @@
                     <label class="cursor-pointer relative group">
                     <input type="radio" wire:model.live="rating" value="{{ $i }}" class="hidden" />
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current transition-colors duration-300
-                            group-hover:text-yellow-400 {{ $rating >= $i ? 'text-yellow-500' : 'text-gray-300' }}"
+                            group-hover:text-green-400 {{ $rating >= $i ? 'text-green-500' : 'text-gray-300' }}"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-8.24-.69L12 2 10.24 8.55 2 9.24l5.46 4.73L5.82 21z" />
                     </svg>
@@ -54,6 +54,6 @@
     <div class="mt-4 p-4 py-8 bg-slate-50 text-zinc-800 border border-slate-200 rounded-md">
         Please <a wire:navigate href="{{ route('account.login') }}" class="text-blue-500 underline">Login</a> to submit a review.
     </div>
-    
+
     @endauth
 </div>
