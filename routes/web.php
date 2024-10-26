@@ -46,7 +46,7 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::view('profile', 'profile')
-    ->middleware(['auth'])
+    // ->middleware(['auth'])
     ->name('profile');
 
 
