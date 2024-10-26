@@ -45,7 +45,7 @@ class SocialiteController extends Controller
             return redirect()->intended('/');
         } 
     } catch (\Exception $e) {
-        return redirect()->route('account/login')->with('error', 'Unable to login with Google, please try again.');
+        return redirect()->route('account.login')->with('error', 'Unable to login with Google, please try again.');
     }
 }
 

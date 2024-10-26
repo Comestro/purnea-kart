@@ -11,6 +11,7 @@ class ProductLowerSection extends Component
     public $productId;
     public function mount(Product $productId){
         $this->productId = $productId;
+       
 
     }
     public function render()
