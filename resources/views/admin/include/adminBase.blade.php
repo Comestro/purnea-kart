@@ -26,6 +26,7 @@
         <!-- Theme Config js (Require in all Page) -->
         <script src="{{ asset('assets_admin/js/config.js') }}"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet" />
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     </head>
 
@@ -451,6 +452,7 @@
             @include('admin.include.footer')
 
 
+        
 
             <!-- Vendor Javascript (Require in all Page) -->
             <script src="{{ asset('assets_admin/js/vendor.js') }}"></script>
