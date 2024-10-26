@@ -145,15 +145,16 @@
 
                                     <th>Expiry Date</th>
                                     <th>Status</th>
-
                                     <th>Action</th>
+
+                          
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($banners as $key => $banner)
+                        
                                 @foreach ($banners as $key => $banner)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        
                                         <td>{{ $key + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
@@ -181,7 +182,7 @@
                                                     {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
                                                 </button>
                                             </div>
-
+<!-- 
 
 
                                         <td>
@@ -195,13 +196,13 @@
 
 
 
-                                        </td>
+                                        </td> -->
 
 
                                         <td>
                                             <div class="d-flex gap-2">
 
-                                                <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
+                                                <button wire:click="getEditId({{$banner->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
                                                         class="align-middle fs-18"></iconify-icon></button>
                                                 <button wire:confirm="Are you want to delete this Banner ? "
@@ -286,7 +287,7 @@
 
                 <!-- Modal Body with Form -->
                 <div class="modal-body">
-                    <form action="your_form_action" method="POST">
+                    <form wire:submit.prevent="edit" method="POST">
 
                         <div class="mb-3">
                             <div class="row">
@@ -307,7 +308,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="status" class="form-label">Status</label>
-                                <select class="form-select" id="status" name="status" required>
+                                <select class="form-select" id="status" wire:model="status" required>
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
