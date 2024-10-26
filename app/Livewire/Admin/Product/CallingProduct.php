@@ -21,9 +21,9 @@ class CallingProduct extends Component
             $product->status = !$product->status;
             $product->save();
     
-            session()->flash('success', 'Category status updated successfully.');
+            session()->flash('success', 'Product status updated successfully.');
         } else {
-            session()->flash('error', 'Category not found.');
+            session()->flash('error', 'Product not found.');
         }
     
         return redirect()->route('product.index');

@@ -70,11 +70,6 @@ Route::get('/admin/product-details/{id}', function ($id) {
 
 
 
-
-
-
-
-
 //brand
 Route::get('admin/brands/brand-add', function () {
     return view('admin.brands.brand_add');
@@ -173,10 +168,6 @@ Route::get('admin/seller/seller-details/{id}',function($id){
 
 
 
-
-
-
-
 //vendor
 Route::get('/vendor', function () {
     return view('vendor.index');
@@ -196,6 +187,11 @@ Route::get('/vendor/product-list', function () {
     return view('vendor.product.productList');
 })->name('vendor.product-list');
 
+Route::get('/vendor/editProduct', function () {
+    return view('vendor.product.editProduct');
+})->name('vendor.editProduct');
+
+
 //Category
 Route::get('/vendor/addCategory', function () {
     return view('vendor.category.addCategory');
@@ -203,6 +199,7 @@ Route::get('/vendor/addCategory', function () {
 Route::get('/vendor/category-list', function () {
     return view('vendor.category.categoryList');
 })->name('vendor.category-list');
+
 
 //Brand
 Route::get('/vendor/addBrand', function () {
