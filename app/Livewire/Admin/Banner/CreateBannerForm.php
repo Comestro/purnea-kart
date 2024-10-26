@@ -23,7 +23,7 @@ class CreateBannerForm extends Component
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:200|dimensions:ratio=5/1',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif',
             'expiry_date' => 'nullable|date|after_or_equal:today',
             'alt' => 'required|string|max:255',
             'status' => 'nullable|boolean',

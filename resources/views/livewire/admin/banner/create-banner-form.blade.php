@@ -145,8 +145,9 @@
 
                                     <th>Expiry Date</th>
                                     <th>Status</th>
-
                                     <th>Action</th>
+
+                          
                                 </tr>
                             </thead>
                             <tbody>
@@ -181,7 +182,7 @@
                                                     {{-- <span class="sr-only">{{ $banner->status ? 'Deactivate' : 'Activate' }}</span> --}}
                                                 </button>
                                             </div>
-
+<!-- 
 
 
                                         <td>
@@ -195,7 +196,7 @@
 
 
 
-                                        </td>
+                                        </td> -->
 
 
                                         <td>
@@ -203,7 +204,7 @@
 
                                                 <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon
                                                         icon="solar:pen-2-broken"
-                                                        class="align-middle fs-18"></iconify-icon></button>
+                                                        class="align-middle fs-18"></iconify-icon></button></a>
                                                 <button wire:confirm="Are you want to delete this Banner ? "
                                                     wire:click="deleteBanner({{ $banner->id }})" type="button"
                                                     class="btn btn-soft-danger btn-sm"><iconify-icon
