@@ -150,10 +150,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($banners as $key => $banner)
+                        
                                 @foreach ($banners as $key => $banner)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        
                                         <td>{{ $key + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
