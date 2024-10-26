@@ -29,6 +29,7 @@
 
         <div x-show="activeTab === 2" class="tab-content mt-8 transition-transform duration-500" x-transition>
             <h2>Rating & Reviews</h2>
+            <livewire:product.product-review :product="$productId">
             
         </div>
 

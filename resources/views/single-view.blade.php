@@ -87,7 +87,7 @@
     </div>
 
     {{-- Tabs for Description, Reviewa, FAQs --}}
-   <livewire:public.product-review/>
+   <livewire:public.product-lower-section :productId="$product->id"/>
 
     <!-- Related Products Section -->
     <div class="flex flex-1 flex-col px-5 py-4 bg-orange-50 mt-10 ">
