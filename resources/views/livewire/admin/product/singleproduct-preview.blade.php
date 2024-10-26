@@ -60,9 +60,10 @@
                             <div class="d-flex flex-wrap gap-2" role="group"
                                 aria-label="Basic checkbox toggle button group">
                                 <input type="checkbox" class="btn-check" id="color-dark">
-                                <label class="" for="color-dark">{{ $color->variant_name }}@if (!$loop->last)
-                                    @endif
-                                </label>
+                                <button style="background-color: {{ $color->variant_name }}; width:20px; height:20px; border-radius:50%" for="color-dark">
+                                    {{-- {{ $color->variant_name }}@if (!$loop->last) --}}
+                                    {{-- @endif --}}
+                                </button>
                         @endforeach
 
 
