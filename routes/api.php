@@ -23,10 +23,8 @@ Route::prefix('otp')->group(function () {
     Route::post('login', [AuthController::class, 'otpLogin']);
     Route::post('verify', [AuthController::class, 'verifyOtp'])->middleware('throttle:5,1');
 });
-
-// Publicly accessible routes (Guest Routes)
-// You can add guest routes here if needed
-
+  
+Route::delete('categories/{category}', [AuthController::class,'destroy']);
 // Authenticated user route
 Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
 
@@ -63,4 +61,4 @@ Route::middleware(['auth:api'])->group(function () {
 Route::apiResource('/products', ProductApiController::class);
 Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
-Route::apiResource('/categories', CategoryApiController::class);
+Route::apiResource('categories', CategoryApiController::class);
