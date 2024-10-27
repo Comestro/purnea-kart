@@ -13,41 +13,32 @@ class SocialiteController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
+
     public function handleGoogleCallback()
-{
-    try {
-        $googleUser = Socialite::driver('google')->stateless()->user();
-        $existingUser = User::where('email', $googleUser->getEmail())->first();
+    {
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
+            \Log::info('Google User: ', (array) $googleUser);
+            $existingUser = User::where('email', $googleUser->getEmail())->first();
 
-        if ($existingUser) {
-            Auth::login($existingUser);
-        } else {
-            $newUser = User::create([
-                'name' => $googleUser->getName(),
-                'email' => $googleUser->getEmail(),
-                'image' => $googleUser->getAvatar(),
-                'isAdmin' => 0,
-                'google_id' => $googleUser->getId(),
-                'password' => encrypt('123456dummy'),
-            ]);
-
-            if ($newUser) {
-                Auth::login($newUser);
+            if ($existingUser) {
+                Auth::login($existingUser);
             } else {
-                return redirect()->route('account/login')->with('error', 'Unable to login with Google, please try again.');
+                $newUser = User::create([
+                    'name' => $googleUser->getName(),
+                    'email' => $googleUser->getEmail(),
+                    'image' => $googleUser->getAvatar(),
+                    'isAdmin' => 0,
+                    'google_id' => $googleUser->getId(),
+                    'password' => ('123456dummy'), 
+                ]);
+                Auth::login($newUser);
             }
+
+            return redirect()->intended(Auth::user()->isAdmin == 1 ? 'admin' : '/');
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return redirect()->route('account.login.form')->with('error', 'Unable to login with Google, please try again.');
         }
-        
-        if (Auth::user()->isAdmin == 1) {
-            return redirect()->route('admin'); 
-        }
-        else{
-            return redirect()->intended('/');
-        } 
-    } catch (\Exception $e) {
-        return redirect()->route('account.login')->with('error', 'Unable to login with Google, please try again.');
     }
-}
-
-
 }
