@@ -1,7 +1,6 @@
  <!-- Flash message display -->
 
- <div class="container mt-4">
-    <div class="card ">
+ <div class="">
         @if(session()->has('message'))
         <div class="alert alert-success mt-4">
             {{ session('message') }}
@@ -16,7 +15,7 @@
         </div> --}}
         <div class="container">
             <form wire:submit.prevent="update" method="POST" enctype="multipart/form-data">
-                <div class="p-4 bg-light rounded shadow mb-4">
+                <div class="p-4 rounded shadow mb-4" style="background-color: #f7f7f7">
                     <label class="form-label fw-bold">Product Images</label>
         
                    <div class="row">
@@ -104,7 +103,6 @@
         </div>
         
         
-    </div>
 
     <!-- Display existing product images -->
    

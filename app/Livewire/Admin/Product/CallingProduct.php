@@ -46,7 +46,7 @@ class CallingProduct extends Component
                     $query->whereMonth('created_at', 'LIKE', "%" . $this->month . "%");
                
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('livewire.admin.product.calling-product', $data);
     }

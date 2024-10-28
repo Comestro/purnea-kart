@@ -181,10 +181,10 @@
                                             <label class="form-check-label" for="customCheck1"></label>
                                         </div>
                                     </th>
+                                    <th>ID</th>
                                     <th>Categories</th>
                                     <th>Starting Price</th>
                                     <th>Create by</th>
-                                    <th>ID</th>
                                     <th>Product Stock</th>
                                     <th>Active</th>
                                     <th>Publish</th>
@@ -194,12 +194,15 @@
                             <tbody>
                                 @foreach ($category as $cat)
                                     <tr class="text-center">
+                                       
+
                                         <td>
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="customCheck2">
                                                 <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                             </div>
                                         </td>
+                                        <td>{{$cat->id}}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div
@@ -215,14 +218,11 @@
                                         </td>
                                         <td>$70 to $500</td>
                                         <td>Admin</td>
-                                        <td>EG37878</td>
                                         <td>1900</td>
                                         <td>
-                                            <form wire:submit.prevent="status({{ $cat->id }})">
-                                                <button type="submit" class="btn btn-sm {{ $cat->status ? 'btn-soft-success' : 'btn-soft-red' }}">
+                                                <span class="btn btn-sm {{ $cat->status ? 'btn-soft-success' : 'btn-soft-red' }}">
                                                     {{ $cat->status ? 'Active' : 'Pending' }}
-                                                </button>
-                                            </form>
+                                                </span>
                                             
                                         </td>
                                         <td>

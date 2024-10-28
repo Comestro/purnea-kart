@@ -58,8 +58,8 @@ class ManageBrand extends Component
 
     public function render()
     {
-        $brands = Brand::where('status', 1)
-            ->where('brand_name', 'like', '%' . $this->search . '%')
+        // $brands = Brand::where('status', 1)
+        $brands = Brand::where('brand_name', 'like', '%' . $this->search . '%')
             ->paginate(5);
 
         return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
