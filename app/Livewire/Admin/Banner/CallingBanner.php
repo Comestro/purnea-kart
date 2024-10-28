@@ -33,7 +33,7 @@ class CallingBanner extends Component
 
     public function render()
     {
-        $data['banners'] = Banner::paginate(10);
+        $data['banners'] = Banner::paginate(2);
 
         return view('livewire.admin.banner.calling-banner', $data);
     }

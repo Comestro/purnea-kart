@@ -49,14 +49,14 @@
                     <th scope="col">Id</th>
                     <th scope="col">Brand Name</th>
                     <th scope="col">Brand Slug</th>
-                    <th scope="col">Brand Description</th>
+                    <th scope="col">Created by</th>
                     <th scope="col">Logo</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($brands as $key => $item)
+                @foreach ($brands as  $item)
                 <tr>
                     <td>
                         <div class="form-check ms-1">
@@ -64,10 +64,10 @@
                             <label class="form-check-label" for="customCheck{{ $item->id }}">&nbsp;</label>
                         </div>
                     </td>
-                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->brand_name }}</td>
                     <td>{{ $item->brand_slug }}</td>
-                    <td>{{ $item->brand_description }}</td>
+<td>Admin</td>                    
                     <td>
                         <img src="{{ asset('storage/image/brand/' . $item->logo) }}" alt="" class="avatar-md">
                     </td>
@@ -80,9 +80,9 @@
                     </td>                    
                     <td>
                         <div class="d-flex gap-2">
-                            <a href="" class="btn btn-light btn-sm">
+                            {{-- <a href="" class="btn btn-light btn-sm">
                                 <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('edit_brand', $item->id) }}" class="btn btn-soft-primary btn-sm" wire:click="editBrand({{ $item->id }})">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
