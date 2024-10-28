@@ -12,7 +12,6 @@
                               <div class="mt-3">
                                   @if($isAprroved)
                                     <button wire:click="active" class="btn btn-green w-100">Active</button>
-                                  
                                   @else
                                     <button wire:click="inactive"  class="btn btn-red w-100">Inactive</button>
                                   @endif
