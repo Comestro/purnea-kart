@@ -14,7 +14,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <livewire:admin.product.product-view :product="$pro_id" />
-
                                 </div>
                             </div> <!-- end row -->
                         </div><!-- end tab-pane -->
