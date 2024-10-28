@@ -218,11 +218,9 @@
                                         <td>EG37878</td>
                                         <td>1900</td>
                                         <td>
-                                            <form wire:submit.prevent="status({{ $cat->id }})">
-                                                <button type="submit" class="btn btn-sm {{ $cat->status ? 'btn-soft-success' : 'btn-soft-red' }}">
+                                                <span class="btn btn-sm {{ $cat->status ? 'btn-soft-success' : 'btn-soft-red' }}">
                                                     {{ $cat->status ? 'Active' : 'Pending' }}
-                                                </button>
-                                            </form>
+                                                </span>
                                             
                                         </td>
                                         <td>
