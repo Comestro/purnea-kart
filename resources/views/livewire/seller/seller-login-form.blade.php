@@ -26,7 +26,7 @@
         </form>
         <div class="text-center mt-4">
             <p class="text-gray-500 mb-1">Don't have an account?</p>
-            <a href="#"
+            <a href="{{ route('seller.register') }}"
                 class="text-blue-600 font-semibold border border-blue-600 py-2 px-4 inline-block rounded-lg hover:bg-blue-50 transition-colors">Register
                 for new account</a>
         </div>

@@ -4,6 +4,7 @@ namespace App\Livewire\Seller;
 
 use App\Models\Seller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class SellerForm extends Component
@@ -34,6 +35,9 @@ class SellerForm extends Component
     {
 
         $validate=$this->validate();
+
+        // dd('checking the seller name: ' . $this->name);
+        Log::info($this->name);
 
         $seller = new Seller();
         $seller->name = $this->name;
