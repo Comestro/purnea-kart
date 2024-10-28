@@ -52,6 +52,7 @@
                                     <a href="#" class="dropdown-item">Something else here</a>
                                 </div>
                             </div>
+                            
                         </div>
                     </td>
                 </tr>
