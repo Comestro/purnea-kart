@@ -105,10 +105,10 @@
                             return $variant->variant_type == 'color';
                         });
                     @endphp
-                        <div class="col-lg-3">
+                        <div class="col-lg-6 flex-1">
                             @if ($size->isNotEmpty())
 
-                            <div class="">
+                            <div class="d-flex gap-4 align-items-center">
                               
                                 <h5 class="text-dark fw-medium">Colors > </h5>
 
@@ -124,17 +124,15 @@
                                             @endforeach
                                         </label>
                                     </div>
-
-
-
                             </div>
                             @endif
                         </div>
+                        
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-6 mt-2">
                         @if ($size->isNotEmpty())
 
-                        <div class="">
+                        <div class="d-flex gap-4 align-items-center">
                             <h5 class="text-dark fw-medium">Size >
                             </h5>
                             <div class="d-flex flex-wrap gap-2" role="group"
@@ -156,45 +154,47 @@
                         @endif
 
                     </div>
-                </div>
-                <div class="quantity mt-4">
-                    <h4 class="text-dark fw-medium mt-3">Quantity </h4>
-                    <div class="input-step border bg-body-secondary p-1 mt-1 rounded d-inline-flex overflow-visible">
-                        <button type="button"
-                            class="minus bg-light text-dark border-0 rounded-1 fs-20 lh-1 h-100">-</button>
-                        <input type="number" class="text-dark text-center border-0 bg-body-secondary rounded h-100"
-                            value="{{ $products->quantity }}" min="0" max="100" readonly="">
-                        <button type="button"
-                            class="plus bg-light text-dark border-0 rounded-1 fs-20 lh-1 h-100">+</button>
+                    <div class="quantity mt-4">
+                        <h4 class="text-dark fw-medium mt-3">Quantity </h4>
+                        <div class="input-step border bg-body-secondary p-1 mt-1 rounded d-inline-flex overflow-visible">
+                            <button type="button"
+                                class="minus bg-light text-dark border-0 rounded-1 fs-20 lh-1 h-100">-</button>
+                            <input type="number" class="text-dark text-center border-0 bg-body-secondary rounded h-100"
+                                value="{{ $products->quantity }}" min="0" max="100" readonly="">
+                            <button type="button"
+                                class="plus bg-light text-dark border-0 rounded-1 fs-20 lh-1 h-100">+</button>
+                        </div>
                     </div>
+                    <ul class="d-flex flex-column gap-2 list-unstyled fs-15 my-3">
+                        <li>
+                            <i class='bx bx-check text-success'></i> In Stock
+                        </li>
+                        <li>
+                            <i class='bx bx-check text-success'></i> Free delivery available
+                        </li>
+                        <li>
+                            <i class='bx bx-check text-success'></i> Sales 10% Off Use Code: <span
+                                class="text-dark fw-medium">CODE123</span>
+                        </li>
+                    </ul>
+                    <h4 class="text-dark fw-medium">Description :</h4>
+                    <p class="text-muted">{{ $products->description }} <a href="#!" class="link-primary">Read
+                            more</a></p>
+                    <h4 class="text-dark fw-medium mt-3">Available offers :</h4>
+                    <div class="d-flex align-items-center mt-2">
+                        <i class="bx bxs-bookmarks text-success me-3 fs-20 mt-1"></i>
+                        <p class="mb-0"><span class="fw-medium text-dark">Bank Offer</span> 10% instant
+                            discount on Bank Debit Cards, up to $30 on orders of $50 and above</p>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <i class="bx bxs-bookmarks text-success me-3 fs-20 mt-1"></i>
+                        <p class="mb-0"><span class="fw-medium text-dark">Bank Offer</span> Grab our
+                            exclusive offer now and save 20% on your next purchase! Don't miss out, shop
+                            today!</p>
+                    </div>
+                  
                 </div>
-                <ul class="d-flex flex-column gap-2 list-unstyled fs-15 my-3">
-                    <li>
-                        <i class='bx bx-check text-success'></i> In Stock
-                    </li>
-                    <li>
-                        <i class='bx bx-check text-success'></i> Free delivery available
-                    </li>
-                    <li>
-                        <i class='bx bx-check text-success'></i> Sales 10% Off Use Code: <span
-                            class="text-dark fw-medium">CODE123</span>
-                    </li>
-                </ul>
-                <h4 class="text-dark fw-medium">Description :</h4>
-                <p class="text-muted">{{ $products->description }} <a href="#!" class="link-primary">Read
-                        more</a></p>
-                <h4 class="text-dark fw-medium mt-3">Available offers :</h4>
-                <div class="d-flex align-items-center mt-2">
-                    <i class="bx bxs-bookmarks text-success me-3 fs-20 mt-1"></i>
-                    <p class="mb-0"><span class="fw-medium text-dark">Bank Offer</span> 10% instant
-                        discount on Bank Debit Cards, up to $30 on orders of $50 and above</p>
-                </div>
-                <div class="d-flex align-items-center mt-2">
-                    <i class="bx bxs-bookmarks text-success me-3 fs-20 mt-1"></i>
-                    <p class="mb-0"><span class="fw-medium text-dark">Bank Offer</span> Grab our
-                        exclusive offer now and save 20% on your next purchase! Don't miss out, shop
-                        today!</p>
-                </div>
+               
             </div>
 
 
