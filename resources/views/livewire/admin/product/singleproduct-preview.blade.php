@@ -1,9 +1,9 @@
 <div>
     <div class="card">
-        <div class="card-body">
+        <div class="card-body shadow-lg" style="background-color: #f7f7f7; ">
             @if ($products->images->count() > 0)
                 <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $products->images->first()->path) }}"
-                    alt="cf" class="img-fluid rounded bg-light">
+                    alt="cf" class="img-fluid rounded bg-light" width="50%">
             @else
                 <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="gfv"
                     class="img-fluid rounded bg-light">
@@ -60,9 +60,10 @@
                             <div class="d-flex flex-wrap gap-2" role="group"
                                 aria-label="Basic checkbox toggle button group">
                                 <input type="checkbox" class="btn-check" id="color-dark">
-                                <label class="" for="color-dark">{{ $color->variant_name }}@if (!$loop->last)
-                                    @endif
-                                </label>
+                                <button style="background-color: {{ $color->variant_name }}; width:20px; height:20px; border-radius:50%" for="color-dark">
+                                    {{-- {{ $color->variant_name }}@if (!$loop->last) --}}
+                                    {{-- @endif --}}
+                                </button>
                         @endforeach
 
 

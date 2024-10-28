@@ -131,7 +131,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="border border-secondary border-dashed rounded d-flex align-items-center justify-content-center"
                                         style="height: 200px;">
                                         <div wire:loading wire:target="image" class="text-center">
@@ -148,18 +148,19 @@
                                             @endif
                                         </div>
                                     </div>
+                                </div> --}}
+                                <div class="col-lg-6 mb-32">
+                                    <label for="description" class="form-label">Category Description</label>
+                                    <textarea class="form-control bg-light-subtle" wire:model.live="cat_description" id="description" rows="7"
+                                        placeholder="Type description"></textarea>
+                                    @error('cat_description')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-12 mb-3">
-                            <label for="description" class="form-label">Category Description</label>
-                            <textarea class="form-control bg-light-subtle" wire:model.live="cat_description" id="description" rows="7"
-                                placeholder="Type description"></textarea>
-                            @error('cat_description')
-                                <p class="text-danger text-xs">{{ $message }}</p>
-                            @enderror
-                        </div>
+                      
                     </div>
 
                     @if (session()->has('message'))

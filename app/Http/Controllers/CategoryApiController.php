@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryReq;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Storage;
 use Str;
 
@@ -24,7 +26,7 @@ class CategoryApiController extends Controller
     {
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('image/category', $imageName,'s3');         
+            $request->image->storeAs('image/category', $imageName, 's3');
         }
 
         $catSlug = Str::slug($request->cat_title);
@@ -69,7 +71,7 @@ class CategoryApiController extends Controller
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('image/category', $imageName,'public');           
+            $request->image->storeAs('image/category', $imageName, 'public');
         }
 
         $category->cat_title = $request->cat_title;
@@ -85,22 +87,18 @@ class CategoryApiController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Category $category)
     {
-      
-      $imagePath = $category->image ? 'public/image/category/' . $category->image : null;
-        if ($imagePath && Storage::exists($imagePath)) {
-            Storage::delete($imagePath);
+        // if ($category->image) {
+        //     Storage::disk('s3')->delete('image/category/' . $category->image);
+        // }
+        dd($category->id);
+        try {
+            $category->delete();
+            return response()->json(['message' => 'Category deleted successfully.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Category could not be deleted.'], 500);
         }
-        $deleted = $category->delete();
-
-        return $deleted ?
-            response()->json(['message' => 'Category deleted successfully'], 200) :
-            response()->json(['message' => 'Category could not be deleted'], 500);
     }
-
 
 }

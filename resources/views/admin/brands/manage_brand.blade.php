@@ -19,7 +19,7 @@
                                    <div>
                                         <livewire:admin.brand.manage-brand/>
 
-                                        <livewire:admin.brand.vendor-brand/>
+                                        {{-- <livewire:admin.brand.vendor-brand/> --}}
                                         <!-- end table-responsive -->
                                    </div>
                                    

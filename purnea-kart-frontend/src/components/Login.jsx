@@ -5,7 +5,8 @@ import {Button, Input} from './Index'
 import { useDispatch } from 'react-redux'
 import {useForm} from 'react-hook-form'
 import { login as authlogin } from '../store/authSlice'
-import { getuser } from '../services/authService'
+import { login as loginService} from '../services/authService'
+
 
 
 
@@ -18,25 +19,48 @@ function Login() {
     const login = async(data)=>{
         console.log(data)
        setError('');
-       try{
 
-        const session = await login(data)//
-        if(session){
-            const userData = await getuser()
-            if (userData) dispatch(authlogin(userData))
-            navigate('/')
-        }
-
-       }catch(error){
+            try{
+                const userData = await loginService(data);
+                console.log("login ");
+                if (userData){
+                    dispatch(authlogin(userData))
+                    navigate('/home')
+                }
+                
+            }catch(error){
         setError(error.message)
        }
-    }
+
+    //    try {
+    //     const userData = await createaccount(data);
+    //     if (userData) {
+    //         let loginned  = login(userData);
+    //         const fetchedUser = await getuser();
+    //       if (fetchedUser) dispatch(loginned);
+    //       navigate('/home');
+    //     }
+
+    // try{
+
+    //     const session = await login(data)
+    //     if(session){
+    //         const userData = await getuser()
+    //         if (userData) dispatch((userData))
+    //         navigate('/home')
+    //     }
+
+    //    }catch(error){
+    //     setError(error.message)
+    //    }
+    // }
     
+    }
   return (
     <div
     className='flex items-center justify-center w-full'
     >
-        <div className={` absolute top-12 right-0 bg-gray-100 rounded-xl p-10 border border-black/10`}>
+        <div className={` top-12 right-0 bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
         <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;

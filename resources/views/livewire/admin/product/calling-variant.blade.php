@@ -23,7 +23,7 @@
                     <td>{{ $variant->price }}</td>
                     <td>{{ $variant->stock }}</td>
                    <td>
-                    <img src="{{ asset('storage/public/image/product' . $variant->variant_image) }}"
+                    <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product' . $variant->variant_image) }}"
                     alt="" class="avatar-md">
                    </td>
                   </tr>

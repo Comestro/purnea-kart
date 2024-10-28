@@ -13,8 +13,8 @@ use Validator;
 
 class AuthController extends Controller
 {
-    private $msg91AuthKey = '433074A27fz5BFYNs671a49f7P1'; 
-    private $msg91SenderId = 'YOUR_SENDER_ID'; 
+    private $msg91AuthKey = '433074A27fz5BFYNs671a49f7P1';
+    private $msg91SenderId = 'YOUR_SENDER_ID';
 
     public function otpLogin(Request $request)
     {
@@ -97,7 +97,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
+            'password' => $validatedData['password'],
             'is_admin' => $request->is_admin ?? 0,
             'is_vendor' => $request->is_vendor ?? 0,
         ]);
@@ -113,6 +113,7 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
+
         if ($token = JWTAuth::attempt($credentials)) {
             return $this->respondWithToken($token);
         }

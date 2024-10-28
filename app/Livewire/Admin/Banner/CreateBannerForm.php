@@ -17,19 +17,23 @@ class CreateBannerForm extends Component
     public $bannerId;
     public $alt;
     public $expiry_date;
+    public $editId;
     public $status = false;
+    public $isModalOpen = false;
+
 
     public function rules()
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:200|dimensions:ratio=5/1',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif',
             'expiry_date' => 'nullable|date|after_or_equal:today',
             'alt' => 'required|string|max:255',
             'status' => 'nullable|boolean',
 
         ];
     }
+    
 
     public function messages()
     {
@@ -37,6 +41,7 @@ class CreateBannerForm extends Component
             'image_path.dimensions' => 'The image must be exactly of 1500x300 pixels.',
         ];
     }
+    
 
 
     public function store()
@@ -66,27 +71,13 @@ class CreateBannerForm extends Component
     }
 
 
-    public function deleteBanner($id)
-    {
-        Banner::findOrFail($id)->delete();
-
-        session()->flash('message', 'banner deleted successfully.');
-    }
+    
 
     public function render()
     {
-        $data['banners'] = Banner::paginate(3);
 
-        return view('livewire.admin.banner.create-banner-form', $data);
+        return view('livewire.admin.banner.create-banner-form', );
     }
 
-    public function toggleStatus($bannerId)
-    {
-        $banner = Banner::find($bannerId);
-        $banner->status = !$banner->status;
-        $banner->save();
-
-        
-        session()->flash('success', 'Banner status updated successfully.');
-    }
+  
 }

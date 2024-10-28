@@ -1,6 +1,4 @@
 <div>
-    <div class="row">
-        <div class="col-lg-12">
             <div>
                 <form  wire:submit.prevent="update" method="post">
 
@@ -8,7 +6,7 @@
                         {{-- <div class="card-header">
                             <h4 class="card-title">Product Edit</h4>
                         </div> --}}
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #f7f7f7">
                             <div class="row">
                               <livewire:admin.product.edit-product-title :product="$product"/>
                                 <div class="col-lg-6">
@@ -55,7 +53,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Pricing Details</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #f7f7f7">
                             <div class="row">
                                 <livewire:admin.product.edit-product-price :product="$product"/>
                                 <livewire:admin.product.edit-product-discount :product="$product"/>
@@ -65,8 +63,6 @@
                 </form>
             </div>
 
-        </div>
-    </div>
     
 
 

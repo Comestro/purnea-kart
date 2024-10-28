@@ -23,18 +23,23 @@ class SellerForm extends Component
             'name' => 'required',
             'mobile' => 'required|min:10', //todo-error handling
             'email' => 'required|email', //todo-error handling
-            'gst' =>  ['required', 'regex:/^([0-9]{2})([A-Z]{5})([0-9]{4})([A-Z]{1})([1-9A-Z]{1})(Z)([0-9A-Z]{1})$/'],
+            'gst' =>   [
+                'required',
+                'regex:/^[0-3][0-9][A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/'
+            ],
+
             'password' => 'required | min:8'
         ];
     }
     public function updated($propertyName)
     {
-        $this->validateOnly($propertyName);
+        $this->validateOnly(field: $propertyName);
     }
     public function store()
     {
 
-        $validate=$this->validate();
+        $validate = $this->validate();
+       
 
         // dd('checking the seller name: ' . $this->name);
         Log::info($this->name);

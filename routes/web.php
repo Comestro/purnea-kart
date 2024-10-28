@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Models\Category;
 use App\Models\Product;
@@ -45,7 +46,7 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::view('profile', 'profile')
-    ->middleware(['auth'])
+    // ->middleware(['auth'])
     ->name('profile');
 
 
@@ -67,11 +68,6 @@ Route::get('/admin/product-grid', function () {
 Route::get('/admin/product-details/{id}', function ($id) {
     return view('admin.product.product_details',['id' => $id]);
 })->name('adminProductView');
-
-
-
-
-
 
 
 
@@ -132,6 +128,12 @@ Route::get('admin/inventory/inventory_warehouse', function () {
     return view('admin.inventory.inventory_warehouse');
 });
 
+
+Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
+
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
+
+
 //order
 Route::get('admin/orders/order-cart', function () {
     return view('admin.orders.order_cart');
@@ -175,10 +177,6 @@ Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('sel
 
 
 
-
-
-
-
 //vendor
 Route::get('/vendor', function () {
     return view('vendor.index');
@@ -198,6 +196,11 @@ Route::get('/vendor/product-list', function () {
     return view('vendor.product.productList');
 })->name('vendor.product-list');
 
+Route::get('/vendor/editProduct', function () {
+    return view('vendor.product.editProduct');
+})->name('vendor.editProduct');
+
+
 //Category
 Route::get('/vendor/addCategory', function () {
     return view('vendor.category.addCategory');
@@ -205,6 +208,7 @@ Route::get('/vendor/addCategory', function () {
 Route::get('/vendor/category-list', function () {
     return view('vendor.category.categoryList');
 })->name('vendor.category-list');
+
 
 //Brand
 Route::get('/vendor/addBrand', function () {

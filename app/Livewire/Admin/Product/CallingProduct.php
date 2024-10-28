@@ -21,9 +21,9 @@ class CallingProduct extends Component
             $product->status = !$product->status;
             $product->save();
     
-            session()->flash('success', 'Category status updated successfully.');
+            session()->flash('success', 'Product status updated successfully.');
         } else {
-            session()->flash('error', 'Category not found.');
+            session()->flash('error', 'Product not found.');
         }
     
         return redirect()->route('product.index');
@@ -46,7 +46,7 @@ class CallingProduct extends Component
                     $query->whereMonth('created_at', 'LIKE', "%" . $this->month . "%");
                
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('livewire.admin.product.calling-product', $data);
     }

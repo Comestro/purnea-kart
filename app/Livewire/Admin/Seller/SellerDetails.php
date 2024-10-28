@@ -14,12 +14,11 @@ class SellerDetails extends Component
         $this->sellerid = $sellerid;
     }
     public function active(){
-        Seller::where('id', $this->sellerid->id)->update(['status'=>1]);
-    
+        Seller::where('id', $this->sellerid->id)->update(['status'=> 1]);
         $this->isAprroved++;
     }
     public function inactive(){
-        Seller::where('id', $this->sellerid->id)->update(['status'=>0]);
+        Seller::where('id', $this->sellerid->id)->update(['status'=> 0]);
         $this->isAprroved--;
     }
     public function render()

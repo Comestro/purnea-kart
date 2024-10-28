@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Seller;
 
+use App\Models\Seller;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -28,10 +29,18 @@ class SellerLoginForm extends Component
 
         // Redirect to the dashboard
 
-        $credentials = ['email'=>$this->email,'password'=>$this->password];
-        if(Auth::guard('seller')->attempt($credentials)){
-            return redirect()->route('vendor.pending');
-        }
+        $credentialWithStatus = ['email'=>$this->email,'password'=>$this->password,'status'=>1];
+        $credentialWithoutStatus=['email'=>$this->email,'password'=>$this->password];
+        
+        if(Auth::guard('seller')->attempt($credentialWithoutStatus) ){
+            if($credentialWithStatus){
+                return redirect()->route('vendor.index');
+            }else{
+                return redirect()->route('vendor.pending');
+            }
+            
+
+        }    
         else{
             $this->addError('email', 'Invalid credentials');
         }
