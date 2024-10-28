@@ -5,17 +5,12 @@ namespace App\Livewire\Admin\Brand;
 use App\Models\Brand;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
 class ManageBrand extends Component
 {
-    use WithPagination;
-    use WithFileUploads;
-
-  
-    
-    public $isActive = false;
+    use WithPagination, WithFileUploads;
 
     public $search = '';
     public $logo;
@@ -24,41 +19,34 @@ class ManageBrand extends Component
 
     public function status($id)
     {
-        $this->brandId=$id;
+        $brand = Brand::find($id);
+        
+        if ($brand) {
+            $brand->status = !$brand->status;
+            $brand->save();
 
-        if($this->isActive)
-        {
-            Brand::where('id',$this->brandId)->update(['status' => 1]);
-            $this->isActive = !$this->isActive;
+            session()->flash('success', 'Brand status updated successfully.');
+        } else {
+            session()->flash('error', 'Brand not found.');
         }
-        else{
-            Brand::where('id',$this->brandId)->update(['status' => 0]);
-            $this->isActive = !$this->isActive;
-        }
-
-       
-        return redirect()->route('manage_brand');
     }
-
-    public function render()
-    {
-        $brands = Brand::where('status',1)->where('brand_name', 'like', '%'.$this->search.'%')
-            ->paginate(5);
-
-        return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
-    }
-
 
     public function deleteBrand()
     {
         if ($this->confirmingDelete) {
-            $brand = Brand::find($this->brandId);            
-            if ($brand->image) {
-                Storage::delete('public/logo/brand/' . $brand->image);
+            $brand = Brand::find($this->brandId);
+
+            if ($brand) {
+                if ($brand->image) {
+                    Storage::delete('public/logo/brand/' . $brand->image);
+                }
+                
+                $brand->delete();
+                $this->confirmingDelete = false;
+                session()->flash('message', 'Brand deleted successfully.');
+            } else {
+                session()->flash('error', 'Brand not found.');
             }
-            $brand->delete();
-            $this->confirmingDelete = false;
-            session()->flash('message', 'Brand deleted successfully.');
         }
     }
 
@@ -66,5 +54,14 @@ class ManageBrand extends Component
     {
         $this->brandId = $brandId;
         $this->confirmingDelete = true;
+    }
+
+    public function render()
+    {
+        $brands = Brand::where('status', 1)
+            ->where('brand_name', 'like', '%' . $this->search . '%')
+            ->paginate(5);
+
+        return view('livewire.admin.brand.manage-brand', ['brands' => $brands]);
     }
 }

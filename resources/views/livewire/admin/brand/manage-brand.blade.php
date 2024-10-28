@@ -51,11 +51,12 @@
                     <th scope="col">Brand Slug</th>
                     <th scope="col">Brand Description</th>
                     <th scope="col">Logo</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($brands as $key=>$item)
+                @foreach ($brands as $key => $item)
                 <tr>
                     <td>
                         <div class="form-check ms-1">
@@ -63,41 +64,31 @@
                             <label class="form-check-label" for="customCheck{{ $item->id }}">&nbsp;</label>
                         </div>
                     </td>
-                    <td>{{ $key+1 }}</td>
+                    <td>{{ $key + 1 }}</td>
                     <td>{{ $item->brand_name }}</td>
                     <td>{{ $item->brand_slug }}</td>
                     <td>{{ $item->brand_description }}</td>
                     <td>
-
-                        <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/brand/' . $item->logo) }}"
-                            alt="" class="avatar-md">
+                        <img src="{{ asset('storage/image/brand/' . $item->logo) }}" alt="" class="avatar-md">
                     </td>
+                    <td>
+                        <form wire:submit.prevent="status({{ $item->id }})">
+                            <button type="submit" class="btn btn-sm {{ $item->status ? 'btn-soft-success' : 'btn-soft-red' }}">
+                                {{ $item->status ? 'Active' : 'Pending' }}
+                            </button>
+                        </form>
+                    </td>                    
                     <td>
                         <div class="d-flex gap-2">
                             <a href="" class="btn btn-light btn-sm">
                                 <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
-                            <a href="{{ route('edit_brand',$item->id) }}" class="btn btn-soft-primary btn-sm" wire:click="editBrand({{ $item->id }})">
+                            <a href="{{ route('edit_brand', $item->id) }}" class="btn btn-soft-primary btn-sm" wire:click="editBrand({{ $item->id }})">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
-                            <button wire:click="confirmDelete({{ $item->id }})"
-                                class="btn btn-soft-danger btn-sm"
-                                aria-label="Delete brand {{ $item->brand_name }}">
+                            <button wire:click="confirmDelete({{ $item->id }})" class="btn btn-soft-danger btn-sm" aria-label="Delete brand {{ $item->brand_name }}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
-                            <form wire:submit="status({{$item->id}})">
-
-                                @if ($isActive)
-                                <button type="submit" class="btn  btn-soft-sucess btn-sm" wire:loading.attr="disabled">Active</button>
-
-
-                                @else
-                                <button type="submit" class="btn  btn-soft-red btn-sm" wire:loading.attr="disabled">
-                                    Inactive
-                                </button>
-
-                                @endif
-                            </form>
                         </div>
                     </td>
                 </tr>
@@ -105,6 +96,7 @@
             </tbody>
         </table>
     </div>
+    
 
 
     {{-- <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel" aria-hidden="true">
