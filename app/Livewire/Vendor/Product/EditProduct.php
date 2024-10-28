@@ -10,6 +10,13 @@ use Livewire\Component;
 class EditProduct extends Component
 {
 
+    // public $pro_id;
+    // public $product;
+    // public function mount($pro_id)
+    // {
+    //     $this->pro_id = $pro_id;
+    //     $this->product = Product::findOrFail($this->pro_id); // Fetch product data
+    // }
     public $name;
     public $product;
     public $description;

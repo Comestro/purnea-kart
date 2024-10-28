@@ -43,7 +43,8 @@ class EditProductTitle extends Component
     public function render()
     {
         return <<<'HTML'
-        <div>
+        <div class="col-lg-12">
+
             <div class="card border">
                 <div class="card-header py-2 d-flex justify-content-between align-items-center">
                     <h5 class="m-0 fw-normal">Product Title</h5>
