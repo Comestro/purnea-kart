@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
@@ -18,7 +16,6 @@
                                 @endif
 
                             </div>
-
 
                         </div>
                         <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100">
@@ -203,7 +200,4 @@
 
         </div>
     </div>
-</div>
-
-
 </div>
