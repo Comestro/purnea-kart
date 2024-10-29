@@ -172,6 +172,8 @@ Route::get('admin/seller/seller-details/{id}',function($id){
     return view('admin.seller.seller-details',["seller_id" => $id]);
 })->name('seller_details');
 
+Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('seller.logout');
+
 
 
 
@@ -225,6 +227,7 @@ Route::controller(PublicController::class)->group(function () {
     Route::get('/culture', 'Culture')->name('about.culture');
     Route::get('/technology', 'Technology')->name('about.technology');
     Route::get('/sustainability', 'SustainAbility')->name('about.sustainability');
+    
 });
 
 
@@ -235,5 +238,6 @@ Route::prefix('account')->group(function () {
 
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
+    Route::post('/logout',[PublicController::class, 'logout'])->name('account.logout');
 });
 

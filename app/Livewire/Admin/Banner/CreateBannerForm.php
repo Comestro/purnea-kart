@@ -19,6 +19,8 @@ class CreateBannerForm extends Component
     public $expiry_date;
     public $editId;
     public $status = false;
+    public $isModalOpen = false;
+
 
     public function rules()
     {
@@ -31,6 +33,7 @@ class CreateBannerForm extends Component
 
         ];
     }
+    
 
     public function messages()
     {
@@ -39,20 +42,6 @@ class CreateBannerForm extends Component
         ];
     }
     
-    public function getEditId(Banner $id){
-        $this->editId = $id;
-
-    }
-    
-    public function edit(){
-
-        $this->editId->update([
-            'title' => $this->title,
-            'expiry_date' => $this->expiry_date,
-            'alt' => $this->alt,
-            'image_path' => $this->image_path,]);
-        
-    }
 
 
     public function store()
@@ -82,27 +71,13 @@ class CreateBannerForm extends Component
     }
 
 
-    public function deleteBanner($id)
-    {
-        Banner::findOrFail($id)->delete();
-
-        session()->flash('message', 'banner deleted successfully.');
-    }
+    
 
     public function render()
     {
-        $data['banners'] = Banner::paginate(3);
 
-        return view('livewire.admin.banner.create-banner-form', $data);
+        return view('livewire.admin.banner.create-banner-form', );
     }
 
-    public function toggleStatus($bannerId)
-    {
-        $banner = Banner::find($bannerId);
-        $banner->status = !$banner->status;
-        $banner->save();
-
-        
-        session()->flash('success', 'Banner status updated successfully.');
-    }
+  
 }

@@ -48,9 +48,14 @@
                     <div class="row">
                         
 
-                         <div class="col-xl-12 col-lg-12 ">
+                         <div class="col-xl-4 col-lg-4 ">
                                
                               <livewire:admin.banner.create-banner-form/>
+
+                         </div>
+                          <div class="col-xl-8 col-lg-8 ">
+                               
+                              <livewire:admin.banner.calling-banner/>
 
                          </div>
                     </div>

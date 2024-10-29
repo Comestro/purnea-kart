@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('gst')->nullable()->unique();
             $table->string('password')->nullable();
-            $table->bigInteger('status')->nullable()->default(0);
+            $table->bigInteger('status')->default(0);
             $table->timestamps();
         });
     }
