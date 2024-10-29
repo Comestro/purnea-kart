@@ -29,7 +29,7 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" wire:model="title" required>
-                            @error('discount_price')
+                            @error('title')
                                 <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
@@ -37,7 +37,7 @@
                             <label for="alt" class="form-label">Alt Text</label>
                             <input type="text" class="form-control" id="alt" wire:model="alt"
                                 placeholder="Enter alt text" value="{{ old('alt') }}">
-                            @error('discount_price')
+                            @error('alt')
                                 <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
@@ -49,13 +49,16 @@
                                 <option value="1" {{ old('status') == 1 ? 'Active' : '' }}>Active</option>
                                 <option value="0" {{ old('status') == 0 ? 'Inactive' : '' }}>Inactive</option>
                             </select>
+                            @error('status')
+                                        <p class="text-danger text-xs">{{ $message }}</p>
+                                    @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="expiry_date" class="form-label">Expiry Date</label>
                             <input type="date" class="form-control" id="expiry_date" wire:model="expiry_date"
                                 value="{{ old('expiry_date') }}">
-                            @error('discount_price')
+                            @error('expiry_date')
                                 <p class="text-danger text-xs">{{ $message }}</p>
                             @enderror
                         </div>
@@ -83,6 +86,9 @@
                                             <input id="dropzone-file" wire:model="image_path" type="file"
                                                 class="d-none" />
                                         </label>
+                                        @error('image_path')
+                                <p class="text-danger text-xs">{{ $message }}</p>
+                            @enderror
 
                                     </div>
                                 </div>

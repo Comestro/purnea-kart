@@ -1,17 +1,4 @@
 <div class="div">
-    <div x-data="{ showAlert: true }" x-show="showAlert">
-        @if($errors->any())
-            <div class="alert alert-danger relative p-4 border border-red-400 bg-red-100 text-red-700 rounded">
-                <button @click="showAlert = false" class="absolute top-0 right-0 mt-2 mr-2 text-red-700 font-bold">&times;</button>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
-
     <form action="#" wire:submit.prevent="store" method="post">
         <div class="row">
             <div class="col-lg-5">
@@ -113,3 +100,17 @@
         </div>
     </form>
 </div>
+{{-- <div x-data="{ showAlert: true }" x-show="showAlert">
+        @if($errors->any())
+            <div class="alert alert-danger relative p-4 border border-red-400
+             bg-red-100 text-red-700 rounded">
+                <button @click="showAlert = false" class="absolute top-0 right-0 mt-2 mr-2
+                 text-red-700 font-bold">&times;</button>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div> --}}
