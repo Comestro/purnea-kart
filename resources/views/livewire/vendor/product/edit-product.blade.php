@@ -1,8 +1,6 @@
 <div>
     <form class="row  g-3 needs-validation p-12 mx-4 my-4" wire:submit.prevent="update" method="post">
-        <div class="col-md-6">
-            <livewire:vendor.product.edit-product-title :product="$product" />
-        </div>
+        <livewire:vendor.product.edit-product-title :product="$product" />
         <div class="col-md-6">
             <label for="productSlug" class="form-label">Slug</label>
             <input class="form-control" type="text" wire:model.live="slug" placeholder="slug here..."

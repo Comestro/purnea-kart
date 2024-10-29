@@ -43,7 +43,7 @@ class EditProductTitle extends Component
     public function render()
     {
         return <<<'HTML'
-        <div class="col-lg-12">
+        <div class="col-lg-6">
 
             <div class="card border">
                 <div class="card-header py-2 d-flex justify-content-between align-items-center">
@@ -53,10 +53,10 @@ class EditProductTitle extends Component
                     </button>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex ">
                         @if ($isEdit)
                             <input wire:model.live="name" type="text" class="form-control rounded-0" placeholder="Enter product title">
-                            <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
+                            <button wire:click="update" class="btn btn-primary ms-2 rounded-0 d-flex ">Save</button>
                         @else
                             <div class="mx-auto text-center">
                                 @if (!empty($name))

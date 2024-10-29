@@ -42,9 +42,9 @@ class VendorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vendor $vendor)
+    public function edit($ven_id)
     {
-        //
+        return view("vendor.product.editProduct",["ven_id"=>$ven_id]);
     }
 
     /**

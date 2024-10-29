@@ -110,7 +110,9 @@
                                     </div>
                                     <input id="dropzone-file" wire:model="logo" type="file" class="d-none" />
                                 </label>
-                                @error('logo') <span class="text-danger">{{ $message }}</span> @enderror
+                                @error('logo') 
+                                <span class="text-danger">{{ $message }}</span> 
+                                @enderror
                             </div>
 
                             <!-- Logo Preview and Crop Modal Trigger -->
