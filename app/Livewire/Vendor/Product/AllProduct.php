@@ -38,10 +38,8 @@ class AllProduct extends Component
         $this->category_id=$product->vendor_id;
         $this->brand_id=$product->brand_id;
         $this->brand_name=$product->brand_name;
-        $this->cat_title=$product->cat_title;
-        
+        $this->cat_title=$product->cat_title;     
     }
-
     public function update(){
         $data = $this->validate([
             'name' => ['required', 'string', 'max:255'],
