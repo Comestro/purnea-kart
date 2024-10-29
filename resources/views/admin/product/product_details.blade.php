@@ -7,10 +7,8 @@
 
      <!-- Start Container Fluid -->
      <div class="container-xxl">
-
           <div class="row">
                <livewire:admin.product.calling-single-page :product="$id"/>
-
           </div>
           <div class="row">
                <div class="col-lg-12">
