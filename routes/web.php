@@ -168,8 +168,9 @@ Route::get('admin/seller/seller-list', function () {
 Route::get('admin/seller/seller-add', function () {
     return view('admin.seller.seller_add');
 })->name('seller_add');
-Route::get('admin/seller/seller-details/{id}',function($id){
-    return view('admin.seller.seller-details',["seller_id" => $id]);
+Route::get('admin/seller/seller-details/{id}', function ($id) {
+    $seller = seller::findOrFail($id);
+    return view('admin.seller.seller-details', compact('seller'));
 })->name('seller_details');
 
 Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('seller.logout');

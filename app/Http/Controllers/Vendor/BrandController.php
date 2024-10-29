@@ -61,7 +61,7 @@ class BrandController extends Controller
         //
     }
     public function status($id)
-    {
+    { 
         $brand = Brand::find($id);
         if (!$brand) {
             return response()->json(['message' => 'Brand not found'], 404);
