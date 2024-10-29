@@ -15,6 +15,7 @@
     @include('become-seller.components.header')
 
     @section('content')
+    
     @show
     @include('desktop.components.footer')
 

@@ -114,7 +114,7 @@
                             </div>
 
                             <!-- Logo Preview and Crop Modal Trigger -->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="border border-secondary border-dashed rounded d-flex align-items-center justify-content-center"
                                     style="height: 200px;">
                                     <div wire:loading wire:target="logo" class="text-center">
@@ -133,18 +133,21 @@
                                         @endif
                                     </div>
                                 </div>
+                            </div> --}}
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label class="form-label">Brand Description</label>
+                                    <textarea rows="6" placeholder="Type your message" class="form-control"
+                                        wire:model.live="brand_description"></textarea>
+                                    @error('brand_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+            
                             </div>
                         </div>
                     </div>
 
                     <!-- Brand Description -->
-                    <div class="mb-4">
-                        <label class="form-label">Brand Description</label>
-                        <textarea rows="6" placeholder="Type your message" class="form-control"
-                            wire:model.live="brand_description"></textarea>
-                        @error('brand_description') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-
+                   
                     <button type="submit" class="btn btn-success w-100">Create</button>
                     @if (session()->has('message'))
                         <div class="mt-4 p-2 bg-success text-white rounded">{{ session('message') }}</div>

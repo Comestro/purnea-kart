@@ -78,6 +78,7 @@ class ProductController extends Controller
         
         return view("admin.product.product_edit",["pro_id"=>$pro_id]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

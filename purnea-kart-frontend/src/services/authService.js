@@ -25,18 +25,28 @@ const apiClient = axios.create({
 
   // Login User
   export const login = async ({ email, password })=> {
+
     try {
-      const response = await apiClient.post('/auth/login', { email, password });
+      const response = await apiClient.post('auth/login', { email, password });
       const { access_token } = response.data;
+      console.log('Login response:', response.data);
       localStorage.setItem('token', access_token); // Store token in local storage
       console.log('User logged in:', access_token);
+      
       return access_token;
     } catch (err) {
       console.error('Login error:', err.response?.data || err);
       throw err;
     }
   }
-
+//   export  const login = async({email,password})=>{
+//     try{
+//          return  await apiClient.createEmailPasswordSession(email,password)
+//     }catch(err){
+//         throw err;
+//     } 
+// }
+  
   // Get User Info
   export const getuser = async ()=> {
     try {
@@ -44,7 +54,6 @@ const apiClient = axios.create({
       const response = await apiClient.get('/user', {
         headers: { Authorization: token },
       });
-      console.log('User data:', response.data);
       return response.data;
     } catch (err) {
       console.error('Get user error:', err.response?.data || err);

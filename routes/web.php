@@ -71,11 +71,6 @@ Route::get('/admin/product-details/{id}', function ($id) {
 
 
 
-
-
-
-
-
 //brand
 Route::get('admin/brands/brand-add', function () {
     return view('admin.brands.brand_add');
@@ -177,9 +172,7 @@ Route::get('admin/seller/seller-details/{id}',function($id){
     return view('admin.seller.seller-details',["seller_id" => $id]);
 })->name('seller_details');
 
-
-
-
+Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('seller.logout');
 
 
 
@@ -203,6 +196,11 @@ Route::get('/vendor/product-list', function () {
     return view('vendor.product.productList');
 })->name('vendor.product-list');
 
+Route::get('/vendor/editProduct', function () {
+    return view('vendor.product.editProduct');
+})->name('vendor.editProduct');
+
+
 //Category
 Route::get('/vendor/addCategory', function () {
     return view('vendor.category.addCategory');
@@ -210,6 +208,7 @@ Route::get('/vendor/addCategory', function () {
 Route::get('/vendor/category-list', function () {
     return view('vendor.category.categoryList');
 })->name('vendor.category-list');
+
 
 //Brand
 Route::get('/vendor/addBrand', function () {
@@ -228,6 +227,7 @@ Route::controller(PublicController::class)->group(function () {
     Route::get('/culture', 'Culture')->name('about.culture');
     Route::get('/technology', 'Technology')->name('about.technology');
     Route::get('/sustainability', 'SustainAbility')->name('about.sustainability');
+    
 });
 
 
@@ -238,5 +238,6 @@ Route::prefix('account')->group(function () {
 
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
+    Route::post('/logout',[PublicController::class, 'logout'])->name('account.logout');
 });
 

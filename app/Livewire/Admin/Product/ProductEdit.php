@@ -18,7 +18,6 @@ class ProductEdit extends Component
     public function prevStep(){
         $this->step--;
     }
-
     // Mount method to initialize component with product data
     public function mount($pro_id)
     {

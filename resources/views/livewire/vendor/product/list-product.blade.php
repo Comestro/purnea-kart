@@ -16,13 +16,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($productList as $pro )
+                @foreach ($productList  as $key=>$pro )
                 <tr>
                     <td>
                         <input class="form-check-input" type="checkbox">
                     </td>
                     <td>
-                        <a href="#">#1</a>
+                        <a href="#">{{ $key+1}}</a>
                     </td>
                     <td>
                         <a href="#">
@@ -47,11 +47,12 @@
                                     <i class="bi bi-three-dots"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="#" class="dropdown-item">Action</a>
+                                    <a  href="{{url('/vendor/editProduct', $pro->slug)}}" class="dropdown-item">Edit</a>
                                     <a href="#" class="dropdown-item">Another action</a>
                                     <a href="#" class="dropdown-item">Something else here</a>
                                 </div>
                             </div>
+                            
                         </div>
                     </td>
                 </tr>

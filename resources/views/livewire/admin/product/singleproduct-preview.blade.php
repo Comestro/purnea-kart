@@ -1,9 +1,9 @@
 <div>
     <div class="card">
-        <div class="card-body">
+        <div class="card-body shadow-lg" style="background-color: #f7f7f7; ">
             @if ($products->images->count() > 0)
                 <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $products->images->first()->path) }}"
-                    alt="cf" class="img-fluid rounded bg-light">
+                    alt="cf" class="img-fluid rounded bg-light" width="50%">
             @else
                 <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="gfv"
                     class="img-fluid rounded bg-light">

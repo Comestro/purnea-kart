@@ -14,7 +14,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <livewire:admin.product.product-view :product="$pro_id" />
-
                                 </div>
                             </div> <!-- end row -->
                         </div><!-- end tab-pane -->
@@ -64,9 +63,9 @@
                     @if ($step == 4)
                         <div>
                             <h4 class="fs-16 fw-semibold mb-1">Product Preview</h4>
-                            {{-- <p class="text-muted">Fill your social media links</p> --}}
+                            {{-- <p class="flextext-muted">Fill your social media links</p> --}}
 
-                            <div class="d-flex justify-content-center">
+                            <div class="">
                                
                                     <livewire:admin.product.singleproduct-preview :product="$pro_id" />
 
@@ -91,15 +90,19 @@
                                         </div>
                                         <h3 class="mt-0">Finished !</h3>
 
-                                        <p class="w-75 mb-2 mx-auto">Filled Data Successfully.</p>
+                                        <p class="w-75 mb-2 mx-auto">Filled product data Successfully.</p>
 
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <div class="form-check d-inline-block">
                                                 <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                <label class="form-check-label" for="customCheck1">I agree with the
+                                                <label class="form-check-label" for="customCheck1" >I agree with the
                                                     Terms and Conditions</label>
                                             </div>
-                                        </div>
+                                        </div> --}}
+                                        <button class="btn btn-success">
+                                            <a href="{{ route('product.index') }}" class="text-white" style="text-decoration: none;">Finished!</a>
+                                        </button>
+                                        
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
