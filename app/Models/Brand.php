@@ -15,4 +15,13 @@ class Brand extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class);
+    }
 }

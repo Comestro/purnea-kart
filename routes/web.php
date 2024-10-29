@@ -37,8 +37,10 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
-Route::get('/filter', function () {
-    return view('filter-page');
+Route::get('/filter/{cat_id}', function($cat_id) {
+    $data['categories'] = Category::find($cat_id);
+    // dd($data);
+    return view('filter-page', $data);
 })->name('filter');
 
 Route::view('dashboard', 'dashboard') 
@@ -168,8 +170,9 @@ Route::get('admin/seller/seller-list', function () {
 Route::get('admin/seller/seller-add', function () {
     return view('admin.seller.seller_add');
 })->name('seller_add');
-Route::get('admin/seller/seller-details/{id}',function($id){
-    return view('admin.seller.seller-details',["seller_id" => $id]);
+Route::get('admin/seller/seller-details/{id}', function ($id) {
+    $seller = seller::findOrFail($id);
+    return view('admin.seller.seller-details', compact('seller'));
 })->name('seller_details');
 
 Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('seller.logout');

@@ -67,8 +67,8 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->brand_name }}</td>
                     <td>{{ $item->brand_slug }}</td>
-<td>Admin</td>                    
-                    <td>
+                    <td>{{ $item->vendor ? $item->vendor->store_name : 'Admin' }}</td>
+                        <td>
                         <img src="{{ asset('storage/image/brand/' . $item->logo) }}" alt="" class="avatar-md">
                     </td>
                     <td>

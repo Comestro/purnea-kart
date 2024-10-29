@@ -7,23 +7,30 @@ use Livewire\Component;
 
 class SellerDetails extends Component
 {
-    public $sellerid;
+    public $seller; 
+    public $isApproved = 0; 
 
-    public $isAprroved = 0;
-    public function mount(Seller $sellerid){
-        $this->sellerid = $sellerid;
+    public function mount($sellerId)
+    {
+        $this->seller = Seller::findOrFail($sellerId); 
+        $this->isApproved = $this->seller->status; 
     }
-    public function active(){
-        Seller::where('id', $this->sellerid->id)->update(['status'=> 1]);
-        $this->isAprroved++;
+
+    public function activate()
+    {
+        $this->seller->update(['status' => 1]); 
+        $this->isApproved = 1;
     }
-    public function inactive(){
-        Seller::where('id', $this->sellerid->id)->update(['status'=> 0]);
-        $this->isAprroved--;
+
+    public function deactivate()
+    {
+        $this->seller->update(['status' => 0]); 
+        $this->isApproved = 0;
     }
+
     public function render()
     {
-
-        return view('livewire.admin.seller.seller-details');
+        return view('livewire.admin.seller.seller-details', [        
+        ]);
     }
 }

@@ -56,4 +56,14 @@ class BrandApiController extends Controller
     {
         //
     }
+    public function status($id)
+    { 
+        $brand = Brand::find($id);
+        if (!$brand) {
+            return response()->json(['message' => 'Brand not found'], 404);
+        }
+
+        $brand->update(['status' => !$brand->status]);
+        return redirect()->route('manage_brand')->with('message', 'Brand status updated successfully');
+    }
 }
