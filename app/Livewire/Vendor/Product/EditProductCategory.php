@@ -63,7 +63,7 @@ class EditProductCategory extends Component
                                 <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
                             @endforeach
                         </select>
-                        <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
+                        <button wire:click="update" class="btn btn-primary ms-2 rounded-0 d-flex">Save</button>
                         @else
                             <div class="mx-auto text-center">
 
