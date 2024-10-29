@@ -47,7 +47,7 @@ class EditProductDiscount extends Component
                     <div class="d-flex align-items-center">
                         @if ($isEdit)
                             <input wire:model="discount_price" type="text" class="form-control rounded-0" placeholder="Enter product Discount_price">
-                            <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
+                            <button wire:click="update" class="btn btn-primary ms-2 rounded-0 d-flex">Save</button>
                         @else
                             <div class="mx-auto text-center">
                                 @if (!empty($discount_price))

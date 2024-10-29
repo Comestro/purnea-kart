@@ -47,7 +47,7 @@ class EditProductDescription extends Component
                     <div class="d-flex align-items-center">
                         @if ($isEdit)
                             <input wire:model="description" type="text" class="form-control rounded-0" placeholder="Enter product description">
-                            <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
+                            <button wire:click="update" class="btn btn-primary ms-2 d-flex rounded-0">Save</button>
                         @else
                             <div class="mx-auto text-center">
                                 @if (!empty($description))

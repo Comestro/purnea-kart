@@ -73,10 +73,9 @@ class ProductController extends Controller
      */
     public function show($pro_id)
     {
-        //
-
         
         return view("admin.product.product_edit",["pro_id"=>$pro_id]);
+
     }
     
 
@@ -84,12 +83,12 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      */
    
-    public function edit(string $slug)
-    {
+    // public function edit(string $slug)
+    // {
 
-        $product = Product::where("slug",$slug)->first();
-        return view('admin.product.editProduct', ['product' => $product]);
-    }
+    //     $product = Product::where("slug",$slug)->first();
+    //     return view('admin.product.editProduct', ['product' => $product]);
+    // }
     
     /**
      * Update the specified resource in storage.

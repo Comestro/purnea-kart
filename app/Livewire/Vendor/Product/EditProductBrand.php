@@ -63,7 +63,7 @@ class EditProductBrand extends Component
                                 <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                             @endforeach
                         </select>
-                        <button wire:click="update" class="btn btn-primary ms-2 rounded-0">Save</button>
+                        <button wire:click="update" class="btn btn-primary ms-2 rounded-0 d-flex">Save</button>
                         @else
                             <div class="mx-auto text-center">
                                 

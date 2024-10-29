@@ -150,7 +150,7 @@
                                             <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('brand_id')
+                                    @error('brand_name')
                                         <p class="text-danger text-xs">{{ $message }}</p>
                                     @enderror
                                 </div>
@@ -285,7 +285,7 @@
 
                                 <label for="product-discount" class="form-label">Discount Price</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text fs-20"><i class='bx bxs-discount'></i></span>
+                                    <span class="input-group-text fs-20"><i class="bi bi-currency-rupee"></i></span>
                                     <input type="number" id="product-discount" class="form-control"
                                         wire:model.live='discount_price' placeholder="000">
                                     @error('discount_price')
