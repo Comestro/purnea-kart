@@ -200,6 +200,10 @@ Route::get('/vendor/editProduct', function () {
     return view('vendor.product.editProduct');
 })->name('vendor.editProduct');
 
+Route::get('/vendor/product/{ven_id}', [SellerController::class, 'edit'])->name('product.edit');
+
+
+
 
 //Category
 Route::get('/vendor/addCategory', function () {
