@@ -37,8 +37,10 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
-Route::get('/filter', function () {
-    return view('filter-page');
+Route::get('/filter/{cat_id}', function($cat_id) {
+    $data['categories'] = Category::find($cat_id);
+    // dd($data);
+    return view('filter-page', $data);
 })->name('filter');
 
 Route::view('dashboard', 'dashboard') 
