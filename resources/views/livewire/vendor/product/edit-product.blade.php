@@ -1,4 +1,6 @@
-<div>
+
+
+ <div>
     <form class="row  g-3 needs-validation p-12 mx-4 my-4" wire:submit.prevent="update" method="post">
         <livewire:vendor.product.edit-product-title :product="$product" />
         <div class="col-md-6">
@@ -56,7 +58,7 @@
                                 Is Active
                             </label>
                         </div>
-        </div> --}}
+        </div>  --}}
         
     </form>
 </div>
