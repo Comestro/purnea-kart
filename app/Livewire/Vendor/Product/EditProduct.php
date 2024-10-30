@@ -9,7 +9,12 @@ use Livewire\Component;
 
 class EditProduct extends Component
 {
+    public $product_id;
 
+    public function mount(Product $ven_id){
+
+        $this->product_id=$ven_id;
+    }
     
     public function render()
     {
