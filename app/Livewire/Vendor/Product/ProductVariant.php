@@ -58,8 +58,6 @@ class ProductVariant extends Component
 
         
         $this->reset(['variant_type', 'variant_name', 'sku', 'price', 'stock', 'variant_image']);
-
-        
         session()->flash('message', 'Variant added successfully!');
     }
     public function render()

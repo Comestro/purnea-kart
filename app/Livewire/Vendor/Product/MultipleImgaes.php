@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\Admin\Product;
+namespace App\Livewire\Vendor\Product;
 
+use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductImage;
-use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 
-class MultipleImage extends Component
+class MultipleImgaes extends Component
 {
     use WithFileUploads;
 
@@ -54,11 +54,10 @@ class MultipleImage extends Component
             $this->path = null; // Clear the input after saving
         }
     }
-
     public function render()
     {
         $data['productImages'] = Product::find($this->p_id)?->images ?? [];
-        return view('livewire.admin.product.multiple-image',$data);
-    }
 
+        return view('livewire.vendor.product.multiple-imgaes',$data);
+    }
 }

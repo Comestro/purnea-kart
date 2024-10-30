@@ -26,7 +26,7 @@ class AllProduct extends Component
     public function mount(Product $product )
 
     {
-      
+
         $this->product= $product; 
         $this->name=$product->name;
         $this->description=$product->description;
