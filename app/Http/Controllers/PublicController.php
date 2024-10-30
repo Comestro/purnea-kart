@@ -126,4 +126,9 @@ class PublicController extends Controller
 
         return redirect('/')->with('success', 'you have been logged out successfully.');
     }
+
+    // wishlist work here:
+    public function wishlist(){
+        return view('wishlist');
+    }
 }
