@@ -1,62 +1,78 @@
+
 <div>
-    <form class="row  g-3 needs-validation p-12 mx-4 my-4" wire:submit.prevent="update" method="post">
-        <livewire:vendor.product.edit-product-title :product="$product" />
-        <div class="col-md-6">
-            <label for="productSlug" class="form-label">Slug</label>
-            <input class="form-control" type="text" wire:model.live="slug" placeholder="slug here..."
-                aria-label="readonly input example" readonly>
-            <div class="invalid-feedback">
-                Please provide a unique slug.
-            </div>
-            @error('slug')
-                <p class="text-black small">{{ $message }}</p>
-            @enderror
-        </div>
-        <div class="col-md-12 mb-4">
-            <livewire:vendor.product.edit-product-description :product="$product" />
+    <div class="card-header">
+    </div><!-- end card-header -->
+    <div class="card-body">
+        <div class="mb-5">
+            <div>
+               
+                <div class="mb-0">
+                    @if ($step == 1)
+                        <div class="active" id="basictab1" role="tabpanel">
+                            <h4 class="fs-16 fw-semibold mb-1">Profile Information</h4>
+                            <p class="text-muted">Setup your profile information</p>
 
-        </div>
-        <div class="col-md-4">
-            <livewire:vendor.product.edit-product-price :product="$product" />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <livewire:vendor.product.all-product :product="$product_id" />
 
-        </div>
-        <div class="col-md-4">
-            <livewire:vendor.product.edit-product-discount :product="$product" />
-        </div>
+                                </div>
+                            </div> <!-- end row -->
+                        </div><!-- end tab-pane -->
+                    @endif
 
-        <div class="col-md-4">
-            <livewire:vendor.product.edit-product-quantity :product="$product" />
+                    @if ($step == 2)
+                        <div class="">
+                            <h4 class="fs-16 fw-semibold mb-1">Product Variant</h4>
+                            <p class="text-muted">Setup your product Variant</p>
 
-        </div>
-        <div class="col-md-6">
-            <livewire:vendor.product.edit-product-sku :product="$product" />
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <livewire:vendor.product.product-variant :product="$product_id"  /> 
 
-        </div>
-        <div class="col-md-6">
-            <label for="productVendor" class="form-label">Vendor</label>
-            <select class="form-select" id="productVendor" name="vendor_id">
-                <option selected disabled value="">Choose a vendor</option>
-                <!-- Add vendor options here -->
-            </select>
-            <div class="invalid-feedback">
-                Please select a valid vendor.
-            </div>
-        </div>
-        <div class="col-md-6">
-            <livewire:vendor.product.edit-product-category :product="$product" :categories="$categories" />
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-lg-12">
+                                            <livewire:admin.product.calling-variant :product="$pro_id"/>
+                                        </div> --}}
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+                        </div><!-- end tab-pane -->
+                    @endif
 
-        </div>
-        <div class="col-md-6">
-            <livewire:vendor.product.edit-product-brand :product="$product" :brands="$brands" />
-        </div>
-        {{-- <div class="col-md-12">
-            <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="productStatus" name="status">
-                            <label class="form-check-label" for="productStatus">
-                                Is Active
-                            </label>
+
+
+
+                    <div class="d-flex flex-wrap align-items-center wizard justify-content-between gap-3 mt-3">
+
+                        <div class="d-flex gap-2">
+                            @if ($step != 1)
+                                <button wire:click="prevStep" wire:loading.attr="disabled" class="btn btn-primary">
+                                    <span wire:loading wire:target="prevStep" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+
+                                    <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
+                                </button>
+                            @endif  
+                            @if ($step >= 1 && $step < 2)
+                                <button wire:click="nextStep"  wire:loading.attr="disabled" class="btn btn-primary">
+                                    <span wire:loading wire:target="nextStep" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+
+                                    Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
+                                </button>
+                            @endif
                         </div>
-        </div> --}}
-        
-    </form>
+
+                    </div>
+                </div> <!-- tab-content -->
+            </div> <!-- end #horizontal wizard-->
+        </div>
+
+
+    </div> <!-- end card body -->
 </div>
+
+ 

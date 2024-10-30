@@ -47,7 +47,7 @@
                                     <i class="bi bi-three-dots"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a  href="{{ route('product.edit', $pro->slug) }}" class="dropdown-item">Edit</a>
+                                    <a  href="{{ route('product.edit', $pro->id) }}" class="dropdown-item">Edit</a>
                                     
                                     <a href="#" class="dropdown-item">Another action</a>
                                     <a href="#" class="dropdown-item">Something else here</a>

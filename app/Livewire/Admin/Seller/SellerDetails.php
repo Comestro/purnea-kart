@@ -8,29 +8,39 @@ use Livewire\Component;
 class SellerDetails extends Component
 {
     public $seller; 
-    public $isApproved = 0; 
+    public $isApproved; 
 
-    public function mount($sellerId)
+    public function mount(Seller $sellerId)
     {
-        $this->seller = Seller::findOrFail($sellerId); 
+       
+        $this->seller = $sellerId; 
         $this->isApproved = $this->seller->status; 
     }
 
+    
     public function activate()
     {
+       
         $this->seller->update(['status' => 1]); 
-        $this->isApproved = 1;
+        $this->isApproved = true;
+        dd('fucn2');
+
+       
     }
 
     public function deactivate()
     {
+        
+        
         $this->seller->update(['status' => 0]); 
-        $this->isApproved = 0;
+        $this->isApproved = false;
+        dd("ljdsfbnfjoa");
+       
+      
     }
 
     public function render()
     {
-        return view('livewire.admin.seller.seller-details', [        
-        ]);
+        return view('livewire.admin.seller.seller-details'  );
     }
 }
