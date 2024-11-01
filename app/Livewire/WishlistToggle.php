@@ -15,21 +15,21 @@ class WishlistToggle extends Component
     {
         $this->productId = $productId;
 
-        $this->inWishlist = Wishlist::where('user_id', Auth::id())->where('product_id', $productId)->exists();
+        $this->inWishlist = Wishlist::where('product_id', $productId)->exists();
     }
 
     public function toggleWishlist()
     {
-        if (!Auth::check()) {
-            return redirect('/account/login');
-        }
+        // if (!Auth::check()) {
+        //     return redirect('/account/login');
+        // }
 
         if ($this->inWishlist) {            
-            Wishlist::where('user_id', Auth::id())->where('product_id', $this->productId)->delete();
+            Wishlist::where('product_id', $this->productId)->delete();
             $this->inWishlist = false;
         } else {            
             Wishlist::create([
-                'user_id' => Auth::id(),
+                // 'user_id' => Auth::id(),
                 'product_id' => $this->productId,
             ]);
             $this->inWishlist = true;
@@ -41,3 +41,7 @@ class WishlistToggle extends Component
         return view('livewire.wishlist-toggle');
     }
 }
+
+
+// where('user_id', Auth::id())->
+// where('user_id', Auth::id())->
