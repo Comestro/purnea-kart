@@ -128,8 +128,7 @@ class PublicController extends Controller
     }
 
     // wishlist work here:
-    public function viewUserWishlist($id){
-        $data['user']=User::find($id);
-        return view('admin.wishList',$data);
+    public function viewUserWishlist(){        
+        return view('wishList');
      }
 }

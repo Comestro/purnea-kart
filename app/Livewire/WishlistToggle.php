@@ -21,7 +21,7 @@ class WishlistToggle extends Component
     public function toggleWishlist()
     {
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect('/account/login');
         }
 
         if ($this->inWishlist) {            
