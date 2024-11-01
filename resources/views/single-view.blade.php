@@ -5,7 +5,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-[70px] ">
 
     <!-- Product Details Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <!-- Product Image -->
         <div class="px-5">
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Product Information -->
-        <div class="bg-white px-5 rounded-lg ">
+        {{-- <div class="bg-white px-5 rounded-lg ">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $product->name }}</h1>
             <p class="text-2xl text-gray-800 mt-4 font-bold">₹{{ $product->price }}</p>
 
@@ -83,9 +83,80 @@
                     Buy Now
                 </button>
             </div>
+        </div> --}}
+        <div class="flex flex-col justify-start gap-4 h-full">
+            <!-- Product Title and Price -->
+            <div class="p-2">
+                <div class="flex justify-between items-start">
+                    <div class="flex flex-col gap-2">
+                        <h1 class="text-3xl font-semibold mb-1">{{ $product->name }}</h1>
+                        <p class="text-2xl text-gray-800 font-bold">₹{{ $product->price }}</p>
+                    </div>
+                    <div class="flex items-center mt-4">
+                        <div class="flex text-yellow-500">
+                            <span class="text-xl">&#9733;</span>
+                            <span class="text-xl">&#9733;</span>
+                            <span class="text-xl">&#9733;</span>
+                            <span class="text-xl">&#9733;</span>
+                            <span class="text-gray-300 text-xl">&#9733;</span>
+                        </div>
+                        <span class="ml-2 text-gray-600">(120 reviews)</span>
+                    </div>
+                    {{-- wishlist --}}
+                    <livewire:wishlist-toggle :productId="$product->id" />
+                </div>
+                <h2 class="mt-2"><span class="font-semibold text-gray-600">Category: </span>{{ $product->category->cat_title }}</h2>
+                <p class="text-gray-700 mt-4">{{ $product->description }}</p>
+        
+                <!-- Color Options -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium text-gray-800">Choose Color</h3>
+                    <div class="flex space-x-4 mt-2">
+                        @foreach ($product->variants as $item)
+                            @if ($item->variant_type === 'color')
+                                <button class="w-8 h-8 rounded-full border-2 border-gray-300 focus:outline-none transition-transform transform hover:scale-105"
+                                        style="background-color: {{ $item->variant_name }};"
+                                        aria-label="Choose color {{ $item->variant_name }}"
+                                        value="{{ $item->variant_name }}">
+                                </button>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+        
+                <!-- Size Options -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium text-gray-800">Choose Size</h3>
+                    <div class="flex space-x-4 mt-2">
+                        @foreach ($product->variants as $item)
+                            @if ($item->variant_type === 'size')
+                                <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md border border-gray-300 focus:outline-none transition duration-200 hover:bg-gray-200"
+                                        aria-label="Choose size {{ $item->variant_name }}"
+                                        value="{{ $item->variant_type }}">
+                                    {{ $item->variant_name }}
+                                </button>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+        
+                <!-- Add to Cart Button -->
+                <div class="mt-8">
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-500 transition duration-200">
+                        Add to Cart
+                    </button>
+                </div>
+        
+                <!-- Buy Now Button -->
+                <div class="mt-4">
+                    <button class="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-500 transition duration-200">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
         </div>
+             
     </div>
-
     {{-- Tabs for Description, Reviewa, FAQs --}}
    <livewire:public.product-lower-section :productId="$product->id"/>
 
