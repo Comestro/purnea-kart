@@ -13,9 +13,7 @@
     </div> --}}
     <div class="container">
         <form wire:submit.prevent="update" method="POST" enctype="multipart/form-data">
-            <div class="p-4 rounded shadow mb-4" style="background-color: #f7f7f7">
-                <label class="form-label fw-bold">Product Images</label>
-    
+            <div class="p-4 rounded shadow mb-4" style="background-color: #f7f7f7">    
                <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
