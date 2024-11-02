@@ -52,7 +52,7 @@ const apiClient = axios.create({
     try {
       const token = localStorage.getItem('token');
       const response = await apiClient.get('/user', {
-        headers: { Authorization: token },
+        headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
     } catch (err) {

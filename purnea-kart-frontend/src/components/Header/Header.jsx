@@ -1,10 +1,29 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../container/container'
 import {Logo,Cart,Seller,Menu} from '../Index'
 import { Link } from 'react-router-dom'
+import { getuser } from '../../services/authService'
 
-function Header() {
+ function Header() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const user = await getuser();
+                setUser(user.user);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+
+    console.log(user)
+
   return (
     <Container>
         <header>
@@ -24,7 +43,11 @@ function Header() {
                     <div className=' flex items-center space-x-10'>
 
                         <div>
-                            <Link to={'/signup'}>SignUp</Link>
+                            {
+                                user ? <Link to="/home">{user.name}</Link> : 
+                                <Link to={'/signup'}>SignUp</Link>
+                            }
+
                             </div>
                         <div className='cart-section'>
                             <Cart/>

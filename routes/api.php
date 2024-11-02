@@ -26,7 +26,7 @@ Route::prefix('otp')->group(function () {
   
 Route::delete('categories/{category}', [AuthController::class,'destroy']);
 // Authenticated user route
-Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
+Route::get('/user', [AuthController::class, 'user']);
 
 // Grouped authenticated routes
 Route::middleware(['auth:api'])->group(function () {
