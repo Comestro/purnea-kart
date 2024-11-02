@@ -27,33 +27,10 @@ function Login() {
                     dispatch(authlogin(userData))
                     navigate('/home')
                 }
-                
+                await getUser(dispatch);
             }catch(error){
         setError(error.message)
        }
-
-    //    try {
-    //     const userData = await createaccount(data);
-    //     if (userData) {
-    //         let loginned  = login(userData);
-    //         const fetchedUser = await getuser();
-    //       if (fetchedUser) dispatch(loginned);
-    //       navigate('/home');
-    //     }
-
-    // try{
-
-    //     const session = await login(data)
-    //     if(session){
-    //         const userData = await getuser()
-    //         if (userData) dispatch((userData))
-    //         navigate('/home')
-    //     }
-
-    //    }catch(error){
-    //     setError(error.message)
-    //    }
-    // }
     
     }
   return (
