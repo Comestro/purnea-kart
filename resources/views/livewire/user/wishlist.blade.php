@@ -52,9 +52,9 @@
                     </svg>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">Your Wishlist is Empty</h2>
                     <p class="text-gray-600 mb-6">Looks like you haven't added anything to your wishlist yet.</p>
-                    <button class="inline-block px-6 py-3 bg-slate-100 text-zinc-800 rounded-lg transition-colors">
+                    <a href="/" class="inline-block px-6 py-3 bg-slate-100 text-zinc-800 rounded-lg transition-colors">
                         Browse Products
-                    </button>
+                    </a>
                 </div>
             </section>
         @endforelse
