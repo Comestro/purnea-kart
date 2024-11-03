@@ -202,6 +202,9 @@ Route::get('/vendor/product-list', function () {
 Route::get('/vendor/editProduct', function () {
     return view('vendor.product.editProduct');
 })->name('vendor.editProduct');
+Route::get('/vendor/gridProduct', function () {
+    return view('vendor.product.product-grid');
+})->name('vendor.gridProduct');
 
 Route::get('/vendor/product/{pro_id}', [SellerController::class, 'edit'])->name('product.edit');
 
