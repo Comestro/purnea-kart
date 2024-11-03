@@ -28,11 +28,11 @@ function Categories() {
         <div className='flex justify-center items-center space-x-10 px-40 py-5  '>
         {categories.map((categ)=>(
           <div className=' px-3 flex flex-wrap justify-center' key={categ.id}>
-            {/* <img src={`http://127.0.0.1:8000/storages/image/category/${categ.image}`}></img> */}
-            
-            <div className='w-14 '>
+
+            <img src={`/purnea-kart/public/images/${categ.image}`}></img>
+            {/* <div className='w-14 '>
               <img src='/assets/29327f40e9c4d26b.png'></img>
-            </div>
+            </div> */}
             <p className='font-serif font-thin'>{categ.cat_title}</p>
           </div>
         ))}

@@ -2,7 +2,7 @@
 
 const config = {
   apiUrl : import.meta.env.VITE_API_URL || 'purnea-kart-frontend/.env',
-    // apiKey: process.env.REACT_APP_API_KEY || '',
+  // apiKey: process.env.REACT_APP_API_KEY || '',
     // featureFlag: process.env.REACT_APP_FEATURE_FLAG === 'true',
   };
 

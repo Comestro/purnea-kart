@@ -8,9 +8,9 @@ const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
   headers: {
     'Content-Type': 'application/json',
-  //   'Authorization': `Bearer ${getApiKey()}`, // Use API key from config service
- },
-});
+    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Use API key from config service
+  },
+}); 
 
   // Register User
   export const createaccount = async ({ email, password, name })=> {
