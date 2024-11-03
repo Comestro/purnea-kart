@@ -37,11 +37,16 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
-Route::get('/filter/{cat_id}', function($cat_id) {
-    $data['categories'] = Category::find($cat_id);
-    // dd($data);
-    return view('filter-page', $data);
+Route::get('/filter/{cat_slugs}', function($cat_slugs) {
+    $category = Category::with('products')->where('cat_slug', $cat_slugs)->firstOrFail();
+    $allCategories = Category::all();
+
+    return view('filter-page', [
+        'category' => $category,
+        'allCategories' => $allCategories,
+    ]);
 })->name('filter');
+
 
 Route::view('dashboard', 'dashboard') 
     ->middleware(['auth', 'verified'])

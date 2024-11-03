@@ -1,11 +1,10 @@
 @extends('layout')
 
-
-
 @section('content')
     @include('desktop.components.sub-header')
+
     <div class="max-w-7xl w-full">
-        <div class=" p-2 w-full">
+        <div class="p-2 w-full">
             <!-- Main Layout with Sidebar and Product Grid -->
             <div class="flex flex-1">
 
@@ -17,17 +16,16 @@
                     <div class="mb-4">
                         <h3 class="font-semibold text-gray-700 mb-2">Category</h3>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-600 hover:text-indigo-600">Electronics</a></li>
-                            <li><a href="#" class="text-gray-600 hover:text-indigo-600">Fashion</a></li>
-                            <li><a href="#" class="text-gray-600 hover:text-indigo-600">Home & Kitchen</a></li>
-                            <li><a href="#" class="text-gray-600 hover:text-indigo-600">Beauty</a></li>
+                            @foreach($allCategories as $category)
+                                <li><a href="{{ route('filter', $category->cat_slug) }}" class="text-gray-600 hover:text-indigo-600">{{ $category->cat_title }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <!-- Price Filter -->
                     <div class="mb-4">
                         <h3 class="font-semibold text-gray-700 mb-2">Price Range</h3>
-                        <input type="range" class="w-full">
+                        <input type="range" class="w-full" min="0" max="10000" step="100" />
                     </div>
 
                     <!-- Rating Filter -->
@@ -44,23 +42,16 @@
 
                 <!-- Product Section -->
                 <section class="w-4/5 px-5 py-2">
-                    <h2 class="text-2xl font-bold mb-4">Search by {{ $categories->cat_title }}</h2>
+                    <h2 class="text-2xl font-bold mb-4">Search by {{ $category->cat_title }}</h2>
 
-                    @forelse ($categories->products as $item)
-                        <div class="flex items-center bg-slate-50 overflow-hidden px-5 border-b ">
-
-                            <div class="w-1/3 ">
-                                <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/'.$item->image) }}" alt="Motorola Edge 50 Pro"
-                                    class="rounded-lg object-cover">
+                    @forelse ($category->products as $item)
+                        <div class="flex items-center bg-slate-50 overflow-hidden px-5 border-b">
+                            <div class="w-1/3">
+                                <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $item->image) }}" alt="{{ $item->name }}" class="rounded-lg object-cover">
                             </div>
 
-
                             <div class="w-2/3 p-4">
-
-
-                                <h2 class="text-xl font-bold text-gray-800 mb-2">{{ $item->name }}
-                                </h2>
-
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $item->name }}</h3>
 
                                 <div class="flex items-center mb-4">
                                     <span class="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">4.4</span>
@@ -78,15 +69,14 @@
                             <div class="flex flex-col items-center mb-2 mr-5">
                                 <span class="text-2xl font-bold text-gray-800">₹{{ $item->discount_price }}</span>
                                 <span class="text-gray-500 line-through ml-3">₹{{ $item->price }}</span>
-                                <span class="text-green-600 font-semibold ml-2">28% off</span>
+                                <span class="text-green-600 font-semibold ml-2">{{ number_format(($item->price - $item->discount_price) / $item->price * 100, 0) }}% off</span>
                             </div>
                         </div>
                     @empty
-                        <h2>Products not found...</h2>
+                        <h2 class="text-center text-gray-600">Products not found...</h2>
                     @endforelse
                 </section>
             </div>
         </div>
-
     </div>
 @endsection
