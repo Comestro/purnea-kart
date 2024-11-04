@@ -37,14 +37,9 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
-Route::get('/filter/{cat_slugs}', function($cat_slugs) {
-    $category = Category::with('products')->where('cat_slug', $cat_slugs)->firstOrFail();
-    $allCategories = Category::all();
-
-    return view('filter-page', [
-        'category' => $category,
-        'allCategories' => $allCategories,
-    ]);
+Route::get('/filter/{cat_slug}', function($cat_slug) {
+    $data['category'] = Category::where('cat_slug', $cat_slug)->firstOrFail();
+    return view('filter-page', $data);
 })->name('filter');
 
 

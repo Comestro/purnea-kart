@@ -13,14 +13,14 @@
                     <h2 class="text-xl font-bold mb-4">Filters</h2>
 
                     <!-- Categories Filter -->
-                    <div class="mb-4">
+                    {{-- <div class="mb-4">
                         <h3 class="font-semibold text-gray-700 mb-2">Category</h3>
                         <ul class="space-y-2">
                             @foreach($allCategories as $category)
                                 <li><a href="{{ route('filter', $category->cat_slug) }}" class="text-gray-600 hover:text-indigo-600">{{ $category->cat_title }}</a></li>
                             @endforeach
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <!-- Price Filter -->
                     <div class="mb-4">
