@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreReviewReq;
+use App\Models\Product;
 use App\Models\ProductReviews;
 use Illuminate\Support\Facades\Request;
 
@@ -25,14 +26,22 @@ class ReviewApiController extends Controller
     public function store(Request $request)
     {
 
+        $product = Product::find(Request::input('product_id'));
+
+        if(!$product){
+            return response()->json([
+               'message' => 'Product not found'
+            ], 404);
+        }
+
         $data = [
             'product_id' => Request::input('product_id'),
            'review' => Request::input('review'),
             'rating' => Request::input('rating'),
             "user_id" => Request::input('user_id')
-              // assuming rating is a numeric field in your database table. If it's a string, you need to cast it as integer. For example, 'rating' => (int) Request::input('rating')  // Casting string to integer in PHP.
         ];
      
+
 
         $review = ProductReviews::create($data);
 
