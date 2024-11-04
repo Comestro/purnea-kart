@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreReviewReq;
 use App\Models\ProductReviews;
+use Illuminate\Support\Facades\Request;
 
 class ReviewApiController extends Controller
 {
@@ -21,29 +22,24 @@ class ReviewApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewReq $request)
+    public function store(Request $request)
     {
-        $existingReview = ProductReviews::where('product_id', $request->product_id)
-            ->where('user_id', auth()->id())
-            ->first();
 
-        if ($existingReview) {
-            return response()->json([
-                'message' => 'You have already reviewed this product.',
-            ], 409); 
-        }
+        $data = [
+            'product_id' => Request::input('product_id'),
+           'review' => Request::input('review'),
+            'rating' => Request::input('rating'),
+            "user_id" => Request::input('user_id')
+              // assuming rating is a numeric field in your database table. If it's a string, you need to cast it as integer. For example, 'rating' => (int) Request::input('rating')  // Casting string to integer in PHP.
+        ];
+     
 
-        $review = ProductReviews::create([
-            'product_id' => $request->product_id,
-            'review' => $request->review,
-            'rating' => $request->rating,
-            'user_id' => auth()->id(),
-        ]);
+        $review = ProductReviews::create($data);
 
         return response()->json([
             'message' => 'Review created successfully',
             'review' => $review 
-        ], 20);
+        ], 200);
     }
 
 
