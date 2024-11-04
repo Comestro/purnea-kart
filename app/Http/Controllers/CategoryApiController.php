@@ -24,12 +24,32 @@ class CategoryApiController extends Controller
 
     public function store(StoreCategoryReq $request)
     {
+        if(empty($request->cat_title)) {
+            return response()->json([
+                'error' => 'Categotry name is required',
+            ], 400);
+        }
+
+        if(empty($request->cat_description)) {
+            return response()->json([
+                'error' => 'Categotry Description is required',
+            ], 400);
+        }
+
+        if(empty($request->image)) {
+            return response()->json([
+                'error' => 'Categotry Image is required',
+            ], 400);
+        }
+
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->storeAs('image/category', $imageName, 's3');
         }
 
         $catSlug = Str::slug($request->cat_title);
+
+
 
         $category = new Category();
         $category->cat_title = $request->cat_title;
@@ -48,8 +68,10 @@ class CategoryApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($slug)
     {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        
         if (!$category) {
             return response()->json([
                 'message' => 'Category not found'

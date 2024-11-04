@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
+use App\Http\Controllers\ReviewApiController;
 use Illuminate\Support\Facades\Route;
 
 // Fallback route for handling undefined routes
@@ -26,7 +27,7 @@ Route::prefix('otp')->group(function () {
   
 Route::delete('categories/{category}', [AuthController::class,'destroy']);
 // Authenticated user route
-Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
+Route::get('/user', [AuthController::class, 'user']);
 
 // Grouped authenticated routes
 Route::middleware(['auth:api'])->group(function () {
@@ -62,3 +63,5 @@ Route::apiResource('/products', ProductApiController::class);
 Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
+Route::apiResource('/reviews', ReviewApiController::class);
+

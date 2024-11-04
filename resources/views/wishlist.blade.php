@@ -11,7 +11,7 @@
     <div class="flex">
 
         {{-- wishlist contents here --}}
-        <div class="w-8/12">
+        <div class="w-full">
             <div class="flex-1 sm:px-4">
                 <livewire:user.wishlist/>
             </div>

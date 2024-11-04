@@ -37,11 +37,11 @@ Route::get('/view/{product_slug}', function($product_slug){
     return view('single-view',$data);
 })->name('viewpage');
 
-Route::get('/filter/{cat_id}', function($cat_id) {
-    $data['categories'] = Category::find($cat_id);
-    // dd($data);
+Route::get('/filter/{cat_slug}', function($cat_slug) {
+    $data['category'] = Category::where('cat_slug', $cat_slug)->firstOrFail();
     return view('filter-page', $data);
 })->name('filter');
+
 
 Route::view('dashboard', 'dashboard') 
     ->middleware(['auth', 'verified'])
@@ -202,6 +202,9 @@ Route::get('/vendor/product-list', function () {
 Route::get('/vendor/editProduct', function () {
     return view('vendor.product.editProduct');
 })->name('vendor.editProduct');
+Route::get('/vendor/gridProduct', function () {
+    return view('vendor.product.product-grid');
+})->name('vendor.gridProduct');
 
 Route::get('/vendor/product/{pro_id}', [SellerController::class, 'edit'])->name('product.edit');
 

@@ -19,9 +19,23 @@ class BrandApiController extends Controller
         ], 200);
     }
 
-    public function store(StoreBrandReq $request)
+    public function store(Request $request)
     {
-
+        if(empty($request->brand_name)) {
+            return response()->json([
+                'error' => 'Brand Name is empty',                
+            ], 400);
+        }
+        if(empty($request->logo)) {
+            return response()->json([
+                'error' => 'Brand Image is empty',                
+            ], 400);
+        }
+        if(empty($request->brand_description)) {
+            return response()->json([
+                'error' => 'Brand Description is empty',                
+            ], 400);
+        }
         if ($request->hasFile('logo')) {
             $imageName = time() . '.' . $request->logo->extension();
             $request->logo->storeAs('logo/brand', $imageName, 's3');

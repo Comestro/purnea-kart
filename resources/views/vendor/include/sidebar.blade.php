@@ -75,7 +75,7 @@
                             View</a>
                     </li>
                     <li>
-                        <a href="product-grid.html">Grid
+                        <a href="{{url('/vendor/gridProduct')}}">Grid
                             View</a>
                     </li>
                     <li>

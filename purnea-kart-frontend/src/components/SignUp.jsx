@@ -4,7 +4,7 @@ import { Input, Button } from './Index'; // Assuming these are custom components
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { login } from '../store/authSlice';
-import { createaccount, getuser } from '../services/authService';
+import { createaccount } from '../services/authService';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -17,13 +17,13 @@ function SignUp() {
     setError('');
     try {
       const userData = await createaccount(data);
-    //   if (userData) {
-    //     //   let loginned  = login(userData);
-    //     //   const fetchedUser = await getuser();
-    //     // if (fetchedUser) dispatch(loginned);
-    //     dispatch(userData);
-    //     navigate('/lo');
-    //   }
+      if (userData) {
+        //   let loginned  = login(userData);
+        //   const fetchedUser = await getuser();
+        // if (fetchedUser) dispatch(loginned);
+        dispatch(userData);
+        navigate('/login');
+      }
     } catch (error) {
       setError(error.message);
     }
