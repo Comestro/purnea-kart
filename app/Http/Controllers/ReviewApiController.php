@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\StoreReviewReq;
+use App\Models\Product;
 use App\Models\ProductReviews;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class ReviewApiController extends Controller
 {
@@ -23,51 +27,80 @@ class ReviewApiController extends Controller
      */
     public function store(StoreReviewReq $request)
     {
-        $existingReview = ProductReviews::where('product_id', $request->product_id)
-            ->where('user_id', auth()->id())
-            ->first();
-
-        if ($existingReview) {
-            return response()->json([
-                'message' => 'You have already reviewed this product.',
-            ], 409); 
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json(['error' => 'Product Invalid'], 404);
         }
 
-        $review = ProductReviews::create([
+        $user = User::find($request->user_id);
+        if (!$user) {
+            return response()->json(['error' => 'User ID Invalid'], 404);
+        }
+
+        $data = ProductReviews::create([
             'product_id' => $request->product_id,
             'review' => $request->review,
             'rating' => $request->rating,
-            'user_id' => auth()->id(),
+            'user_id' => $request->user_id,
         ]);
 
         return response()->json([
             'message' => 'Review created successfully',
-            'review' => $review 
-        ], 20);
+            'data' => $data 
+        ], 200);
     }
-
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $review = ProductReviews::find($id);
+        if (!$review) {
+            return response()->json(['error' => 'Review not found'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Review fetched successfully',
+            'review' => $review
+        ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductReviews $request, string $id)
+    public function update(StoreReviewReq $request, string $id)
     {
-        //
+        $review = ProductReviews::find($id);
+        if (!$review) {
+            return response()->json(['error' => 'Review not found'], 404);
+        }
+
+        $review->update([
+            'review' => $request->review,
+            'rating' => $request->rating,
+        ]);
+
+        return response()->json([
+            'message' => 'Review updated successfully',
+            'data' => $review
+        ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProductReviews $productReviews)
+    public function destroy(string $id)
     {
-        //
+        $review = ProductReviews::find($id);
+        if (!$review) {
+            return response()->json(['error' => 'Review not found'], 404);
+        }
+
+        $review->delete();
+
+        return response()->json([
+            'message' => 'Review deleted successfully'
+        ], 200);
     }
 }

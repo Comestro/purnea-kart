@@ -63,5 +63,5 @@ Route::apiResource('/products', ProductApiController::class);
 Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
-Route::post('/reviews', [ReviewApiController::class, 'store']);
+Route::apiResource('/reviews', ReviewApiController::class);
 
