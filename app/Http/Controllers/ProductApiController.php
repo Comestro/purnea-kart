@@ -88,20 +88,13 @@ class ProductApiController extends Controller
     }
     
 
-
-    
     public function show($slug)
     {
-        $product = Product::where('slug', $slug)->with(['category', 'brand', 'images'])->firstOrFail();
-        if (!$product) {
-            return response()->json([
-                'message' => 'Product not found'
-            ], 404);
-        }
+        $product = Product::where("slug", $slug)->with(["category", "brand","images"])->first();
         return response()->json([
-            "message" => 'Product show successfully',
+            'message' => 'Product Fetched successfully',
             'product' => $product
-        ]);
+        ], 200);
     }
 
     public function update(StoreProductReq $request, Product $product)

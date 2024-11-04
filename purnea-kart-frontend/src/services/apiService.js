@@ -22,6 +22,15 @@ export const fetchProducts = async () => {
     console.error('Failed to fetch products:', error);
     throw error;
   }
+};export const fetchProduct = async (slug) => {
+  
+  try {
+    const response = await apiClient.get(`/products/${slug}`);
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+    throw error;
+  }
 };
 
 export const fetchBrands = async ()=>{

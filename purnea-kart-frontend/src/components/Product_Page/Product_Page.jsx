@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { fetchProducts } from '../../services/apiService';
+import { fetchProduct, fetchProducts } from '../../services/apiService';
 import Button from '../Button';
 import { useParams } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const Product_Page = () => {
 
     const {slug} = useParams();
-    const [productsPage, setProductsPage] = useState([]);
+    const [product, setProduct] = useState({});
     const [loading,setLoading]= useState('null');
     const [error,setError] = useState('true')
    
@@ -15,8 +15,8 @@ const Product_Page = () => {
     useEffect(()=>{
         const ProductDetail = async ()=>{
             try{
-                const product = await fetchProducts();
-                setProductsPage(product.products);
+                const product = await fetchProduct(`${slug}`);
+                setProduct(product.product);
                 setLoading(false)
         }catch(error){
             setError(error)
@@ -24,14 +24,12 @@ const Product_Page = () => {
         }
     }
     ProductDetail();
-},[])
+},[slug])
 
 
 
   return (
     <div className="bg-gray-100 min-h-screen p-4">
-    {productsPage.map((product)=>{
-        return(
             <div>
                 <div className="mchProduax-w-6xl mx-auto bg-white p-6 rounded-md shadow-md">
         {/* Top Section */}
@@ -48,7 +46,7 @@ const Product_Page = () => {
           {/* Product Details */}
           <div className="flex flex-col justify-between space-y-4">
             <h1 className="text-2xl font-semibold text-gray-800">{product.name}</h1>
-            <p className="text-xl text-red-600 font-bold">₹{product.p}</p>
+            <p className="text-xl text-red-600 font-bold">₹{product.price}</p>
             <p className="text-gray-600">Inclusive of all taxes</p>
 
             {/* Ratings */}
@@ -126,8 +124,7 @@ const Product_Page = () => {
         </div>
       </div>
             </div>
-        )
-    })}
+        
       
     </div>
   );
