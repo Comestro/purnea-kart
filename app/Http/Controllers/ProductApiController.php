@@ -96,7 +96,7 @@ class ProductApiController extends Controller
 
     public function show($slug)
     {
-        $product = Product::where('slug', $slug)->with('category','brand','images')->firstOrFail();
+        $product = Product::where('slug', $slug)->with(['category','brand','images'])->firstOrFail();
         if (!$product) {
             return response()->json([
                 'message' => 'Product not found'
@@ -129,6 +129,10 @@ class ProductApiController extends Controller
 
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'message' => 'Product deleted successfully'
+        ], 200);
     }
 }
