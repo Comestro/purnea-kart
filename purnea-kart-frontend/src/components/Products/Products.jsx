@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { fetchProducts } from '../../services/apiService'
+import { Link } from 'react-router-dom';
 
 function Products() {
     const [products, setProducts] = useState([]);
     const [loading,setLoading]= useState('null');
     const [error,setError] = useState(false)
+    const {slug} = useParams();
 
     useEffect (()=>{
         const loadProducts = async ()=>{
             try{
-                const product =  await fetchProducts();
+                const product =  await fetchProducts(`${slug}`);
+                console.log(product.slug)
                 setProducts(product.products);
                 setLoading(false)
     
@@ -19,9 +22,9 @@ function Products() {
             }
         }
         loadProducts();
-    },[]) 
+    },[slug])   
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>
     if (error) return <div>Error:{error}</div>;
 
 
@@ -29,6 +32,7 @@ function Products() {
     
         <div className='h-88 bg-white mt-3 mx-3 px-5 py-5'>
         <h4 className='font-semibold fon'>Best of electronic</h4>
+        <Link to={`/products/${products.slug}`}>
             <div className='flex items-center space-x-6'>
                 {products.map((product)=>(
                     <div className='bg-slate-100 fl w-52 h-64 p-4 mt-5 rounded-lg border border-black' key={product.id}>
@@ -37,6 +41,7 @@ function Products() {
                     </div>
                 ))}
             </div> 
+        </Link>
         </div>
         
     

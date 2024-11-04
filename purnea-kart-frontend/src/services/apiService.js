@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { getApiUrl } from './configService';
 
+
 const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
   // headers: {
@@ -13,8 +14,9 @@ const apiClient = axios.create({
 
 
 export const fetchProducts = async () => {
+  
   try {
-    const response = await apiClient.get("/products");
+    const response = await apiClient.get(`/products`);
     return response.data;
   } catch (error) {
     console.error('Failed to fetch products:', error);

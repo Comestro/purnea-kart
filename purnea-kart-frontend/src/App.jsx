@@ -5,6 +5,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
 import Login from './components/Login'
+import Product_Page from './components/Product_Page/Product_Page'
+import Products from './components/Products/Products'
+
 
 
 
@@ -18,6 +21,8 @@ function App() {
         <Route path="/home" element={<Home/>}/>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Products />} />
+        <Route path="/products/:slug" element={<Product_Page/>} />
       </Routes>
      </BrowserRouter>
    </Provider>
