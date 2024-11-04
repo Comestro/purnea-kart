@@ -25,7 +25,7 @@ class ReviewApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewReq $request)
+    public function store(Request $request)
     {
         $product = Product::find($request->product_id);
         if (!$product) {
