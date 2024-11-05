@@ -57,7 +57,8 @@
                         </div>
                     </div>
                 </div>
-              <livewire:vendor.product.list-product/>
+              <livewire:vendor.product.list-product />
+              {{-- :vendor = "$vendorId"  --}}
             </div>
             <div class="col-md-4">
                 <h5 class="mb-4">Filter Products</h5>

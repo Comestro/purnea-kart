@@ -35,7 +35,7 @@
                 <div class="card">
                     @if ($product->images->count() > 0)
                         
-                             <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}">
+                        <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}">
                     @else
                         <img src="{{ asset('assets_admin/images/product/p-1.png') }}" alt="" class="img-fluid ">
                     @endif
