@@ -1,6 +1,7 @@
 <div>
     <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse" aria-expanded="true" data-bs-target="#categoriesCollapseExample" role="button">
+        <div class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse" aria-expanded="true"
+            data-bs-target="#categoriesCollapseExample" role="button">
             <div>Categories</div>
             <div class="bi bi-chevron-down"></div>
         </div>
@@ -12,30 +13,15 @@
                         All
                     </label>
                 </div>
+               
+                @foreach ($categories as $cat)
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="categoryCheck2">
                     <label class="form-check-label" for="categoryCheck2">
-                        Accessories
+                        {{ $cat->cat_title }}
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="categoryCheck3">
-                    <label class="form-check-label" for="categoryCheck3">
-                        Phone
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="categoryCheck4">
-                    <label class="form-check-label" for="categoryCheck4">
-                        Headphone
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="categoryCheck5">
-                    <label class="form-check-label" for="categoryCheck5">
-                        Camera
-                    </label>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
