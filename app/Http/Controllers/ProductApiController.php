@@ -22,61 +22,6 @@ class ProductApiController extends Controller
     public function store(Request $request)
     {
 
-        if (empty($request->name)) {
-            return response()->json([
-                'error' => 'Product name is required',
-            ], 400);
-        }
-        if (empty($request->price)) {
-            return response()->json([
-                'error' => 'Product price is required',
-            ], 400);
-        }
-
-        if (empty($request->slug)) {
-            return response()->json([
-                'error' => 'Product slug is required',
-            ], 400);
-        }
-        if (empty($request->discount_price)) {
-            return response()->json([
-                'error' => 'Product Discount Price is required',
-            ], 400);
-        }
-
-        if (empty($request->description)) {
-            return response()->json([
-                'error' => 'Product Description is required',
-            ], 400);
-        }
-        if (empty($request->quantity)) {
-            return response()->json([
-                'error' => 'Product Quantity is required',
-            ], 400);
-        }
-        if (empty($request->category_id)) {
-            return response()->json([
-                'error' => 'Product Category_id is required',
-            ], 400);
-        }
-
-        if (empty($request->vendor_id)) {
-            return response()->json([
-                'error' => 'Product Vendor_id is required',
-            ], 400);
-        }
-        if (empty($request->brand_id)) {
-            return response()->json([
-                'error' => 'Product Brand_id is required',
-            ], 400);
-        }
-
-        if (empty($request->sku)) {
-            return response()->json([
-                'error' => 'Product Sku is required',
-            ], 400);
-        }
-
         $productSlug = Str::slug($request->name);
 
         $product = Product::create([

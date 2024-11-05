@@ -33,22 +33,5 @@ class StoreProductReq extends FormRequest
             'category_id' => 'nullable|exists:categories,id',
             'brand_id' => 'nullable', 'exists:brands,id',
         ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required' => 'Product name is required.',
-            'price.required' => 'Product price is required.',
-            'discount_price.required' => 'Product discount price is required.',
-            'description.required' => 'Product description is required.',
-            'quantity.required' => 'Product quantity is required.',
-            'category_id.required' => 'Product category ID is required.',
-            'vendor_id.required' => 'Product vendor ID is required.',
-            'brand_id.required' => 'Product brand ID is required.',
-            'sku.required' => 'Product SKU is required.',
-            'category_id.exists' => 'The selected category ID is invalid.',
-            'vendor_id.exists' => 'The selected vendor ID is invalid.',
-            'brand_id.exists' => 'The selected brand ID is invalid.',
-        ];
-    }
+    }   
 }
