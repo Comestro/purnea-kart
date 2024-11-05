@@ -42,6 +42,8 @@ class ProductApiController extends Controller
         ], 200);
     }
 
+
+    
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->with(['category', 'brand', 'images'])->firstOrFail();
