@@ -20,86 +20,73 @@ class ProductApiController extends Controller
         ], 200);
     }
     public function store(Request $request)
-    {
-        $productNameExist = Product::where('name', $request->name)->exists();
-        if(!$productNameExist){
-            return response()->json([
-                'error' => 'Product name does not exist',
-            ],400);
+    {        
+        if (!$request->has('name')) {
+            return response()->json(['error' => 'Product name is required, please insert this field.'], 400);
         }
-
-        $productSlugExist = Product::where('slug', $request->slug)->exists();
-        if(!$productSlugExist){
-            return response()->json([
-                'error' => 'Product slug does not exist',
-            ],400);
+    
+        if (!$request->has('price')) {
+            return response()->json(['error' => 'Price is required, please insert this field.'], 400);
         }
-
+    
+        if (!$request->has('sku')) {
+            return response()->json(['error' => 'SKU is required, please insert this field.'], 400);
+        }
+    
+        if (!$request->has('vendor_id')) {
+            return response()->json(['error' => 'Vendor ID is required, please insert this field.'], 400);
+        }
+    
+        if (!$request->has('category_id')) {
+            return response()->json(['error' => 'Category ID is required, please insert this field.'], 400);
+        }
+    
+        if (!$request->has('brand_id')) {
+            return response()->json(['error' => 'Brand ID is required, please insert this field.'], 400);
+        }
+    
         
-        $productDescriptionExist = Product::where('description', $request->description)->exists();
-        if(!$productDescriptionExist){
-            return response()->json([
-                'error' => 'Product description does not exist',
-            ],400);
-        }
-        
-        $productPriceExist = Product::where('price', $request->price)->exists();
-        if(!$productPriceExist){
-            return response()->json([
-                'error' => 'Product price does not exist',
-            ],400);
-        }
-                
-        $productDiscountPriceExist = Product::where('discount_price', $request->description)->exists();
-        if(!$productDiscountPriceExist){
-            return response()->json([
-                'error' => 'Product Discount price does not exist',
-            ],400);
-        }
-        $productskuExist = Product::where('sku', $request->sku)->exists();
-        if(!$productskuExist){
-            return response()->json([
-                'error' => 'Product sku does not exist',
-            ],400);
-        } 
-        $productvendorExist = Product::where('vendor_id', $request->vendor_id)->exists();
-        if(!$productvendorExist){
-            return response()->json([
-                'error' => 'Product vendor id does not exist',
-            ],400);
-        }
-        $productcategoryExist = Product::where('category_id', $request->category_id)->exists();
-        if(!$productcategoryExist){
-            return response()->json([
-                'error' => 'Product category id does not exist',
-            ],400);
-        }
-
-        $productbrandExist = Product::where('brand_id', $request->brnad_id)->exists();
-        if(!$productbrandExist){
-            return response()->json([
-                'error' => 'Product brand id does not exist',
-            ],400);
-        }
-        $productSlug = Str::slug($request->name);
-
-        $product = Product::create([
-            'name' => $request->name,
-            'slug' => $productSlug,
-            'price' => $request->price,
-            'discount_price' => $request->discount_price,
-            'description' => $request->description,
-            'quantity' => $request->quantity,
-            'sku' => $request->sku,
-            'vendor_id' => $request->vendor_id,
-            'category_id' => $request->category_id,
-            'brand_id' => $request->brand_id,
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'discount_price' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+            'quantity' => 'required|integer|min:1',
+            'sku' => 'required|string|max:255|unique:products,sku',
+            'vendor_id' => 'required|exists:vendors,id',
+            'category_id' => 'required|exists:categories,id', 
+            'brand_id' => 'required|exists:brands,id',
         ]);
-        return response()->json([
-            'message' => 'Product created successfully',
-            'product' => $product
-        ], 200);
+    
+        try {
+            $productSlug = Str::slug($request->name);
+    
+            $product = Product::create([
+                'name' => $request->name,
+                'slug' => $productSlug,
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'description' => $request->description,
+                'quantity' => $request->quantity,
+                'sku' => $request->sku,
+                'vendor_id' => $request->vendor_id,
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+            ]);
+    
+            return response()->json([
+                'message' => 'Product created successfully',
+                'product' => $product
+            ], 200);
+    
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Something went wrong.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
+    
 
 
     

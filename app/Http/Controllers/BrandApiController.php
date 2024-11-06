@@ -21,44 +21,45 @@ class BrandApiController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'brand_name' => 'required|string|max:255',
-            'brand_slug' => 'required|string|max:255|unique:brands,brand_slug',
-            'brand_description' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $brandDescriptionExists = Brand::where('brand_description', $request->brand_description)->exists();
-        if (!$brandDescriptionExists) {
-            return response()->json([
-                'error' => 'Brand description does not exist'
-            ], 400);
+        if (!$request->has('brand_name')) {
+            return response()->json(['error' => 'Brand name is required, please insert this field.'], 400);
         }
-
-        $brandNameExists = Brand::where('brand_name', $request->brand_name)->exists();
-        if (!$brandNameExists) {
-            return response()->json([
-                'error' => 'Brand name does not exist'
-            ], 400);
+    
+        if (!$request->has('brand_slug')) {
+            return response()->json(['error' => 'Brand slug is required, please insert this field.'], 400);
         }
-        $brandLogoExists = Brand::where('brand_slug', $request->brand_slug)->exists();
-        if (!$brandLogoExists) {
-            return response()->json([
-                'error' => 'Brand slug does not exist'
-            ], 400);
+    
+        if(!$request->has('brand_description')) {
+            return response()->json(['error'=> 'Brand description is required, please insert this field.'], 400);
         }
-        $brandNameExists = Brand::where('logo', $request->logo)->exists();
-        if (!$brandNameExists) {
-            return response()->json([
-                'error' => 'Brand image does not exist'
-            ], 400);
+        if (!$request->hasFile('logo')) {
+            return response()->json(['error' => 'image is required, please insert this field.'], 400);
         }
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            if (!$logo->isValid()) {
+                return response()->json(['error' => 'Logo file is not a valid image.'], 400);
+            }
+    
+            if (!in_array($logo->getClientMimeType(), ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'])) {
+                return response()->json(['error' => 'Logo must be an image file (jpeg, png, jpg, gif, svg).'], 400);
+            }
+    
+            if ($logo->getSize() > 2048 * 1024) { 
+                return response()->json(['error' => 'Logo image may not be greater than 2MB.'], 400);
+            }
+        }
+        
+        
         try {
             $imageName = null;
             if ($request->hasFile('logo')) {
                 $imageName = time() . '.' . $request->logo->extension();
                 $request->logo->storeAs('logo/brand', $imageName, 's3');
             }
+
+
+          
 
             $brandSlug = Str::slug($request->brand_name);
 

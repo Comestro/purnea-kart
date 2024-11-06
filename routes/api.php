@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
+use App\Http\Controllers\ProductVariantApiController;
 use App\Http\Controllers\ReviewApiController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,4 +65,5 @@ Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
 Route::apiResource('/reviews', ReviewApiController::class);
+Route::apiResource('/productVariants', ProductVariantApiController::class);
 
