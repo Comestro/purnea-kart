@@ -21,7 +21,66 @@ class ProductApiController extends Controller
     }
     public function store(Request $request)
     {
+        $productNameExist = Product::where('name', $request->name)->exists();
+        if(!$productNameExist){
+            return response()->json([
+                'error' => 'Product name does not exist',
+            ],400);
+        }
 
+        $productSlugExist = Product::where('slug', $request->slug)->exists();
+        if(!$productSlugExist){
+            return response()->json([
+                'error' => 'Product slug does not exist',
+            ],400);
+        }
+
+        
+        $productDescriptionExist = Product::where('description', $request->description)->exists();
+        if(!$productDescriptionExist){
+            return response()->json([
+                'error' => 'Product description does not exist',
+            ],400);
+        }
+        
+        $productPriceExist = Product::where('price', $request->price)->exists();
+        if(!$productPriceExist){
+            return response()->json([
+                'error' => 'Product price does not exist',
+            ],400);
+        }
+                
+        $productDiscountPriceExist = Product::where('discount_price', $request->description)->exists();
+        if(!$productDiscountPriceExist){
+            return response()->json([
+                'error' => 'Product Discount price does not exist',
+            ],400);
+        }
+        $productskuExist = Product::where('sku', $request->sku)->exists();
+        if(!$productskuExist){
+            return response()->json([
+                'error' => 'Product sku does not exist',
+            ],400);
+        } 
+        $productvendorExist = Product::where('vendor_id', $request->vendor_id)->exists();
+        if(!$productvendorExist){
+            return response()->json([
+                'error' => 'Product vendor id does not exist',
+            ],400);
+        }
+        $productcategoryExist = Product::where('category_id', $request->category_id)->exists();
+        if(!$productcategoryExist){
+            return response()->json([
+                'error' => 'Product category id does not exist',
+            ],400);
+        }
+
+        $productbrandExist = Product::where('brand_id', $request->brnad_id)->exists();
+        if(!$productbrandExist){
+            return response()->json([
+                'error' => 'Product brand id does not exist',
+            ],400);
+        }
         $productSlug = Str::slug($request->name);
 
         $product = Product::create([
