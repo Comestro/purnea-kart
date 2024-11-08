@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductReviews;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ReviewApiController extends Controller
 {
@@ -37,16 +38,42 @@ class ReviewApiController extends Controller
             return response()->json(['error' => 'User ID Invalid'], 404);
         }
 
-        $data = ProductReviews::create([
-            'product_id' => $request->product_id,
-            'review' => $request->review,
-            'rating' => $request->rating,
-            'user_id' => $request->user_id,
+        if (!$request->has('rating')) {
+            return response()->json(['error' => 'Rating Invalid'], 400);
+        }
+        if (!$request->has('review')) {
+            return response()->json(['error' => 'Review Invalid'], 400);
+        }
+
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+            return response()->json(['error' => 'Token is invalid or expired'], 401);
+        }
+
+        if (!$user) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'review' => 'required|string|max:1000',
+            'rating' => 'required|integer|between:1,5',
         ]);
+
+        try {
+            $data = ProductReviews::create([
+                'product_id' => $request->product_id,
+                'review' => $request->review,
+                'rating' => $request->rating,
+                'user_id' => $user->id,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create review', 'message' => $e->getMessage()], 500);
+        }
 
         return response()->json([
             'message' => 'Review created successfully',
-            'data' => $data 
+            'data' => $data
         ], 200);
     }
 
@@ -69,18 +96,21 @@ class ReviewApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreReviewReq $request, string $id)
+    public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'product_id' => 'required',
+            'exists:products,id',
+            'review' => 'required|string|max:1000',
+            'rating' => 'required|integer|between:1,5',
+        ]);
         $review = ProductReviews::find($id);
         if (!$review) {
-            return response()->json(['error' => 'Review not found'], 404);
+            return response()->json(['error' => 'Review not found for id ' . $id], 404);
         }
+        $review->update($request->only(['product_id', 'review', 'rating']));
 
-        $review->update([
-            'review' => $request->review,
-            'rating' => $request->rating,
-        ]);
-
+        $review->save();
         return response()->json([
             'message' => 'Review updated successfully',
             'data' => $review

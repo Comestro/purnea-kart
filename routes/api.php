@@ -25,14 +25,16 @@ Route::prefix('otp')->group(function () {
     Route::post('login', [AuthController::class, 'otpLogin']);
     Route::post('verify', [AuthController::class, 'verifyOtp'])->middleware('throttle:5,1');
 });
-  
-Route::delete('categories/{category}', [AuthController::class,'destroy']);
+
+Route::delete('categories/{category}', [AuthController::class, 'destroy']);
 // Authenticated user route
 Route::get('/user', [AuthController::class, 'user']);
 
 // Grouped authenticated routes
 Route::middleware(['auth:api'])->group(function () {
+    Route::post('/reviews', [ReviewApiController::class,'store']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+
 
     // Admin-specific routes
     Route::middleware('admin.auth')->group(function () {
@@ -64,6 +66,5 @@ Route::apiResource('/products', ProductApiController::class);
 Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
-Route::apiResource('/reviews', ReviewApiController::class);
 Route::apiResource('/productVariants', ProductVariantApiController::class);
 
