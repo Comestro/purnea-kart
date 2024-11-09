@@ -33,5 +33,5 @@ class StoreProductReq extends FormRequest
             'category_id' => 'nullable|exists:categories,id',
             'brand_id' => 'nullable', 'exists:brands,id',
         ];
-    }
+    }   
 }

@@ -9,7 +9,7 @@ use Str;
 
 class BrandApiController extends Controller
 {
-   
+
     public function index()
     {
         $brands = Brand::all();
@@ -19,32 +19,78 @@ class BrandApiController extends Controller
         ], 200);
     }
 
-    public function store(StoreBrandReq $request)
+    public function store(Request $request)
     {
-
-        if ($request->hasFile('logo')) {
-            $imageName = time() . '.' . $request->logo->extension();
-            $request->logo->storeAs('logo/brand', $imageName, 's3');
+        if (!$request->has('brand_name')) {
+            return response()->json(['error' => 'Brand name is required, please insert this field.'], 400);
         }
-        $brandSlug = Str::slug($request->brand_name);
-        $brand = new Brand();
-        $brand->brand_name = $request->brand_name;
-        $brand->brand_description = $request->brand_description;
-        $brand->brand_slug = $brandSlug;
-        $brand->logo = $imageName;
-        $brand->status = 1;
-        $brand->save();
+    
+        if (!$request->has('brand_slug')) {
+            return response()->json(['error' => 'Brand slug is required, please insert this field.'], 400);
+        }
+    
+        if(!$request->has('brand_description')) {
+            return response()->json(['error'=> 'Brand description is required, please insert this field.'], 400);
+        }
+        if (!$request->hasFile('logo')) {
+            return response()->json(['error' => 'image is required, please insert this field.'], 400);
+        }
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            if (!$logo->isValid()) {
+                return response()->json(['error' => 'Logo file is not a valid image.'], 400);
+            }
+    
+            if (!in_array($logo->getClientMimeType(), ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'])) {
+                return response()->json(['error' => 'Logo must be an image file (jpeg, png, jpg, gif, svg).'], 400);
+            }
+    
+            if ($logo->getSize() > 2048 * 1024) { 
+                return response()->json(['error' => 'Logo image may not be greater than 2MB.'], 400);
+            }
+        }
         
-        return response()->json([
-            'message' => 'Brand created successfully',
-            'brand' => $brand
-        ], 200);
+        
+        try {
+            $imageName = null;
+            if ($request->hasFile('logo')) {
+                $imageName = time() . '.' . $request->logo->extension();
+                $request->logo->storeAs('logo/brand', $imageName, 's3');
+            }
+
+
+          
+
+            $brandSlug = Str::slug($request->brand_name);
+
+            $brand = Brand::create([
+                'brand_name' => $request->brand_name,
+                'brand_slug' => $brandSlug,
+                'brand_description' => $request->brand_description,
+                'logo' => $imageName,
+            ]);
+
+            return response()->json([
+                'message' => 'Brand created successfully',
+                'brand' => $brand,
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Something went wrong.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
 
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $brand = Brand::where('slug', $slug)->firstOrFail();
+        return response()->json([
+            'message' => 'Brand show successfully',
+            'brand' => $brand,
+        ], 200);
     }
 
     public function update(Request $request, string $id)
@@ -57,7 +103,7 @@ class BrandApiController extends Controller
         //
     }
     public function status($id)
-    { 
+    {
         $brand = Brand::find($id);
         if (!$brand) {
             return response()->json(['message' => 'Brand not found'], 404);

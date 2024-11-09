@@ -2,23 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreImageReq;
+use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MultipleImageController extends Controller
 {
+    // Helper method to handle image storage
+    private function storeImage($imageFile)
+    {
+        if ($imageFile && $imageFile->isValid()) {
+            $imageName = time() . '.' . $imageFile->extension();
+            $imageFile->storeAs('image/product', $imageName, 's3');
+            return $imageName;
+        }
+        return null;
+    }
 
     public function index()
     {
         $images = ProductImage::all();
+        return response()->json([
+            'status' => true,
+            'message' => 'Product Image Fecthed successfully',
+            'images' => $images,
+        ], 200);
     }
-    public function store(StoreImageReq $request)
+
+    public function store(Request $request)
     {
-        if ($request->hasFile('path')) {
-            $imageName = time() . '.' . $request->path->extension();
-            $request->path->storeAs('image/product', $imageName, 's3');
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json([
+                'status' => false,
+                'error' => 'Product Id is invalid.',
+            ], 404);
         }
+
+        if (!$request->has('path')) {
+            return response()->json(['error' => 'Image path is required.'], 400);
+        }
+
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        
+        $imageName = $this->storeImage($request->file('path'));
+        if (!$imageName) {
+            return response()->json(['error' => 'Failed to upload image.'], 400);
+        }
+
         $multipleImage = new ProductImage();
         $multipleImage->product_id = $request->product_id;
         $multipleImage->path = $imageName;
@@ -26,23 +61,67 @@ class MultipleImageController extends Controller
         $multipleImage->save();
 
         return response()->json([
-            'message' => 'Product Multiple Image created successfully',
-            'multipleImage' => $multipleImage
+            'status' => true,
+            'message' => 'Product Image created successfully.',
+            'multipleImage' => $multipleImage,
         ], 200);
     }
 
-    public function show(ProductImage $productImage)
+    public function show(Request $request, $id)
     {
-        //
+        $productImage = ProductImage::find($id);
+        if (!$productImage) {
+            return response()->json(['error' => 'Image not found.'], 404);
+        }
+
+        return response()->json([
+            'status' => true,
+            'productImage' => $productImage,
+        ], 200);
     }
 
-    public function update(Request $request, ProductImage $productImage)
+    public function update(Request $request, $id)
     {
-        //
+        $productImage = ProductImage::find($id);
+        if (!$productImage) {
+            return response()->json(['error' => 'Image not found.'], 404);
+        }
+
+        $request->validate([
+            'path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('path')) {
+            $imageName = $this->storeImage($request->file('path'));
+            if ($imageName) {
+                Storage::disk('s3')->delete('image/product/' . $productImage->path);
+                $productImage->path = $imageName;
+            }
+        }
+        $productImage->status = $request->get('status', $productImage->status);
+
+        $productImage->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Product Image updated successfully.',
+            'productImage' => $productImage,
+        ], 200);
     }
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $productImage = ProductImage::find($id);
+        if (!$productImage) {
+            return response()->json(['error' => 'Image not found.'], 404);
+        }
+        Storage::disk('s3')->delete('image/product/' . $productImage->path);
+
+        $productImage->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Product Image deleted successfully.',
+        ], 200);
     }
 }

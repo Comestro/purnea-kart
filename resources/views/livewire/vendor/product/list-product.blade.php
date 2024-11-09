@@ -1,10 +1,17 @@
 <div>
     <div class="table-responsive">
+        {{-- <h1>Data Table</h1>
+
+        <!-- Only show the "Insert" button if the user is authorized -->
+        @if (Auth::user()->role === 'admin' || Auth::user()->can('insert-data'))
+            <button wire:click="insertData">Insert New Data</button>
+        @endif --}}
         <table class="table table-custom table-lg mb-0" id="products">
             <thead>
                 <tr>
                     <th>
-                        <input class="form-check-input select-all" type="checkbox" data-select-all-target="#products" id="defaultCheck1">
+                        <input class="form-check-input select-all" type="checkbox" data-select-all-target="#products"
+                            id="defaultCheck1">
                     </th>
                     <th>ID</th>
                     <th>Photo</th>
@@ -16,48 +23,49 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($productList  as $key=>$pro )
-                <tr>
-                    <td>
-                        <input class="form-check-input" type="checkbox">
-                    </td>
-                    <td>
-                        <a href="#">{{ $key+1}}</a>
-                    </td>
-                    <td>
-                        <a href="#">
-                            <img src="{{ asset('assets_vendor/images/products/1.jpg')}}" class="rounded" width="40" alt="...">
-                        </a>
-                    </td>
-                    <td>{{$pro->name}}</td>
-                    <td>
-                        @if ($pro->quantity)
-                        <span class="text-success">Instock</span>
-                        @else
-                        <span class="text-danger">out of stock</span>
-                        @endif
+                @foreach ($productList as $key => $pro)
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="checkbox">
+                        </td>
+                        <td>
+                            <a href="#">{{ $key + 1 }}</a>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <img src="{{ asset('assets_vendor/images/products/1.jpg') }}" class="rounded"
+                                    width="40" alt="...">
+                            </a>
+                        </td>
+                        <td>{{ $pro->name }}</td>
+                        <td>
+                            @if ($pro->quantity)
+                                <span class="text-success">Instock</span>
+                            @else
+                                <span class="text-danger">out of stock</span>
+                            @endif
 
-                    </td>
-                    <td>{{$pro->price}}</td>
-                    <td>{{$pro->created_at}}</td>
-                    <td class="text-end">
-                        <div class="d-flex">
-                            <div class="dropdown ms-auto">
-                                <a href="#" data-bs-toggle="dropdown" class="btn btn-floating" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a  href="{{ route('product.edit', $pro->id) }}" class="dropdown-item">Edit</a>
-                                    
-                                    <a href="#" class="dropdown-item">Another action</a>
-                                    <a href="#" class="dropdown-item">Something else here</a>
+                        </td>
+                        <td>{{ $pro->price }}</td>
+                        <td>{{ $pro->created_at }}</td>
+                        <td class="text-end">
+                            <div class="d-flex">
+                                <div class="dropdown ms-auto">
+                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-floating"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-three-dots"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="{{ route('product.edit', $pro->id) }}" class="dropdown-item">Edit</a>
+
+                                        <a href="#" class="dropdown-item">Another action</a>
+                                        <a href="#" class="dropdown-item">Something else here</a>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                        </div>
-                    </td>
-                </tr>
 
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
 
 

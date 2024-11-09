@@ -5,33 +5,37 @@ use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
+use App\Http\Controllers\ProductVariantApiController;
 use App\Http\Controllers\ReviewApiController;
+use App\Http\Controllers\WishListApiController;
 use Illuminate\Support\Facades\Route;
 
 // Fallback route for handling undefined routes
 Route::fallback(function () {
-    return response()->json(['error' => 'Method not allowed'], 405);
+    return response()->json(['error' => 'Method not allowed'], status: 405);
 });
 
 // Authentication routes
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });
 
-
 Route::prefix('otp')->group(function () {
     Route::post('login', [AuthController::class, 'otpLogin']);
     Route::post('verify', [AuthController::class, 'verifyOtp'])->middleware('throttle:5,1');
 });
-  
-Route::delete('categories/{category}', [AuthController::class,'destroy']);
+
+Route::delete('categories/{category}', [AuthController::class, 'destroy']);
 // Authenticated user route
-Route::get('/user', [AuthController::class, 'user']);
 
 // Grouped authenticated routes
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::apiResource('/reviews', ReviewApiController::class);
+
 
     // Admin-specific routes
     Route::middleware('admin.auth')->group(function () {
@@ -63,5 +67,6 @@ Route::apiResource('/products', ProductApiController::class);
 Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
-Route::post('/reviews', [ReviewApiController::class, 'store']);
+Route::apiResource('/productVariants', ProductVariantApiController::class);
+Route::apiResource('/wishlists', WishListApiController::class);
 
