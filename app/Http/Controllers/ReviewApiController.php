@@ -44,9 +44,12 @@ class ReviewApiController extends Controller
         if (!$request->has('review')) {
             return response()->json(['error' => 'Review Invalid'], 400);
         }
-
+        $token = $request->bearerToken();
+        if (!$token) {
+            return response()->json(['error' => 'Token is required'], 401);
+        }
         try {
-            $user = JWTAuth::parseToken()->authenticate();
+            $user = JWTAuth::setToken($token)->authenticate();
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['error' => 'Token is invalid or expired'], 401);
         }
@@ -59,7 +62,13 @@ class ReviewApiController extends Controller
             'review' => 'required|string|max:1000',
             'rating' => 'required|integer|between:1,5',
         ]);
+        $existingReview = ProductReviews::where('product_id', $request->product_id)
+            ->where('user_id', $user->id)
+            ->first();
 
+        if ($existingReview) {
+            return response()->json(['error' => 'You have already reviewed this product'], 400);
+        }
         try {
             $data = ProductReviews::create([
                 'product_id' => $request->product_id,

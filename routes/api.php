@@ -15,11 +15,11 @@ Route::fallback(function () {
 });
 
 // Authentication routes
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });
-
 
 Route::prefix('otp')->group(function () {
     Route::post('login', [AuthController::class, 'otpLogin']);
@@ -28,12 +28,12 @@ Route::prefix('otp')->group(function () {
 
 Route::delete('categories/{category}', [AuthController::class, 'destroy']);
 // Authenticated user route
-Route::get('/user', [AuthController::class, 'user']);
 
 // Grouped authenticated routes
 Route::middleware(['auth:api'])->group(function () {
-    Route::post('/reviews', [ReviewApiController::class,'store']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::apiResource('/reviews', ReviewApiController::class);
 
 
     // Admin-specific routes
