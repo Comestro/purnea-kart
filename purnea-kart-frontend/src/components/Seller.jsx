@@ -1,12 +1,11 @@
 import React from 'react'
-import { FaUserTie } from 'react-icons/fa';
-
+import { PiStorefront } from "react-icons/pi";
 function Seller() {
   return (
     <div>
-      <button className='flex space-x-2 items-center font-medium'>
-        <FaUserTie/>
-        <p>Seller</p> 
+      <button className='flex space-x-2 items-center'>
+        <PiStorefront />
+        <p>Become a Seller</p> 
       </button>
     </div>
   )

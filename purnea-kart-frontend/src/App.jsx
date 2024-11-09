@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Product_Page from './components/Product_Page/Product_Page'
 import Products from './components/Products/Products'
+import CartPage from './components/Cart/Cart'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} /> 
         <Route path="/products/:slug" element={<Product_Page/>} />
+        <Route path='/cart' element={<CartPage/>} />
       </Routes>
      </BrowserRouter>
    </Provider>

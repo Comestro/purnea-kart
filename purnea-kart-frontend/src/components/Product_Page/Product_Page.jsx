@@ -30,8 +30,7 @@ const Product_Page = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-4">
-            <div>
-                <div className="mchProduax-w-6xl mx-auto bg-white p-6 rounded-md shadow-md">
+      <div className="mchProduax-w-6xl mx-auto bg-white p-6 rounded-md shadow-md">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Product Image */}
@@ -123,9 +122,6 @@ const Product_Page = () => {
           </div>
         </div>
       </div>
-            </div>
-        
-      
     </div>
   );
 };
