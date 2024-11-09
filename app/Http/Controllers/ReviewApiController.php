@@ -28,31 +28,6 @@ class ReviewApiController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-
-        $product = Product::find(Request::input('product_id'));
-
-        if(!$product){
-            return response()->json([
-               'message' => 'Product not found'
-            ], 404);
-        }
-
-        $data = [
-            'product_id' => Request::input('product_id'),
-           'review' => Request::input('review'),
-            'rating' => Request::input('rating'),
-            "user_id" => Request::input('user_id')
-        ];
-     
-
-
-        $review = ProductReviews::create($data);
-
-        return response()->json([
-            'message' => 'Review created successfully',
-            'review' => $review 
-=======
         $product = Product::find($request->product_id);
         if (!$product) {
             return response()->json(['error' => 'Product Invalid'], 404);
@@ -108,7 +83,6 @@ class ReviewApiController extends Controller
         return response()->json([
             'message' => 'Review created successfully',
             'data' => $data
->>>>>>> 4e7d777663809f9df721b41f14c69c5317fee42d
         ], 200);
     }
 
