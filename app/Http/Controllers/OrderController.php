@@ -3,10 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function addToCart(Request $req,$product_slug){
+       //dd($product_slug);
+       $product = Product::where('slug',$product_slug)->first();
+       if(!$product){
+        abort(404);
+       }
+       else{
+
+       }
+      // return redirect()->route('cart');
+    }
+    public function showCart(){
+        //$data['order'] = Order::where('user_id',Auth::id)->where('isOrdered',false)->first();
+        return view ("cart");
+    }
     /**
      * Display a listing of the resource.
      */

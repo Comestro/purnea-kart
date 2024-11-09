@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\OrderController;
+
 use App\Http\Middleware\AdminMiddleware;
 use App\Models\Setting;
 use App\Models\Banner;
@@ -25,6 +27,12 @@ Route::get('/', function () {
     $data['brands'] = Brand::all();
     return view('home', $data);
 })->name('home');
+
+//add-to-cart
+Route::get('/add-to-cart/{product_slug}', [OrderController::class, 'addToCart'])->name('addToCart');
+Route::get('/cart', [OrderController::class, 'showCart'])->name('Cart');
+
+
 
 Route::get('/becomeSeller', [SellerController::class, 'show'])->name('sellershow');
 Route::get('/become-seller/create', [SellerController::class, 'index'])->name('seller.register');
