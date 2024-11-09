@@ -7,6 +7,7 @@ use App\Http\Controllers\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
 use App\Http\Controllers\ProductVariantApiController;
 use App\Http\Controllers\ReviewApiController;
+use App\Http\Controllers\WishListApiController;
 use Illuminate\Support\Facades\Route;
 
 // Fallback route for handling undefined routes
@@ -67,4 +68,5 @@ Route::apiResource('/brands', BrandApiController::class);
 Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
 Route::apiResource('/productVariants', ProductVariantApiController::class);
+Route::apiResource('/wishlists', WishListApiController::class);
 
