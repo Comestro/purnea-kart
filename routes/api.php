@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 // Fallback route for handling undefined routes
 Route::fallback(function () {
-    return response()->json(['error' => 'Method not allowed'], 405);
+    return response()->json(['error' => 'Method not allowed'], status: 405);
 });
 
 // Authentication routes
