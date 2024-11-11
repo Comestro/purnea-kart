@@ -127,54 +127,39 @@ class AuthController extends Controller
         return response()->json(['error' => 'Invalid credentials'], 401);
     }
 
-    public function user(Request $request)
-    {
-        $token = $request->bearerToken();
+public function user(Request $request)
+{
+    $token = $request->bearerToken();
 
-        if (!$token) {
-            return response()->json(['error' => 'Token is required'], 401);
-        }
-
-        try {
-            $user = JWTAuth::setToken($token)->authenticate();
-
-            if ($user->is_admin == 1 && $user->is_vendor == 1) {
-                return response()->json([
-                    'message' => 'Authenticated as Admin',
-                    'user' => $user,
-                    'role' => 'admin',
-                    'expires_in' => auth()->factory()->getTTL() * 60,
-                ], 200);
-            }
-
-            if ($user->is_vendor == 1 && $user->is_admin == 0) {
-                return response()->json([
-                    'message' => 'Authenticated as Vendor',
-                    'user' => $user,
-                    'role' => 'vendor',
-                    'expires_in' => auth()->factory()->getTTL() * 60,
-                ], 200);
-            }
-
-            if ($user->is_vendor == 0 && $user->is_admin == 0) {
-                return response()->json([
-                    'message' => 'Authenticated as User',
-                    'user' => $user,
-                    'role' => 'user',
-                    'expires_in' => auth()->factory()->getTTL() * 60,
-                ], 200);
-            }
-
-            return response()->json(['error' => 'Role identification failed'], 403);
-
-        } catch (TokenExpiredException $e) {
-            return response()->json(['error' => 'Token has expired'], 401);
-        } catch (TokenInvalidException $e) {
-            return response()->json(['error' => 'Token is invalid'], 401);
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'Could not parse the token'], 401);
-        }
+    if (!$token) {
+        return response()->json(['error' => 'Token is required'], 401);
     }
+
+    try {
+        $user = JWTAuth::setToken($token)->authenticate();
+
+        $role = 'user'; 
+        if ($user->is_admin && $user->is_vendor) {
+            $role = 'admin';
+        } elseif ($user->is_vendor) {
+            $role = 'vendor';
+        }
+
+        return response()->json([
+            'message' => 'Authenticated as ' . ucfirst($role),
+            'user' => $user,
+            'role' => $role,
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ], 200);
+
+    } catch (TokenExpiredException $e) {
+        return response()->json(['error' => 'Token has expired'], 401);
+    } catch (TokenInvalidException $e) {
+        return response()->json(['error' => 'Token is invalid'], 401);
+    } catch (JWTException $e) {
+        return response()->json(['error' => 'Could not parse the token'], 401);
+    }
+}
 
 
 
@@ -212,12 +197,11 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user = JWTAuth::user();
-        if ($user->is_admin == 1 && $user->is_vendor == 1) {
+        $role = 'user';
+        if ($user->is_admin && $user->is_vendor) {
             $role = 'admin';
-        } elseif ($user->is_vendor == 1 && $user->is_admin == 0) {
+        } elseif ($user->is_vendor) {
             $role = 'vendor';
-        } else {
-            $role = 'user';
         }
 
         return response()->json([
