@@ -142,9 +142,9 @@
         
                 <!-- Add to Cart Button -->
                 <div class="mt-8">
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-500 transition duration-200">
+                    <a href="{{route('addToCart',$product->slug)}}"><button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-500 transition duration-200">
                         Add to Cart
-                    </button>
+                    </button></a>
                 </div>
         
                 <!-- Buy Now Button -->
