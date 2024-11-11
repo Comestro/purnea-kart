@@ -68,6 +68,7 @@ const Product_Page = () => {
             <div className="flex space-x-4 mt-4">
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md font-semibold">Add to Cart</Button>
               <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-md font-semibold">Buy Now</Button>
+              <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-md font-semibold">Wishlist</Button>
             </div>
           </div>
         </div>

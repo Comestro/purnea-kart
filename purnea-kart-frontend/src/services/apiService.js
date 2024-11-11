@@ -5,10 +5,10 @@ import { getApiUrl } from './configService';
 
 const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   'Authorization': `Bearer ${getApiKey()}`, // Use API key from config service
-  // },
+  headers: {
+   'Content-Type': 'application/json',
+   'Authorization': `Bearer ${getApiKey()}`, // Use API key from config service
+   },
 });
 
 
@@ -49,6 +49,16 @@ export const fetchCategories = async ()=>{
      return response.data;
   }catch (error){
     console.error('Failed to fetch categories:', error);
+    throw error;
+  }
+}
+
+export const fetchWishlist = async ()=>{
+  try{
+     const response = await apiClient.get("/wishlist");
+     return response.data;
+  }catch (error){
+    console.error('Failed to fetch wishlist:', error);
     throw error;
   }
 }
