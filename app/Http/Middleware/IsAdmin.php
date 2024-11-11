@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class IsAdmin
 {
@@ -16,9 +16,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard("admin")->check()) {
-            return redirect()->route("/admin.login");
-        }        
+        $user = JWTAuth::user();
+        if (!$user || !$user->is_admin) {
+            return response()->json(['error' => 'Unauthorized. You are not an admin.'], 403); // Forbidden
+        }
+
         return $next($request);
     }
 }

@@ -126,7 +126,9 @@ class ProductApiController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
+        if(!$product){
+            return response()->json(['Product delete fail']);
+        }
         return response()->json([
             'message' => 'Product deleted successfully'
         ], 200);

@@ -126,17 +126,43 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         $token = $request->bearerToken();
+
         if (!$token) {
             return response()->json(['error' => 'Token is required'], 401);
         }
 
         try {
             $user = JWTAuth::setToken($token)->authenticate();
-            return response()->json([
-                'message' => 'User authentication successful',
-                'user' => $user,
-                'expires_in' => auth()->factory()->getTTL() * 60,
-            ], 200);
+
+            if ($user->is_admin == 1 && $user->is_vendor == 1) {
+                return response()->json([
+                    'message' => 'Authenticated as Admin',
+                    'user' => $user,
+                    'role' => 'admin',
+                    'expires_in' => auth()->factory()->getTTL() * 60,
+                ], 200);
+            }
+
+            if ($user->is_vendor == 1 && $user->is_admin == 0) {
+                return response()->json([
+                    'message' => 'Authenticated as Vendor',
+                    'user' => $user,
+                    'role' => 'vendor',
+                    'expires_in' => auth()->factory()->getTTL() * 60,
+                ], 200);
+            }
+
+            if ($user->is_vendor == 0 && $user->is_admin == 0) {
+                return response()->json([
+                    'message' => 'Authenticated as User',
+                    'user' => $user,
+                    'role' => 'user',
+                    'expires_in' => auth()->factory()->getTTL() * 60,
+                ], 200);
+            }
+
+            return response()->json(['error' => 'Role identification failed'], 403);
+
         } catch (TokenExpiredException $e) {
             return response()->json(['error' => 'Token has expired'], 401);
         } catch (TokenInvalidException $e) {
@@ -145,6 +171,9 @@ class AuthController extends Controller
             return response()->json(['error' => 'Could not parse the token'], 401);
         }
     }
+
+
+
 
     public function logout()
     {
@@ -179,13 +208,22 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user = JWTAuth::user();
+        if ($user->is_admin == 1 && $user->is_vendor == 1) {
+            $role = 'admin';
+        } elseif ($user->is_vendor == 1 && $user->is_admin == 0) {
+            $role = 'vendor';
+        } else {
+            $role = 'user';
+        }
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'is_admin' => $user->is_admin ?? 0,
-            'is_vendor' => $user->is_vendor ?? 0,
+            'role' => $role,
             'user' => $user,
         ]);
     }
+
+
 }
