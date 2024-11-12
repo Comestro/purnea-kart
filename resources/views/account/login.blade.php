@@ -26,8 +26,7 @@
 
             </div>
 
-            <form method="POST" action="{{ route('account.login') }}">
-                @csrf
+            <form method="POST" action="" id="addData">
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700">Email:</label>
                     <input type="email" id="email" name="email" required
@@ -51,4 +50,40 @@
             </div>
         </div>
     </div>
+    
+
+    <script>
+        $(document).ready(function() {
+            // Insert application details
+            $("#addData").submit(function(e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('account.login.data') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        $("#addData").trigger("reset");
+                        window.open("/", "_self");
+                    },
+                    error: function(xhr) {
+                        $('.error-message').html('');
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $('.error-message').html(''); // Clear previous error messages
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]).show();
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductApiController;
 use App\Http\Controllers\ProductVariantApiController;
 use App\Http\Controllers\ReviewApiController;
 use App\Http\Controllers\WishListApiController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 // Fallback route for handling undefined routes
@@ -19,7 +20,7 @@ Route::fallback(function () {
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->name('account.login.data');
 });
 
 Route::prefix('otp')->group(function () {
@@ -69,4 +70,6 @@ Route::apiResource('/multipleImage', MultipleImageController::class);
 Route::apiResource('categories', CategoryApiController::class);
 Route::apiResource('/productVariants', ProductVariantApiController::class);
 Route::apiResource('/wishlists', WishListApiController::class);
+
+// Route::post('/account/login', [PublicController::class, 'Login'])->name('account.login.data');
 

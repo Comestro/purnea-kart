@@ -99,7 +99,7 @@ class PublicController extends Controller
                 if (Auth::user()->isAdmin == 1) {
                     return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
                 } else {
-                    dd($req->session()->all());
+                    // dd($req->session()->all());
 
                     return redirect()->intended("/");
                     

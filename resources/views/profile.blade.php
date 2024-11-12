@@ -87,6 +87,11 @@
                         <span class="font-bold text-gray-500">Logout</span>
                     </div>
                 </div>
+                <div class="flex-col px-4 py-3 bg-white shadow mt-4">
+                    <p class=" font-semibold">Frequently Visited:</p>
+                    <p class="font-xs font-medium text-gray-700 mt-2">Track Order Help Center</p>
+
+                </div>
             </div>
 
             <div class="w-9/12 p-4 bg-white">
@@ -122,8 +127,8 @@
                         Email Address
                         <a href="#" class= "text-sm text-blue-600 ml-3">Edit</a>
                     </h4>
-                    <input type="email" value="demo@demo.com" class="mt-2 border-gray-300 rounded-md shadow-sm mb-4 w-[50%]"
-                        disabled>
+                    <input type="email" value="demo@demo.com"
+                        class="mt-2 border-gray-300 rounded-md shadow-sm mb-4 w-[50%]" disabled>
 
                     <h4 class="text-lg text-gray-600 font-semibold mb-2">
                         Mobile Number
@@ -131,6 +136,36 @@
                     </h4>
                     <input type="tel" value="+00000000000"
                         class=" border-gray-300 rounded-md shadow-sm focus:border-blue-500 w-[50%]" disabled>
+
+                    <h2 class="font-black mt-6">FAQs</h2>
+                    <h3 class="font-bold mt-6">What happens when I update my email address (or mobile number)?</h3>
+                    <p class="font-xs mt-6">Your login email id (or mobile number) changes, likewise. You'll receive all
+                        your account related communication on your updated email address (or mobile number).</p>
+
+                    <h3 class="font-bold mt-6">When will my Flipkart account be updated with the new email address (or
+                        mobile number)?
+                    </h3>
+                    <p class="font-xs mt-6"> It happens as soon as you confirm the verification code sent to your email (or
+                        mobile) and save the changes.
+
+                    </p>
+
+                    <h3 class="font-bold mt-6">What happens to my existing Flipkart account when I update my email address
+                        (or mobile number)?
+                    </h3>
+                    <p class="font-xs mt-6">Updating your email address (or mobile number) doesn't invalidate your account.
+                        Your account remains fully functional. You'll continue seeing your Order history, saved information
+                        and personal details.
+
+                    </p>
+
+                    <h2 class="font-bold mt-6">Does my Seller account get affected when I update my email address?
+                    </h2>
+                    <p class="font-xs mt-6">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller
+                        account also.
+                    </p>
+                    <h2 class="text-blue-400  mt-6">Account Deactivate</h2>
+                    <h2 class="text-red-400 mt-6">Account Delete</h2>
                 </div>
 
             </div>
