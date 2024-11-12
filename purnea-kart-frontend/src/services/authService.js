@@ -64,16 +64,16 @@ const apiClient = axios.create({
   }
 
   // Logout User
-//   async logout() {
-//     try {
-//       localStorage.removeItem('token'); // Remove token from local storage
-//       console.log('User logged out');
-//     } catch (err) {
-//       console.error('Logout error:', err);
-//       throw err;
-//     }
-//   }
-// }
+  export const logout = async () =>{
+    try {
+      localStorage.removeItem('token'); // Remove token from local storage
+      console.log('User logged out');
+    } catch (err) {
+      console.error('Logout error:', err);
+      throw err;
+    }
+  }
+
 
 
 export default apiClient;

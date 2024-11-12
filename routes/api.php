@@ -3,10 +3,13 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandApiController;
 use App\Http\Controllers\CategoryApiController;
-use App\Http\Controllers\MultipleImageController;
+use App\Http\Controllers\Vendor\BrandController;
+use App\Http\Controllers\Vendor\CategoryController;
+use App\Http\Controllers\Vendor\MultipleImageController;
 use App\Http\Controllers\ProductApiController;
 use App\Http\Controllers\ProductVariantApiController;
 use App\Http\Controllers\ReviewApiController;
+use App\Http\Controllers\Vendor\ProductController;
 use App\Http\Controllers\WishListApiController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
@@ -52,8 +55,11 @@ Route::middleware(['auth:api'])->group(function () {
 
     // Vendor-specific routes
     Route::middleware('vendor.auth')->group(function () {
-        // Uncomment and add actual functionality
-        // Route::post('/products', [ProductApiController::class, 'store']);
+        Route::apiResource('/categories', CategoryController::class);
+        Route::apiResource('/products', ProductController::class);
+        Route::apiResource('/multipleImages', MultipleImageController::class);
+        Route::apiResource('/brands', BrandController::class);
+
     });
 
     // Non-vendor specific routes

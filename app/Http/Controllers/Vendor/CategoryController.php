@@ -1,27 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Vendor;
 
-use App\Http\Requests\StoreCategoryReq;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Storage;
 use Str;
 
-class CategoryApiController extends Controller
+class CategoryController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $categories = Category::where('parent_category_id', NULL)->get();
+        $categores = Category::all();
         return response()->json([
-            'message' => 'Categories fetched successfully',
-            'categories' => $categories
-        ], 200);
-
+            'status' => true,
+            'message'=>'category Fetech Successfully',
+            'categories'=>$categores
+        ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         // Custom validation for missing fields
@@ -65,7 +68,7 @@ class CategoryApiController extends Controller
             $category->parent_category_id = $request->parent_category_id;
             $category->cat_slug = $catSlug;
             $category->cat_description = $request->cat_description;
-            $category->image = $imageName;            
+            $category->image = $imageName;
             $category->save();
 
 
@@ -82,63 +85,40 @@ class CategoryApiController extends Controller
         }
     }
 
-
     /**
      * Display the specified resource.
      */
     public function show($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-
-        if (!$category) {
+        try {
+            $brand = Category::where('slug', $slug)->firstOrFail();
+            
             return response()->json([
-                'message' => 'Category not found'
+                'message' => 'Category retrieved successfully',
+                'brand' => $brand,
+            ], 200);
+            
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Category not found with the given slug',
             ], 404);
         }
-
-        return response()->json([
-            'message' => 'Category fetched successfully',
-            'category' => $category
-        ], 200);
     }
-
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCategoryReq $request, Category $category)
+    public function update(Request $request, string $id)
     {
-
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('image/category', $imageName, 'public');
-        }
-
-        $category->cat_title = $request->cat_title;
-        $category->parent_category_id = $request->parent_category_id;
-        $category->cat_slug = $request->cat_slug;
-        $category->image = $imageName;
-        $category->cat_description = $request->cat_description;
-        $category->save();
-
-        return response()->json([
-            'message' => 'Category updated successfully',
-            'category' => $category
-        ], 200);
+        //
     }
 
-    public function destroy(Category $category)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
-        // if ($category->image) {
-        //     Storage::disk('s3')->delete('image/category/' . $category->image);
-        // }
-        dd($category->id);
-        try {
-            $category->delete();
-            return response()->json(['message' => 'Category deleted successfully.'], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Category could not be deleted.'], 500);
-        }
+        //
     }
-
 }

@@ -86,11 +86,19 @@ class BrandApiController extends Controller
 
     public function show($slug)
     {
-        $brand = Brand::where('slug', $slug)->firstOrFail();
-        return response()->json([
-            'message' => 'Brand show successfully',
-            'brand' => $brand,
-        ], 200);
+        try {
+            $brand = Brand::where('slug', $slug)->firstOrFail();
+            
+            return response()->json([
+                'message' => 'Brand retrieved successfully',
+                'brand' => $brand,
+            ], 200);
+            
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Brand not found with the given slug',
+            ], 404);
+        }
     }
 
     public function update(Request $request, string $id)
