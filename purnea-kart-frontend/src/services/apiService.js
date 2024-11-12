@@ -2,19 +2,31 @@
 import axios from 'axios';
 import { getApiUrl } from './configService';
 
+
 const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   'Authorization': `Bearer ${getApiKey()}`, // Use API key from config service
-  // },
+  headers: {
+   'Content-Type': 'application/json',
+   'Authorization': `Bearer ${localStorage.getItem('token')}`, // Use API key from config service
+   },
 });
 
 
 
 export const fetchProducts = async () => {
+  
   try {
-    const response = await apiClient.get("/products");
+    const response = await apiClient.get(`/products`);
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+    throw error;
+  }
+};
+export const fetchProduct = async (slug) => {
+  
+  try {
+    const response = await apiClient.get(`/products/${slug}`);
     return response.data;
   } catch (error) {
     console.error('Failed to fetch products:', error);
@@ -41,6 +53,18 @@ export const fetchCategories = async ()=>{
     throw error;
   }
 }
+
+export const fetchWishlist = async ()=>{
+  try{
+     const response = await apiClient.get("/wishlist");
+     return response.data;
+  }catch (error){
+    console.error('Failed to fetch wishlist:', error);
+    throw error;
+  }
+}
+
+
 
 
 

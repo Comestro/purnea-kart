@@ -29,7 +29,7 @@ Route::get('/', function () {
 })->name('home');
 
 //add-to-cart
-Route::get('/add-to-cart/{product_slug}', [OrderController::class, 'addToCart'])->name('addToCart');
+Route::get('/add-to-cart/{product_slug}', [OrderController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get('/cart', [OrderController::class, 'showCart'])->name('Cart');
 
 

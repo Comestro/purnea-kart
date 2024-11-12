@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class IsVendor
 {
@@ -16,9 +16,12 @@ class IsVendor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard("vendor")->check()) {
-            return redirect()->route("/vendor.login");
+
+        $user = JWTAuth::user();
+        if (!$user || !$user->is_vendor) {
+            return response()->json(['error' => 'Unauthorized. You are not a vendor.'], 403);
         }
+
         return $next($request);
     }
 }

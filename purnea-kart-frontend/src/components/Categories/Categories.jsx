@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchCategories } from '../../services/apiService';
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 function Categories() {
@@ -24,7 +24,7 @@ function Categories() {
 
   return (
     <div className='w-full h-32 bg-white mt-3 '>
-      {/* <Link to={''}> */}
+      <Link to={'/products'}>
         <div className='flex justify-center items-center space-x-10 px-40 py-5  '>
         {categories.map((categ)=>(
           <div className=' px-3 flex flex-wrap justify-center' key={categ.id}>
@@ -37,7 +37,7 @@ function Categories() {
           </div>
         ))}
         </div>
-      {/* </Link> */}
+      </Link>
       
     </div>
   )

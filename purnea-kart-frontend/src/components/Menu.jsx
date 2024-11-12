@@ -1,10 +1,10 @@
 import React from 'react'
-import { FaEllipsisV } from 'react-icons/fa'
+import { CiMenuKebab } from "react-icons/ci";
 
 function Menu() {
   return (
     <button>
-      <FaEllipsisV size={24} />
+      <CiMenuKebab />
     </button>
   )
 }

@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Relation\HasMany;
 class Order extends Model
 {
     use HasFactory;
-     /**
-     * Get all of the comments for the Order
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
+    // Add 'user_id' to the $fillable property
+    protected $fillable = [
+        'user_id',
+        'isOrdered',
+    ];
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItems::class, 'order_id', 'id');
