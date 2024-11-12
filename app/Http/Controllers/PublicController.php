@@ -55,7 +55,7 @@ class PublicController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('/')->with('success', 'Registration successfull');
+        return redirect()->intended('/login')->with('success', 'Registration successfull');
     }
 
     // showing login form here:
