@@ -45,7 +45,7 @@
                     <h2 class="text-2xl font-bold mb-4">Search by {{ $category->cat_title }}</h2>
 
                     @forelse ($category->products as $item)
-                        <div class="flex items-center bg-slate-50 overflow-hidden px-5 border-b">
+                        <a href="{{ route('viewpage', ['product_slug' => $item->slug]) }}" class="flex items-center bg-slate-50 overflow-hidden px-5 border-b">
                             <div class="w-1/3">
                                 <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $item->image) }}" alt="{{ $item->name }}" class="rounded-lg object-cover">
                             </div>
@@ -71,7 +71,7 @@
                                 <span class="text-gray-500 line-through ml-3">₹{{ $item->price }}</span>
                                 <span class="text-green-600 font-semibold ml-2">{{ number_format(($item->price - $item->discount_price) / $item->price * 100, 0) }}% off</span>
                             </div>
-                        </div>
+                        </a>
                     @empty
                         <h2 class="text-center text-gray-600">Products not found...</h2>
                     @endforelse

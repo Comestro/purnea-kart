@@ -2,15 +2,15 @@
 
 @section('content')
 <!-- Product Container -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-[70px] ">
+<div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-12 py-8 mt-[70px] ">
 
     <!-- Product Details Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
         <!-- Product Image -->
-        <div class="px-5">
+        <div class="px-7  h-[500px]">
             <img src="{{ asset('https://ronilaravel.s3.amazonaws.com/public/image/product/' . $product->images->first()->path) }}"
-                alt="Product Image" class="w-full h-90 object-cover rounded-lg shadow-md">
+                alt="Product Image" class="w-full h-[370px] object-contain rounded-lg shadow-md">
 
             <div class="flex mt-2 gap-3 items-center">
                 @foreach ($product->images->skip(1) as $image)
@@ -87,23 +87,27 @@
         <div class="flex flex-col justify-start gap-4 h-full">
             <!-- Product Title and Price -->
             <div class="p-2">
-                <div class="flex justify-between items-start">
-                    <div class="flex flex-col gap-2">
-                        <h1 class="text-3xl font-semibold mb-1">{{ $product->name }}</h1>
+                <div class="flex flex-col justify-between items-start">
+                    <div class="flex w-full flex-col gap-2">
+                        <h1 class="text-2xl font-semibold mb-1">{{ $product->name }}</h1>
                         <p class="text-2xl text-gray-800 font-bold">₹{{ $product->price }}</p>
                     </div>
-                    <div class="flex items-center mt-4">
-                        <div class="flex text-yellow-500">
-                            <span class="text-xl">&#9733;</span>
-                            <span class="text-xl">&#9733;</span>
-                            <span class="text-xl">&#9733;</span>
-                            <span class="text-xl">&#9733;</span>
-                            <span class="text-gray-300 text-xl">&#9733;</span>
+                    <div class="flex w-full items-center justify-between mt-2">
+                        <div class="flex">
+                            <div class="text-yellow-500">
+                                <span class="text-xl">&#9733;</span>
+                                <span class="text-xl">&#9733;</span>
+                                <span class="text-xl">&#9733;</span>
+                                <span class="text-xl">&#9733;</span>
+                                <span class="text-gray-300 text-xl">&#9733;</span>
+                            </div>
+                            <span class="ml-2 text-gray-600">(120 reviews)</span>
                         </div>
-                        <span class="ml-2 text-gray-600">(120 reviews)</span>
+                        <div class="mr-5">
+                            <livewire:wishlist-toggle :productId="$product->id" />
+                        </div>
                     </div>
                     {{-- wishlist --}}
-                    <livewire:wishlist-toggle :productId="$product->id" />
                 </div>
                 <h2 class="mt-2"><span class="font-semibold text-gray-600">Category: </span>{{ $product->category->cat_title }}</h2>
                 <p class="text-gray-700 mt-4">{{ $product->description }}</p>
