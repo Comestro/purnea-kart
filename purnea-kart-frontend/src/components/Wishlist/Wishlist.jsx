@@ -1,24 +1,46 @@
 import React, { useState } from 'react';
 import { fetchWishlist } from '../../services/apiService';
+import { IoSearchOutline } from "react-icons/io5";
+import {Logo,Button,Login} from '../Index'
 
 function Wishlist() {
-    const [wishlist, setWishlist] = useState([]);
-    const [error,setError]= useState('true');
-    const [loading,setLoading]= useState('null')
+    // const [wishlist, setWishlist] = useState([]);
+    // const [error,setError]= useState('true');
+    // const [loading,setLoading]= useState('null')
     
-    useEffect(()=>{
-        const loadWishlist = async () => {
-           try{
-              const data = await fetchWishlist();
-              setWishlist(data.categories)
-              setLoading(false)
-           }catch(err){
-             setError(error)
-             setLoading(false)
-           }
-        }
-        loadWishlist();
-    },[])
+    // useEffect(()=>{
+    //     const loadWishlist = async () => {
+    //        try{
+    //           const data = await fetchWishlist();
+    //           setWishlist(data.categories)
+    //           setLoading(false)
+    //        }catch(err){
+    //          setError(error)
+    //          setLoading(false)
+    //        }
+    //     }
+    //     loadWishlist();
+    // },[])
+    const [wishlist, setWishlist] = useState([
+        {
+          id: 1,
+          name: 'Product 1',
+          price: 2999,
+          imageUrl: 'https://via.placeholder.com/150', // Replace with actual image URL
+        },
+        {
+          id: 2,
+          name: 'Product 2',
+          price: 1999,
+          imageUrl: 'https://via.placeholder.com/150',
+        },
+        {
+          id: 3,
+          name: 'Product 3',
+          price: 1599,
+          imageUrl: 'https://via.placeholder.com/150',
+        },
+      ]);
 
   // Handle removing an item from wishlist
   const removeFromWishlist = (id) => {
@@ -32,7 +54,25 @@ function Wishlist() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className=" bg-gray-100 ">
+      <nav>
+        <div className='w-full bg-blue-500'>
+             <div className='flex justify-between  px-6 '>
+                   <div className='max-w-7xl mx-auto flex items-center justify-between'>
+                        {/* <Link to='/home'> */}
+                        <Logo/>
+                        {/* </Link> */}
+                    </div> 
+                    <div className="hidden md:flex items-center w-[50%] relative">
+                        <IoSearchOutline  className='w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2'/>
+                        <input 
+                        className='bg-slate-100 w-full rounded-lg pl-10 pr-4 py-2 border-none'
+                        type="search"
+                        placeholder='search for Products, Brand and More' />
+                    </div>
+              </div>
+        </div>
+      </nav>
       <h2 className="text-2xl font-bold text-gray-800 mb-6">My Wishlist</h2>
 
       {wishlist.length === 0 ? (

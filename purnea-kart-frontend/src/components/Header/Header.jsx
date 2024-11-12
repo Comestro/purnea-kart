@@ -15,6 +15,25 @@ function Header() {
     const dropdownRef = useRef(null);
 
 
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const user = await getuser();
+    //             setUser(user.user);
+    //         } catch (error) {
+    //             console.error('Error fetching user:', error);
+    //         }
+    //     };
+
+    //     fetchUser();
+    // }, []);
+
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setDropdownOpen(false);
+        }
+      };
+
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -26,15 +45,7 @@ function Header() {
         };
 
         fetchUser();
-    }, []);
 
-    const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-          setDropdownOpen(false);
-        }
-      };
-
-    useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
           document.removeEventListener("mousedown", handleClickOutside);
@@ -97,7 +108,6 @@ function Header() {
                                     <a href="#orders" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Orders</a>
                                     <Link to={'/wishlist'} className='block px-4 py-2 text-gray-700 hover:bg-gray-100'> Wishlist</Link>
                                     <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
-                                    {/* <Link to="/home"  className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</Link> */}
                                     </>
                                     
                                 ) : (

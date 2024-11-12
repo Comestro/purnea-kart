@@ -7,7 +7,7 @@ const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
   headers: {
    'Content-Type': 'application/json',
-   'Authorization': `Bearer ${getApiKey()}`, // Use API key from config service
+   'Authorization': `Bearer ${localStorage.getItem('token')}`, // Use API key from config service
    },
 });
 
@@ -22,7 +22,8 @@ export const fetchProducts = async () => {
     console.error('Failed to fetch products:', error);
     throw error;
   }
-};export const fetchProduct = async (slug) => {
+};
+export const fetchProduct = async (slug) => {
   
   try {
     const response = await apiClient.get(`/products/${slug}`);
@@ -62,6 +63,8 @@ export const fetchWishlist = async ()=>{
     throw error;
   }
 }
+
+
 
 
 
