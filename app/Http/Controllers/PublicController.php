@@ -51,11 +51,9 @@ class PublicController extends Controller
 
         $data['password'] = ($data['password']);
 
-        $user = User::create($data);
-
+        $user = User::create($data);        
         Auth::login($user);
-
-        return redirect()->intended('/')->with('success', 'Registration successfull');
+        return redirect()->intended('/account/login')->with('success', 'Registration successfull');
     }
 
     // showing login form here:
@@ -64,52 +62,34 @@ class PublicController extends Controller
         return view('account.login');
     }
 
-    // login logics here:
-    // public function Login(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'email' => ['required'],
-    //         'password' => 'required',
-    //     ]);
-
-    //     if (Auth::attempt($credentials)) {
-
-
-    //         return redirect()->intended('/');
-    //     }
-
-    //     return back()->withErrors([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ])->onlyInput('email');
-    // }
+  
 
     public function Login(Request $req)
     {
-
         if ($req->isMethod("post")) {
             $credentials = $req->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ]);
-
-            if (Auth::attempt($credentials)) {
+    
+            if (Auth::attempt($credentials, $req->has('remember'))) {
                 $req->session()->regenerate();
-
-
+    
                 if (Auth::user()->isAdmin == 1) {
-                    return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+                    return redirect()->route('admin.dashboard');
                 } else {
-                    // dd($req->session()->all());
-
-                    return redirect()->intended("/");
-                    
+                    return redirect()->intended('/');
                 }
             }
-
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            dd($credentials);
+            return back()->withErrors([
+                'email' => 'Invalid credentials.',
+            ])->withInput($req->only('email'));
         }
+    
         return view('public.login');
     }
+    
 
     // logout logics here:
     public function logout()

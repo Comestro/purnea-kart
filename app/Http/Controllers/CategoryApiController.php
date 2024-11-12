@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryReq;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
 use Str;
+use Validator;
 
 class CategoryApiController extends Controller
 {
@@ -35,7 +37,7 @@ class CategoryApiController extends Controller
         if (!$request->has('image')) {
             return response()->json(['error' => 'Category image is required, please insert this field.'], 400);
         }
-        
+
         $request->validate([
             'cat_title' => 'required|string|max:255',
             'cat_slug' => 'required|string|max:255|unique:categories,cat_slug',
@@ -65,7 +67,7 @@ class CategoryApiController extends Controller
             $category->parent_category_id = $request->parent_category_id;
             $category->cat_slug = $catSlug;
             $category->cat_description = $request->cat_description;
-            $category->image = $imageName;            
+            $category->image = $imageName;
             $category->save();
 
 
@@ -88,8 +90,19 @@ class CategoryApiController extends Controller
      */
     public function show($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-
+        $categorySlug = Category::where('cat_slug',$slug)->exists();
+        if(!$categorySlug){
+            return response()->json([
+                'message' => 'Category slug not exist'
+            ], 404);
+        }
+        $category = Category::with('products')->where('cat_slug', $slug)->firstOrFail();
+        
+        if ($category->products->isEmpty()) {
+            return response()->json([
+                'message' => 'Category wise products not found',
+            ], 404);
+        }
         if (!$category) {
             return response()->json([
                 'message' => 'Category not found'
@@ -98,7 +111,8 @@ class CategoryApiController extends Controller
 
         return response()->json([
             'message' => 'Category fetched successfully',
-            'category' => $category
+            // 'category' => $category,
+            'products' => $category->products
         ], 200);
     }
 
