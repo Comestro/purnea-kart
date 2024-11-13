@@ -23,28 +23,16 @@ class ProductVariantApiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // Custom validation for missing fields
-        if (!$request->has('variant_type')) {
-            return response()->json(['error' => 'Variant type is required, please insert this field.'], 400);
+    {        
+        $reqFeild = ['variant_type', 'variant_name', 'sku', 'price', 'stock', 'variant_image'];
+
+        foreach ($reqFeild as $field) {
+            if (!$request->has($field)) {
+                return response()->json(['error' => ucfirst(str_replace('_', ' ', $field)) . " is required, please insert this field"], 400);
+            }
+
         }
-    
-        if (!$request->has('variant_name')) {
-            return response()->json(['error' => 'Variant name is required, please insert this field.'], 400);
-        }
-    
-        if (!$request->has('sku')) {
-            return response()->json(['error' => 'SKU is required, please insert this field.'], 400);
-        }
-    
-        if (!$request->has('price')) {
-            return response()->json(['error' => 'Price is required, please insert this field.'], 400);
-        }
-    
-        if (!$request->has('stock')) {
-            return response()->json(['error' => 'Stock is required, please insert this field.'], 400);
-        }
-            $request->validate([
+        $request->validate([
             'variant_type' => 'required|string',
             'variant_name' => 'required|string|max:255',
             'sku' => 'required',
@@ -52,18 +40,18 @@ class ProductVariantApiController extends Controller
             'stock' => 'required|integer|min:0',
             'variant_image' => 'nullable|image|max:1024',
         ]);
-    
+
         $imageName = null;
         if ($request->hasFile('variant_image')) {
             $image = $request->file('variant_image');
-            
+
             if (!$image->isValid()) {
                 return response()->json(['error' => 'Variant image is not valid.'], 400);
             }
-                $imageName = time() . '.' . $image->extension();
+            $imageName = time() . '.' . $image->extension();
             $image->storeAs('image/product', $imageName, 's3');
         }
-    
+
         try {
             $productVariant = ProductVariant::create([
                 'variant_type' => $request->variant_type,
@@ -71,22 +59,22 @@ class ProductVariantApiController extends Controller
                 'sku' => $request->sku,
                 'price' => $request->price,
                 'stock' => $request->stock,
-                'variant_image' => $imageName, 
+                'variant_image' => $imageName,
             ]);
-    
+
             return response()->json([
                 'message' => 'Product Variant Created Successfully',
                 'product_variant' => $productVariant,
             ], 200);
-    
+
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Something went wrong.',
                 'error' => $e->getMessage(),
-            ], 500); 
+            ], 500);
         }
     }
-    
+
     /**
      * Display the specified resource.
      */
@@ -130,7 +118,7 @@ class ProductVariantApiController extends Controller
             'message' => 'Product Variant Updated Successfully',
             'product_variant' => $productVariant,
         ], 200);
-    
+
     }
 
     /**
@@ -150,6 +138,6 @@ class ProductVariantApiController extends Controller
         return response()->json([
             'message' => 'Product Variant Deleted Successfully',
         ], 200);
-    
+
     }
 }
