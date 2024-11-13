@@ -19,7 +19,7 @@ class ProductApiController extends Controller
             'products' => $products
         ], 200);
     }
-    public function store(Request $request)
+    public function store(StoreProductReq $request)
     {        
         if (!$request->has('name')) {
             return response()->json(['error' => 'Product name is required, please insert this field.'], 400);
@@ -32,10 +32,7 @@ class ProductApiController extends Controller
         if (!$request->has('sku')) {
             return response()->json(['error' => 'SKU is required, please insert this field.'], 400);
         }
-    
-        if (!$request->has('vendor_id')) {
-            return response()->json(['error' => 'Vendor ID is required, please insert this field.'], 400);
-        }
+          
     
         if (!$request->has('category_id')) {
             return response()->json(['error' => 'Category ID is required, please insert this field.'], 400);
@@ -46,18 +43,7 @@ class ProductApiController extends Controller
         }
     
         
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'discount_price' => 'nullable|numeric|min:0',
-            'description' => 'nullable|string',
-            'quantity' => 'required|integer|min:1',
-            'sku' => 'required|string|max:255|unique:products,sku',
-            'vendor_id' => 'required|exists:vendors,id',
-            'category_id' => 'required|exists:categories,id', 
-            'brand_id' => 'required|exists:brands,id',
-        ]);
-    
+        
         try {
             $productSlug = Str::slug($request->name);
     
