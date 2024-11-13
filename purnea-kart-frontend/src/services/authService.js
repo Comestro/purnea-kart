@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { getApiUrl } from './configService';
-import { setuser } from '../store/authSlice';
+
 
 const apiClient = axios.create({
   baseURL: getApiUrl(),  // Use the API URL from config service
@@ -41,13 +41,7 @@ const apiClient = axios.create({
       throw err;
     }
   }
-//   export  const login = async({email,password})=>{
-//     try{
-//          return  await apiClient.createEmailPasswordSession(email,password)
-//     }catch(err){
-//         throw err;
-//     } 
-// }
+
   
   // Get User Info
   export const getuser = async (dispatch)=> {
@@ -70,6 +64,19 @@ const apiClient = axios.create({
       console.log('User logged out');
     } catch (err) {
       console.error('Logout error:', err);
+      throw err;
+    }
+  }
+  export const addToWishlist = async({Product_id,User_id})=>{
+    try{
+      const response = await apiClient.post('/wishlist',{Product_id,User_id})
+      const { access_token } = response.data;
+      console.log('Login response:', response.data);
+      localStorage.setItem('token', access_token); // Store token in local storage
+      console.log('User logged in:', access_token);
+      return access_token;
+    }catch(err){
+      console.error('can not wishlist product',err);
       throw err;
     }
   }

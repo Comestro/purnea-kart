@@ -1,4 +1,6 @@
 import React from 'react';
+import Navbar from '../Navbar';
+import Footer from '../Footer/Footer'
 
 const CartPage = () => {
   const cartItems = [
@@ -12,7 +14,16 @@ const CartPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    
+    <div className="">
+      <Navbar
+       links={[
+        { label: "MyAccount", href: "/" },
+        { label: "Become a Seller", href: "/seller" },
+        { label: "more", href: "/contact" },
+        { label: "cart", href: "/cart" },
+      ]}
+      variant="dark"/>
       <h1 className="text-2xl font-semibold">Shopping Cart</h1>
       
       <div className="grid md:grid-cols-3 gap-4">
@@ -42,7 +53,9 @@ const CartPage = () => {
         </div>
 
       </div>
+      <Footer/>
     </div>
+
   );
 };
 

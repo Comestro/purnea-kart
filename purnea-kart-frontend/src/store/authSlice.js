@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     status : false,
     userData : null,
-    userName : null
 }
 
 
@@ -20,12 +19,12 @@ const authSlice = createSlice({
           state.status = false;
           state.userData= null;  // in reducux toolkit inside reduser are action like :login and logout
         },
-        setuser :(state,action)=>{
-          state.userName = action.payload.name;
-        }
+        // setuser :(state,action)=>{
+        //   state.userName = action.payload.name;
+        // }
       }
     })
 
-    export const {login,logout,setuser} = authSlice.actions
+    export const {login,logout} = authSlice.actions
 
 export default authSlice.reducer
