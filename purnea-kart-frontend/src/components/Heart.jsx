@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 
 function HeartButton() {
-    const [isWishlist, setisWishlist] = useState([])
+    const [isWishlist, setisWishlist] = useState('false')
     const dispatch = useDispatch();
     
    const handleClick = ()=>{
