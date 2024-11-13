@@ -27,15 +27,11 @@ class CategoryApiController extends Controller
     public function store(Request $request)
     {
         // Custom validation for missing fields
-        if (!$request->has('cat_title')) {
-            return response()->json(['error' => 'Category title is required, please insert this field.'], 400);
-        }
-
-        if (!$request->has('cat_description')) {
-            return response()->json(['error' => 'Category description is required, please insert this field.'], 400);
-        }
-        if (!$request->has('image')) {
-            return response()->json(['error' => 'Category image is required, please insert this field.'], 400);
+        $reqField = ['cat_title', 'cat_description', 'image'];
+        foreach ($reqField as $field) {
+            if (!$request->has($field)) {
+                return response()->json(['error' => ucfirst(str_replace('_', ' ', $field)) . " is requrird, please insert this field"],400);
+            }
         }
 
         $request->validate([

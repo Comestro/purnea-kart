@@ -21,36 +21,30 @@ class BrandApiController extends Controller
 
     public function store(Request $request)
     {
-        if (!$request->has('brand_name')) {
-            return response()->json(['error' => 'Brand name is required, please insert this field.'], 400);
-        }
-    
-        if (!$request->has('brand_slug')) {
-            return response()->json(['error' => 'Brand slug is required, please insert this field.'], 400);
-        }
-    
-        if(!$request->has('brand_description')) {
-            return response()->json(['error'=> 'Brand description is required, please insert this field.'], 400);
-        }
-        if (!$request->hasFile('logo')) {
-            return response()->json(['error' => 'image is required, please insert this field.'], 400);
-        }
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            if (!$logo->isValid()) {
-                return response()->json(['error' => 'Logo file is not a valid image.'], 400);
-            }
-    
-            if (!in_array($logo->getClientMimeType(), ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'])) {
-                return response()->json(['error' => 'Logo must be an image file (jpeg, png, jpg, gif, svg).'], 400);
-            }
-    
-            if ($logo->getSize() > 2048 * 1024) { 
-                return response()->json(['error' => 'Logo image may not be greater than 2MB.'], 400);
+
+        $reqField = ['brand_name', 'brand_slug', 'brand_description', 'logo'];
+        foreach ($reqField as $field) {
+            if (!$request->has($field)) {
+                return response()->json(['error' => ucfirst(str_replace('_', ' ', $field)) . " is requrird, please insert this field"], 400);
             }
         }
-        
-        
+
+        // if ($request->hasFile('logo')) {
+        //     $logo = $request->file('logo');
+        //     if (!$logo->isValid()) {
+        //         return response()->json(['error' => 'Logo file is not a valid image.'], 400);
+        //     }
+
+        //     if (!in_array($logo->getClientMimeType(), ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'])) {
+        //         return response()->json(['error' => 'Logo must be an image file (jpeg, png, jpg, gif, svg).'], 400);
+        //     }
+
+        //     if ($logo->getSize() > 2048 * 1024) {
+        //         return response()->json(['error' => 'Logo image may not be greater than 2MB.'], 400);
+        //     }
+        // }
+
+
         try {
             $imageName = null;
             if ($request->hasFile('logo')) {
@@ -59,7 +53,7 @@ class BrandApiController extends Controller
             }
 
 
-          
+
 
             $brandSlug = Str::slug($request->brand_name);
 
@@ -88,12 +82,12 @@ class BrandApiController extends Controller
     {
         try {
             $brand = Brand::where('slug', $slug)->firstOrFail();
-            
+
             return response()->json([
                 'message' => 'Brand retrieved successfully',
                 'brand' => $brand,
             ], 200);
-            
+
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'error' => 'Brand not found with the given slug',
