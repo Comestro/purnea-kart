@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandApiController;
+use App\Http\Controllers\CartControllerApi;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\Vendor\BrandController;
 use App\Http\Controllers\Vendor\CategoryController;
@@ -78,4 +79,9 @@ Route::apiResource('/productVariants', ProductVariantApiController::class);
 Route::apiResource('/wishlists', WishListApiController::class);
 
 // Route::post('/account/login', [PublicController::class, 'Login'])->name('account.login.data');
-
+// add To cart
+// Route::get('/cart', [CartControllerApi::class, 'viewCart']);
+Route::post('/cart/add/{product_slug}', [CartControllerApi::class, 'addToCart']);
+// Route::delete('/cart/{product_slug}', [CartControllerApi::class, 'removeFromCart']);
+// Route::post('/cart/increment/{product_slug}', [CartControllerApi::class, 'incrementQuantity']);
+// Route::post('/cart/decrement/{product_slug}', [CartControllerApi::class, 'decrementQuantity']);
