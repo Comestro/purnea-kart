@@ -14,7 +14,6 @@ class CartControllerApi extends Controller
     public function addToCart(Request $request, $product_slug)
     {
         try {
-            // Get the product details or throw a 404 exception if not found
             $product = Product::where('slug', $product_slug)->firstOrFail();
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Product not found'], 404);
@@ -36,18 +35,15 @@ class CartControllerApi extends Controller
             return response()->json(['error' => 'User not authenticated'], 401);
         }
     
-        // Check if there's an existing order that hasn't been placed
         $orderExist = Order::where([
             ['user_id', '=', $user->id],
             ['isOrdered', '=', false]
         ])->first();
     
         if ($orderExist) {
-            // Check if product already exists in order items
             $orderItem = $orderExist->items()->where('product_id', $product->id)->first();
     
-            if ($orderItem) {
-                // If product exists in cart, update quantity
+            if ($orderItem) {        
                 $orderItem->quantity += 1;
                 $orderItem->save();
             } else {
@@ -56,7 +52,7 @@ class CartControllerApi extends Controller
                 $orderItem->product_id = $product->id;
                 $orderItem->order_id = $orderExist->id;
                 $orderItem->quantity = 1;
-                $orderItem->user_id = $user->id; // Add this line
+                $orderItem->user_id = $user->id;
                 $orderItem->save();
             }
         } else {
@@ -64,7 +60,7 @@ class CartControllerApi extends Controller
             $order = new Order();
             $order->user_id = $user->id;
             $order->isOrdered = false;
-            $order->order_number = 'ORD-' . strtoupper(Str::random(8)); // Or use uuid()
+            $order->order_number = 'ORD-' . strtoupper(Str::random(8));
             $order->save();
     
             // Add product to the newly created order

@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 
 class OrderController extends Controller
@@ -50,6 +51,8 @@ class OrderController extends Controller
                 $order = new Order();
                 $order->user_id = Auth::id();
                 $order->isOrdered = false;
+                $order->order_number = 'ORD-' . strtoupper(Str::random(8));
+
                 $order->save();
     
                 // Insert new order item with the newly created order ID
