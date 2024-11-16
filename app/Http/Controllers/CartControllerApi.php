@@ -73,6 +73,7 @@ class CartControllerApi extends Controller
         }
     
         return response()->json([
+            'orderItem' => $orderItem,
             'data' => ['message' => 'Product added to cart'],
             'status'=>true
         ], 200);
