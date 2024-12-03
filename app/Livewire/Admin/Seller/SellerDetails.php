@@ -3,44 +3,40 @@
 namespace App\Livewire\Admin\Seller;
 
 use App\Models\Seller;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class SellerDetails extends Component
 {
     public $seller; 
-    public $isApproved; 
-
-    public function mount(Seller $sellerId)
-    {
-       
-        $this->seller = $sellerId; 
-        $this->isApproved = $this->seller->status; 
-    }
-
+    public $sellerMain;
     
-    public function activate()
-    {
-       
-        $this->seller->update(['status' => 1]); 
-        $this->isApproved = true;
-        dd('fucn2');
 
+public function mount(Seller $sellerId)
+    {
+
+        $this->sellerMain = $sellerId; 
+       
        
     }
 
-    public function deactivate()
-    {
+    public function UpdateSellerStatus( $id){
         
-        
-        $this->seller->update(['status' => 0]); 
-        $this->isApproved = false;
-        dd("ljdsfbnfjoa");
-       
       
+        Seller::find($id)->update([
+            'status' => $this->seller->status ? 0 : 1
+           
+        ]);
+       
+        $this->dispatch('refresh-seller');
+       
     }
 
+
+    #[On('refresh-seller')]
     public function render()
-    {
-        return view('livewire.admin.seller.seller-details'  );
+    {   
+        $this->seller=Seller::find($this->sellerMain->id);
+        return view('livewire.admin.seller.seller-details',$this->seller);
     }
 }
