@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -14,61 +15,66 @@ use Illuminate\Support\Str;
 class OrderController extends Controller
 {
 
-    public function addToCart(Request $req, $product_slug) {
+    public function addToCart(Request $req, $product_slug)
+    {
         $product = Product::where('slug', $product_slug)->first();
         if (!$product) {
             abort(404);
         } else {
-            // Check if an order exists for the current user and is not ordered
+            $size_variant_id = $req->input('size_variant_id');
+            $color_variant_id = $req->input('color_variant_id');
+                
+            $size_variant = $size_variant_id ? ProductVariant::find($size_variant_id) : null;
+            $color_variant = $color_variant_id ? ProductVariant::find($color_variant_id) : null;
+    
             $exist_order = Order::where([
                 ['user_id', Auth::id()],
-                ['isOrdered', false] 
+                ['isOrdered', false]
             ])->first();
     
             if ($exist_order) {
-                // Check if the order item exists in the existing order
                 $exist_order_item = OrderItem::where([
                     ['user_id', Auth::id()],
                     ['order_id', $exist_order->id],
-                    ['product_id', $product->id]
+                    ['product_id', $product->id],
+                    ['size_variant_id', $size_variant_id],
+                    ['color_variant_id', $color_variant_id]
                 ])->first();
     
-                if ($exist_order_item) {
-                    // Increment quantity if item already exists in cart
+                if ($exist_order_item) {                    
                     $exist_order_item->quantity += 1;
                     $exist_order_item->save();
-                } else {
-                    // Add new item to the existing order if item does not exist
+                } else {                    
                     $order_item = new OrderItem();
                     $order_item->user_id = Auth::id();
                     $order_item->order_id = $exist_order->id;
                     $order_item->product_id = $product->id;
-                    $order_item->quantity = 1; // Initialize quantity to 1
+                    $order_item->size_variant_id = $size_variant_id;
+                    $order_item->color_variant_id = $color_variant_id;
+                    $order_item->quantity = 1;
                     $order_item->save();
                 }
-            } else {
-                // If no existing order, create a new order and add the item
+            } else {                
                 $order = new Order();
                 $order->user_id = Auth::id();
                 $order->isOrdered = false;
                 $order->order_number = 'ORD-' . strtoupper(Str::random(8));
-
                 $order->save();
-    
-                // Insert new order item with the newly created order ID
+                    
                 $order_item = new OrderItem();
                 $order_item->user_id = Auth::id();
                 $order_item->order_id = $order->id;
                 $order_item->product_id = $product->id;
-                $order_item->quantity = 1; // Initialize quantity to 1
+                $order_item->size_variant_id = $size_variant_id;
+                $order_item->color_variant_id = $color_variant_id;
+                $order_item->quantity = 1;
                 $order_item->save();
             }
         }
     
-        
-         return redirect()->route('Cart');
+        return redirect()->route('Cart');
     }
-    
+        
     public function showCart(){
         $data['order'] = Order::where('user_id',Auth::id())->where('isOrdered',false)->first();
         return view ("cart",$data);
