@@ -11,10 +11,11 @@
                                     class="avatar-xxl flex-shrink-0">
                             </div>
                             <div class="mt-3">
-                                @if ($isApproved)
-                                <button wire:click="deactivate" class="btn btn-green w-100">Active</button>
+                            
+                                @if ($seller->status)
+                                <button wire:click="UpdateSellerStatus({{$seller->id}})" class="btn btn-green w-100">Active</button>
                                 @else
-                                    <button wire:click="activate" class="btn btn-red w-100">Inactive</button>
+                                    <button wire:click="UpdateSellerStatus({{$seller->id}})" class="btn btn-red w-100">Inactive</button>
                                 @endif
                             </div>
                         </div>
@@ -42,6 +43,7 @@
                                             <i class="bx bxs-star-half"></i>
                                         </li>
                                     </ul>
+                                   
                                     <p class="fw-medium mb-0 text-dark fs-15">4.5/5 <span class="fs-13">(+23.3K
                                             Review)</span></p>
                                 </div>
