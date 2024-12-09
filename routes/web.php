@@ -257,6 +257,6 @@ Route::prefix('account')->group(function () {
 
     Route::get('/login', [PublicController::class, 'showLoginForm'])->name('account.login.form');
     Route::post('/login', [PublicController::class, 'Login'])->name('account.login');
-    Route::post('/logout',[PublicController::class, 'logout'])->name('account.logout');
+    Route::get('/logout',[PublicController::class, 'logout'])->name('account.logout');
 });
 

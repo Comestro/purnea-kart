@@ -4,6 +4,7 @@
         <a href="{{ route('home') }}" class="flex w-48">
             <img src="{{ asset('purneakart.png') }}" alt="Logo" class="h-12">
         </a>
+       
 
         <!-- Search Input -->
         <div class="mx-6 w-[80%]">
@@ -27,6 +28,9 @@
                         <img src="{{ Auth::user()->image }}" class="w-12 h-12 rounded-full" alt="Profile Picture">
                     @endif
                     <span class="text-gray-700">{{ Auth::user()->name }}!</span>
+                    <a href="{{ route('account.logout') }}" class="flex w-48">
+                        logout
+                    </a>
                 @else
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 text-gray-600">
