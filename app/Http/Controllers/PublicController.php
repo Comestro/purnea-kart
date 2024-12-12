@@ -75,13 +75,13 @@ class PublicController extends Controller
             if (Auth::attempt($credentials, $req->has('remember'))) {
                 $req->session()->regenerate();
     
-                if (Auth::user()->isAdmin == 1) {
+                if (Auth::user()->is_admin == 1) {
                     return redirect()->route('admin.dashboard');
                 } else {
                     return redirect()->intended('/');
                 }
             }
-            dd($credentials);
+            // dd($credentials);
             return back()->withErrors([
                 'email' => 'Invalid credentials.',
             ])->withInput($req->only('email'));
