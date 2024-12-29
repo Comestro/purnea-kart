@@ -53,7 +53,7 @@ class PublicController extends Controller
 
         $user = User::create($data);        
         Auth::login($user);
-        return redirect()->intended('/account/login')->with('success', 'Registration successfull');
+        return redirect()->intended('/')->with('success', 'Registration successfull');
     }
 
     // showing login form here:
@@ -75,7 +75,7 @@ class PublicController extends Controller
             if (Auth::attempt($credentials, $req->has('remember'))) {
                 $req->session()->regenerate();
     
-                if (Auth::user()->is_admin == 1) {
+                if (Auth::user()->is_admin) {
                     return redirect()->route('admin.dashboard');
                 } else {
                     return redirect()->intended('/');

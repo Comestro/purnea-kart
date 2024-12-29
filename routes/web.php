@@ -62,81 +62,103 @@ Route::view('profile', 'profile')
 
 require __DIR__ . '/auth.php';
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin.dashboard');
 
-// products
-Route::prefix('admin')->group(function () {
+    // Products
     Route::resource('product', ProductController::class);
+    Route::get('/product-grid', function () {
+        return view('admin.product.product_grid');
+    });
+    Route::get('/product-details/{id}', function ($id) {
+        return view('admin.product.product_details',['id' => $id]);
+    })->name('adminProductView');
+
+    // Brands
+    Route::get('brands/brand-add', function () {
+        return view('admin.brands.brand_add');
+    });
+    Route::get('brands/manage-brand', function () {
+        return view('admin.brands.manage_brand');
+    })->name('manage_brand');
+    Route::get('brands/brand-edit/{brand_id}', function ($brand_id) {
+        return view('admin.brands.brand_edit', ['brand_id' => $brand_id]);
+    })->name('edit_brand');
+
+    // Banner
+    Route::get('banner/banner_create', function () {
+        return view('admin.banner.banner_create');
+    });
+    Route::get('banner/calling-banner', function () {
+        return view('admin.banner.calling-banner');
+    });
+
+    // Categories
+    Route::get('categories/category-list', function () {
+        return view('admin.categories.category_list');
+    })->name('manage_category');
+    Route::get('categories/category-edit/{cat_id}', function ($cat_id) {
+        $categoryItem = Category::find($cat_id);
+        return view('admin.categories.category_edit', ['cat_id' => $cat_id], ['categoryItems' => $categoryItem]);
+    })->name('edit.category');
+    Route::get('categories/category-add', function () {
+        return view('admin.categories.category_add');
+    })->name('create.category');
+
+    // Coupons
+    Route::get('coupon/coupon-add', function () {
+        return view('admin.coupons.coupon-add');
+    })->name('coupon_add');
+    Route::get('coupon/coupon-list', function () {
+        return view('admin.coupons.coupon-list');
+    })->name('coupon_list');
+
+    // Inventory
+    Route::get('inventory/inventory_receivedOrder', function () {
+        return view('admin.inventory.inventory_receivedOrder');
+    });
+    Route::get('inventory/inventory_warehouse', function () {
+        return view('admin.inventory.inventory_warehouse');
+    });
+
+    // Orders
+    Route::get('orders/order-cart', function () {
+        return view('admin.orders.order_cart');
+    });
+    Route::get('orders/order-checkout', function () {
+        return view('admin.orders.order_checkout');
+    });
+    Route::get('orders/order-detail', function () {
+        return view('admin.orders.order_detail');
+    });
+    Route::get('orders/order-list', function () {
+        return view('admin.orders.order_list');
+    });
+
+    // Settings
+    Route::get('settings', function () {
+        $setting = Setting::all()->count();
+        if ($setting == 0) {
+            Setting::create();
+        }
+        return view('admin.settings', ['setting' => Setting::first()]);
+    });
+
+    // Sellers
+    Route::get('seller/seller-list', function () {
+        return view('admin.seller.seller_list');
+    })->name('seller_list');
+    Route::get('seller/seller-add', function () {
+        return view('admin.seller.seller_add');
+    })->name('seller_add');
+    Route::get('seller/seller-details/{id}', function ($id) {
+        $seller = Seller::findOrFail($id);
+        return view('admin.seller.seller-details', compact('seller'));
+    })->name('seller_details');
 });
 
-Route::get('/admin/product-grid', function () {
-    return view('admin.product.product_grid');
-});
-
-Route::get('/admin/product-details/{id}', function ($id) {
-    return view('admin.product.product_details',['id' => $id]);
-})->name('adminProductView');
-
-
-
-//brand
-Route::get('admin/brands/brand-add', function () {
-    return view('admin.brands.brand_add');
-});
-
-Route::get('admin/brands/manage-brand', function () {
-    return view('admin.brands.manage_brand');
-})->name('manage_brand');
-
-Route::get('admin/brands/brand-edit/{brand_id}', function ($brand_id) {
-    return view('admin.brands.brand_edit', ['brand_id' => $brand_id]);
-})->name('edit_brand');
-
-
-//Banner
-Route::get('admin/banner/banner_create', function () {
-    return view('admin.banner.banner_create');
-});
-// Banner::truncate();
-
-Route::get('admin/banner/calling-banner', function () {
-    return view('admin.banner.calling-banner');
-});
-
-
-//Caregory
-Route::get('admin/categories/category-list', function () {
-    return view('admin.categories.category_list');
-})->name('manage_category');
-
-Route::get('admin/categories/category-edit/{cat_id}', function ($cat_id) {
-    $categoryItem = Category::find($cat_id);
-    return view('admin.categories.category_edit', ['cat_id' => $cat_id], ['categoryItems' => $categoryItem]);
-})->name('edit.category');
-
-Route::get('admin/categories/category-add', function () {
-    return view('admin.categories.category_add');
-})->name('create.category');
-
-//Coupon
-Route::get('admin/coupon/coupon-add', function () {
-    return view('admin.coupons.coupon-add');
-})->name('coupon_add');
-
-Route::get('admin/coupon/coupon-list', function () {
-    return view('admin.coupons.coupon-list');
-})->name('coupon_list');
-
-
-//INVENTORY
-Route::get('admin/inventory/inventory_receivedOrder', function () {
-    return view('admin.inventory.inventory_receivedOrder');
-});
-Route::get('admin/inventory/inventory_warehouse', function () {
-    return view('admin.inventory.inventory_warehouse');
-});
 
 
 Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
@@ -145,46 +167,6 @@ Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCal
 
 
 //order
-Route::get('admin/orders/order-cart', function () {
-    return view('admin.orders.order_cart');
-});
-Route::get('admin/orders/order-checkout', function () {
-    return view('admin.orders.order_checkout');
-});
-Route::get('admin/orders/order-detail', function () {
-    return view('admin.orders.order_detail');
-});
-Route::get('admin/orders/order-list', function () {
-    return view('admin.orders.order_list');
-});
-
-// SETTINGS
-Route::get('admin/settings', function () {
-    // Setting::truncate();
-    // dd('testing');
-    $setting = Setting::all()->count();
-
-    if ($setting == 0) {
-        Setting::create();
-    }
-    return view('admin.settings', ['setting' => Setting::first()]);
-});
-
-//seller
-Route::get('admin/seller/seller-list', function () {
-    return view('admin.seller.seller_list');
-})->name('seller_list');
-
-Route::get('admin/seller/seller-add', function () {
-    return view('admin.seller.seller_add');
-})->name('seller_add');
-Route::get('admin/seller/seller-details/{id}', function ($id) {
-    $seller = seller::findOrFail($id);
-    return view('admin.seller.seller-details', compact('seller'));
-})->name('seller_details');
-
-Route::get('/sellerLogout',[PublicController::class, 'sellerLogout'])->name('seller.logout');
-
 
 
 

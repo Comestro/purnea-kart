@@ -14,16 +14,14 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-            'admin.auth' => \App\Http\Middleware\IsAdmin::class,
-            'vendor.auth' => \App\Http\Middleware\IsVendor::class,
-            'not.vendor' => \App\Http\Middleware\IsNotVendor::class, 
-            'not.admin' => \App\Http\Middleware\IsNotAdmin::class,
+            'admin' => \App\Http\Middleware\IsAdmin::class,
+            'vendor.auth' => \App\Http\Middleware\IsVendor::class,            
             'auth:api' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
  
         ]);
 
         $middleware->redirectTo(
-            '/login',
+            '/account/login',
             '/user/dashboard'
         );
     })
